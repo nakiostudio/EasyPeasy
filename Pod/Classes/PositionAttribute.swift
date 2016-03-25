@@ -12,12 +12,6 @@ import Foundation
 
 public class PositionAttribute: Attribute {
     
-    public func like(view: UIView) -> Self {
-        self.referenceView = view
-        self.referenceAttribute = (self.createAttribute as ReferenceAttribute)
-        return self
-    }
-    
     public func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceView = view
         self.referenceAttribute = attribute

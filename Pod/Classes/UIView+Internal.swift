@@ -10,14 +10,23 @@
 
 import UIKit
 
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+internal var easy_attributesReference: Int = 0
 
-    var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        return true
+internal extension UIView {
+    
+    internal var easy_attributes: [Attribute] {
+        get {
+            if let attributes = objc_getAssociatedObject(self, &easy_attributesReference) as?
+                [Attribute] {
+                return attributes
+            }
+            return []
+        }
+        
+        set {
+            let policy = objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            objc_setAssociatedObject(self, &easy_attributesReference, newValue, policy)
+        }
     }
-
+    
 }
-

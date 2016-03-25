@@ -42,9 +42,7 @@ internal extension Attribute {
         view.superview?.addConstraint(layoutConstraint)
     }
     
-    // MARK: Private methods
-    
-    private func shouldInstallOnView(view: UIView) -> Bool {
+    internal func shouldInstallOnView(view: UIView) -> Bool {
         self.createView = view
         guard let _ = view.superview else {
             return false
@@ -55,7 +53,13 @@ internal extension Attribute {
         return true
     }
     
+    // MARK: Private methods
+    
     private func resolveConflictsOnView(view: UIView) {
+        guard let _ = view.superview else {
+            return
+        }
+        
         // Find conflicting constraints already installed
         let superview = view.superview!
         let conflictingConstraints = superview.constraints.filter { constraint in
@@ -64,7 +68,14 @@ internal extension Attribute {
             }
             return false
         }
-        let conflictAttributes = conflictingConstraints.map { $0.easy_attribute }
+        
+        // Remove conflicting attributes stored in the superview
+        let conflictingAttributes = conflictingConstraints
+            .map { $0.easy_attribute }
+            .flatMap { $0 }
+        superview.easy_attributes = superview.easy_attributes
+            .filter { conflictingAttributes.contains($0) == false }
+            .filter { $0 == self }
         
         // Disable conflicting installed constraints
         superview.removeConstraints(conflictingConstraints)
@@ -72,42 +83,32 @@ internal extension Attribute {
     
 }
 
-/**
-    Infix operator which determines whether two Attributes conflict
-    between them or not
- */
-infix operator =~ {}
-internal func =~ (lhs: Attribute, rhs: Attribute) -> Bool {
+internal extension Attribute {
     
-    // Create views conflict
-    if (lhs.createView === rhs.createView) == false {
-        return false
+    internal func referenceAttributeFromClass() -> ReferenceAttribute {
+        switch self {
+        case is Width: return .Width
+        case is Height: return .Height
+        case is Left: return .Left
+        case is Right: return .Right
+        case is Top: return .Top
+        case is Bottom: return .Bottom
+        case is Leading: return .Leading
+        case is Trailing: return .Trailing
+        case is CenterX: return .CenterX
+        case is CenterY: return .CenterY
+        case is FirstBaseline: return .FirstBaseline
+        case is LastBaseline: return .LastBaseline
+        case is LeftMargin: return .LeftMargin
+        case is RightMargin: return .RightMargin
+        case is TopMargin: return .TopMargin
+        case is BottomMargin: return .BottomMargin
+        case is LeadingMargin: return .LeadingMargin
+        case is TrailingMargin: return .TrailingMargin
+        case is CenterXWithinMargins: return .CenterXWithinMargins
+        case is CenterYWithinMargins: return .CenterYWithinMargins
+        case is Attribute: return .NotAnAttribute
+        }
     }
     
-    // Create attributes conflict
-    if lhs.createAttribute.conflictingAttributes.contains(rhs.createAttribute) == false {
-        return false
-    }
-    
-    // Priorities conflict
-    if lhs.priority.layoutPriority() != rhs.priority.layoutPriority() {
-        return false
-    }
-    
-    // Conditions conflict
-    var lhsCondition = true
-    if let createView = lhs.createView {
-        lhsCondition = lhs.shouldInstallOnView(createView)
-    }
-    
-    var rhsCondition = true
-    if let createView = rhs.createView {
-        rhsCondition = rhs.shouldInstallOnView(createView)
-    }
-    
-    if lhsCondition != rhsCondition {
-        return false
-    }
-    
-    return true
 }

@@ -16,7 +16,7 @@
 		B0DA328D05D71E93C7C12CC7AFFE9CDE /* Pods-EasyPeasy_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EDAA7D14C51F2718E0732681C35586D /* Pods-EasyPeasy_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B1F70956FB9D9B765870939126DE1E29 /* Pods-EasyPeasy_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 70221C133D5BA54E6681EDBD5FFDF060 /* Pods-EasyPeasy_Example-dummy.m */; };
 		C1FDB5451CA5B2BE009C364D /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53C1CA5B2BE009C364D /* Attribute.swift */; };
-		C1FDB5461CA5B2BE009C364D /* Attribute+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53D1CA5B2BE009C364D /* Attribute+Internal.swift */; };
+		C1FDB5461CA5B2BE009C364D /* Attribute+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53D1CA5B2BE009C364D /* Attribute+Install.swift */; };
 		C1FDB5471CA5B2BE009C364D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53E1CA5B2BE009C364D /* Constant.swift */; };
 		C1FDB5481CA5B2BE009C364D /* DimensionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53F1CA5B2BE009C364D /* DimensionAttribute.swift */; };
 		C1FDB5491CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift */; };
@@ -24,6 +24,8 @@
 		C1FDB54B1CA5B2BE009C364D /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5421CA5B2BE009C364D /* Priority.swift */; };
 		C1FDB54C1CA5B2BE009C364D /* ReferenceAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5431CA5B2BE009C364D /* ReferenceAttribute.swift */; };
 		C1FDB54D1CA5B2BE009C364D /* UIView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5441CA5B2BE009C364D /* UIView+Easy.swift */; };
+		C1FDB54F1CA5BD11009C364D /* Attribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB54E1CA5BD11009C364D /* Attribute+Operators.swift */; };
+		C1FDB5531CA5CDD3009C364D /* UIView+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5521CA5CDD3009C364D /* UIView+Internal.swift */; };
 		CCF597ED4F7C52C77BE9544284CBBD63 /* EasyPeasy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 39E8BC6E829E23284FCD96934624562D /* EasyPeasy.bundle */; };
 		CCFA9F9938DA61437C6FB7A8172A225A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -81,7 +83,7 @@
 		BAC57D4103F45901D7436E09BC3F6046 /* Pods-EasyPeasy_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyPeasy_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C19500ABBAD48E88A96F62761D770EE3 /* Pods-EasyPeasy_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-EasyPeasy_Tests-resources.sh"; sourceTree = "<group>"; };
 		C1FDB53C1CA5B2BE009C364D /* Attribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
-		C1FDB53D1CA5B2BE009C364D /* Attribute+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+Internal.swift"; sourceTree = "<group>"; };
+		C1FDB53D1CA5B2BE009C364D /* Attribute+Install.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+Install.swift"; sourceTree = "<group>"; };
 		C1FDB53E1CA5B2BE009C364D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C1FDB53F1CA5B2BE009C364D /* DimensionAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionAttribute.swift; sourceTree = "<group>"; };
 		C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Easy.swift"; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		C1FDB5421CA5B2BE009C364D /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		C1FDB5431CA5B2BE009C364D /* ReferenceAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceAttribute.swift; sourceTree = "<group>"; };
 		C1FDB5441CA5B2BE009C364D /* UIView+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Easy.swift"; sourceTree = "<group>"; };
+		C1FDB54E1CA5BD11009C364D /* Attribute+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+Operators.swift"; sourceTree = "<group>"; };
+		C1FDB5521CA5CDD3009C364D /* UIView+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Internal.swift"; sourceTree = "<group>"; };
 		D90D393DCD979971782BC9EF1906F5B4 /* EasyPeasy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EasyPeasy.xcconfig; sourceTree = "<group>"; };
 		DAD9026AFFC8BE029D0382E4FA175FDB /* Pods-EasyPeasy_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EasyPeasy_Example-umbrella.h"; sourceTree = "<group>"; };
 		E86A1AB72D9A2EA56943C349EF88B1B7 /* Pods-EasyPeasy_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EasyPeasy_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -231,13 +235,15 @@
 			isa = PBXGroup;
 			children = (
 				C1FDB53C1CA5B2BE009C364D /* Attribute.swift */,
-				C1FDB53D1CA5B2BE009C364D /* Attribute+Internal.swift */,
+				C1FDB53D1CA5B2BE009C364D /* Attribute+Install.swift */,
+				C1FDB54E1CA5BD11009C364D /* Attribute+Operators.swift */,
 				C1FDB53F1CA5B2BE009C364D /* DimensionAttribute.swift */,
 				C1FDB5411CA5B2BE009C364D /* PositionAttribute.swift */,
 				C1FDB5431CA5B2BE009C364D /* ReferenceAttribute.swift */,
 				C1FDB53E1CA5B2BE009C364D /* Constant.swift */,
 				C1FDB5421CA5B2BE009C364D /* Priority.swift */,
 				C1FDB5441CA5B2BE009C364D /* UIView+Easy.swift */,
+				C1FDB5521CA5CDD3009C364D /* UIView+Internal.swift */,
 				C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift */,
 			);
 			path = Classes;
@@ -437,11 +443,13 @@
 				C1FDB5491CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift in Sources */,
 				C1FDB54C1CA5B2BE009C364D /* ReferenceAttribute.swift in Sources */,
 				C1FDB54B1CA5B2BE009C364D /* Priority.swift in Sources */,
-				C1FDB5461CA5B2BE009C364D /* Attribute+Internal.swift in Sources */,
+				C1FDB5461CA5B2BE009C364D /* Attribute+Install.swift in Sources */,
 				C1FDB54D1CA5B2BE009C364D /* UIView+Easy.swift in Sources */,
 				3C218F3A5AE1EFC940AB7255376BE049 /* EasyPeasy-dummy.m in Sources */,
 				C1FDB5481CA5B2BE009C364D /* DimensionAttribute.swift in Sources */,
+				C1FDB5531CA5CDD3009C364D /* UIView+Internal.swift in Sources */,
 				C1FDB5471CA5B2BE009C364D /* Constant.swift in Sources */,
+				C1FDB54F1CA5BD11009C364D /* Attribute+Operators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

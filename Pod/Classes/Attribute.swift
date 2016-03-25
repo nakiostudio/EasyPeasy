@@ -23,30 +23,7 @@ public class Attribute {
     public internal(set) weak var createView: UIView?
     
     public var createAttribute: ReferenceAttribute {
-        switch self {
-        case is Width: return .Width
-        case is Height: return .Height
-        case is Left: return .Left
-        case is Right: return .Right
-        case is Top: return .Top
-        case is Bottom: return .Bottom
-        case is Leading: return .Leading
-        case is Trailing: return .Trailing
-        case is CenterX: return .CenterX
-        case is CenterY: return .CenterY
-        case is FirstBaseline: return .FirstBaseline
-        case is LastBaseline: return .LastBaseline
-        case is LeftMargin: return .LeftMargin
-        case is RightMargin: return .RightMargin
-        case is TopMargin: return .TopMargin
-        case is BottomMargin: return .BottomMargin
-        case is LeadingMargin: return .LeadingMargin
-        case is TrailingMargin: return .TrailingMargin
-        case is CenterXWithinMargins: return .CenterXWithinMargins
-        case is CenterYWithinMargins: return .CenterYWithinMargins
-        case is Attribute: return .NotAnAttribute
-        case is Attribute: return .NotAnAttribute
-        }
+        return self.referenceAttributeFromClass()
     }
     
     public internal(set) weak var referenceView: UIView?

@@ -11,33 +11,37 @@
 import UIKit
 import ObjectiveC
 
-internal var easy_attributesReference: Int = 0
-
-internal extension UIView {
-    
-    internal var easy_attributes: [Attribute] {
-        get {
-            return objc_getAssociatedObject(self, &easy_attributesReference) as? [Attribute] ?? []
-        }
-        
-        set {
-            let policy = objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
-            objc_setAssociatedObject(self, &easy_attributesReference, newValue, policy)
-        }
-    }
-    
+infix operator <- {}
+public func <- (lhs: UIView, rhs: Attribute) -> [Attribute] {
+    return lhs <- [rhs]
 }
 
-infix operator <- {}
-
 public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
+    // Disable autoresizing to constraints translation
     lhs.translatesAutoresizingMaskIntoConstraints = false
+    
+    // Install each one of the params passed to the view given
     for attribute in rhs {
         attribute.installOnView(lhs)
     }
+    
+    // Store the attributes applied in the superview
+    if let superview = lhs.superview {
+        superview.easy_attributes.appendContentsOf(rhs)
+    }
+    
     return rhs
 }
 
-public func <- (lhs: UIView, rhs: Attribute) -> [Attribute] {
-    return lhs <- [rhs]
+public extension UIView {
+    
+    /**
+     
+     */
+    public func easy_reload() {
+        if let attributes = self.superview?.easy_attributes {
+            self <- attributes
+        }
+    }
+    
 }
