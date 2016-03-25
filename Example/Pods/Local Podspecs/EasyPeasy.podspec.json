@@ -1,0 +1,25 @@
+{
+  "name": "EasyPeasy",
+  "version": "0.1.0",
+  "summary": "A short description of EasyPeasy.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/EasyPeasy",
+  "license": "MIT",
+  "authors": {
+    "Carlos Vidal": "nakioparkour@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/EasyPeasy.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "EasyPeasy": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

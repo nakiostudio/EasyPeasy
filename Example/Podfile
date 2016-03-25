@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'EasyPeasy_Example', :exclusive => true do
+  pod 'EasyPeasy', :path => '../'
+end
+
+target 'EasyPeasy_Tests', :exclusive => true do
+  pod 'EasyPeasy', :path => '../'
+
+  
+end
