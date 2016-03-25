@@ -13,7 +13,11 @@ import UIKit
 internal extension Attribute {
     
     internal func installOnView(view: UIView) {
-        guard self.shouldInstallOnView(view) else {
+        // Reference to the target view
+        self.createView = view
+        
+        // If condition is `false` return
+        if self.shouldInstallOnView(view) == false {
             return
         }
         
@@ -43,7 +47,6 @@ internal extension Attribute {
     }
     
     internal func shouldInstallOnView(view: UIView) -> Bool {
-        self.createView = view
         guard let _ = view.superview else {
             return false
         }

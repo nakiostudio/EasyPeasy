@@ -20,11 +20,11 @@ public class DimensionAttribute: Attribute {
 }
 
 /**
- 
+    The width of the object’s alignment rectangle
  */
 public class Width: DimensionAttribute { }
 
 /**
- 
+    The height of the object’s alignment rectangle
  */
 public class Height: DimensionAttribute { }
