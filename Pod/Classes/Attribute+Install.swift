@@ -47,7 +47,7 @@ internal extension Attribute {
         guard let _ = view.superview else {
             return false
         }
-        guard self.condition?(view) ?? true else {
+        guard self.condition?() ?? true else {
             return false
         }
         return true
@@ -60,7 +60,7 @@ internal extension Attribute {
             return
         }
         
-        // Find conflicting constraints already installed
+        // Find conflicting constraints and attributes already installed
         let superview = view.superview!
         let conflictingConstraints = superview.constraints.filter { constraint in
             if let attribute = constraint.easy_attribute where attribute =~ self {
@@ -68,14 +68,12 @@ internal extension Attribute {
             }
             return false
         }
+        let conflictingAttributes = conflictingConstraints.map { $0.easy_attribute }.flatMap { $0 }
         
         // Remove conflicting attributes stored in the superview
-        let conflictingAttributes = conflictingConstraints
-            .map { $0.easy_attribute }
-            .flatMap { $0 }
-        superview.easy_attributes = superview.easy_attributes
-            .filter { conflictingAttributes.contains($0) == false }
-            .filter { $0 == self }
+        superview.easy_attributes = superview.easy_attributes.filter {
+            conflictingAttributes.contains($0) == false || $0 == self
+        }
         
         // Disable conflicting installed constraints
         superview.removeConstraints(conflictingConstraints)

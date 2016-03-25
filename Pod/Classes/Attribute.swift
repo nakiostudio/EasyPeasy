@@ -10,7 +10,7 @@
 
 import Foundation
 
-public typealias Condition = UIView -> Bool
+public typealias Condition = () -> Bool
 
 public class Attribute {
     
