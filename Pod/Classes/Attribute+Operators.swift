@@ -14,7 +14,6 @@ import Foundation
      Infix operator which determines whether two Attributes are equal
  */
 extension Attribute: Equatable { }
-infix operator == {}
 public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     
     // Create views

@@ -13,7 +13,7 @@ import EasyPeasy
 
 class ViewController: UIViewController {
     
-    var number: Bool = true
+    var number: Int = 0
 
     @IBOutlet private var referenceView: UIView!
     
@@ -29,16 +29,19 @@ class ViewController: UIViewController {
         // Initial attributes
         self.view.addSubview(self.createView)
         self.createView <- [
-            Width(20).when { _ in return !self.number  },
-            Width(1000).when { _ in return self.number  },
+            Width(10).when { _ in return self.number == 0 },
+            Width(50).when { _ in return self.number == 1  },
+            Width(100).when { _ in return self.number == 2  },
+            Width(150).when { _ in return self.number == 3  },
+            Width(200).when { _ in return self.number == 4  },
             Height(20),
-            Top(10).to(self.view, .TopMargin),
+            Top(10).to(self.referenceView, .TopMargin),
             Left().to(self.referenceView, .Left)
         ]
     }
     
     @IBAction func didTapButton(sender: AnyObject) {
-        self.number = !self.number
+        self.number += 1
         self.createView.easy_reload()
     }
     
