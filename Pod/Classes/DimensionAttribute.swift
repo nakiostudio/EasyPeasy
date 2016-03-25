@@ -12,6 +12,9 @@ import Foundation
 
 public class DimensionAttribute: Attribute {
     
+    /**
+ 
+     */
     public func like(view: UIView) -> Self {
         self.referenceView = view
         return self

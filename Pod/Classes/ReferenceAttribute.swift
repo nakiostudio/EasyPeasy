@@ -10,11 +10,17 @@
 
 import UIKit
 
+/**
+    An enum representation of the different attribute
+    classes available
+ */
 public enum ReferenceAttribute {
     
+    // Dimesion attributes
     case Width
     case Height
     
+    // Position attributes
     case Left
     case Right
     case Top
@@ -23,11 +29,8 @@ public enum ReferenceAttribute {
     case Trailing
     case CenterX
     case CenterY
-
-    @available(iOS 8.0, *)
     case FirstBaseline
     case LastBaseline
-    
     @available(iOS 8.0, *)
     case LeftMargin
     @available(iOS 8.0, *)
@@ -45,8 +48,12 @@ public enum ReferenceAttribute {
     @available(iOS 8.0, *)
     case CenterYWithinMargins
     
+    // Default
     case NotAnAttribute
     
+    /**
+        Reference attribute opposite to the current one
+     */
     internal var opposite: ReferenceAttribute {
         switch self {
         case .Width: return .Width
@@ -73,6 +80,10 @@ public enum ReferenceAttribute {
         }
     }
     
+    /**
+        AutoLayout attribute equivalent of the current reference
+        attribute
+     */
     internal var layoutAttribute: NSLayoutAttribute {
         switch self {
         case .Width: return .Width
@@ -99,6 +110,9 @@ public enum ReferenceAttribute {
         }
     }
     
+    /**
+        Reference attributes that may conflict with the current one
+     */
     internal var conflictingAttributes: [ReferenceAttribute] {
         switch self {
         case .Width:

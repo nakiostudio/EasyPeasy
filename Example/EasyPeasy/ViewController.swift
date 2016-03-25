@@ -13,8 +13,6 @@ import EasyPeasy
 
 class ViewController: UIViewController {
     
-    var number: Int = 0
-
     @IBOutlet private var referenceView: UIView!
     
     private lazy var createView: UIView = {
@@ -32,12 +30,17 @@ class ViewController: UIViewController {
             CenterX().to(self.view),
             Top(10).to(self.referenceView),
             Height(120),
-            Width(60)
+            Width(*4).like(self.referenceView)
         ]
     }
     
     @IBAction func didTapButton(sender: AnyObject) {
-        
+        UIView.animateWithDuration(0.4) { 
+            self.createView <- [
+                Width(400)
+            ]
+            self.view.layoutIfNeeded()
+        }
     }
     
 }
