@@ -25,13 +25,12 @@ internal extension Attribute {
         self.resolveConflictsOnView(view)
         
         // Build layout constraint
-        let referenceAttribute = self.referenceAttribute ?? self.createAttribute.opposite
         let layoutConstraint = NSLayoutConstraint(
             item: view,
             attribute: self.createAttribute.layoutAttribute,
             relatedBy: self.constant.layoutRelation(),
             toItem: self.referenceView,
-            attribute: referenceAttribute.layoutAttribute,
+            attribute: self.referenceAttributeHelper().layoutAttribute,
             multiplier: self.constant.layoutMultiplier(),
             constant: self.constant.layoutValue()
         )
@@ -80,6 +79,22 @@ internal extension Attribute {
         
         // Disable conflicting installed constraints
         superview.removeConstraints(conflictingConstraints)
+    }
+    
+    private func referenceAttributeHelper() -> ReferenceAttribute {
+        // If already set return
+        if let attribute = self.referenceAttribute {
+            return attribute
+        }
+        
+        // If reference view is the superview then return same attribute
+        // as `createAttribute`
+        if let referenceView = self.referenceView where referenceView === self.createView?.superview {
+            return self.createAttribute
+        }
+        
+        // Otherwise return the opposite of `createAttribute`
+        return self.createAttribute.opposite
     }
     
 }

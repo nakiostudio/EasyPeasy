@@ -19,7 +19,7 @@
 		C1FDB5461CA5B2BE009C364D /* Attribute+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53D1CA5B2BE009C364D /* Attribute+Install.swift */; };
 		C1FDB5471CA5B2BE009C364D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53E1CA5B2BE009C364D /* Constant.swift */; };
 		C1FDB5481CA5B2BE009C364D /* DimensionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB53F1CA5B2BE009C364D /* DimensionAttribute.swift */; };
-		C1FDB5491CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift */; };
+		C1FDB5491CA5B2BE009C364D /* NSLayoutConstraint+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Internal.swift */; };
 		C1FDB54A1CA5B2BE009C364D /* PositionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5411CA5B2BE009C364D /* PositionAttribute.swift */; };
 		C1FDB54B1CA5B2BE009C364D /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5421CA5B2BE009C364D /* Priority.swift */; };
 		C1FDB54C1CA5B2BE009C364D /* ReferenceAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDB5431CA5B2BE009C364D /* ReferenceAttribute.swift */; };
@@ -86,7 +86,7 @@
 		C1FDB53D1CA5B2BE009C364D /* Attribute+Install.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+Install.swift"; sourceTree = "<group>"; };
 		C1FDB53E1CA5B2BE009C364D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C1FDB53F1CA5B2BE009C364D /* DimensionAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionAttribute.swift; sourceTree = "<group>"; };
-		C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Easy.swift"; sourceTree = "<group>"; };
+		C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Internal.swift"; sourceTree = "<group>"; };
 		C1FDB5411CA5B2BE009C364D /* PositionAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionAttribute.swift; sourceTree = "<group>"; };
 		C1FDB5421CA5B2BE009C364D /* Priority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
 		C1FDB5431CA5B2BE009C364D /* ReferenceAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceAttribute.swift; sourceTree = "<group>"; };
@@ -234,6 +234,7 @@
 		E74A74FC12D2266440E34EE47978FB21 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C1FDB5441CA5B2BE009C364D /* UIView+Easy.swift */,
 				C1FDB53C1CA5B2BE009C364D /* Attribute.swift */,
 				C1FDB53D1CA5B2BE009C364D /* Attribute+Install.swift */,
 				C1FDB54E1CA5BD11009C364D /* Attribute+Operators.swift */,
@@ -242,9 +243,8 @@
 				C1FDB5431CA5B2BE009C364D /* ReferenceAttribute.swift */,
 				C1FDB53E1CA5B2BE009C364D /* Constant.swift */,
 				C1FDB5421CA5B2BE009C364D /* Priority.swift */,
-				C1FDB5441CA5B2BE009C364D /* UIView+Easy.swift */,
 				C1FDB5521CA5CDD3009C364D /* UIView+Internal.swift */,
-				C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift */,
+				C1FDB5401CA5B2BE009C364D /* NSLayoutConstraint+Internal.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -440,7 +440,7 @@
 			files = (
 				C1FDB54A1CA5B2BE009C364D /* PositionAttribute.swift in Sources */,
 				C1FDB5451CA5B2BE009C364D /* Attribute.swift in Sources */,
-				C1FDB5491CA5B2BE009C364D /* NSLayoutConstraint+Easy.swift in Sources */,
+				C1FDB5491CA5B2BE009C364D /* NSLayoutConstraint+Internal.swift in Sources */,
 				C1FDB54C1CA5B2BE009C364D /* ReferenceAttribute.swift in Sources */,
 				C1FDB54B1CA5B2BE009C364D /* Priority.swift in Sources */,
 				C1FDB5461CA5B2BE009C364D /* Attribute+Install.swift in Sources */,

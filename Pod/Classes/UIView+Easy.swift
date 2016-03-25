@@ -9,7 +9,6 @@
 // SOFTWARE.
 
 import UIKit
-import ObjectiveC
 
 infix operator <- {}
 public func <- (lhs: UIView, rhs: Attribute) -> [Attribute] {

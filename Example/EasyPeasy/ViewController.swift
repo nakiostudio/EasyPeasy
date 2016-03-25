@@ -29,20 +29,15 @@ class ViewController: UIViewController {
         // Initial attributes
         self.view.addSubview(self.createView)
         self.createView <- [
-            Width(10).when { _ in return self.number == 0 },
-            Width(50).when { _ in return self.number == 1  },
-            Width(100).when { _ in return self.number == 2  },
-            Width(150).when { _ in return self.number == 3  },
-            Width(200).when { _ in return self.number == 4  },
-            Height(20),
-            Top(10).to(self.referenceView, .TopMargin),
-            Left().to(self.referenceView, .Left)
+            CenterX().to(self.view),
+            Top(10).to(self.referenceView),
+            Height(120),
+            Width(60)
         ]
     }
     
     @IBAction func didTapButton(sender: AnyObject) {
-        self.number += 1
-        self.createView.easy_reload()
+        
     }
     
 }
