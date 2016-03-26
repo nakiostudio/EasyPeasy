@@ -57,11 +57,7 @@ internal extension Attribute {
     
     // MARK: Private methods
     
-    private func resolveConflictsOnView(view: UIView) {
-        guard let _ = view.superview else {
-            return
-        }
-        
+    private func resolveConflictsOnView(view: UIView) {        
         // Find conflicting constraints and attributes already installed
         let superview = view.superview!
         let conflictingConstraints = superview.constraints.filter { constraint in

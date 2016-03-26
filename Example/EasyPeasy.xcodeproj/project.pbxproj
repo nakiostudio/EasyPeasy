@@ -18,6 +18,8 @@
 		C1A3D5751CA6E23200DCC1D0 /* ConstantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5741CA6E23200DCC1D0 /* ConstantTests.swift */; };
 		C1A3D5771CA6E57100DCC1D0 /* ReferenceAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5761CA6E57100DCC1D0 /* ReferenceAttributeTests.swift */; };
 		C1A3D5791CA6E96600DCC1D0 /* Attribute+OperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5781CA6E96600DCC1D0 /* Attribute+OperatorsTests.swift */; };
+		C1A3D57B1CA6F79500DCC1D0 /* Attribute+InstallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D57A1CA6F79500DCC1D0 /* Attribute+InstallTests.swift */; };
+		C1A3D57D1CA7100F00DCC1D0 /* UIView+EasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D57C1CA7100F00DCC1D0 /* UIView+EasyTests.swift */; };
 		FFF166209F4675123F03749D /* Pods_EasyPeasy_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4428BFC29BD4E6A78498C5D /* Pods_EasyPeasy_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		C1A3D5741CA6E23200DCC1D0 /* ConstantTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantTests.swift; sourceTree = "<group>"; };
 		C1A3D5761CA6E57100DCC1D0 /* ReferenceAttributeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceAttributeTests.swift; sourceTree = "<group>"; };
 		C1A3D5781CA6E96600DCC1D0 /* Attribute+OperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+OperatorsTests.swift"; sourceTree = "<group>"; };
+		C1A3D57A1CA6F79500DCC1D0 /* Attribute+InstallTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+InstallTests.swift"; sourceTree = "<group>"; };
+		C1A3D57C1CA7100F00DCC1D0 /* UIView+EasyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+EasyTests.swift"; sourceTree = "<group>"; };
 		D4428BFC29BD4E6A78498C5D /* Pods_EasyPeasy_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyPeasy_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -144,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				C1A3D57C1CA7100F00DCC1D0 /* UIView+EasyTests.swift */,
+				C1A3D57A1CA6F79500DCC1D0 /* Attribute+InstallTests.swift */,
 				C1A3D5781CA6E96600DCC1D0 /* Attribute+OperatorsTests.swift */,
 				C1A3D5761CA6E57100DCC1D0 /* ReferenceAttributeTests.swift */,
 				C1A3D5741CA6E23200DCC1D0 /* ConstantTests.swift */,
@@ -384,6 +390,8 @@
 				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				C1A3D5751CA6E23200DCC1D0 /* ConstantTests.swift in Sources */,
 				C1A3D5771CA6E57100DCC1D0 /* ReferenceAttributeTests.swift in Sources */,
+				C1A3D57D1CA7100F00DCC1D0 /* UIView+EasyTests.swift in Sources */,
+				C1A3D57B1CA6F79500DCC1D0 /* Attribute+InstallTests.swift in Sources */,
 				C1A3D5711CA6DF2100DCC1D0 /* PriorityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

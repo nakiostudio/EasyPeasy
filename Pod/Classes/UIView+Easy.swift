@@ -55,7 +55,7 @@ public extension UIView {
         closures will be evaluated again
      */
     public func easy_reload() {
-        if let attributes = self.superview?.easy_attributes {
+        if let attributes = (self.superview?.easy_attributes.filter { $0.createView === self }) {
             self <- attributes
         }
     }
