@@ -23,17 +23,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let attribute = CenterX().to(self.view)
-        attribute.condition
         
         // Initial attributes
         self.view.addSubview(self.createView)
         self.createView <- [
-            CenterX().to(self.view),
-            Top(10).to(self.referenceView),
-            Height(120),
-            Width(100)
+            Size(CGSize(width: 120, height: 50)),
+            Top(10),
+            Left(10)
         ]
     }
     

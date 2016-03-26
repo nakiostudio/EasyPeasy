@@ -9,7 +9,6 @@
 // SOFTWARE.
 
 import UIKit
-import ObjectiveC
 
 internal var easy_attributesReference: Int = 0
 

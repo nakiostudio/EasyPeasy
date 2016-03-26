@@ -52,7 +52,7 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
     // Store the attributes applied in the superview
     lhs.superview?.easy_attributes.appendContentsOf(regularAttributes)
     
-    return rhs
+    return regularAttributes
 }
 
 public extension UIView {

@@ -12,6 +12,13 @@ import Foundation
 
 public class PositionAttribute: Attribute {
     
+    internal override func installOnView(view: UIView) {
+        if let superview = view.superview where self.referenceView == nil {
+            self.to(superview)
+        }
+        super.installOnView(view)
+    }
+    
     /**
         Establishes a position relationship between the `UIView` the
         attribute is applied to and the `UIView` passed as parameter.
@@ -201,17 +208,6 @@ public class Edges: CompoundAttribute {
             Right(Double(edgeInsets.right)),
             Bottom(Double(edgeInsets.bottom))
         ]
-    }
-    
-    /**
-     
-     */
-    public func to(view: UIView) -> Self {
-        self.referenceView = view
-        for attr in self.attributes {
-            attr.referenceView = view
-        }
-        return self
     }
     
 }
