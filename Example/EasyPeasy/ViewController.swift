@@ -23,6 +23,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let attribute = CenterX().to(self.view)
+        attribute.condition
         
         // Initial attributes
         self.view.addSubview(self.createView)
@@ -36,11 +39,11 @@ class ViewController: UIViewController {
     
     @IBAction func didTapButton(sender: AnyObject) {
         UIView.animateWithDuration(0.4) { 
-            self.createView <- [
-                Width(400)
-            ]
+            self.createView <- Width(400)
             self.view.layoutIfNeeded()
         }
+        
+        self.view.easy_reload()
     }
     
 }

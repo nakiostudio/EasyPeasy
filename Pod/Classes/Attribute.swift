@@ -10,36 +10,79 @@
 
 import Foundation
 
+/**
+    Typealias of a closure with no parameters and `Bool`
+    as returning type.
+ 
+    This type of closure is used to evaluate whether an
+    `Attribute` should be applied or not.
+ */
 public typealias Condition = () -> Bool
 
+/**
+    This class is the abstraction of `NSLayoutConstraint` 
+    objects used by **EasyPeasy** to create and update
+    `UIView` constraints
+ */
 public class Attribute {
     
+    /// This property aggregates the `NSLayoutRelation`,
+    /// the constant and the multiplier of a layout 
+    /// constraint
     public internal(set) var constant: Constant
     
+    /// Priority level of the constraint
     public internal(set) var priority: Priority
     
+    /// Condition to evaluate in order to apply
+    /// (or not) the constraint
     public internal(set) var condition: Condition?
     
+    /// Target `UIView` of the constraint
     public internal(set) weak var createView: UIView?
     
+    /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
         return self.referenceAttributeFromClass()
     }
     
+    /// Reference `UIView` of the constraint
     public internal(set) weak var referenceView: UIView?
     
+    /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?
     
+    /**
+        Initializer which creates an `Attribute` instance
+        with `constant = 0.0`, `multiplier = 0.0` and 
+        `relatedBy = .Equal`
+        - returns: the `Attribute` instance created
+     */
     public init() {
         self.constant = Constant(0.0)
         self.priority = .HighPriority
     }
     
+    /**
+        Initializer which creates an `Attribute` instance
+        with `constant = value`, `multiplier = 0.0` and
+        `relatedBy = .Equal`
+        - parameter value: `constant` of the constraint
+        - returns: the `Attribute` instance created
+     */
     public init(_ value: Double) {
         self.constant = Constant(value)
         self.priority = .HighPriority
     }
     
+    /**
+        Initializer which creates an `Attribute` instance
+        with the `constant`, `multiplier` and `relatedBy`
+        specified by the `Constant` struct
+        - parameter constant: `Constant` struct aggregating
+        `constant`, `multiplier` and `relatedBy` properties
+        - returns: the `Attribute` instance created
+     */
     public init(_ constant: Constant) {
         self.constant = constant
         self.priority = .HighPriority
@@ -47,11 +90,23 @@ public class Attribute {
     
     // MARK: Public methods
     
+    /**
+        Sets the `priority` of the constraint
+        - parameter priority: `Priority` enum specifying the
+        priority of the constraint
+        - returns: the `Attribute` instance
+     */
     public func with(priority: Priority) -> Self {
         self.priority = priority
         return self
     }
     
+    /**
+        Sets the `when` closure of the `Attribute`
+        - parameter closure: `Closure` to be called before
+        installing a constraint
+        - returns: the `Attribute` instance
+     */
     public func when(closure: Condition?) -> Self {
         self.condition = closure
         return self

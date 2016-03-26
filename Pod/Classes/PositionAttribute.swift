@@ -13,7 +13,16 @@ import Foundation
 public class PositionAttribute: Attribute {
     
     /**
- 
+        Establishes a position relationship between the `UIView` the
+        attribute is applied to and the `UIView` passed as parameter.
+        
+        It's also possible to link this relationship to a particular
+        attribute of the `view` parameter by supplying `attribute`.
+     
+        - parameter view: The reference view
+        - parameter attribute: The attribute of `view` we are establishing
+        the relationship to
+        - returns: The current `Attribute` instance
      */
     public func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceView = view
@@ -67,7 +76,6 @@ public class CenterY: PositionAttribute { }
     The object’s baseline. For objects with more than one line of text, 
     this is the baseline for the topmost line of text
  */
-@available(iOS 8.0, *)
 public class FirstBaseline: PositionAttribute { }
 
 /**

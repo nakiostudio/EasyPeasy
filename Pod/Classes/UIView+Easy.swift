@@ -11,10 +11,25 @@
 import UIKit
 
 infix operator <- {}
+
+/**
+    Operator which applies the attribute given to the view located
+    in the left hand side of it
+    - parameter lhs: `UIView` the attributes will apply to
+    - parameter rhs: Attribute applied to the `UIView`
+    - returns: The array of attributes applied
+ */
 public func <- (lhs: UIView, rhs: Attribute) -> [Attribute] {
     return lhs <- [rhs]
 }
 
+/**
+    Opeator which applies the attributes given to the view located
+     in the left hand side of it
+     - parameter lhs: UIView the attributes will apply to
+     - parameter rhs: Attributes applied to the UIView
+     - returns: The array of attributes applied
+ */
 public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
     // Disable autoresizing to constraints translation
     lhs.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +50,9 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
 public extension UIView {
     
     /**
-     
+        This method will trigger the recreation of the constraints
+        created using *EasyPeasy* for the current view. `when` closures
+        will be evaluated again
      */
     public func easy_reload() {
         if let attributes = self.superview?.easy_attributes {

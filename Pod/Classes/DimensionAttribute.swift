@@ -23,6 +23,13 @@ public class DimensionAttribute: Attribute {
 }
 
 /**
+ 
+ */
+public class Size: DimensionAttribute {
+    
+}
+
+/**
     The width of the object’s alignment rectangle
  */
 public class Width: DimensionAttribute { }

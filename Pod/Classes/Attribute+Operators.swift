@@ -90,7 +90,8 @@ internal func =~ (installed: Attribute, toInstall: Attribute) -> Bool {
         return false
     }
     
-    // Conditions conflict
+    // Conditions conflict (we assume condition is true for
+    // the installed view)
     var toInstallCondition = true
     if let createView = toInstall.createView {
         toInstallCondition = toInstall.shouldInstallOnView(createView)
