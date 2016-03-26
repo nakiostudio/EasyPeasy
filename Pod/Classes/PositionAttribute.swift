@@ -139,3 +139,79 @@ public class CenterXWithinMargins: PositionAttribute { }
  */
 @available(iOS 8.0, *)
 public class CenterYWithinMargins: PositionAttribute { }
+
+/**
+     The size of the object’s rectangle
+ */
+public class Edges: CompoundAttribute {
+    
+    /**
+     
+         - returns: the `CompoundAttribute` instance created
+     */
+    public override init() {
+        super.init()
+        self.attributes = [
+            Top(),
+            Left(),
+            Right(),
+            Bottom()
+        ]
+    }
+    
+    /**
+     
+         - parameter value: `constant` of the constraint
+         - returns: the `CompoundAttribute` instance created
+     */
+    public override init(_ value: Double) {
+        super.init()
+        self.attributes = [
+            Top(value),
+            Left(value),
+            Right(value),
+            Bottom(value)
+        ]
+    }
+    
+    /**
+     
+         - parameter constant: `Constant` struct aggregating
+         `constant`, `multiplier` and `relatedBy` properties
+         - returns: the `CompoundAttribute` instance created
+     */
+    public override init(_ constant: Constant) {
+        super.init()
+        self.attributes = [
+            Top(constant),
+            Left(constant),
+            Right(constant),
+            Bottom(constant)
+        ]
+    }
+    
+    /**
+     
+     */
+    public init(_ edgeInsets: UIEdgeInsets) {
+        super.init()
+        self.attributes = [
+            Top(Double(edgeInsets.top)),
+            Left(Double(edgeInsets.left)),
+            Right(Double(edgeInsets.right)),
+            Bottom(Double(edgeInsets.bottom))
+        ]
+    }
+    
+    /**
+     
+     */
+    public func to(view: UIView) -> Self {
+        self.referenceView = view
+        for attr in self.attributes {
+            attr.referenceView = view
+        }
+        return self
+    }
+    
+}

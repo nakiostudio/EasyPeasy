@@ -39,10 +39,18 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
         attribute.installOnView(lhs)
     }
     
-    // Store the attributes applied in the superview
-    if let superview = lhs.superview {
-        superview.easy_attributes.appendContentsOf(rhs)
+    // Gather regular attributes only
+    var regularAttributes: [Attribute] = []
+    for attribute in rhs {
+        if let compountAttribute = attribute as? CompoundAttribute {
+            regularAttributes.appendContentsOf(compountAttribute.attributes)
+            continue
+        }
+        regularAttributes.append(attribute)
     }
+    
+    // Store the attributes applied in the superview
+    lhs.superview?.easy_attributes.appendContentsOf(regularAttributes)
     
     return rhs
 }
