@@ -112,4 +112,43 @@ public class Attribute {
         return self
     }
     
+    // MARK: Internal methods
+    
+    /** 
+        
+     */
+    internal func installOnView(view: UIView) {
+        // Reference to the target view
+        self.createView = view
+        
+        // If condition is `false` return
+        if self.shouldInstallOnView(view) == false {
+            return
+        }
+        
+        // Resolve constraint conflicts
+        self.resolveConflictsOnView(view)
+        
+        // Build layout constraint
+        let constantFactor: CGFloat = self.createAttribute.shouldInvertConstant ? -1 : 1
+        let layoutConstraint = NSLayoutConstraint(
+            item: view,
+            attribute: self.createAttribute.layoutAttribute,
+            relatedBy: self.constant.layoutRelation(),
+            toItem: self.referenceView,
+            attribute: self.referenceAttributeHelper().layoutAttribute,
+            multiplier: self.constant.layoutMultiplier(),
+            constant: (self.constant.layoutValue() * constantFactor)
+        )
+        
+        // Set priority
+        layoutConstraint.priority = self.priority.layoutPriority()
+        
+        // Set associated Attribute
+        layoutConstraint.easy_attribute = self
+        
+        // Add it to the view
+        view.superview?.addConstraint(layoutConstraint)
+    }
+    
 }

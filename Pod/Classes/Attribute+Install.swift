@@ -12,39 +12,6 @@ import UIKit
 
 internal extension Attribute {
     
-    internal func installOnView(view: UIView) {
-        // Reference to the target view
-        self.createView = view
-        
-        // If condition is `false` return
-        if self.shouldInstallOnView(view) == false {
-            return
-        }
-        
-        // Resolve constraint conflicts
-        self.resolveConflictsOnView(view)
-        
-        // Build layout constraint
-        let layoutConstraint = NSLayoutConstraint(
-            item: view,
-            attribute: self.createAttribute.layoutAttribute,
-            relatedBy: self.constant.layoutRelation(),
-            toItem: self.referenceView,
-            attribute: self.referenceAttributeHelper().layoutAttribute,
-            multiplier: self.constant.layoutMultiplier(),
-            constant: self.constant.layoutValue()
-        )
-        
-        // Set priority
-        layoutConstraint.priority = self.priority.layoutPriority()
-        
-        // Set associated Attribute
-        layoutConstraint.easy_attribute = self
-        
-        // Add it to the view
-        view.superview?.addConstraint(layoutConstraint)
-    }
-    
     internal func shouldInstallOnView(view: UIView) -> Bool {
         guard let _ = view.superview else {
             return false
@@ -55,18 +22,17 @@ internal extension Attribute {
         return true
     }
     
-    // MARK: Private methods
-    
-    private func resolveConflictsOnView(view: UIView) {        
+    internal func resolveConflictsOnView(view: UIView) {
         // Find conflicting constraints and attributes already installed
         let superview = view.superview!
+        var conflictingAttributes: [Attribute] = []
         let conflictingConstraints = superview.constraints.filter { constraint in
             if let attribute = constraint.easy_attribute where attribute =~ self {
+                conflictingAttributes.append(attribute)
                 return true
             }
             return false
         }
-        let conflictingAttributes = conflictingConstraints.map { $0.easy_attribute }.flatMap { $0 }
         
         // Remove conflicting attributes stored in the superview
         superview.easy_attributes = superview.easy_attributes.filter {
@@ -77,7 +43,7 @@ internal extension Attribute {
         superview.removeConstraints(conflictingConstraints)
     }
     
-    private func referenceAttributeHelper() -> ReferenceAttribute {
+    internal func referenceAttributeHelper() -> ReferenceAttribute {
         // If already set return
         if let attribute = self.referenceAttribute {
             return attribute
