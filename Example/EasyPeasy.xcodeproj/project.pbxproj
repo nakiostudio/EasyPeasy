@@ -13,7 +13,6 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		C1A3D5711CA6DF2100DCC1D0 /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5701CA6DF2100DCC1D0 /* PriorityTests.swift */; };
 		C1A3D5751CA6E23200DCC1D0 /* ConstantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5741CA6E23200DCC1D0 /* ConstantTests.swift */; };
 		C1A3D5771CA6E57100DCC1D0 /* ReferenceAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5761CA6E57100DCC1D0 /* ReferenceAttributeTests.swift */; };
@@ -48,7 +47,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* EasyPeasy_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EasyPeasy_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		A13C17892FF36868B2AC3032 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		B71E427CF5CF07BA80C4D733 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BB1871EE21D95B059404D708 /* EasyPeasy.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EasyPeasy.podspec; path = ../EasyPeasy.podspec; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				C1A3D57C1CA7100F00DCC1D0 /* UIView+EasyTests.swift */,
 				C1A3D57A1CA6F79500DCC1D0 /* Attribute+InstallTests.swift */,
 				C1A3D5781CA6E96600DCC1D0 /* Attribute+OperatorsTests.swift */,
@@ -387,7 +384,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1A3D5791CA6E96600DCC1D0 /* Attribute+OperatorsTests.swift in Sources */,
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
 				C1A3D5751CA6E23200DCC1D0 /* ConstantTests.swift in Sources */,
 				C1A3D5771CA6E57100DCC1D0 /* ReferenceAttributeTests.swift in Sources */,
 				C1A3D57D1CA7100F00DCC1D0 /* UIView+EasyTests.swift in Sources */,
