@@ -10,6 +10,11 @@
 
 import Foundation
 
+/**
+    Enum which offers 3 pre-defined levels of `UILayoutPriority`
+    as well as a case wrapping a `Float` value to specify actual
+    values
+ */
 public enum Priority {
     
     case CustomPriority(Float)
@@ -17,7 +22,11 @@ public enum Priority {
     case MediumPriority
     case LowPriority
     
-    func layoutPriority() -> Float {
+    /**
+        `UILayoutPriority` equivalent to the current case
+        - returns `UILayoutPriority`
+     */
+    internal func layoutPriority() -> Float {
         switch self {
         case .CustomPriority(let value): return value
         case .HighPriority: return 1000.0

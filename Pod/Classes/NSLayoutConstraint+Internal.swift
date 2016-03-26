@@ -14,6 +14,8 @@ internal var easy_attributeReference: Int = 0
 
 internal extension NSLayoutConstraint {
     
+    /// Association with the *EasyPeasy* `Attribute` 
+    /// that created the current `NSLayoutConstraint`
     internal var easy_attribute: Attribute? {
         get {
             return objc_getAssociatedObject(self, &easy_attributeReference) as? Attribute

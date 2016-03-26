@@ -101,6 +101,11 @@ internal extension Attribute {
 
 internal extension Attribute {
     
+    /**
+        Helper that creates the equivalent `ReferenceAttribute` for an
+        `Attribute` subclass
+        - returns: the equivalent `ReferenceAttribute`
+     */
     internal func referenceAttributeFromClass() -> ReferenceAttribute {
         switch self {
         case is Width: return .Width

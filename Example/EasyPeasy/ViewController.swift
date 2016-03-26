@@ -33,15 +33,15 @@ class ViewController: UIViewController {
             CenterX().to(self.view),
             Top(10).to(self.referenceView),
             Height(120),
-            Width(*4).like(self.referenceView)
+            Width(100)
         ]
     }
     
     @IBAction func didTapButton(sender: AnyObject) {
-        UIView.animateWithDuration(0.4) { 
-            self.createView <- Width(400)
-            self.view.layoutIfNeeded()
-        }
+//        UIView.animateWithDuration(0.4) { 
+//            self.createView <- Width(400)
+//            self.view.layoutIfNeeded()
+//        }
         
         self.view.easy_reload()
     }

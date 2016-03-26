@@ -51,9 +51,7 @@ public enum ReferenceAttribute {
     // Default
     case NotAnAttribute
     
-    /**
-        Reference attribute opposite to the current one
-     */
+    /// Reference attribute opposite to the current one
     internal var opposite: ReferenceAttribute {
         switch self {
         case .Width: return .Width
@@ -80,10 +78,8 @@ public enum ReferenceAttribute {
         }
     }
     
-    /**
-        AutoLayout attribute equivalent of the current reference
-        attribute
-     */
+    /// AutoLayout attribute equivalent of the current reference
+    /// attribute
     internal var layoutAttribute: NSLayoutAttribute {
         switch self {
         case .Width: return .Width
@@ -110,9 +106,7 @@ public enum ReferenceAttribute {
         }
     }
     
-    /**
-        Reference attributes that may conflict with the current one
-     */
+    /// Reference attributes that may conflict with the current one
     internal var conflictingAttributes: [ReferenceAttribute] {
         switch self {
         case .Width:

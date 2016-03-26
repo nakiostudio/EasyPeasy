@@ -51,8 +51,8 @@ public extension UIView {
     
     /**
         This method will trigger the recreation of the constraints
-        created using *EasyPeasy* for the current view. `when` closures
-        will be evaluated again
+        created using *EasyPeasy* for the current view. `Condition` 
+        closures will be evaluated again
      */
     public func easy_reload() {
         if let attributes = self.superview?.easy_attributes {

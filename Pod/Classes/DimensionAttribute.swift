@@ -13,19 +13,23 @@ import Foundation
 public class DimensionAttribute: Attribute {
     
     /**
- 
+        Establishes a relationship between the dimension attribute 
+        applied to the `UIView` and the reference `UIView` passed as 
+        parameter.
+        
+        It's also possible to link this relationship to a particular
+        attribute of the `view` parameter by supplying `attribute`.
+         
+        - parameter view: The reference view
+        - parameter attribute: The attribute of `view` we are establishing
+        the relationship to
+        - returns: The current `Attribute` instance
      */
-    public func like(view: UIView) -> Self {
+    public func like(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceView = view
+        self.referenceAttribute = attribute
         return self
     }
-    
-}
-
-/**
- 
- */
-public class Size: DimensionAttribute {
     
 }
 

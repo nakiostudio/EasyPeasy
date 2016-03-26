@@ -15,6 +15,8 @@ internal var easy_attributesReference: Int = 0
 
 internal extension UIView {
     
+    /// Association with an array containing all the *EasyPeasy* 
+    /// attributes applied to the current view
     internal var easy_attributes: [Attribute] {
         get {
             if let attributes = objc_getAssociatedObject(self, &easy_attributesReference) as?
