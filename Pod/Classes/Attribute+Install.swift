@@ -128,7 +128,7 @@ internal extension Attribute {
         case is TrailingMargin: return .TrailingMargin
         case is CenterXWithinMargins: return .CenterXWithinMargins
         case is CenterYWithinMargins: return .CenterYWithinMargins
-        case is Attribute: return .NotAnAttribute
+        default: return .NotAnAttribute
         }
     }
     

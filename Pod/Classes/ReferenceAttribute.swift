@@ -29,9 +29,9 @@ public enum ReferenceAttribute {
     case Trailing
     case CenterX
     case CenterY
+    @available(iOS 8.0, *)
     case FirstBaseline
     case LastBaseline
-    @available(iOS 8.0, *)
     case LeftMargin
     @available(iOS 8.0, *)
     case RightMargin
@@ -134,9 +134,9 @@ public enum ReferenceAttribute {
         case .LastBaseline:
             return [.LastBaseline, .Bottom, .CenterY, .BottomMargin, .CenterYWithinMargins]
         case .LeftMargin:
-            return [.LeftMargin, .CenterXWithinMargins, .Left, .CenterX]
+            return [.LeftMargin, .LeadingMargin, .CenterXWithinMargins, .Left, .CenterX]
         case .RightMargin:
-            return [.RightMargin, .CenterXWithinMargins, .Right, .CenterX]
+            return [.RightMargin, .TrailingMargin, .CenterXWithinMargins, .Right, .CenterX]
         case .TopMargin:
             return [.TopMargin, .CenterYWithinMargins, .Top, .CenterY]
         case .BottomMargin:

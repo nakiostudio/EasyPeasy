@@ -11,8 +11,8 @@
 import XCTest
 @testable import EasyPeasy
 
-class Tests: XCTestCase {
-    
+class PriorityTests: XCTestCase {
+
     override func setUp() {
         super.setUp()
     }
@@ -21,8 +21,27 @@ class Tests: XCTestCase {
         super.tearDown()
     }
     
-    func testThatExample() {
+    func testThatThatOrderIsCorrect() {
+        // given
+        let high = Priority.HighPriority
+        let medium = Priority.MediumPriority
+        let low = Priority.LowPriority
         
+        // when
+        // then
+        XCTAssertTrue(high.layoutPriority() > medium.layoutPriority())
+        XCTAssertTrue(medium.layoutPriority() > low.layoutPriority())
     }
-    
+
+    func testThatCustomPriorityRetursTheValueGiven() {
+        // given
+        let myCustomValue: Float = 234.0
+        
+        // when
+        let priority = Priority.CustomPriority(myCustomValue)
+        
+        // then
+        XCTAssertTrue(priority.layoutPriority() == myCustomValue)
+    }
+
 }
