@@ -64,16 +64,52 @@ public enum ReferenceAttribute {
         case .Trailing: return .Leading
         case .CenterX: return .CenterX
         case .CenterY: return .CenterY
-        case .FirstBaseline: return .FirstBaseline
         case .LastBaseline: return .LastBaseline
-        case .LeftMargin: return .RightMargin
-        case .RightMargin: return .LeftMargin
-        case .TopMargin: return .BottomMargin
-        case .BottomMargin: return .TopMargin
-        case .LeadingMargin: return .TrailingMargin
-        case .TrailingMargin: return .LeadingMargin
-        case .CenterXWithinMargins: return .CenterXWithinMargins
-        case .CenterYWithinMargins: return .CenterYWithinMargins
+        case .FirstBaseline:
+            if #available(iOS 8.0, *) {
+                return .FirstBaseline
+            }
+            return .NotAnAttribute
+        case .LeftMargin:
+            if #available(iOS 8.0, *) {
+                return .RightMargin
+            }
+            return .NotAnAttribute
+        case .RightMargin:
+            if #available(iOS 8.0, *) {
+                return .LeftMargin
+            }
+            return .NotAnAttribute
+        case .TopMargin:
+            if #available(iOS 8.0, *) {
+                return .BottomMargin
+            }
+            return .NotAnAttribute
+        case .BottomMargin:
+            if #available(iOS 8.0, *) {
+                return .TopMargin
+            }
+            return .NotAnAttribute
+        case .LeadingMargin:
+            if #available(iOS 8.0, *) {
+                return .TrailingMargin
+            }
+            return .NotAnAttribute
+        case .TrailingMargin:
+            if #available(iOS 8.0, *) {
+                return .LeadingMargin
+            }
+            return .NotAnAttribute
+        case .CenterXWithinMargins:
+            if #available(iOS 8.0, *) {
+                return .CenterXWithinMargins
+            }
+            return .NotAnAttribute
+        case .CenterYWithinMargins:
+            if #available(iOS 8.0, *) {
+                return .CenterYWithinMargins
+            }
+            return .NotAnAttribute
         case .NotAnAttribute: return .NotAnAttribute
         }
     }
@@ -92,65 +128,120 @@ public enum ReferenceAttribute {
         case .Trailing: return .Trailing
         case .CenterX: return .CenterX
         case .CenterY: return .CenterY
-        case .FirstBaseline: return .FirstBaseline
         case .LastBaseline: return .LastBaseline
-        case .LeftMargin: return .LeftMargin
-        case .RightMargin: return .RightMargin
-        case .TopMargin: return .TopMargin
-        case .BottomMargin: return .BottomMargin
-        case .LeadingMargin: return .LeadingMargin
-        case .TrailingMargin: return .TrailingMargin
-        case .CenterXWithinMargins: return .CenterXWithinMargins
-        case .CenterYWithinMargins: return .CenterYWithinMargins
+        case .FirstBaseline:
+            if #available(iOS 8.0, *) {
+                return .FirstBaseline
+            }
+            return .NotAnAttribute
+        case .LeftMargin:
+            if #available(iOS 8.0, *) {
+                return .LeftMargin
+            }
+            return .NotAnAttribute
+        case .RightMargin:
+            if #available(iOS 8.0, *) {
+                return .RightMargin
+            }
+            return .NotAnAttribute
+        case .TopMargin:
+            if #available(iOS 8.0, *) {
+                return .TopMargin
+            }
+            return .NotAnAttribute
+        case .BottomMargin:
+            if #available(iOS 8.0, *) {
+                return .BottomMargin
+            }
+            return .NotAnAttribute
+        case .LeadingMargin:
+            if #available(iOS 8.0, *) {
+                return .LeadingMargin
+            }
+            return .NotAnAttribute
+        case .TrailingMargin:
+            if #available(iOS 8.0, *) {
+                return .TrailingMargin
+            }
+            return .NotAnAttribute
+        case .CenterXWithinMargins:
+            if #available(iOS 8.0, *) {
+                return .CenterXWithinMargins
+            }
+            return .NotAnAttribute
+        case .CenterYWithinMargins:
+            if #available(iOS 8.0, *) {
+                return .CenterYWithinMargins
+            }
+            return .NotAnAttribute
         case .NotAnAttribute: return .NotAnAttribute
         }
     }
     
     /// Reference attributes that may conflict with the current one
     internal var conflictingAttributes: [ReferenceAttribute] {
+        var left: [ReferenceAttribute] = [.Left, .CenterX, .Leading]
+        if #available(iOS 8.0, *) {
+            left.appendContentsOf([.LeftMargin, .CenterXWithinMargins, .LeadingMargin])
+        }
+        
+        var right: [ReferenceAttribute] = [.Right, .CenterX, .Trailing]
+        if #available(iOS 8.0, *) {
+            right.appendContentsOf([.RightMargin, .CenterXWithinMargins, .TrailingMargin])
+        }
+        
+        var top: [ReferenceAttribute] = [.Top, .CenterY]
+        if #available(iOS 8.0, *) {
+            top.appendContentsOf([.FirstBaseline, .TopMargin, .CenterYWithinMargins])
+        }
+        
+        var bottom: [ReferenceAttribute] = [.Bottom, .CenterY, LastBaseline]
+        if #available(iOS 8.0, *) {
+            bottom.appendContentsOf([.BottomMargin, .CenterYWithinMargins])
+        }
+        
+        var firstBaseLine: [ReferenceAttribute] = [.Top, .CenterY]
+        if #available(iOS 8.0, *) {
+            firstBaseLine.appendContentsOf([.FirstBaseline, .TopMargin, .CenterYWithinMargins])
+        }
+        
+        var lastBaseLine: [ReferenceAttribute] = [.LastBaseline, .Bottom, .CenterY]
+        if #available(iOS 8.0, *) {
+            lastBaseLine.appendContentsOf([.BottomMargin, .CenterYWithinMargins])
+        }
+        
+        var centerX: [ReferenceAttribute] = [.CenterX, .Left, .Right, .Leading, .Trailing]
+        if #available(iOS 8.0, *) {
+            centerX.appendContentsOf([.LeftMargin, .RightMargin, .CenterXWithinMargins, .LeadingMargin, .TrailingMargin])
+        }
+        
+        var centerY: [ReferenceAttribute] = [.CenterY, .Top, .Bottom, .LastBaseline]
+        if #available(iOS 8.0, *) {
+            centerY.appendContentsOf([.FirstBaseline, .TopMargin, .BottomMargin, .CenterYWithinMargins])
+        }
+        
         switch self {
-        case .Width:
-            return [.Width]
-        case .Height:
-            return [.Height]
-        case .Left:
-            return [.Left, .CenterX, .Leading, .LeftMargin, .CenterXWithinMargins, .LeadingMargin]
-        case .Right:
-            return [.Right, .CenterX, .Trailing, .RightMargin, .CenterXWithinMargins, .TrailingMargin]
-        case .Top:
-            return [.Top, .CenterY, .FirstBaseline, .TopMargin, .CenterYWithinMargins]
-        case .Bottom:
-            return [.Bottom, .CenterY, LastBaseline, .BottomMargin, .CenterYWithinMargins]
-        case .Leading:
-            return [.Leading, .Left, .CenterX, .LeftMargin, .CenterXWithinMargins, .LeadingMargin]
-        case .Trailing:
-            return [.Trailing, .Right, .CenterX, .RightMargin, .CenterXWithinMargins, .TrailingMargin]
-        case .CenterX:
-            return [.CenterX, .Left, .Right, .Leading, .Trailing, .LeftMargin, .RightMargin, .CenterXWithinMargins, .LeadingMargin, .TrailingMargin]
-        case .CenterY:
-            return [.CenterY, .Top, .Bottom, .FirstBaseline, .LastBaseline, .TopMargin, .BottomMargin, .CenterYWithinMargins]
-        case .FirstBaseline:
-            return [.FirstBaseline, .Top, .CenterY, .TopMargin, .CenterYWithinMargins]
-        case .LastBaseline:
-            return [.LastBaseline, .Bottom, .CenterY, .BottomMargin, .CenterYWithinMargins]
-        case .LeftMargin:
-            return [.LeftMargin, .LeadingMargin, .CenterXWithinMargins, .Left, .CenterX, .Leading]
-        case .RightMargin:
-            return [.RightMargin, .TrailingMargin, .CenterXWithinMargins, .Right, .CenterX, .Trailing]
-        case .TopMargin:
-            return [.TopMargin, .CenterYWithinMargins, .Top, .CenterY, FirstBaseline]
-        case .BottomMargin:
-            return [.BottomMargin, CenterYWithinMargins, .Bottom, .CenterY, LastBaseline]
-        case .LeadingMargin:
-            return [.LeadingMargin, .LeftMargin, .CenterXWithinMargins, .Left, .Leading, .CenterX]
-        case .TrailingMargin:
-            return [.TrailingMargin, .RightMargin, .CenterXWithinMargins, .Right, .Trailing, .CenterX]
-        case .CenterXWithinMargins:
-            return [.CenterX, .Left, .Right, .Leading, .Trailing, .LeftMargin, .RightMargin, .CenterXWithinMargins, .LeadingMargin, .TrailingMargin]
-        case .CenterYWithinMargins:
-            return [.CenterY, .Top, .Bottom, .FirstBaseline, .LastBaseline, .TopMargin, .BottomMargin, .CenterYWithinMargins]
-        case .NotAnAttribute:
-            return []
+        case .Width: return [.Width]
+        case .Height: return [.Height]
+        case .Left: return left
+        case .Right: return right
+        case .Top: return top
+        case .Bottom: return bottom
+        case .Leading: return left
+        case .Trailing: return right
+        case .CenterX: return centerX
+        case .CenterY: return centerY
+        case .FirstBaseline: return firstBaseLine
+        case .LastBaseline: return lastBaseLine
+        case .LeftMargin: return left
+        case .RightMargin: return right
+        case .TopMargin: return top
+        case .BottomMargin: return bottom
+        case .LeadingMargin: return left
+        case .TrailingMargin: return right
+        case .CenterXWithinMargins: return centerX
+        case .CenterYWithinMargins: return centerY
+        case .NotAnAttribute: return []
         }
     }
     

@@ -90,6 +90,7 @@ public class CenterY: PositionAttribute { }
     The object’s baseline. For objects with more than one line of text, 
     this is the baseline for the topmost line of text
  */
+@available(iOS 8.0, *)
 public class FirstBaseline: PositionAttribute { }
 
 /**
