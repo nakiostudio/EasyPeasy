@@ -1,6 +1,7 @@
 ![logo](assets_readme/logo.png)
 
 [![CI Status](http://img.shields.io/travis/nakiostudio/EasyPeasy.svg?style=flat)](https://travis-ci.org/nakiostudio/EasyPeasy)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](http://cocoapods.org/pods/EasyPeasy)
 [![Version](https://img.shields.io/cocoapods/v/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
 [![Docs](https://img.shields.io/cocoapods/metrics/doc-percent/EasyPeasy.svg)](http://cocoadocs.org/docsets/EasyPeasy)
 [![License](https://img.shields.io/cocoapods/l/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
