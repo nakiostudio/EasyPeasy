@@ -69,32 +69,6 @@ internal extension Attribute {
         - returns: the equivalent `ReferenceAttribute`
      */
     internal func referenceAttributeFromClass() -> ReferenceAttribute {
-        if #available(iOS 8.0, *) {
-            switch self {
-            case is Width: return .Width
-            case is Height: return .Height
-            case is Left: return .Left
-            case is Right: return .Right
-            case is Top: return .Top
-            case is Bottom: return .Bottom
-            case is Leading: return .Leading
-            case is Trailing: return .Trailing
-            case is CenterX: return .CenterX
-            case is CenterY: return .CenterY
-            case is FirstBaseline: return .FirstBaseline
-            case is LastBaseline: return .LastBaseline
-            case is LeftMargin: return .LeftMargin
-            case is RightMargin: return .RightMargin
-            case is TopMargin: return .TopMargin
-            case is BottomMargin: return .BottomMargin
-            case is LeadingMargin: return .LeadingMargin
-            case is TrailingMargin: return .TrailingMargin
-            case is CenterXWithinMargins: return .CenterXWithinMargins
-            case is CenterYWithinMargins: return .CenterYWithinMargins
-            default: return .NotAnAttribute
-            }
-        }
-        
         switch self {
         case is Width: return .Width
         case is Height: return .Height
@@ -106,7 +80,16 @@ internal extension Attribute {
         case is Trailing: return .Trailing
         case is CenterX: return .CenterX
         case is CenterY: return .CenterY
+        case is FirstBaseline: return .FirstBaseline
         case is LastBaseline: return .LastBaseline
+        case is LeftMargin: return .LeftMargin
+        case is RightMargin: return .RightMargin
+        case is TopMargin: return .TopMargin
+        case is BottomMargin: return .BottomMargin
+        case is LeadingMargin: return .LeadingMargin
+        case is TrailingMargin: return .TrailingMargin
+        case is CenterXWithinMargins: return .CenterXWithinMargins
+        case is CenterYWithinMargins: return .CenterYWithinMargins
         default: return .NotAnAttribute
         }
     }

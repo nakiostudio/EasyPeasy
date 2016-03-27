@@ -1,6 +1,6 @@
 ![logo](assets_readme/logo.png)
 
-[![CI Status](http://img.shields.io/travis/Carlos Vidal/EasyPeasy.svg?style=flat)](https://travis-ci.org/Carlos Vidal/EasyPeasy)
+[![CI Status](http://img.shields.io/travis/nakiostudio/EasyPeasy.svg?style=flat)](https://travis-ci.org/nakiostudio/EasyPeasy)
 [![Version](https://img.shields.io/cocoapods/v/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
 [![License](https://img.shields.io/cocoapods/l/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
 [![Platform](https://img.shields.io/cocoapods/p/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
@@ -35,7 +35,7 @@ pod "EasyPeasy"
 
 ### Compatibility
 
-For now **EasyPeasy** is only compatible with iOS 7 and above, although we aim
+For now **EasyPeasy** is only compatible with iOS 8 and above, although we aim
 to make it compatible with OS X.
 The framework has been tested with Xcode 7 and Swift 2.0, however don't hesitate
 to report any issues you may find with different versions.
