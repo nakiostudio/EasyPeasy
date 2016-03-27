@@ -41,4 +41,24 @@ class UIView_EasyTests: XCTestCase {
         XCTAssertTrue((superview.constraints.filter{$0.easy_attribute != nil}).count == 2)
     }
     
+    func testThatCompoundAttributesAreNotReturnedAndOnlyRegularAttributesStoredInView() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+
+        // when
+        let attributes = viewA <- Edges(10)
+        
+        // then
+        XCTAssertTrue(attributes.count == 4)
+        for attribute in attributes {
+            XCTAssertFalse(attribute is CompoundAttribute)
+        }
+        XCTAssertTrue(superview.easy_attributes.count == 4)
+        for attribute in superview.easy_attributes {
+            XCTAssertFalse(attribute is CompoundAttribute)
+        }
+    }
+    
 }
