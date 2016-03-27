@@ -40,6 +40,10 @@ to make it compatible with OS X.
 The framework has been tested with Xcode 7 and Swift 2.0, however don't hesitate
 to report any issues you may find with different versions.
 
+## Usage
+
+This section is W.I.P...
+
 ## Author
 
 Carlos Vidal - @carlostify
