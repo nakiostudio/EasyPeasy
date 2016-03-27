@@ -141,7 +141,7 @@ extension TweetView {
         paragraphStyle.lineHeightMultiple = 1.2
         let attributes = [
             NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: UIFont.systemFontOfSize(16.0),
+            NSFontAttributeName: UIFont.systemFontOfSize(15.0),
             NSForegroundColorAttributeName: UIColor.blackColor()
         ]
         

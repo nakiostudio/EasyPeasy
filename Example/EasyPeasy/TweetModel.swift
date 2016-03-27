@@ -49,7 +49,7 @@ extension TweetModel {
             name: "Javi.swift",
             username: "@Javi",
             displayableDate: "2h",
-            tweet: "EasyPeasy? another autolayout library? Okay, I can give it a try 😫",
+            tweet: "EasyPeasy? another autolayout library? Okay, I can give it a try!",
             thumbnail: UIImage.easy_thumbJavi()
         )
         let tweetNacho = TweetModel(

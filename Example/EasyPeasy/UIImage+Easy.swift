@@ -44,4 +44,8 @@ extension UIImage {
         return UIImage(named: "thumb-nacho")!
     }
     
+    static func easy_newTweets() -> UIImage {
+        return UIImage(named: "new-tweets")!
+    }
+    
 }

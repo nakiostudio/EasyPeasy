@@ -26,11 +26,23 @@ class FeedController: UIViewController {
         return scrollView
     }()
     
+    private lazy var newTweetsView: UIImageView = {
+        let imageView = UIImageView(image: UIImage.easy_newTweets())
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setup()
         self.populateFeed()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // An example of UIView animation
+        self.showNewTweetsIndicator(true)
     }
     
     // MARK: Private
@@ -50,6 +62,14 @@ class FeedController: UIViewController {
         self.view.addSubview(self.scrollView)
         self.scrollView <- [
             Edges()
+        ]
+        
+        // New tweets indicator
+        self.view.addSubview(self.newTweetsView)
+        self.newTweetsView <- [
+            Size(CGSize(width: 118.0, height: 30.0)),
+            Top(-100),
+            CenterX()
         ]
     }
     
@@ -81,6 +101,18 @@ class FeedController: UIViewController {
         self.tweetViews.last! <- [
             Bottom().to(self.scrollView, .Bottom)
         ]
+    }
+    
+    private func showNewTweetsIndicator(show: Bool) {
+        UIView.animateWithDuration(0.3, delay: 2.0, options: .CurveEaseInOut, animations: {
+            self.newTweetsView <- Top(10).when { show }
+            self.newTweetsView <- Top(-100).when { !show }
+            self.view.layoutIfNeeded()
+        }, completion: { complete in
+            if show {
+                self.showNewTweetsIndicator(false)
+            }
+        })
     }
     
 }
