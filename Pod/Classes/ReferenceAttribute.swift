@@ -122,9 +122,9 @@ public enum ReferenceAttribute {
         case .Bottom:
             return [.Bottom, .CenterY, LastBaseline, .BottomMargin, .CenterYWithinMargins]
         case .Leading:
-            return [.Leading, .Left, .CenterX, .LeftMargin, .CenterXWithinMargins]
+            return [.Leading, .Left, .CenterX, .LeftMargin, .CenterXWithinMargins, .LeadingMargin]
         case .Trailing:
-            return [.Trailing, .Right, .CenterX, .RightMargin, .CenterXWithinMargins]
+            return [.Trailing, .Right, .CenterX, .RightMargin, .CenterXWithinMargins, .TrailingMargin]
         case .CenterX:
             return [.CenterX, .Left, .Right, .Leading, .Trailing, .LeftMargin, .RightMargin, .CenterXWithinMargins, .LeadingMargin, .TrailingMargin]
         case .CenterY:
@@ -134,13 +134,13 @@ public enum ReferenceAttribute {
         case .LastBaseline:
             return [.LastBaseline, .Bottom, .CenterY, .BottomMargin, .CenterYWithinMargins]
         case .LeftMargin:
-            return [.LeftMargin, .LeadingMargin, .CenterXWithinMargins, .Left, .CenterX]
+            return [.LeftMargin, .LeadingMargin, .CenterXWithinMargins, .Left, .CenterX, .Leading]
         case .RightMargin:
-            return [.RightMargin, .TrailingMargin, .CenterXWithinMargins, .Right, .CenterX]
+            return [.RightMargin, .TrailingMargin, .CenterXWithinMargins, .Right, .CenterX, .Trailing]
         case .TopMargin:
-            return [.TopMargin, .CenterYWithinMargins, .Top, .CenterY]
+            return [.TopMargin, .CenterYWithinMargins, .Top, .CenterY, FirstBaseline]
         case .BottomMargin:
-            return [.BottomMargin, CenterYWithinMargins, .Bottom, .CenterY]
+            return [.BottomMargin, CenterYWithinMargins, .Bottom, .CenterY, LastBaseline]
         case .LeadingMargin:
             return [.LeadingMargin, .LeftMargin, .CenterXWithinMargins, .Left, .Leading, .CenterX]
         case .TrailingMargin:
