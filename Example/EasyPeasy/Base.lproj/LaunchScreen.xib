@@ -10,10 +10,26 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="easypeasy-logo" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-eM-H2n">
+                    <rect key="frame" x="180" y="180" width="120" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="4vC-cY-Zg7"/>
+                        <constraint firstAttribute="height" constant="120" id="t96-RB-IZE"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.90980392156862744" green="0.74901960784313726" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="6a3-eM-H2n" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="HHz-Cg-rOD"/>
+                <constraint firstItem="6a3-eM-H2n" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Iyj-tt-JGq"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="easypeasy-logo" width="100" height="100"/>
+    </resources>
 </document>

@@ -117,7 +117,7 @@ extension TweetView {
 }
 
 /**
- 
+    NSAttributedString factory methods
  */
 extension TweetView {
     
