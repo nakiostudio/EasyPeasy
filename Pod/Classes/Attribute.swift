@@ -54,7 +54,7 @@ public class Attribute {
     
     /**
         Initializer which creates an `Attribute` instance
-        with `constant = 0.0`, `multiplier = 0.0` and 
+        with `constant = 0.0`, `multiplier = 1.0` and
         `relatedBy = .Equal`
         - returns: the `Attribute` instance created
      */
@@ -65,7 +65,7 @@ public class Attribute {
     
     /**
         Initializer which creates an `Attribute` instance
-        with `constant = value`, `multiplier = 0.0` and
+        with `constant = value`, `multiplier = 1.0` and
         `relatedBy = .Equal`
         - parameter value: `constant` of the constraint
         - returns: the `Attribute` instance created
@@ -115,7 +115,12 @@ public class Attribute {
     // MARK: Internal methods
     
     /** 
-        
+        This method evaluates whether an `Attribute` should be
+        applied, resolves any conflicts with the `Attributes`
+        already applied and it also generates the `NSLayoutConstraint`
+        added to `view`
+        - parameter view: `UIView` in which the generated
+        `NSLayoutConstraint` will be added
      */
     internal func installOnView(view: UIView) {
         // Reference to the target view

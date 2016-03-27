@@ -27,9 +27,8 @@ class ViewController: UIViewController {
         // Initial attributes
         self.view.addSubview(self.createView)
         self.createView <- [
-            Size(CGSize(width: 120, height: 50)),
-            Top(10),
-            Left(10)
+            Center(),
+            Size(300)
         ]
     }
     
@@ -41,4 +40,3 @@ class ViewController: UIViewController {
     }
     
 }
-

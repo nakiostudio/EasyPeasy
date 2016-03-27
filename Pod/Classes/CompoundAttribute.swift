@@ -11,17 +11,18 @@
 import Foundation
 
 /**
- 
+    `Attribute` that leads on the application of multiple
+    `Attribute` objects
  */
 public class CompoundAttribute: Attribute {
     
-    ///
+    /// Array of attributes that shape the `CompoundAttribute`
     public internal(set) var attributes: [Attribute] = []
     
     // MARK: Public methods
     
     /**
-         Sets the `priority` of the constraint
+         Sets the `priority` of the constraint and subconstraints
          - parameter priority: `Priority` enum specifying the
          priority of the constraint
          - returns: the `Attribute` instance
@@ -35,7 +36,8 @@ public class CompoundAttribute: Attribute {
     }
     
     /**
-         Sets the `when` closure of the `Attribute`
+        Sets the `when` closure of the `Attribute` and each one
+        of the `Attribute` objects shaping the `CompoundAttribute`
          - parameter closure: `Closure` to be called before
          installing a constraint
          - returns: the `Attribute` instance
@@ -49,6 +51,16 @@ public class CompoundAttribute: Attribute {
     }
     
     // MARK: Internal methods
+    
+    /**
+        This method evaluates whether an `Attribute` should be
+        applied, resolves any conflicts with the `Attributes`
+        already applied and it also generates the `NSLayoutConstraint`
+        added to `view` for each one of the `Attribute` objects
+        shaping the `CompoundAttribute`
+        - parameter view: `UIView` in which the generated
+        `NSLayoutConstraint` will be added
+     */
     internal override func installOnView(view: UIView) {
         // Reference to the target view
         self.createView = view

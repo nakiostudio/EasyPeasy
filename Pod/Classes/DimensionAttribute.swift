@@ -49,8 +49,10 @@ public class Height: DimensionAttribute { }
 public class Size: CompoundAttribute {
     
     /**
-     
-         - returns: the `CompoundAttribute` instance created
+        Initializer which creates a `CompountAttribute` instance formed
+        by `Width` and `Height` attributes with `constant = 0.0`,
+        `multiplier = 1.0` and `relatedBy = .Equal`
+        - returns: the `CompoundAttribute` instance created
      */
     public override init() {
         super.init()
@@ -61,9 +63,11 @@ public class Size: CompoundAttribute {
     }
     
     /**
-     
-         - parameter value: `constant` of the constraint
-         - returns: the `CompoundAttribute` instance created
+        Initializer which creates a `CompountAttribute` instance formed
+        by `Width` and `Height` attributes with `constant = value`,
+        `multiplier = 1.0` and `relatedBy = .Equal`
+        - parameter value: `constant` of the constraint
+        - returns: the `CompoundAttribute` instance created
      */
     public override init(_ value: Double) {
         super.init()
@@ -74,10 +78,12 @@ public class Size: CompoundAttribute {
     }
     
     /**
-     
-         - parameter constant: `Constant` struct aggregating
-         `constant`, `multiplier` and `relatedBy` properties
-         - returns: the `CompoundAttribute` instance created
+        Initializer which creates a `CompountAttribute` instance formed
+        by `Width` and `Height` attributes with the `constant`,
+        `multiplier` and `relatedBy` defined by the `Constant` supplied
+        - parameter constant: `Constant` struct aggregating `constant`, 
+        `multiplier` and `relatedBy` properties
+        - returns: the `CompoundAttribute` instance created
      */
     public override init(_ constant: Constant) {
         super.init()
@@ -88,7 +94,13 @@ public class Size: CompoundAttribute {
     }
     
     /**
-     
+        Initializer which creates a `CompountAttribute` instance formed
+        by `Width` and `Height` attributes with `constant = size.width`
+        and `constant = size.height` respectively, `multiplier = 1.0` 
+        and `relatedBy = .Equal`
+        - parameter size: `CGSize` that sets the constants for the `Width`
+        and `Height` *subattributes*
+        - returns: the `CompoundAttribute` instance created
      */
     public init(_ size: CGSize) {
         super.init()
@@ -99,11 +111,11 @@ public class Size: CompoundAttribute {
     }
     
     /**
-         Establishes a relationship between the dimension attribute
-         applied to the `UIView` and the reference `UIView` passed as
-         parameter.
-         - parameter view: The reference view
-         - returns: The current `CompoundAttribute` instance
+        Establishes a relationship between the dimension attribute
+        applied to the `UIView` and the reference `UIView` passed as
+        parameter.
+        - parameter view: The reference view
+        - returns: The current `CompoundAttribute` instance
      */
     public func like(view: UIView) -> Self {
         self.referenceView = view

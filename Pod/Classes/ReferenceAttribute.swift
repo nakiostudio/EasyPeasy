@@ -154,7 +154,10 @@ public enum ReferenceAttribute {
         }
     }
     
-    ///
+    /// Property that determines whether the constant of 
+    /// the `Attribute` should be multiplied by `-1`. This
+    /// is usually done for right hand `PositionAttribute`
+    /// objects
     internal var shouldInvertConstant: Bool {
         switch self {
         case .Width: return false

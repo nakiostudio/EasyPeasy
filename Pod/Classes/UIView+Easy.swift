@@ -39,7 +39,8 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
         attribute.installOnView(lhs)
     }
     
-    // Gather regular attributes only
+    // Gather regular attributes only as we don't want to store
+    // `CompoundAttribute` objects
     var regularAttributes: [Attribute] = []
     for attribute in rhs {
         if let compountAttribute = attribute as? CompoundAttribute {
@@ -52,6 +53,7 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
     // Store the attributes applied in the superview
     lhs.superview?.easy_attributes.appendContentsOf(regularAttributes)
     
+    // Return just regular `Attributes`, not `CompoundAttributes`
     return regularAttributes
 }
 
