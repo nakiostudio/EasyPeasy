@@ -16,18 +16,6 @@ extension UIImage {
         return UIImage(named: "twitter-logo")!
     }
     
-    static func easy_iconNewTweet() -> UIImage {
-        return UIImage(named: "icon-new-tweet")!
-    }
-    
-    static func easy_iconSearch() -> UIImage {
-        return UIImage(named: "icon-search")!
-    }
-    
-    static func easy_iconProfile() -> UIImage {
-        return UIImage(named: "icon-profile")!
-    }
-    
     static func easy_thumbFelix() -> UIImage {
         return UIImage(named: "thumb-felix")!
     }
