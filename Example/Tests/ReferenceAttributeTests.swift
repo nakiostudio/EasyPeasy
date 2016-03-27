@@ -39,7 +39,6 @@ class ReferenceAttributeTests: XCTestCase {
         
     }
     
-    @available(iOS 8.0, *)
     func testThatOppositeAttributesAreCorrectiOS8AndAbove() {
         XCTAssertTrue(ReferenceAttribute.FirstBaseline.opposite == .FirstBaseline)
         XCTAssertTrue(ReferenceAttribute.LeftMargin.opposite == .RightMargin)
@@ -71,7 +70,6 @@ class ReferenceAttributeTests: XCTestCase {
         XCTAssertTrue(ReferenceAttribute.Width.layoutAttribute == .Width)
     }
     
-    @available(iOS 8.0, *)
     func testThatAutoLayoutEquivalentIsTheExpectediOS8AndAbove() {
         // given
         // when

@@ -90,7 +90,6 @@ public class CenterY: PositionAttribute { }
     The object’s baseline. For objects with more than one line of text, 
     this is the baseline for the topmost line of text
  */
-@available(iOS 8.0, *)
 public class FirstBaseline: PositionAttribute { }
 
 /**
@@ -103,56 +102,48 @@ public class LastBaseline: PositionAttribute { }
     The object’s left margin. For UIView objects, the margins are defined 
     by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class LeftMargin: PositionAttribute { }
 
 /**
     The object’s right margin. For UIView objects, the margins are defined 
     by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class RightMargin: PositionAttribute { }
 
 /**
     The object’s top margin. For UIView objects, the margins are defined 
     by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class TopMargin: PositionAttribute { }
 
 /**
     The object’s bottom margin. For UIView objects, the margins are defined 
     by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class BottomMargin: PositionAttribute { }
 
 /**
     The object’s leading margin. For UIView objects, the margins are defined 
     by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class LeadingMargin: PositionAttribute { }
 
 /**
     The object’s trailing margin. For UIView objects, the margins are defined 
     by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class TrailingMargin: PositionAttribute { }
 
 /**
     The center along the x-axis between the object’s left and right margin. 
     For UIView objects, the margins are defined by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class CenterXWithinMargins: PositionAttribute { }
 
 /**
     The center along the y-axis between the object’s top and bottom margin. 
     For UIView objects, the margins are defined by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class CenterYWithinMargins: PositionAttribute { }
 
 /**
@@ -303,7 +294,6 @@ public class Center: CompoundAttribute {
     The object’s margins. For UIView objects, the margins are defined
     by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class Margins: CompoundAttribute {
     
     /**
@@ -381,7 +371,6 @@ public class Margins: CompoundAttribute {
     The center along the x-axis between the object’s left and right margin.
     For UIView objects, the margins are defined by their layoutMargins property
  */
-@available(iOS 8.0, *)
 public class CenterWithinMargins: CompoundAttribute {
     
     /**

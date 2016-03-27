@@ -56,7 +56,7 @@ extension TweetModel {
             name: "Neoモナド",
             username: "@NeoNacho",
             displayableDate: "4h",
-            tweet: "Just discovered EasyPeasy... retard name, great framework",
+            tweet: "Just discovered EasyPeasy... silly name, great framework",
             thumbnail: UIImage.easy_thumbNacho()
         )
         return [tweetFelix, tweetEloy, tweetJavi, tweetNacho]
