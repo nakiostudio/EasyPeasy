@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		081D746B6B34271EBD3CFA90 /* Pods_EasyPeasy_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C9B66427E1B2E83D22CDA2 /* Pods_EasyPeasy_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -20,6 +19,10 @@
 		C1A3D57B1CA6F79500DCC1D0 /* Attribute+InstallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D57A1CA6F79500DCC1D0 /* Attribute+InstallTests.swift */; };
 		C1A3D57D1CA7100F00DCC1D0 /* UIView+EasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D57C1CA7100F00DCC1D0 /* UIView+EasyTests.swift */; };
 		C1A3D5811CA7F97D00DCC1D0 /* CompoundAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5801CA7F97D00DCC1D0 /* CompoundAttributeTests.swift */; };
+		C1A3D5841CA8028600DCC1D0 /* UIImage+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5831CA8028600DCC1D0 /* UIImage+Easy.swift */; };
+		C1A3D5861CA8030B00DCC1D0 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5851CA8030B00DCC1D0 /* FeedController.swift */; };
+		C1A3D5881CA8051B00DCC1D0 /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5871CA8051B00DCC1D0 /* TweetView.swift */; };
+		C1A3D58C1CA81BF800DCC1D0 /* TweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D58B1CA81BF800DCC1D0 /* TweetModel.swift */; };
 		FFF166209F4675123F03749D /* Pods_EasyPeasy_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4428BFC29BD4E6A78498C5D /* Pods_EasyPeasy_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +45,6 @@
 		607FACD01AFB9204008FA782 /* EasyPeasy_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyPeasy_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,6 +60,10 @@
 		C1A3D57A1CA6F79500DCC1D0 /* Attribute+InstallTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+InstallTests.swift"; sourceTree = "<group>"; };
 		C1A3D57C1CA7100F00DCC1D0 /* UIView+EasyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+EasyTests.swift"; sourceTree = "<group>"; };
 		C1A3D5801CA7F97D00DCC1D0 /* CompoundAttributeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundAttributeTests.swift; sourceTree = "<group>"; };
+		C1A3D5831CA8028600DCC1D0 /* UIImage+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Easy.swift"; sourceTree = "<group>"; };
+		C1A3D5851CA8030B00DCC1D0 /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		C1A3D5871CA8051B00DCC1D0 /* TweetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetView.swift; sourceTree = "<group>"; };
+		C1A3D58B1CA81BF800DCC1D0 /* TweetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetModel.swift; sourceTree = "<group>"; };
 		D4428BFC29BD4E6A78498C5D /* Pods_EasyPeasy_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyPeasy_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -125,8 +131,11 @@
 		607FACD21AFB9204008FA782 /* Example for EasyPeasy */ = {
 			isa = PBXGroup;
 			children = (
+				C1A3D5821CA8026900DCC1D0 /* Extensions and helpers */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				C1A3D5871CA8051B00DCC1D0 /* TweetView.swift */,
+				C1A3D58B1CA81BF800DCC1D0 /* TweetModel.swift */,
+				C1A3D5851CA8030B00DCC1D0 /* FeedController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -175,6 +184,14 @@
 				B71E427CF5CF07BA80C4D733 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		C1A3D5821CA8026900DCC1D0 /* Extensions and helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C1A3D5831CA8028600DCC1D0 /* UIImage+Easy.swift */,
+			);
+			name = "Extensions and helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,8 +394,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				C1A3D58C1CA81BF800DCC1D0 /* TweetModel.swift in Sources */,
+				C1A3D5841CA8028600DCC1D0 /* UIImage+Easy.swift in Sources */,
+				C1A3D5881CA8051B00DCC1D0 /* TweetView.swift in Sources */,
+				C1A3D5861CA8030B00DCC1D0 /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +539,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -533,6 +554,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
