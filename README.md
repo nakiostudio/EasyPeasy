@@ -1,11 +1,9 @@
 ![logo](assets_readme/logo.png)
 
 [![CI Status](http://img.shields.io/travis/nakiostudio/EasyPeasy.svg?style=flat)](https://travis-ci.org/nakiostudio/EasyPeasy)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](http://cocoapods.org/pods/EasyPeasy)
 [![Version](https://img.shields.io/cocoapods/v/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](http://cocoapods.org/pods/EasyPeasy)
 [![Docs](https://img.shields.io/cocoapods/metrics/doc-percent/EasyPeasy.svg)](http://cocoadocs.org/docsets/EasyPeasy)
-[![License](https://img.shields.io/cocoapods/l/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
-[![Platform](https://img.shields.io/cocoapods/p/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
 
 **EasyPeasy** is a Swift framework that lets you create *Autolayout* constraints
 programmatically without headaches and never ending boilerplate code. Besides the
@@ -27,7 +25,6 @@ result using **EasyPeasy**.
 ## Installation
 
 ### Cocoapods
-
 EasyPeasy is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -36,7 +33,6 @@ pod "EasyPeasy"
 ```
 
 ### Compatibility
-
 For now **EasyPeasy** is only compatible with iOS 8 and above, although we aim
 to make it compatible with OS X.
 The framework has been tested with Xcode 7 and Swift 2.0, however don't hesitate
@@ -44,11 +40,105 @@ to report any issues you may find with different versions.
 
 ## Usage
 
-This section is W.I.P...
+**EasyPeasy** is a set of position and dimension attributes that you can apply
+to your views. For instance, to set a width of 200px to a view you would create
+an attribute of class `Width` with a constant value of `200`, then the attribute
+is applied to the view by using the custom *apply* operator `<-`.
+```swift
+myView <- Width(200)
+```
+
+Because our view without height is nothing we can apply multiple attributes at
+once as follows:
+```swift
+myView <- [
+	Width(200),
+	Height(120)
+]
+```
+
+In the previous example, two attributes have been applied and therefore two constraints
+created and added: a width constraint with `constant = 200` and a height constraint
+with `constant = 120`.
+
+###Modifiers
+Without really knowing it, we have just created an **EasyPeasy** `Constant`
+struct containing the constant and the relation of a `NSLayoutConstraint`.
+That relation is a `Modifier` and **EasyPeasy** provides four different modifiers:
+* `.EqualTo`: the equivalent of `NSLayoutRelationEqual`, it's created like in
+our previous example. `Width(200)`
+* `.GreaterThanOrEqualTo`: the equivalent of `NSLayoutRelationGreaterThanOrEqual`,
+it's created as easy as this `Width(>=200)` and it means that our view has a width
+greater than or equal to 200px.
+* `.LessThanOrEqualTo`: the equivalent of `NSLayoutRelationLessThanOrEqual`
+is created as follows `Width(<=200)`.
+* `.MultipliedBy`: this modifier is a bit particular as it does not match any
+`NSLayoutRelation`, instead, this modifier replaces the `multiplier` property
+of a `NSLayoutConstraint`. It's created like this `Width(*2)` and means that the
+width of our view is two times *something*, we will mention later how to establish
+the relationship with that *something*.
+
+###Attributes
+**EasyPeasy** provides as many `Attribute` classes as attributes `NSLayoutConstraint`
+have, plus something that we have called `CompoundAttributes` (we will explain these
+attributes later).
+
+###Dimension attributes
+There are just two dimension attributes `Width` and `Height`. You can create an
+*Autolayout* relationship between your view `DimensionAttribute` and another view
+by using the method `like(view: UIView)`. Example:
+```swift
+contentLabel <- Width().like(headerView)
+```
+
+That line of code will create a constraint that sets a width for `contentLabel`
+equal to the `headerView` width.
+
+It's possible to create that relationship with any attribute of the reference
+view, for example the following piece of code will create a constraint setting a
+width for `contentLabel` equal to the height of `headerView`.
+```swift
+contentLabel <- Width().like(headerView, .Height)
+```
+
+###PositionAttributes
+The table below shows the different position attributes available. Because they
+behave like the `NSLayoutConstraint` attributes, you can find a complete
+description of them in the [Apple docs](https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/#//apple_ref/c/tdef/NSLayoutRelation).
+
+Attribute | Attribute | Attribute | Attribute
+--- | --- | --- | ---
+Left | Right | Top | Bottom
+Leading | Trailing | CenterX | CenterY
+LeftMargin | RightMargin | TopMargin | BottomMargin
+LeadingMargin | TrailingMargin | CenterXWithinMargins | CenterYWithinMargins
+FirstBaseline | LastBaseline | -- | --
+
+As well as the **DimensionAttributes** have the `like:` method to establish
+*Autolayout* relationships, you can use a similar method to do the same with
+**PositionAttributes**. This method is `to(view: UIView)`.
+
+The example below positions `contentLabel` 10px under `headerView` with the same
+left margin as `headerView`.
+```swift
+contentLabel <- [
+	Top(10).to(headerView),
+	Left().to(headerView, .Left)
+]
+```
+
+<!--
+CompoundAttributes
+Priorities
+Conditions
+Animations
+Updating constraints
+-->
+
 
 ## Author
 
-Carlos Vidal - @carlostify
+Carlos Vidal - [@carlostify](https://twitter.com/carlostify)
 
 ## License
 
