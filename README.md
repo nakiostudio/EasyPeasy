@@ -127,6 +127,45 @@ contentLabel <- [
 ]
 ```
 
+###CompoundAttributes
+These attributes are the ones that create multiple `DimensionAttributes` or
+`PositionAttributes` under the hood. For example, the `Size` attribute will create
+a `Width` and a `Height` attributes with their width and height
+`NSLayoutConstraints` respectively.
+
+These are the `CompoundAttributes` available:
+
+* `Size`: As mentioned before this attribute will apply a `Width` and a `Height`
+attribute to the view. It can be initialized in many ways and depending on that
+the result may change. These are some examples:
+```swift
+// Apply width = 0 and height = 0 constraints
+view <- Size()
+// Apply width = referenceView.width and height = referenceView.height constraints
+view <- Size().like(referenceView)
+// Apply width = 100 and height = 100 constraints
+view <- Size(100)
+// Apply width = 200 and height = 100 constraints
+view <- Size(CGSize(width: 200, height: 100))
+```
+
+* `Edges`: This attribute creates `Left`, `Right`, `Top` and `Bottom` attributes
+at once. Examples:
+```swift
+// Apply left = 0, right = 0, top = 0 and bottom = 0 constraints to its superview
+view <- Edges()
+// Apply left = 10, right = 10, top = 10 and bottom = 10 constraints to its superview
+view <- Edges(10)
+// Apply left = 10, right = 10, top = 5 and bottom = 5 constraints to its superview
+view <- Edges(UIEdgesInsets())
+```
+
+* `Center`: This attribute creates `CenterX` and `CenterY` attributes
+
+* `Margins`:
+
+* `CenterWithinMargins`:
+
 <!--
 CompoundAttributes
 Priorities
