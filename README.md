@@ -24,19 +24,19 @@ result using **EasyPeasy**.
 
 ## Table of contents
 
-* [Installation](https://github.com/nakiostudio/EasyPeasy#installation)
-* [Usage](https://github.com/nakiostudio/EasyPeasy#usage)
-	* [Modifiers](https://github.com/nakiostudio/EasyPeasy#modifiers)
-	* [Attributes](https://github.com/nakiostudio/EasyPeasy#attributes)
-		* [DimensionAttributes](https://github.com/nakiostudio/EasyPeasy#dimensionattributes)
-		* [PositionAttributes](https://github.com/nakiostudio/EasyPeasy#positionattributes)
-		* [CompoundAttributes](https://github.com/nakiostudio/EasyPeasy#compoundattributes)
-	* [Priorities](https://github.com/nakiostudio/EasyPeasy#priorities)
-	* [Conditions](https://github.com/nakiostudio/EasyPeasy#conditions)
-	* [Lastly](https://github.com/nakiostudio/EasyPeasy#lastly)
-		* [Updating constraints](https://github.com/nakiostudio/EasyPeasy#updating-constraints)
-		* [Animating constraints](https://github.com/nakiostudio/EasyPeasy#animating-constraints)
-* [Example project](https://github.com/nakiostudio/EasyPeasy#example-project)
+* [Installation](#installation)
+* [Usage](#usage)
+	* [Modifiers](#modifiers)
+	* [Attributes](#attributes)
+		* [DimensionAttributes](#dimensionattributes)
+		* [PositionAttributes](#positionattributes)
+		* [CompoundAttributes](#compoundattributes)
+	* [Priorities](#priorities)
+	* [Conditions](#conditions)
+	* [Lastly](#lastly)
+		* [Updating constraints](#updating-constraints)
+		* [Animating constraints](#animating-constraints)
+* [Example project](#example-project)
 
 ## Installation
 
