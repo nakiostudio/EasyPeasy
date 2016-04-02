@@ -121,14 +121,16 @@ public class Attribute {
         added to `view`
         - parameter view: `UIView` in which the generated
         `NSLayoutConstraint` will be added
+        - returns an `Array` of `NSLayoutConstraint` objects that will
+        be installed on the `UIView` passed as parameter
      */
-    internal func installOnView(view: UIView) {
+    internal func createConstraintForView(view: UIView) -> [NSLayoutConstraint] {
         // Reference to the target view
         self.createView = view
         
         // If condition is `false` return
         if self.shouldInstallOnView(view) == false {
-            return
+            return []
         }
         
         // Resolve constraint conflicts
@@ -152,8 +154,8 @@ public class Attribute {
         // Set associated Attribute
         layoutConstraint.easy_attribute = self
         
-        // Add it to the view
-        view.superview?.addConstraint(layoutConstraint)
+        // Return the constraint
+        return [layoutConstraint]
     }
     
 }

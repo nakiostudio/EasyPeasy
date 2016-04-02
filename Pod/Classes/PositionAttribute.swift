@@ -17,17 +17,17 @@ import Foundation
 public class PositionAttribute: Attribute {
     
     /**
-        This method overrides super's `installOnView:view` to set the
-        `UIView` parameter to `superview` as `referenceView` in case
+        This method overrides super's `createConstraintForView` to set 
+        the `UIView` parameter to `superview` as `referenceView` in case
         this is not specified by using the `to:view:attribute` method
         - parameter view: `UIView` in which the generated 
         `NSLayoutConstraint` will be added
      */
-    internal override func installOnView(view: UIView) {
+    override func createConstraintForView(view: UIView) -> [NSLayoutConstraint] {
         if let superview = view.superview where self.referenceView == nil {
             self.to(superview)
         }
-        super.installOnView(view)
+        return super.createConstraintForView(view)
     }
     
     /**

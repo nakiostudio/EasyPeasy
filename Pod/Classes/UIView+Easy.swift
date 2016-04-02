@@ -34,10 +34,15 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
     // Disable autoresizing to constraints translation
     lhs.translatesAutoresizingMaskIntoConstraints = false
     
-    // Install each one of the params passed to the view given
+    // Create constraints to install
+    var constraintsToInstall: [NSLayoutConstraint] = []
     for attribute in rhs {
-        attribute.installOnView(lhs)
+        let newConstraints = attribute.createConstraintForView(lhs)
+        constraintsToInstall.appendContentsOf(newConstraints)
     }
+    
+    // Install these constraints
+    NSLayoutConstraint.activateConstraints(constraintsToInstall)
     
     // Gather regular attributes only as we don't want to store
     // `CompoundAttribute` objects
@@ -71,6 +76,29 @@ public extension UIView {
         if let attributes = (self.superview?.easy_attributes.filter { $0.createView === self }) {
             self <- attributes
         }
+    }
+    
+    /**
+        Clears all the constraints applied with EasyPeasy to the
+        current `UIView`
+     */
+    public func easy_clear() {
+        guard let _ = self.superview else {
+            return
+        }
+        
+        // Remove from the stored Attribute objects of the superview
+        // those which createView is the current UIView
+        self.superview!.easy_attributes = self.superview!.easy_attributes.filter { $0.createView !== self }
+        
+        // Now uninstall those constraints
+        var constraintsToUninstall: [NSLayoutConstraint] = []
+        for constraint in self.superview!.constraints {
+            if let attribute = constraint.easy_attribute where attribute.createView === self {
+                constraintsToUninstall.append(constraint)
+            }
+        }
+        NSLayoutConstraint.deactivateConstraints(constraintsToUninstall)
     }
     
 }
