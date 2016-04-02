@@ -101,16 +101,19 @@ public struct Constant {
     
 }
 
+prefix operator >= {}
+
 /**
     Prefix operator that eases the creation of a `Constant` with a
     `.GreaterThanOrEqualTo` modifier.
     - parameter rhs: Value for the `Constant`
     - returns: The resulting `Constant` struct
  */
-prefix operator >= {}
 public prefix func >= (rhs: Double) -> Constant {
     return Constant(value: rhs, modifier: .GreaterThanOrEqualTo)
 }
+
+prefix operator <= {}
 
 /**
     Prefix operator that eases the creation of a `Constant` with a
@@ -118,10 +121,11 @@ public prefix func >= (rhs: Double) -> Constant {
     - parameter rhs: Value for the `Constant`
     - returns: The resulting `Constant` struct
  */
-prefix operator <= {}
 public prefix func <= (rhs: Double) -> Constant {
     return Constant(value: rhs, modifier: .LessThanOrEqualTo)
 }
+
+prefix operator * {}
 
 /**
     Prefix operator that eases the creation of a `Constant` with `value = 0.0`
@@ -129,7 +133,6 @@ public prefix func <= (rhs: Double) -> Constant {
     - parameter rhs: Value for the `multiplier`
     - returns: The resulting `Constant` struct
  */
-prefix operator * {}
 public prefix func * (rhs: Double) -> Constant {
     return Constant(value: rhs, modifier: .MultipliedBy)
 }

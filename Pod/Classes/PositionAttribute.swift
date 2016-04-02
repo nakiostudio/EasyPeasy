@@ -10,6 +10,10 @@
 
 import Foundation
 
+/**
+     Superclass for those `Attribute` objects that imply position
+     constraints like left, right, top and bottom margins
+ */
 public class PositionAttribute: Attribute {
     
     /**

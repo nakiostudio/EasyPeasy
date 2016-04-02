@@ -10,10 +10,11 @@
 
 import Foundation
 
+extension Attribute: Equatable { }
+
 /**
      Infix operator which determines whether two Attributes are equal
  */
-extension Attribute: Equatable { }
 public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     
     // Create views
@@ -68,11 +69,12 @@ public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     return true
 }
 
-/**
-    Infix operator which determines whether two Attributes conflict
-    between them or not
- */
 infix operator =~ {}
+
+/**
+     Infix operator which determines whether two Attributes conflict
+     between them or not
+ */
 internal func =~ (installed: Attribute, toInstall: Attribute) -> Bool {
     
     // Create views conflict

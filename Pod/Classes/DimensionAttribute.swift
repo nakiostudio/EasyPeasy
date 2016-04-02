@@ -10,6 +10,10 @@
 
 import Foundation
 
+/**
+    Superclass for those `Attribute` objects that imply dimension
+    constraints like width and height
+ */
 public class DimensionAttribute: Attribute {
     
     /**

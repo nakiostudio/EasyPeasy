@@ -12,6 +12,9 @@ import UIKit
 
 internal var easy_attributeReference: Int = 0
 
+/**
+    Associated objects applicable to `NSLayoutConstraint`
+ */
 internal extension NSLayoutConstraint {
     
     /// Association with the *EasyPeasy* `Attribute` 

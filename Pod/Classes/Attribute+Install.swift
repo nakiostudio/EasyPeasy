@@ -10,8 +10,19 @@
 
 import UIKit
 
+/**
+    Convenience methods applicable to `Attribute` and subclasses
+ */
 internal extension Attribute {
     
+    /**
+        Determines whether the `Attribute` must be installed or not
+        depending on the `Condition` closure and the existence of a
+        superview for the `view` parameter
+        - parameter view: `UIView` which superview will be checked
+        - return boolean determining if the `Attribute` has to be
+        applied
+     */
     internal func shouldInstallOnView(view: UIView) -> Bool {
         guard let _ = view.superview else {
             return false
@@ -22,6 +33,12 @@ internal extension Attribute {
         return true
     }
     
+    /**
+        Checks whether a conflicting `Attribute` has been already applied
+        to the `UIView` supplied and if so uninstalls the constraint related
+        with such `Attribute`
+        - parameter view: `UIView` in which the `Attribute` will be installed
+     */
     internal func resolveConflictsOnView(view: UIView) {
         // Find conflicting constraints and attributes already installed
         let superview = view.superview!
@@ -43,6 +60,12 @@ internal extension Attribute {
         superview.removeConstraints(conflictingConstraints)
     }
     
+    /**
+        Determines which `ReferenceAttribute` must be taken as reference
+        attribute for the actual Attribute class. Usually is the opposite
+        of the one that is going to be installed
+        - returns `ReferenceAttribute` to install
+     */
     internal func referenceAttributeHelper() -> ReferenceAttribute {
         // If already set return
         if let attribute = self.referenceAttribute {
@@ -61,6 +84,9 @@ internal extension Attribute {
     
 }
 
+/**
+    Convenience methods applicable to `Attribute` and subclasses
+ */
 internal extension Attribute {
     
     /**

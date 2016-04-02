@@ -12,6 +12,9 @@ import UIKit
 
 internal var easy_attributesReference: Int = 0
 
+/**
+    Associated objects applicable to `UIView` and subclasses
+ */
 internal extension UIView {
     
     /// Association with an array containing all the *EasyPeasy* 

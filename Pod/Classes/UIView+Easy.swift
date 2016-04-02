@@ -57,6 +57,9 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
     return regularAttributes
 }
 
+/**
+    Convenience methods applicable to `UIView` and subclasses
+ */
 public extension UIView {
     
     /**
