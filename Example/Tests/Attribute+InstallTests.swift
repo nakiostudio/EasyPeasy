@@ -39,6 +39,9 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue(viewA.easy_attributes.first! === attributes.first!)
         XCTAssertTrue(viewA.constraints.count - numberOfPreviousConstraints == 1)
         XCTAssertTrue(viewA.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attributes.first!)
+        for constraint in viewA.constraints {
+            XCTAssertNotNil(constraint.easy_attribute)
+        }
     }
     
     func testThatAttributeIsInstalledWhenItsOwnedByTheSuperview() {

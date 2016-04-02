@@ -98,13 +98,11 @@ public extension UIView {
         current `UIView`
      */
     public func easy_clear() {
-        guard let _ = self.superview else {
-            return
-        }
-        
         // Remove from the stored Attribute objects of the superview
         // those which createView is the current UIView
-        self.superview!.easy_attributes = self.superview!.easy_attributes.filter { $0.createView !== self }
+        if let superview = self.superview {
+            superview.easy_attributes = superview.easy_attributes.filter { $0.createView !== self }
+        }
         
         // Remove from the stored Attribute objects of the current view
         // those which createView is the current UIView
@@ -114,7 +112,7 @@ public extension UIView {
         var constraintsToUninstall: [NSLayoutConstraint] = []
         
         // Gather NSLayoutConstraints in the superview with self as createView
-        for constraint in self.superview!.constraints {
+        for constraint in (self.superview?.constraints ?? []) {
             if let attribute = constraint.easy_attribute where attribute.createView === self {
                 constraintsToUninstall.append(constraint)
             }
