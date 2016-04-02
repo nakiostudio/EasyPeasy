@@ -22,6 +22,22 @@ The example below is quite simple but shows how effortless its implementation
 result using **EasyPeasy**.
 ![touch](assets_readme/first_touch.png)
 
+## Table of contents
+
+* [Installation](https://github.com/nakiostudio/EasyPeasy#installation)
+* [Usage](https://github.com/nakiostudio/EasyPeasy#usage)
+	* [Modifiers](https://github.com/nakiostudio/EasyPeasy#modifiers)
+	* [Attributes](https://github.com/nakiostudio/EasyPeasy#attributes)
+		* [DimensionAttributes](https://github.com/nakiostudio/EasyPeasy#dimensionattributes)
+		* [PositionAttributes](https://github.com/nakiostudio/EasyPeasy#positionattributes)
+		* [CompoundAttributes](https://github.com/nakiostudio/EasyPeasy#compoundattributes)
+	* [Priorities](https://github.com/nakiostudio/EasyPeasy#priorities)
+	* [Conditions](https://github.com/nakiostudio/EasyPeasy#conditions)
+	* [Lastly](https://github.com/nakiostudio/EasyPeasy#lastly)
+		* [Updating constraints](https://github.com/nakiostudio/EasyPeasy#updating-constraints)
+		* [Animating constraints](https://github.com/nakiostudio/EasyPeasy#animating-constraints)
+* [Example project](https://github.com/nakiostudio/EasyPeasy#example-project)
+
 ## Installation
 
 ### Cocoapods
@@ -83,7 +99,7 @@ the relationship with that *something*.
 have, plus something that we have called `CompoundAttributes` (we will explain these
 attributes later).
 
-###Dimension attributes
+####DimensionAttributes
 There are just two dimension attributes `Width` and `Height`. You can create an
 *Autolayout* relationship between your view `DimensionAttribute` and another view
 by using the method `like(view: UIView)`. Example:
@@ -101,7 +117,7 @@ width for `contentLabel` equal to the height of `headerView`.
 contentLabel <- Width().like(headerView, .Height)
 ```
 
-###PositionAttributes
+####PositionAttributes
 The table below shows the different position attributes available. Because they
 behave like the `NSLayoutConstraint` attributes, you can find a complete
 description of them in the [Apple docs](https://developer.apple.com/library/ios/documentation/AppKit/Reference/NSLayoutConstraint_Class/#//apple_ref/c/tdef/NSLayoutRelation).
@@ -127,7 +143,7 @@ contentLabel <- [
 ]
 ```
 
-###CompoundAttributes
+####CompoundAttributes
 These attributes are the ones that create multiple `DimensionAttributes` or
 `PositionAttributes` under the hood. For example, the `Size` attribute will create
 a `Width` and a `Height` attributes with their width and height
@@ -193,15 +209,23 @@ view <- CenterWithinMargins(CGPoint(x: 0, y: 50))
 ```
 
 ###Priorities
+*W.I.P*
 
 ###Conditions
+*W.I.P*
 
-###Updating constraints
+###Lastly
+*W.I.P*
 
-###Animating constraints
+####Updating constraints
+*W.I.P*
+
+####Animating constraints
+*W.I.P*
 
 ##Example project
 
+*W.I.P*
 
 ## Author
 
