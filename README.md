@@ -157,22 +157,50 @@ view <- Edges()
 // Apply left = 10, right = 10, top = 10 and bottom = 10 constraints to its superview
 view <- Edges(10)
 // Apply left = 10, right = 10, top = 5 and bottom = 5 constraints to its superview
-view <- Edges(UIEdgesInsets())
+view <- Edges(UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
 ```
 
-* `Center`: This attribute creates `CenterX` and `CenterY` attributes
+* `Center`: It creates `CenterX` and `CenterY` attributes. Examples:
+```swift
+// Apply centerX = 0 and centerY = 0 constraints to its superview
+view <- Center()
+// Apply centerX = 10 and centerY = 10 constraints to its superview
+view <- Center(10)
+// Apply centerX = 0 and centerY = 50 constraints to its superview
+view <- Center(CGPoint(x: 0, y: 50))
+```
 
-* `Margins`:
+* `Margins`: This attribute creates `LeftMargin`, `RightMargin`, `TopMargin` and
+`BottomMargin` attributes at once. Examples:
+```swift
+// Apply leftMargin = 0, rightMargin = 0, topMargin = 0 and bottomMargin = 0 constraints to its superview
+view <- Margins()
+// Apply leftMargin = 10, rightMargin = 10, topMargin = 10 and bottomMargin = 10 constraints to its superview
+view <- Margins(10)
+// Apply leftMargin = 10, rightMargin = 10, topMargin = 5 and bottomMargin = 5 constraints to its superview
+view <- Margins(UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
+```
 
-* `CenterWithinMargins`:
+* `CenterWithinMargins`: It creates `CenterXWithinMargins` and `CenterYWithinMargins`
+attributes. Examples:
+```swift
+// Apply centerXWithinMargins = 0 and centerYWithinMargins = 0 constraints to its superview
+view <- CenterWithinMargins()
+// Apply centerXWithinMargins = 10 and centerYWithinMargins = 10 constraints to its superview
+view <- CenterWithinMargins(10)
+// Apply centerXWithinMargins = 0 and centerYWithinMargins = 50 constraints to its superview
+view <- CenterWithinMargins(CGPoint(x: 0, y: 50))
+```
 
-<!--
-CompoundAttributes
-Priorities
-Conditions
-Animations
-Updating constraints
--->
+###Priorities
+
+###Conditions
+
+###Updating constraints
+
+###Animating constraints
+
+##Example project
 
 
 ## Author
