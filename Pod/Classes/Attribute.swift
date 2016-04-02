@@ -112,7 +112,7 @@ public class Attribute {
         return self
     }
     
-    // MARK: Internal methods
+    // MARK: Internal methods (acting as protected)
     
     /** 
         This method evaluates whether an `Attribute` should be
@@ -156,6 +156,17 @@ public class Attribute {
         
         // Return the constraint
         return [layoutConstraint]
+    }
+    
+    /**
+        Method to be overriden by the child classes, determines
+        whether the `NSLayoutConstraint` created by the `Attribute`
+        will be stored by the `superview` or the `createView`
+        - returns boolean if the resulting constraint is owned by
+        the superview
+     */
+    internal func ownedBySuperview() -> Bool {
+        return true
     }
     
 }
