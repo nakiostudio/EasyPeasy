@@ -21,9 +21,6 @@ platform :ios do
       scheme: scheme,
       workspace: workspace
     )
-
-    # Check Pod integrity
-    sh "pod lib lint --quick"
   end
 
 end
