@@ -141,16 +141,4 @@ public class Size: CompoundAttribute {
         return self
     }
     
-    // MARK: Overriden methods
-    
-    /**
-        Method overriden to indicate that `PositionAttributes` are
-        owned by `createView` and not `superview`
-        - returns boolean if the resulting constraint is owned by
-        the superview
-     */
-    override func ownedBySuperview() -> Bool {
-        return false
-    }
-    
 }

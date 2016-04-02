@@ -78,14 +78,19 @@ public extension UIView {
         closures will be evaluated again
      */
     public func easy_reload() {
+        var storedAttributes: [Attribute] = []
+        
         // Reload attributes owned by the superview
         if let attributes = (self.superview?.easy_attributes.filter { $0.createView === self }) {
-            self <- attributes
+            storedAttributes.appendContentsOf(attributes)
         }
         
         // Reload attributes owned by the current view
         let attributes = self.easy_attributes.filter { $0.createView === self }
-        self <- attributes
+        storedAttributes.appendContentsOf(attributes)
+
+        // Apply
+        self <- storedAttributes
     }
     
     /**
