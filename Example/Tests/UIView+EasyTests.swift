@@ -31,6 +31,26 @@ class UIView_EasyTests: XCTestCase {
         var shouldApply = false
         viewA <- Width(120).when { shouldApply }
         viewA <- Height(120)
+        XCTAssertTrue((viewA.constraints.filter{$0.easy_attribute != nil}).count == 1)
+        
+        // when
+        shouldApply = true
+        viewA.easy_reload()
+        
+        // then
+        XCTAssertTrue((viewA.constraints.filter{$0.easy_attribute != nil}).count == 2)
+    }
+    
+    func testThatReloadMethodReinstallsTheAttributesAppliedAndThisIsOwnedByTheSuperview() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        var shouldApply = false
+        viewA <- Left(120).when { shouldApply }
+        viewA <- Right(120)
         XCTAssertTrue((superview.constraints.filter{$0.easy_attribute != nil}).count == 1)
         
         // when

@@ -29,7 +29,7 @@ class Attribute_InstallTests: XCTestCase {
         let viewB = UIView(frame: CGRectZero)
         superview.addSubview(viewB)
         
-        let numberOfPreviousConstraints = superview.constraints.count
+        let numberOfPreviousConstraints = viewA.constraints.count
         
         // when
         let attributes = viewA <- Width(120)
@@ -41,7 +41,7 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue(viewA.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attributes.first!)
     }
     
-    func testThatAttributeWithFalseConditionIsNotInstalledButAttributeStored() {
+    func testThatAttributeIsInstalledWhenItsOwnedByTheSuperview() {
         // given
         let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
         let viewA = UIView(frame: CGRectZero)
@@ -52,11 +52,49 @@ class Attribute_InstallTests: XCTestCase {
         let numberOfPreviousConstraints = superview.constraints.count
         
         // when
+        let attributes = viewA <- Top(120)
+        
+        // then
+        XCTAssertTrue(superview.easy_attributes.count == 1)
+        XCTAssertTrue(superview.easy_attributes.first! === attributes.first!)
+        XCTAssertTrue(superview.constraints.count - numberOfPreviousConstraints == 1)
+        XCTAssertTrue(superview.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attributes.first!)
+    }
+    
+    func testThatAttributeWithFalseConditionIsNotInstalledButAttributeStored() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        
+        let numberOfPreviousConstraints = viewA.constraints.count
+        
+        // when
         viewA <- Width(120).when { false }
         
         // then
         XCTAssertTrue(viewA.easy_attributes.count == 1)
         XCTAssertTrue(viewA.constraints.count == numberOfPreviousConstraints)
+    }
+    
+    func testThatAttributeWithFalseConditionIsNotInstalledButAttributeStoredAndItsOwnedByTheSuperview() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        
+        let numberOfPreviousConstraints = superview.constraints.count
+        
+        // when
+        viewA <- Top(120).when { false }
+        
+        // then
+        XCTAssertTrue(superview.easy_attributes.count == 1)
+        XCTAssertTrue(superview.constraints.count == numberOfPreviousConstraints)
     }
     
     func testThatInstallationOfAConflictingAttributeReplacesTheInitialAttribute() {
@@ -67,11 +105,11 @@ class Attribute_InstallTests: XCTestCase {
         let viewB = UIView(frame: CGRectZero)
         superview.addSubview(viewB)
         let attributes = viewA <- Width(120)
-        XCTAssertTrue(superview.easy_attributes.count == 1)
+        XCTAssertTrue(viewA.easy_attributes.count == 1)
         XCTAssertTrue(viewA.easy_attributes.first! === attributes.first!)
         XCTAssertTrue(viewA.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attributes.first!)
     
-        let numberOfPreviousConstraints = superview.constraints.count
+        let numberOfPreviousConstraints = viewA.constraints.count
         
         // when
         let newAttributes = viewA <- Width(500)
@@ -79,8 +117,33 @@ class Attribute_InstallTests: XCTestCase {
         // then
         XCTAssertTrue(viewA.easy_attributes.count == 1)
         XCTAssertTrue(viewA.easy_attributes.first! === newAttributes.first!)
+        XCTAssertTrue(numberOfPreviousConstraints > 0)
         XCTAssertTrue(viewA.constraints.count == numberOfPreviousConstraints)
         XCTAssertTrue(viewA.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === newAttributes.first!)
+    }
+    
+    func testThatInstallationOfAConflictingAttributeReplacesTheInitialAttributeAndItsOwnedByTheSuperview() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        let attributes = viewA <- Top(120)
+        XCTAssertTrue(superview.easy_attributes.count == 1)
+        XCTAssertTrue(superview.easy_attributes.first! === attributes.first!)
+        XCTAssertTrue(superview.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attributes.first!)
+        
+        let numberOfPreviousConstraints = superview.constraints.count
+        
+        // when
+        let newAttributes = viewA <- Top(500)
+        
+        // then
+        XCTAssertTrue(superview.easy_attributes.count == 1)
+        XCTAssertTrue(superview.easy_attributes.first! === newAttributes.first!)
+        XCTAssertTrue(superview.constraints.count == numberOfPreviousConstraints)
+        XCTAssertTrue(superview.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === newAttributes.first!)
     }
     
     func testThatInstallationOfAttributesDoesntAffectToAttributesAlreadyInstalledForADifferentView() {
