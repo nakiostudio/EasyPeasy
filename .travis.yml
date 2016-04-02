@@ -1,6 +1,9 @@
 language: objective-c
 osx_image: xcode7.3
-
+branches:
+  only:
+    - master
+    - develop
 before_install:
   - bundle install
 script:
