@@ -84,8 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-EasyPeasy_Example/EasyPeasy.framework"
+  install_framework "Pods-Tests/EasyPeasy.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-EasyPeasy_Example/EasyPeasy.framework"
+  install_framework "Pods-Tests/EasyPeasy.framework"
 fi
