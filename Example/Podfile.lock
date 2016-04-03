@@ -1,5 +1,5 @@
 PODS:
-  - EasyPeasy (0.1.0)
+  - EasyPeasy (0.2)
 
 DEPENDENCIES:
   - EasyPeasy (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  EasyPeasy: f774a812ef07e5a1cf7df0da5e8c7ba60153def0
+  EasyPeasy: bcb46133750b3adadc172a8f55391104e2d32b15
 
 COCOAPODS: 0.39.0

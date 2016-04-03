@@ -31,6 +31,26 @@ class UIView_EasyTests: XCTestCase {
         var shouldApply = false
         viewA <- Width(120).when { shouldApply }
         viewA <- Height(120)
+        XCTAssertTrue((viewA.constraints.filter{$0.easy_attribute != nil}).count == 1)
+        
+        // when
+        shouldApply = true
+        viewA.easy_reload()
+        
+        // then
+        XCTAssertTrue((viewA.constraints.filter{$0.easy_attribute != nil}).count == 2)
+    }
+    
+    func testThatReloadMethodReinstallsTheAttributesAppliedAndThisIsOwnedByTheSuperview() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        var shouldApply = false
+        viewA <- Left(120).when { shouldApply }
+        viewA <- Right(120)
         XCTAssertTrue((superview.constraints.filter{$0.easy_attribute != nil}).count == 1)
         
         // when
@@ -59,6 +79,64 @@ class UIView_EasyTests: XCTestCase {
         for attribute in superview.easy_attributes {
             XCTAssertFalse(attribute is CompoundAttribute)
         }
+    }
+    
+    func testThatAttributesAreCorrectlyCleared() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        viewA <- [
+            Top(10),
+            Left(10),
+            Width(120),
+            Height(300)
+        ]
+        viewB <- Edges(10)
+        XCTAssertTrue(superview.constraints.count == 6)
+        XCTAssertTrue(superview.easy_attributes.count == 6)
+        XCTAssertTrue(viewA.constraints.count == 2)
+        XCTAssertTrue(viewA.easy_attributes.count == 2)
+        
+        // when
+        viewA.easy_clear()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 4)
+        XCTAssertTrue(superview.easy_attributes.count == 4)
+        XCTAssertTrue(viewA.constraints.count == 0)
+        XCTAssertTrue(viewA.easy_attributes.count == 0)
+    }
+    
+    func testThatClearWhenViewDoesntHaveSuperviewDoesnotThrowAssertion() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        viewA <- [
+            Top(10),
+            Left(10),
+            Width(120),
+            Height(300)
+        ]
+        viewB <- Edges(10)
+        XCTAssertTrue(superview.constraints.count == 6)
+        XCTAssertTrue(superview.easy_attributes.count == 6)
+        XCTAssertTrue(viewA.constraints.count == 2)
+        XCTAssertTrue(viewA.easy_attributes.count == 2)
+        
+        // when
+        viewA.easy_clear()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 4)
+        XCTAssertTrue(superview.easy_attributes.count == 4)
+        XCTAssertTrue(viewA.constraints.count == 0)
+        XCTAssertTrue(viewA.easy_attributes.count == 0)
     }
     
 }
