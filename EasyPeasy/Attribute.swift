@@ -70,7 +70,7 @@ public class Attribute {
         - parameter value: `constant` of the constraint
         - returns: the `Attribute` instance created
      */
-    public init(_ value: Double) {
+    public init(_ value: CGFloat) {
         self.constant = Constant(value)
         self.priority = .HighPriority
     }

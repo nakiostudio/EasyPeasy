@@ -34,34 +34,38 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
     // Disable autoresizing to constraints translation
     lhs.translatesAutoresizingMaskIntoConstraints = false
     
-    // Create constraints to install
+    // Create constraints to install and gather regular attribtues
     var constraintsToInstall: [NSLayoutConstraint] = []
+    var regularAttributes: [Attribute] = []
     for attribute in rhs {
+        // Create the constraint
         let newConstraints = attribute.createConstraintForView(lhs)
         constraintsToInstall.appendContentsOf(newConstraints)
+        
+        // Gather regular attributes only as we don't want to store
+        // `CompoundAttribute` objects
+        var attributesToStore: [Attribute] = []
+        if let compountAttribute = attribute as? CompoundAttribute {
+            attributesToStore.appendContentsOf(compountAttribute.attributes)
+        }
+        else {
+            attributesToStore.append(attribute)
+        }
+        
+        // Append to the list of attributes that will be returned
+        regularAttributes.appendContentsOf(attributesToStore)
+        
+        // Store the attribute applied in the superview
+        if attribute.ownedBySuperview() {
+            lhs.superview?.easy_attributes.appendContentsOf(attributesToStore)
+        }
+        else { // Store the attributes applied in self
+            lhs.easy_attributes.appendContentsOf(attributesToStore)
+        }
     }
     
     // Install these constraints
     NSLayoutConstraint.activateConstraints(constraintsToInstall)
-    
-    // Gather regular attributes only as we don't want to store
-    // `CompoundAttribute` objects
-    var regularAttributes: [Attribute] = []
-    for attribute in rhs {
-        if let compountAttribute = attribute as? CompoundAttribute {
-            regularAttributes.appendContentsOf(compountAttribute.attributes)
-            continue
-        }
-        regularAttributes.append(attribute)
-    }
-    
-    // Store the attributes applied in the superview
-    let ownedBySuperview = regularAttributes.filter { $0.ownedBySuperview() }
-    lhs.superview?.easy_attributes.appendContentsOf(ownedBySuperview)
-    
-    // Store the attributes applied in self
-    let ownedBySelf = regularAttributes.filter { !$0.ownedBySuperview() }
-    lhs.easy_attributes.appendContentsOf(ownedBySelf)
     
     // Return just regular `Attributes`, not `CompoundAttributes`
     return regularAttributes

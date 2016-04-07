@@ -33,7 +33,7 @@ public enum Modifier {
 public struct Constant {
     
     /// Value of the constant
-    let value: Double
+    let value: CGFloat
     
     /// Modifier applied to the `value` of the `Constant`
     var modifier: Modifier
@@ -44,7 +44,7 @@ public struct Constant {
         - parameter value: Value of the `Constant`
         - returns: the `Constant` struct created
      */
-    init(_ value: Double) {
+    init(_ value: CGFloat) {
         self.value = value
         self.modifier = .EqualTo
     }
@@ -56,7 +56,7 @@ public struct Constant {
         - parameter modifier: Modifier applied to the `value`
         - returns: the `Constant` struct created
      */
-    init(value: Double, modifier: Modifier) {
+    init(value: CGFloat, modifier: Modifier) {
         self.value = value
         self.modifier = modifier
     }
@@ -109,7 +109,7 @@ prefix operator >= {}
     - parameter rhs: Value for the `Constant`
     - returns: The resulting `Constant` struct
  */
-public prefix func >= (rhs: Double) -> Constant {
+public prefix func >= (rhs: CGFloat) -> Constant {
     return Constant(value: rhs, modifier: .GreaterThanOrEqualTo)
 }
 
@@ -121,7 +121,7 @@ prefix operator <= {}
     - parameter rhs: Value for the `Constant`
     - returns: The resulting `Constant` struct
  */
-public prefix func <= (rhs: Double) -> Constant {
+public prefix func <= (rhs: CGFloat) -> Constant {
     return Constant(value: rhs, modifier: .LessThanOrEqualTo)
 }
 
@@ -133,6 +133,6 @@ prefix operator * {}
     - parameter rhs: Value for the `multiplier`
     - returns: The resulting `Constant` struct
  */
-public prefix func * (rhs: Double) -> Constant {
+public prefix func * (rhs: CGFloat) -> Constant {
     return Constant(value: rhs, modifier: .MultipliedBy)
 }

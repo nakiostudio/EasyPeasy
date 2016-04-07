@@ -178,7 +178,7 @@ public class Edges: CompoundAttribute {
         - parameter value: `constant` of the constraint
         - returns: the `CompoundAttribute` instance created
      */
-    public override init(_ value: Double) {
+    public override init(_ value: CGFloat) {
         super.init()
         self.attributes = [
             Top(value),
@@ -217,10 +217,10 @@ public class Edges: CompoundAttribute {
     public init(_ edgeInsets: UIEdgeInsets) {
         super.init()
         self.attributes = [
-            Top(Double(edgeInsets.top)),
-            Left(Double(edgeInsets.left)),
-            Right(Double(edgeInsets.right)),
-            Bottom(Double(edgeInsets.bottom))
+            Top(CGFloat(edgeInsets.top)),
+            Left(CGFloat(edgeInsets.left)),
+            Right(CGFloat(edgeInsets.right)),
+            Bottom(CGFloat(edgeInsets.bottom))
         ]
     }
     
@@ -252,7 +252,7 @@ public class Center: CompoundAttribute {
         - parameter value: `constant` of the constraint
         - returns: the `CompoundAttribute` instance created
      */
-    public override init(_ value: Double) {
+    public override init(_ value: CGFloat) {
         super.init()
         self.attributes = [
             CenterX(value),
@@ -287,8 +287,8 @@ public class Center: CompoundAttribute {
     public init(_ point: CGPoint) {
         super.init()
         self.attributes = [
-            CenterX(Double(point.x)),
-            CenterY(Double(point.y))
+            CenterX(CGFloat(point.x)),
+            CenterY(CGFloat(point.y))
         ]
     }
     
@@ -323,7 +323,7 @@ public class Margins: CompoundAttribute {
         - parameter value: `constant` of the constraint
         - returns: the `CompoundAttribute` instance created
      */
-    public override init(_ value: Double) {
+    public override init(_ value: CGFloat) {
         super.init()
         self.attributes = [
             TopMargin(value),
@@ -362,10 +362,10 @@ public class Margins: CompoundAttribute {
     public init(_ edgeInsets: UIEdgeInsets) {
         super.init()
         self.attributes = [
-            TopMargin(Double(edgeInsets.top)),
-            LeftMargin(Double(edgeInsets.left)),
-            RightMargin(Double(edgeInsets.right)),
-            BottomMargin(Double(edgeInsets.bottom))
+            TopMargin(CGFloat(edgeInsets.top)),
+            LeftMargin(CGFloat(edgeInsets.left)),
+            RightMargin(CGFloat(edgeInsets.right)),
+            BottomMargin(CGFloat(edgeInsets.bottom))
         ]
     }
     
@@ -398,7 +398,7 @@ public class CenterWithinMargins: CompoundAttribute {
         - parameter value: `constant` of the constraint
         - returns: the `CompoundAttribute` instance created
      */
-    public override init(_ value: Double) {
+    public override init(_ value: CGFloat) {
         super.init()
         self.attributes = [
             CenterXWithinMargins(value),
@@ -433,8 +433,8 @@ public class CenterWithinMargins: CompoundAttribute {
     public init(_ point: CGPoint) {
         super.init()
         self.attributes = [
-            CenterXWithinMargins(Double(point.x)),
-            CenterYWithinMargins(Double(point.y))
+            CenterXWithinMargins(CGFloat(point.x)),
+            CenterYWithinMargins(CGFloat(point.y))
         ]
     }
     
