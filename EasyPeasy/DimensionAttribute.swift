@@ -85,7 +85,7 @@ public class Size: CompoundAttribute {
         - parameter value: `constant` of the constraint
         - returns: the `CompoundAttribute` instance created
      */
-    public override init(_ value: Double) {
+    public override init(_ value: CGFloat) {
         super.init()
         self.attributes = [
             Width(value),
@@ -121,8 +121,8 @@ public class Size: CompoundAttribute {
     public init(_ size: CGSize) {
         super.init()
         self.attributes = [
-            Width(Double(size.width)),
-            Height(Double(size.height))
+            Width(CGFloat(size.width)),
+            Height(CGFloat(size.height))
         ]
     }
     
