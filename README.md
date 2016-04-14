@@ -113,13 +113,6 @@ contentLabel <- Width().like(headerView)
 That line of code will create a constraint that sets a width for `contentLabel`
 equal to the `headerView` width.
 
-It's possible to create that relationship with any attribute of the reference
-view, for example the following piece of code will create a constraint setting a
-width for `contentLabel` equal to the width of `headerView`.
-```swift
-contentLabel <- Width().like(headerView)
-```
-
 #### PositionAttributes
 The table below shows the different position attributes available. Because they
 behave like the `NSLayoutConstraint` attributes, you can find a complete
