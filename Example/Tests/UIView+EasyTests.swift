@@ -139,4 +139,36 @@ class UIView_EasyTests: XCTestCase {
         XCTAssertTrue(viewA.easy_attributes.count == 0)
     }
     
+    func testThatLayoutConstraintIsCreatedWithTheExpectedAttributes() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
+        
+        // when
+        let attribute = Width().like(viewB)
+        let constraints = viewA <- attribute
+        
+        // then
+        XCTAssertTrue(constraints[0].firstAttribute == .Width)
+        XCTAssertTrue(constraints[0].firstItem === viewA)
+        XCTAssertTrue(constraints[0].secondItem === viewB)
+        XCTAssertTrue(constraints[0].easy_attribute === attribute)
+        XCTAssertTrue(constraints[0].easy_attribute == attribute)
+        XCTAssertTrue(constraints[0].easy_attribute! =~ attribute)
+    }
+    
+    func testThatNoConstraintIsCreatedWhenViewDoesNotHaveSuperview() {
+        // given
+        let viewA = UIView(frame: CGRectZero)
+        
+        // when
+        let constraints = viewA <- Top(100)
+        
+        // then
+        XCTAssertTrue(constraints.count == 0)
+    }
+    
 }
