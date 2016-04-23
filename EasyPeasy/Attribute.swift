@@ -128,13 +128,16 @@ public class Attribute {
         // Reference to the target view
         self.createView = view
         
+        // Resolve constraint conflicts
+        self.resolveConflictsOnView(view)
+        
+        // Store attribute in UIView
+        self.storeOnView(view)
+        
         // If condition is `false` return
         if self.shouldInstallOnView(view) == false {
             return []
         }
-        
-        // Resolve constraint conflicts
-        self.resolveConflictsOnView(view)
         
         // Build layout constraint
         let constantFactor: CGFloat = self.createAttribute.shouldInvertConstant ? -1 : 1

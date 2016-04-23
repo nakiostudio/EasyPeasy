@@ -17,9 +17,9 @@ infix operator <- {}
     in the left hand side of it
     - parameter lhs: `UIView` the attributes will apply to
     - parameter rhs: Attribute applied to the `UIView`
-    - returns: The array of attributes applied
+    - returns: The array of `NSLayoutConstraints` applied
  */
-public func <- (lhs: UIView, rhs: Attribute) -> [Attribute] {
+public func <- (lhs: UIView, rhs: Attribute) -> [NSLayoutConstraint] {
     return lhs <- [rhs]
 }
 
@@ -28,47 +28,26 @@ public func <- (lhs: UIView, rhs: Attribute) -> [Attribute] {
      in the left hand side of it
      - parameter lhs: UIView the attributes will apply to
      - parameter rhs: Attributes applied to the UIView
-     - returns: The array of attributes applied
+     - returns: The array of `NSLayoutConstraints` applied
  */
-public func <- (lhs: UIView, rhs: [Attribute]) -> [Attribute] {
+public func <- (lhs: UIView, rhs: [Attribute]) -> [NSLayoutConstraint] {
     // Disable autoresizing to constraints translation
     lhs.translatesAutoresizingMaskIntoConstraints = false
     
     // Create constraints to install and gather regular attribtues
     var constraintsToInstall: [NSLayoutConstraint] = []
-    var regularAttributes: [Attribute] = []
+
     for attribute in rhs {
         // Create the constraint
         let newConstraints = attribute.createConstraintForView(lhs)
         constraintsToInstall.appendContentsOf(newConstraints)
-        
-        // Gather regular attributes only as we don't want to store
-        // `CompoundAttribute` objects
-        var attributesToStore: [Attribute] = []
-        if let compountAttribute = attribute as? CompoundAttribute {
-            attributesToStore.appendContentsOf(compountAttribute.attributes)
-        }
-        else {
-            attributesToStore.append(attribute)
-        }
-        
-        // Append to the list of attributes that will be returned
-        regularAttributes.appendContentsOf(attributesToStore)
-        
-        // Store the attribute applied in the superview
-        if attribute.ownedBySuperview() {
-            lhs.superview?.easy_attributes.appendContentsOf(attributesToStore)
-        }
-        else { // Store the attributes applied in self
-            lhs.easy_attributes.appendContentsOf(attributesToStore)
-        }
     }
     
     // Install these constraints
     NSLayoutConstraint.activateConstraints(constraintsToInstall)
     
     // Return just regular `Attributes`, not `CompoundAttributes`
-    return regularAttributes
+    return constraintsToInstall
 }
 
 /**

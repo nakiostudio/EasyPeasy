@@ -61,6 +61,19 @@ internal extension Attribute {
     }
     
     /**
+ 
+     */
+    internal func storeOnView(view: UIView) {
+        // Store the attribute applied in the superview
+        if self.ownedBySuperview() {
+            view.superview?.easy_attributes.append(self)
+        }
+        else { // Store the attributes applied in view
+            view.easy_attributes.append(self)
+        }
+    }
+    
+    /**
         Determines which `ReferenceAttribute` must be taken as reference
         attribute for the actual Attribute class. Usually is the opposite
         of the one that is going to be installed
