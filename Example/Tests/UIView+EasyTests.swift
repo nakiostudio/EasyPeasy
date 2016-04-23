@@ -68,7 +68,7 @@ class UIView_EasyTests: XCTestCase {
         superview.addSubview(viewA)
 
         // when
-        let attributes = viewA <- Edges(10)
+        let attributes = (viewA <- Edges(10)).flatMap { $0.easy_attribute }
         
         // then
         XCTAssertTrue(attributes.count == 4)
