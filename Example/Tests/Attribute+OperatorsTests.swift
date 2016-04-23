@@ -33,11 +33,14 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Width(120)
-        let attributeB = viewB <- Width(340)
+        let attributeA = Width(120)
+        let attributeB = Width(340)
+        
+        viewA <- attributeA
+        viewB <- attributeB
         
         // then
-        XCTAssertFalse(attributeA.first! =~ attributeB.first!)
+        XCTAssertFalse(attributeA =~ attributeB)
     }
     
     func testThatConflictingOperatorReturnsTrueForConflictingAttributes() {
@@ -49,11 +52,14 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Left(120).to(viewB)
-        let attributeB = viewA <- Left(340).to(viewB)
+        let attributeA = Left(120).to(viewB)
+        let attributeB = Left(340).to(viewB)
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
-        XCTAssertTrue(attributeA.first! =~ attributeB.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
     }
     
     func testThatConflictingOperatorReturnsFalseForAttributesWithDifferentPriority() {
@@ -65,11 +71,14 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Left(120).to(viewB).with(.LowPriority)
-        let attributeB = viewA <- Left(340).to(viewB)
+        let attributeA = Left(120).to(viewB).with(.LowPriority)
+        let attributeB = Left(340).to(viewB)
         
+        viewA <- attributeA
+        viewA <- attributeB
+            
         // then
-        XCTAssertFalse(attributeA.first! =~ attributeB.first!)
+        XCTAssertFalse(attributeA =~ attributeB)
     }
     
     func testThatConflictingOperatorReturnsTrueForAttributesWithSamePriority() {
@@ -81,11 +90,14 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Left(120).to(viewB).with(.LowPriority)
-        let attributeB = viewA <- Left(340).to(viewB).with(.LowPriority)
+        let attributeA = Left(120).to(viewB).with(.LowPriority)
+        let attributeB = Left(340).to(viewB).with(.LowPriority)
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
-        XCTAssertTrue(attributeA.first! =~ attributeB.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
     }
     
     func testThatConflictingOperatorReturnsFalseForAttributesWithDifferentResultOfWhenCondition() {
@@ -97,11 +109,14 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Left(120).to(viewB).with(.LowPriority).when { true }
-        let attributeB = viewA <- Left(340).to(viewB).with(.LowPriority).when { false }
+        let attributeA = Left(120).to(viewB).with(.LowPriority).when { true }
+        let attributeB = Left(340).to(viewB).with(.LowPriority).when { false }
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
-        XCTAssertFalse(attributeA.first! =~ attributeB.first!)
+        XCTAssertFalse(attributeA =~ attributeB)
     }
     
     func testThatConflictingOperatorReturnsTrueForAttributesWithSameResultOfWhenCondition() {
@@ -113,14 +128,17 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Left(120).to(viewB).with(.LowPriority).when { true }
-        let attributeB = viewA <- Left(340).to(viewB).with(.LowPriority).when { true }
+        let attributeA = Left(120).to(viewB).with(.LowPriority).when { true }
+        let attributeB = Left(340).to(viewB).with(.LowPriority).when { true }
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
-        XCTAssertTrue(attributeA.first! =~ attributeB.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
     }
     
-    func testThatConditionForTheLhsItemIsIgnored() {
+    func testThatConditionForTheLhsItemIsNotIgnored() {
         // given
         let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
         let viewA = UIView(frame: CGRectZero)
@@ -129,11 +147,14 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Left(120).to(viewB).with(.LowPriority).when { false }
-        let attributeB = viewA <- Left(340).to(viewB).with(.LowPriority).when { false }
+        let attributeA = Left(120).to(viewB).with(.LowPriority).when { false }
+        let attributeB = Left(340).to(viewB).with(.LowPriority).when { false }
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
-        XCTAssertFalse(attributeA.first! =~ attributeB.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
     }
     
     func testThatLeftAttributeConflictsWithAllAttributesOfItsKind() {
@@ -145,24 +166,31 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Left(120).to(viewB)
-        let attributeB = viewA <- LeftMargin(340).to(viewB)
-        let attributeC = viewA <- LeadingMargin(340).to(viewB)
-        let attributeD = viewA <- CenterX(340).to(viewB)
-        let attributeE = viewA <- CenterXWithinMargins(340).to(viewB)
-        let attributeF = viewA <- Leading(450).to(viewB)
+        let attributeA = Left(120).to(viewB)
+        let attributeB = LeftMargin(340).to(viewB)
+        let attributeC = LeadingMargin(340).to(viewB)
+        let attributeD = CenterX(340).to(viewB)
+        let attributeE = CenterXWithinMargins(340).to(viewB)
+        let attributeF = Leading(450).to(viewB)
+        
+        viewA <- attributeA
+        viewA <- attributeB
+        viewA <- attributeC
+        viewA <- attributeD
+        viewA <- attributeE
+        viewA <- attributeF
         
         // then
-        XCTAssertTrue(attributeA.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeD.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeE.first!)
-        XCTAssertTrue(attributeE.first! =~ attributeF.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeA.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeE.first! =~ attributeD.first!)
-        XCTAssertTrue(attributeF.first! =~ attributeE.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
+        XCTAssertTrue(attributeB =~ attributeC)
+        XCTAssertTrue(attributeC =~ attributeD)
+        XCTAssertTrue(attributeD =~ attributeE)
+        XCTAssertTrue(attributeE =~ attributeF)
+        XCTAssertTrue(attributeB =~ attributeA)
+        XCTAssertTrue(attributeC =~ attributeB)
+        XCTAssertTrue(attributeD =~ attributeC)
+        XCTAssertTrue(attributeE =~ attributeD)
+        XCTAssertTrue(attributeF =~ attributeE)
     }
     
     func testThatRightAttributeConflictsWithAllAttributesOfItsKind() {
@@ -174,24 +202,32 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Right(120).to(viewB)
-        let attributeB = viewA <- TrailingMargin(340).to(viewB)
-        let attributeC = viewA <- CenterX(340).to(viewB)
-        let attributeD = viewA <- RightMargin(340).to(viewB)
-        let attributeE = viewA <- CenterXWithinMargins(340).to(viewB)
-        let attributeF = viewA <- Trailing(450).to(viewB)
+        let attributeA = Right(120).to(viewB)
+        let attributeB = TrailingMargin(340).to(viewB)
+        let attributeC = CenterX(340).to(viewB)
+        let attributeD = RightMargin(340).to(viewB)
+        let attributeE = CenterXWithinMargins(340).to(viewB)
+        let attributeF = Trailing(450).to(viewB)
+        
+        viewA <- attributeA
+        viewA <- attributeB
+        viewA <- attributeC
+        viewA <- attributeD
+        viewA <- attributeE
+        viewA <- attributeF
+        
         
         // then
-        XCTAssertTrue(attributeA.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeD.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeE.first!)
-        XCTAssertTrue(attributeE.first! =~ attributeF.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeA.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeE.first! =~ attributeD.first!)
-        XCTAssertTrue(attributeF.first! =~ attributeE.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
+        XCTAssertTrue(attributeB =~ attributeC)
+        XCTAssertTrue(attributeC =~ attributeD)
+        XCTAssertTrue(attributeD =~ attributeE)
+        XCTAssertTrue(attributeE =~ attributeF)
+        XCTAssertTrue(attributeB =~ attributeA)
+        XCTAssertTrue(attributeC =~ attributeB)
+        XCTAssertTrue(attributeD =~ attributeC)
+        XCTAssertTrue(attributeE =~ attributeD)
+        XCTAssertTrue(attributeF =~ attributeE)
     }
     
     func testThatTopAttributeConflictsWithAllAttributesOfItsKind() {
@@ -203,21 +239,27 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Top(120).to(viewB)
-        let attributeB = viewA <- TopMargin(340).to(viewB)
-        let attributeC = viewA <- CenterY(340).to(viewB)
-        let attributeD = viewA <- FirstBaseline(340).to(viewB)
-        let attributeE = viewA <- CenterYWithinMargins(340).to(viewB)
+        let attributeA = Top(120).to(viewB)
+        let attributeB = TopMargin(340).to(viewB)
+        let attributeC = CenterY(340).to(viewB)
+        let attributeD = FirstBaseline(340).to(viewB)
+        let attributeE = CenterYWithinMargins(340).to(viewB)
+        
+        viewA <- attributeA
+        viewA <- attributeB
+        viewA <- attributeC
+        viewA <- attributeD
+        viewA <- attributeE
         
         // then
-        XCTAssertTrue(attributeA.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeD.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeE.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeA.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeE.first! =~ attributeD.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
+        XCTAssertTrue(attributeB =~ attributeC)
+        XCTAssertTrue(attributeC =~ attributeD)
+        XCTAssertTrue(attributeD =~ attributeE)
+        XCTAssertTrue(attributeB =~ attributeA)
+        XCTAssertTrue(attributeC =~ attributeB)
+        XCTAssertTrue(attributeD =~ attributeC)
+        XCTAssertTrue(attributeE =~ attributeD)
     }
     
     func testThatBottomAttributeConflictsWithAllAttributesOfItsKind() {
@@ -229,21 +271,28 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- Bottom(120).to(viewB)
-        let attributeB = viewA <- BottomMargin(340).to(viewB)
-        let attributeC = viewA <- CenterY(340).to(viewB)
-        let attributeD = viewA <- LastBaseline(340).to(viewB)
-        let attributeE = viewA <- CenterYWithinMargins(340).to(viewB)
+        let attributeA = Bottom(120).to(viewB)
+        let attributeB = BottomMargin(340).to(viewB)
+        let attributeC = CenterY(340).to(viewB)
+        let attributeD = LastBaseline(340).to(viewB)
+        let attributeE = CenterYWithinMargins(340).to(viewB)
+        
+        viewA <- attributeA
+        viewA <- attributeB
+        viewA <- attributeC
+        viewA <- attributeD
+        viewA <- attributeE
+        
         
         // then
-        XCTAssertTrue(attributeA.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeD.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeE.first!)
-        XCTAssertTrue(attributeB.first! =~ attributeA.first!)
-        XCTAssertTrue(attributeC.first! =~ attributeB.first!)
-        XCTAssertTrue(attributeD.first! =~ attributeC.first!)
-        XCTAssertTrue(attributeE.first! =~ attributeD.first!)
+        XCTAssertTrue(attributeA =~ attributeB)
+        XCTAssertTrue(attributeB =~ attributeC)
+        XCTAssertTrue(attributeC =~ attributeD)
+        XCTAssertTrue(attributeD =~ attributeE)
+        XCTAssertTrue(attributeB =~ attributeA)
+        XCTAssertTrue(attributeC =~ attributeB)
+        XCTAssertTrue(attributeD =~ attributeC)
+        XCTAssertTrue(attributeE =~ attributeD)
     }
     
     func testThatWidthDoesNotConflictWithHeight() {
@@ -253,11 +302,14 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewA)
         
         // when
-        let attributeA = viewA <- Width(200)
-        let attributeB = viewA <- Height(100)
+        let attributeA = Width(200)
+        let attributeB = Height(100)
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
-        XCTAssertFalse(attributeA.first! =~ attributeB.first!)
+        XCTAssertFalse(attributeA =~ attributeB)
     }
 
     // MARK: Tests for equal operator
@@ -287,8 +339,11 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewB)
         
         // when
-        let attributeA = viewA <- LeftMargin(>=11).to(viewB).with(.CustomPriority(23))
-        let attributeB = viewA <- LeftMargin(>=11).to(viewB).with(.CustomPriority(23))
+        let attributeA = LeftMargin(>=11).to(viewB).with(.CustomPriority(23))
+        let attributeB = LeftMargin(>=11).to(viewB).with(.CustomPriority(23))
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
         XCTAssertTrue(attributeA == attributeB)
@@ -353,8 +408,11 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewC)
         
         // when
-        let attributeA = viewA <- LeftMargin(>=11).to(viewC).with(.CustomPriority(23)).when { false }
-        let attributeB = viewB <- LeftMargin(>=11).to(viewC).with(.CustomPriority(23)).when { false }
+        let attributeA = LeftMargin(>=11).to(viewC).with(.CustomPriority(23)).when { false }
+        let attributeB = LeftMargin(>=11).to(viewC).with(.CustomPriority(23)).when { false }
+        
+        viewA <- attributeA
+        viewB <- attributeB
         
         // then
         XCTAssertFalse(attributeA == attributeB)
@@ -371,8 +429,11 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewC)
         
         // when
-        let attributeA = viewA <- LeftMargin(>=11).to(viewB).with(.CustomPriority(23)).when { false }
-        let attributeB = viewA <- LeftMargin(>=11).to(viewC).with(.CustomPriority(23)).when { false }
+        let attributeA = LeftMargin(>=11).to(viewB).with(.CustomPriority(23)).when { false }
+        let attributeB = LeftMargin(>=11).to(viewC).with(.CustomPriority(23)).when { false }
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
         XCTAssertFalse(attributeA == attributeB)
@@ -389,8 +450,11 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewC)
         
         // when
-        let attributeA = viewA <- LeftMargin(>=11).to(viewB, .Right).with(.CustomPriority(23)).when { false }
-        let attributeB = viewA <- LeftMargin(>=11).to(viewB, .Left).with(.CustomPriority(23)).when { false }
+        let attributeA = LeftMargin(>=11).to(viewB, .Right).with(.CustomPriority(23)).when { false }
+        let attributeB = LeftMargin(>=11).to(viewB, .Left).with(.CustomPriority(23)).when { false }
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
         XCTAssertFalse(attributeA == attributeB)
@@ -425,8 +489,11 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewC)
         
         // when
-        let attributeA = viewA <- LeftMargin(>=11).to(viewB, .LeftMargin).with(.LowPriority).when { false }
-        let attributeB = viewA <- LeftMargin(>=11).to(viewB, .LeftMargin).with(.CustomPriority(23)).when { false }
+        let attributeA = LeftMargin(>=11).to(viewB, .LeftMargin).with(.LowPriority).when { false }
+        let attributeB = LeftMargin(>=11).to(viewB, .LeftMargin).with(.CustomPriority(23)).when { false }
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
         XCTAssertFalse(attributeA == attributeB)
@@ -461,8 +528,11 @@ class Attribute_OperatorsTests: XCTestCase {
         superview.addSubview(viewC)
         
         // when
-        let attributeA = viewA <- Width().like(viewC)
-        let attributeB = viewA <- Width().like(viewC)
+        let attributeA = Width().like(viewC)
+        let attributeB = Width().like(viewC)
+        
+        viewA <- attributeA
+        viewA <- attributeB
         
         // then
         XCTAssertTrue(attributeA == attributeB)

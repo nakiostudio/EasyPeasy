@@ -46,12 +46,12 @@ public func == (lhs: Attribute, rhs: Attribute) -> Bool {
         return false
     }
     
-    // Priorities conflict
+    // Priorities
     if lhs.priority.layoutPriority() != rhs.priority.layoutPriority() {
         return false
     }
     
-    // Conditions conflict
+    // Conditions
     var lhsCondition = true
     if let createView = lhs.createView {
         lhsCondition = lhs.shouldInstallOnView(createView)
@@ -92,14 +92,18 @@ internal func =~ (installed: Attribute, toInstall: Attribute) -> Bool {
         return false
     }
     
-    // Conditions conflict (we assume condition is true for
-    // the installed view)
+    // Conditions conflict
+    var installedCondition = true
+    if let createView = installed.createView {
+        installedCondition = installed.shouldInstallOnView(createView)
+    }
+    
     var toInstallCondition = true
     if let createView = toInstall.createView {
         toInstallCondition = toInstall.shouldInstallOnView(createView)
     }
     
-    if toInstallCondition == false {
+    if installedCondition != toInstallCondition {
         return false
     }
     
