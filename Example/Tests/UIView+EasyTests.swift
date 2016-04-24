@@ -75,8 +75,8 @@ class UIView_EasyTests: XCTestCase {
         for attribute in attributes {
             XCTAssertFalse(attribute is CompoundAttribute)
         }
-        XCTAssertTrue(superview.easy_attributes.count == 4)
-        for attribute in superview.easy_attributes {
+        XCTAssertTrue(superview.attributes.count == 4)
+        for attribute in superview.attributes {
             XCTAssertFalse(attribute is CompoundAttribute)
         }
     }
@@ -96,18 +96,18 @@ class UIView_EasyTests: XCTestCase {
         ]
         viewB <- Edges(10)
         XCTAssertTrue(superview.constraints.count == 6)
-        XCTAssertTrue(superview.easy_attributes.count == 6)
+        XCTAssertTrue(superview.attributes.count == 6)
         XCTAssertTrue(viewA.constraints.count == 2)
-        XCTAssertTrue(viewA.easy_attributes.count == 2)
+        XCTAssertTrue(viewA.attributes.count == 2)
         
         // when
         viewA.easy_clear()
         
         // then
         XCTAssertTrue(superview.constraints.count == 4)
-        XCTAssertTrue(superview.easy_attributes.count == 4)
+        XCTAssertTrue(superview.attributes.count == 4)
         XCTAssertTrue(viewA.constraints.count == 0)
-        XCTAssertTrue(viewA.easy_attributes.count == 0)
+        XCTAssertTrue(viewA.attributes.count == 0)
     }
     
     func testThatClearWhenViewDoesntHaveSuperviewDoesnotThrowAssertion() {
@@ -125,18 +125,18 @@ class UIView_EasyTests: XCTestCase {
         ]
         viewB <- Edges(10)
         XCTAssertTrue(superview.constraints.count == 6)
-        XCTAssertTrue(superview.easy_attributes.count == 6)
+        XCTAssertTrue(superview.attributes.count == 6)
         XCTAssertTrue(viewA.constraints.count == 2)
-        XCTAssertTrue(viewA.easy_attributes.count == 2)
+        XCTAssertTrue(viewA.attributes.count == 2)
         
         // when
         viewA.easy_clear()
         
         // then
         XCTAssertTrue(superview.constraints.count == 4)
-        XCTAssertTrue(superview.easy_attributes.count == 4)
+        XCTAssertTrue(superview.attributes.count == 4)
         XCTAssertTrue(viewA.constraints.count == 0)
-        XCTAssertTrue(viewA.easy_attributes.count == 0)
+        XCTAssertTrue(viewA.attributes.count == 0)
     }
     
     func testThatLayoutConstraintIsCreatedWithTheExpectedAttributes() {

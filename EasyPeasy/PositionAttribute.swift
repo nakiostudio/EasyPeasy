@@ -18,16 +18,16 @@ public class PositionAttribute: Attribute {
     
     /**
         This method overrides super's `createConstraintForView` to set 
-        the `UIView` parameter to `superview` as `referenceView` in case
+        the `UIView` parameter to `superview` as `referenceItem` in case
         this is not specified by using the `to:view:attribute` method
         - parameter view: `UIView` in which the generated 
         `NSLayoutConstraint` will be added
      */
-    override func createConstraintForView(view: UIView) -> [NSLayoutConstraint] {
-        if let superview = view.superview where self.referenceView == nil {
+    override func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+        if let superview = item.owningView where self.referenceItem == nil {
             self.to(superview)
         }
-        return super.createConstraintForView(view)
+        return super.createConstraintsForItem(item)
     }
     
     /**
@@ -43,7 +43,14 @@ public class PositionAttribute: Attribute {
         - returns: The current `Attribute` instance
      */
     public func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
-        self.referenceView = view
+        self.referenceItem = view
+        self.referenceAttribute = attribute
+        return self
+    }
+    
+    @available(iOS 9.0, *)
+    public func to(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+        self.referenceItem = layoutGuide
         self.referenceAttribute = attribute
         return self
     }

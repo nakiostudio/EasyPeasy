@@ -63,15 +63,15 @@ public class CompoundAttribute: Attribute {
         - returns an `Array` of `NSLayoutConstraint` objects that will
         be installed on the `UIView` passed as parameter
      */
-    override func createConstraintForView(view: UIView) -> [NSLayoutConstraint] {
-        // Reference to the target view
-        self.createView = view
+    override func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+        // Reference to the target item
+        self.createItem = item
         
         // Create the constraints that will be installed in
         // the `UIView` given composing the `CompoundAttribute`
         var constraints: [NSLayoutConstraint] = []
         for attribute in self.attributes {
-            let newConstraints = attribute.createConstraintForView(view)
+            let newConstraints = attribute.createConstraintsForItem(item)
             constraints.appendContentsOf(newConstraints)
         }
         

@@ -121,7 +121,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         for attribute in sizeAttribute.attributes {
-            XCTAssertTrue(attribute.referenceView === referenceView)
+            XCTAssertTrue(attribute.referenceItem === referenceView)
         }
     }
     

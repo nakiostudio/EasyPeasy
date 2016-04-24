@@ -23,7 +23,8 @@
 		705047A31B56C6E656EB69D93FC970A5 /* NSLayoutConstraint+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADE277BF668473287BADD7F923B4213 /* NSLayoutConstraint+Internal.swift */; };
 		8ADC9B10A6BBFFC59B23951EE2D23B54 /* ReferenceAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12D6877AE0E11013683D347AB4FAE85 /* ReferenceAttribute.swift */; };
 		A9DB1319DB39CD03378F02FDF4F69DD9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEBFEA1DB04EA9925E00FA92BDF5C03 /* Constant.swift */; };
-		BF4285EBA2EDC45219752533F8438457 /* UIView+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87850893B5FEE7ED6A070B7105474CB /* UIView+Internal.swift */; };
+		C16C7D781CCCE52D005AE021 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C7D771CCCE52D005AE021 /* Item.swift */; };
+		C16C7D7A1CCCEA3E005AE021 /* UILayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C7D791CCCEA3E005AE021 /* UILayoutGuide+Easy.swift */; };
 		CA45AE6F95BDC846AACB5A2A346BE5EF /* EasyPeasy-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A24C898C38B75485A0E3F0CC79A870EC /* EasyPeasy-dummy.m */; };
 		CB371CBEDEAEF5423EF22D1FB455A43F /* Pods-Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6D86222C09ADDD2353A0A6C6AFA67E /* Pods-Demo-dummy.m */; };
 		E14B024EEECCD5FFABB29EC48DD7CF16 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3B5170EC5C5D52175DE395518D3E6 /* Pods-Tests-dummy.m */; };
@@ -82,6 +83,8 @@
 		AB3CE05E1E0576C19079560C80636D56 /* UIView+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Easy.swift"; sourceTree = "<group>"; };
 		B08AC493AE94923845F272BFE7D2686D /* Pods-Demo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Demo-resources.sh"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C16C7D771CCCE52D005AE021 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		C16C7D791CCCEA3E005AE021 /* UILayoutGuide+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILayoutGuide+Easy.swift"; sourceTree = "<group>"; };
 		C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CDEBFEA1DB04EA9925E00FA92BDF5C03 /* Constant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D12D6877AE0E11013683D347AB4FAE85 /* ReferenceAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReferenceAttribute.swift; sourceTree = "<group>"; };
@@ -92,7 +95,6 @@
 		DF7CC6C3BC5E1DBA44B85D9C4A287C2E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4E44850C1C8B55F9E63D13B13F356E1 /* PositionAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PositionAttribute.swift; sourceTree = "<group>"; };
 		EC7660D42FD59C9556DC9F4E1624D7D3 /* Pods-Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-frameworks.sh"; sourceTree = "<group>"; };
-		F87850893B5FEE7ED6A070B7105474CB /* UIView+Internal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Internal.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,9 @@
 			isa = PBXGroup;
 			children = (
 				AB3CE05E1E0576C19079560C80636D56 /* UIView+Easy.swift */,
+				C16C7D791CCCEA3E005AE021 /* UILayoutGuide+Easy.swift */,
+				8ADE277BF668473287BADD7F923B4213 /* NSLayoutConstraint+Internal.swift */,
+				C16C7D771CCCE52D005AE021 /* Item.swift */,
 				7EBA60F17F71600C170C6F28D42C8017 /* Attribute.swift */,
 				D9B04CC1774E770094D179998E177059 /* Attribute+Install.swift */,
 				A1A5762EC9E0538ADB9EDD4EB04888F5 /* Attribute+Operators.swift */,
@@ -242,8 +247,6 @@
 				D12D6877AE0E11013683D347AB4FAE85 /* ReferenceAttribute.swift */,
 				CDEBFEA1DB04EA9925E00FA92BDF5C03 /* Constant.swift */,
 				A07E300593A742567F8987659FABEA18 /* Priority.swift */,
-				F87850893B5FEE7ED6A070B7105474CB /* UIView+Internal.swift */,
-				8ADE277BF668473287BADD7F923B4213 /* NSLayoutConstraint+Internal.swift */,
 			);
 			path = EasyPeasy;
 			sourceTree = "<group>";
@@ -384,8 +387,10 @@
 			files = (
 				44A3090BFAB61876F6D5C22649522AC5 /* Attribute+Install.swift in Sources */,
 				F8B74C6A2AB862D15563626BBC1E16F7 /* Attribute+Operators.swift in Sources */,
+				C16C7D7A1CCCEA3E005AE021 /* UILayoutGuide+Easy.swift in Sources */,
 				02A9ABF08F449D941312F2A4976A2511 /* Attribute.swift in Sources */,
 				6FBA7A861B5AABBDE2AD3623B796A1B8 /* CompoundAttribute.swift in Sources */,
+				C16C7D781CCCE52D005AE021 /* Item.swift in Sources */,
 				A9DB1319DB39CD03378F02FDF4F69DD9 /* Constant.swift in Sources */,
 				6A9C8785E12DEE5416EB824CE501CF93 /* DimensionAttribute.swift in Sources */,
 				CA45AE6F95BDC846AACB5A2A346BE5EF /* EasyPeasy-dummy.m in Sources */,
@@ -394,7 +399,6 @@
 				51DD90D7CDCAF69D3945CFCF16B9B2F9 /* Priority.swift in Sources */,
 				8ADC9B10A6BBFFC59B23951EE2D23B54 /* ReferenceAttribute.swift in Sources */,
 				68CFC21E5294A5B13C62E157E8DDE5AF /* UIView+Easy.swift in Sources */,
-				BF4285EBA2EDC45219752533F8438457 /* UIView+Internal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

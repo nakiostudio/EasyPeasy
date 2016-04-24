@@ -18,11 +18,10 @@ internal extension Attribute {
     /**
         Determines whether the `Attribute` must be installed or not
         depending on the `Condition` closure
-        - parameter view: `UIView` which superview will be checked
         - return boolean determining if the `Attribute` has to be
         applied
      */
-    internal func shouldInstallOnView(view: UIView) -> Bool {
+    internal func shouldInstall() -> Bool {
         return self.condition?() ?? true
     }
     
@@ -32,9 +31,9 @@ internal extension Attribute {
         with such `Attribute`
         - parameter view: `UIView` in which the `Attribute` will be installed
      */
-    internal func resolveConflictsOnView(view: UIView) {
+    internal func resolveConflictsOnItem(item: Item) {
         // Find conflicting constraints and attributes already installed
-        let ownerView = self.ownedBySuperview() ? view.superview! : view
+        let ownerView = self.ownedBySuperview() ? item.owningView! : item
         let conflictingConstraints = ownerView.constraints.filter { constraint in
             if let attribute = constraint.easy_attribute where attribute =~ self {
                 return true
@@ -43,25 +42,25 @@ internal extension Attribute {
         }
         
         // Remove conflicting attributes
-        let conflictingAttributes = ownerView.easy_attributes.filter { $0 != self && (($0 =~ self) == false) }
-        ownerView.easy_attributes = conflictingAttributes
+        let conflictingAttributes = ownerView.attributes.filter { $0 != self && (($0 =~ self) == false) }
+        ownerView.attributes = conflictingAttributes
         
         // Deactivate conflicting installed constraints
         NSLayoutConstraint.deactivateConstraints(conflictingConstraints)
     }
     
     /**
-        Appends the current attribute to the associated object `easy_attributes`
+        Appends the current attribute to the associated object `attributes`
         of the owner `UIView`
-        - parameter view: `UIView` in which the `Attribute` will be installed
+        - parameter item: `Item` in which the `Attribute` will be installed
      */
-    internal func storeOnView(view: UIView) {
-        // Store the attribute applied in the superview
+    internal func storeInItem(item: Item) {
+        // Store the attribute applied in the `ownerView`
         if self.ownedBySuperview() {
-            view.superview?.easy_attributes.append(self)
+            item.owningView?.attributes.append(self)
         }
-        else { // Store the attributes applied in view
-            view.easy_attributes.append(self)
+        else { // Store the attributes applied in `item`
+            item.attributes.append(self)
         }
     }
     
@@ -79,7 +78,7 @@ internal extension Attribute {
         
         // If reference view is the superview then return same attribute
         // as `createAttribute`
-        if let referenceView = self.referenceView where referenceView === self.createView?.superview {
+        if let referenceItem = self.referenceItem where referenceItem === self.createItem?.owningView {
             return self.createAttribute
         }
         

@@ -39,7 +39,7 @@ public class Attribute {
     public internal(set) var condition: Condition?
     
     /// Target `UIView` of the constraint
-    public internal(set) weak var createView: UIView?
+    public internal(set) weak var createItem: Item?
     
     /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
@@ -47,7 +47,7 @@ public class Attribute {
     }
     
     /// Reference `UIView` of the constraint
-    public internal(set) weak var referenceView: UIView?
+    public internal(set) weak var referenceItem: Item?
     
     /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?
@@ -124,33 +124,33 @@ public class Attribute {
         - returns an `Array` of `NSLayoutConstraint` objects that will
         be installed on the `UIView` passed as parameter
      */
-    internal func createConstraintForView(view: UIView) -> [NSLayoutConstraint] {
-        guard let _ = view.superview else {
-            debugPrint("EasyPeasy Attribute cannot be applied to view \(view) as its superview is nil")
+    internal func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+        guard let _ = item.owningView else {
+            debugPrint("EasyPeasy Attribute cannot be applied to item \(item) as its superview/owningView is nil")
             return []
         }
         
         // Reference to the target view
-        self.createView = view
+        self.createItem = item
         
         // Resolve constraint conflicts
-        self.resolveConflictsOnView(view)
+        self.resolveConflictsOnItem(item)
         
         // Store attribute in owner `UIView`
-        self.storeOnView(view)
+        self.storeInItem(item)
         
         // If condition is `false` return
-        if self.shouldInstallOnView(view) == false {
+        if self.shouldInstall() == false {
             return []
         }
         
         // Build layout constraint
         let constantFactor: CGFloat = self.createAttribute.shouldInvertConstant ? -1 : 1
         let layoutConstraint = NSLayoutConstraint(
-            item: view,
+            item: item,
             attribute: self.createAttribute.layoutAttribute,
             relatedBy: self.constant.layoutRelation(),
-            toItem: self.referenceView,
+            toItem: self.referenceItem,
             attribute: self.referenceAttributeHelper().layoutAttribute,
             multiplier: self.constant.layoutMultiplier(),
             constant: (self.constant.layoutValue() * constantFactor)
@@ -169,7 +169,7 @@ public class Attribute {
     /**
         Method to be overriden by the child classes, determines
         whether the `NSLayoutConstraint` created by the `Attribute`
-        will be stored by the `superview` or the `createView`
+        will be stored by the `superview` or the `createItem`
         - returns boolean if the resulting constraint is owned by
         the superview
      */

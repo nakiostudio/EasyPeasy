@@ -24,7 +24,6 @@ DerivedData
 Gemfile.lock
 
 # CI
-xcov_report/
 test_output/
 .fastlane/report.xml
 .fastlane/README.md

@@ -18,7 +18,7 @@ extension Attribute: Equatable { }
 public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     
     // Create views
-    if (lhs.createView === rhs.createView) == false {
+    if (lhs.createItem === rhs.createItem) == false {
         return false
     }
     
@@ -28,7 +28,7 @@ public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     }
     
     // Reference views
-    if (lhs.referenceView === rhs.referenceView) == false {
+    if (lhs.referenceItem === rhs.referenceItem) == false {
         return false
     }
     
@@ -52,17 +52,7 @@ public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     }
     
     // Conditions
-    var lhsCondition = true
-    if let createView = lhs.createView {
-        lhsCondition = lhs.shouldInstallOnView(createView)
-    }
-    
-    var rhsCondition = true
-    if let createView = rhs.createView {
-        rhsCondition = rhs.shouldInstallOnView(createView)
-    }
-    
-    if lhsCondition != rhsCondition {
+    if lhs.shouldInstall() != rhs.shouldInstall() {
         return false
     }
     
@@ -78,7 +68,7 @@ infix operator =~ {}
 internal func =~ (installed: Attribute, toInstall: Attribute) -> Bool {
     
     // Create views conflict
-    if (installed.createView === toInstall.createView) == false {
+    if (installed.createItem === toInstall.createItem) == false {
         return false
     }
     
@@ -93,17 +83,7 @@ internal func =~ (installed: Attribute, toInstall: Attribute) -> Bool {
     }
     
     // Conditions conflict
-    var installedCondition = true
-    if let createView = installed.createView {
-        installedCondition = installed.shouldInstallOnView(createView)
-    }
-    
-    var toInstallCondition = true
-    if let createView = toInstall.createView {
-        toInstallCondition = toInstall.shouldInstallOnView(createView)
-    }
-    
-    if installedCondition != toInstallCondition {
+    if installed.shouldInstall() != toInstall.shouldInstall() {
         return false
     }
     
