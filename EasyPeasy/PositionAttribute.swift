@@ -48,6 +48,13 @@ public class PositionAttribute: Attribute {
         return self
     }
     
+    @available(iOS 9.0, *)
+    public func to(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+        self.referenceItem = layoutGuide
+        self.referenceAttribute = attribute
+        return self
+    }
+    
 }
 
 /**
