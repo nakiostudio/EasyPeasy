@@ -47,7 +47,7 @@ public class Attribute {
     }
     
     /// Reference `UIView` of the constraint
-    public internal(set) weak var referenceView: UIView?
+    public internal(set) weak var referenceItem: AnyObject?
     
     /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?
@@ -150,7 +150,7 @@ public class Attribute {
             item: view,
             attribute: self.createAttribute.layoutAttribute,
             relatedBy: self.constant.layoutRelation(),
-            toItem: self.referenceView,
+            toItem: self.referenceItem,
             attribute: self.referenceAttributeHelper().layoutAttribute,
             multiplier: self.constant.layoutMultiplier(),
             constant: (self.constant.layoutValue() * constantFactor)

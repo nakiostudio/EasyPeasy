@@ -30,7 +30,7 @@ public class DimensionAttribute: Attribute {
         - returns: The current `Attribute` instance
      */
     public func like(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
-        self.referenceView = view
+        self.referenceItem = view
         self.referenceAttribute = attribute
         return self
     }
@@ -134,9 +134,9 @@ public class Size: CompoundAttribute {
         - returns: The current `CompoundAttribute` instance
      */
     public func like(view: UIView) -> Self {
-        self.referenceView = view
+        self.referenceItem = view
         for attr in self.attributes {
-            attr.referenceView = view
+            attr.referenceItem = view
         }
         return self
     }

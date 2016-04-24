@@ -79,7 +79,7 @@ internal extension Attribute {
         
         // If reference view is the superview then return same attribute
         // as `createAttribute`
-        if let referenceView = self.referenceView where referenceView === self.createView?.superview {
+        if let referenceItem = self.referenceItem where referenceItem === self.createView?.superview {
             return self.createAttribute
         }
         

@@ -28,7 +28,7 @@ public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     }
     
     // Reference views
-    if (lhs.referenceView === rhs.referenceView) == false {
+    if (lhs.referenceItem === rhs.referenceItem) == false {
         return false
     }
     
