@@ -64,12 +64,12 @@ public extension UIView {
         var storedAttributes: [Attribute] = []
         
         // Reload attributes owned by the superview
-        if let attributes = (self.superview?.easy_attributes.filter { $0.createView === self }) {
+        if let attributes = (self.superview?.easy_attributes.filter { $0.createItem === self }) {
             storedAttributes.appendContentsOf(attributes)
         }
         
         // Reload attributes owned by the current view
-        let attributes = self.easy_attributes.filter { $0.createView === self }
+        let attributes = self.easy_attributes.filter { $0.createItem === self }
         storedAttributes.appendContentsOf(attributes)
 
         // Apply
@@ -82,28 +82,28 @@ public extension UIView {
      */
     public func easy_clear() {
         // Remove from the stored Attribute objects of the superview
-        // those which createView is the current UIView
+        // those which createItem is the current UIView
         if let superview = self.superview {
-            superview.easy_attributes = superview.easy_attributes.filter { $0.createView !== self }
+            superview.easy_attributes = superview.easy_attributes.filter { $0.createItem !== self }
         }
         
         // Remove from the stored Attribute objects of the current view
-        // those which createView is the current UIView
-        self.easy_attributes = self.easy_attributes.filter { $0.createView !== self }
+        // those which createItem is the current UIView
+        self.easy_attributes = self.easy_attributes.filter { $0.createItem !== self }
         
         // Now uninstall those constraints
         var constraintsToUninstall: [NSLayoutConstraint] = []
         
-        // Gather NSLayoutConstraints in the superview with self as createView
+        // Gather NSLayoutConstraints in the superview with self as createItem
         for constraint in (self.superview?.constraints ?? []) {
-            if let attribute = constraint.easy_attribute where attribute.createView === self {
+            if let attribute = constraint.easy_attribute where attribute.createItem === self {
                 constraintsToUninstall.append(constraint)
             }
         }
         
-        // Gather NSLayoutConstraints in self with self as createView
+        // Gather NSLayoutConstraints in self with self as createItem
         for constraint in self.constraints {
-            if let attribute = constraint.easy_attribute where attribute.createView === self {
+            if let attribute = constraint.easy_attribute where attribute.createItem === self {
                 constraintsToUninstall.append(constraint)
             }
         }

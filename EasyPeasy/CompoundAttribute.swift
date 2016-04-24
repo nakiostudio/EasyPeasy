@@ -65,7 +65,7 @@ public class CompoundAttribute: Attribute {
      */
     override func createConstraintForView(view: UIView) -> [NSLayoutConstraint] {
         // Reference to the target view
-        self.createView = view
+        self.createItem = view
         
         // Create the constraints that will be installed in
         // the `UIView` given composing the `CompoundAttribute`

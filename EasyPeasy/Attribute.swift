@@ -39,7 +39,7 @@ public class Attribute {
     public internal(set) var condition: Condition?
     
     /// Target `UIView` of the constraint
-    public internal(set) weak var createView: UIView?
+    public internal(set) weak var createItem: UIView?
     
     /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
@@ -131,7 +131,7 @@ public class Attribute {
         }
         
         // Reference to the target view
-        self.createView = view
+        self.createItem = view
         
         // Resolve constraint conflicts
         self.resolveConflictsOnView(view)
@@ -169,7 +169,7 @@ public class Attribute {
     /**
         Method to be overriden by the child classes, determines
         whether the `NSLayoutConstraint` created by the `Attribute`
-        will be stored by the `superview` or the `createView`
+        will be stored by the `superview` or the `createItem`
         - returns boolean if the resulting constraint is owned by
         the superview
      */

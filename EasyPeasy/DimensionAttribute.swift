@@ -39,7 +39,7 @@ public class DimensionAttribute: Attribute {
     
     /**
         Method overriden to indicate that `PositionAttributes` are
-        owned by `createView` and not `superview`
+        owned by `createItem` and not `superview`
         - returns boolean if the resulting constraint is owned by
         the superview
      */
