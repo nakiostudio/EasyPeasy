@@ -1,0 +1,215 @@
+/**
+xcov - Xcode code coverage without hassle
+A tool developed by Carlos Vidal @carlostify
+*/
+
+/*----------------------------------------------------------------------------*/
+/*Reusable*/
+/*----------------------------------------------------------------------------*/
+
+.circle {
+	border-radius: 50%;
+	width: 14px;
+	height: 14px;
+  display: inline-block;
+}
+
+.circle-sm {
+	border-radius: 50%;
+	width: 11px;
+	height: 11px;
+  display: inline-block;
+}
+
+/*----------------------------------------------------------------------------*/
+/*General*/
+/*----------------------------------------------------------------------------*/
+
+html, body, .full-height {
+ height: 100%;
+ background-color: #101010;
+}
+
+.vertical-center {
+   position: relative;
+   top: 50%;
+   transform: translateY(-50%);
+   -webkit-transform: translateY(-50%);
+   -ms-transform: translateY(-50%);
+}
+
+.container-body {
+  padding-top: 50px;
+}
+
+/*----------------------------------------------------------------------------*/
+/*NavBar stuff*/
+/*----------------------------------------------------------------------------*/
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+  background-color: #101010;
+}
+
+.logo {
+  margin-top:10px;
+  height: 28px;
+  width: auto;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+/*----------------------------------------------------------------------------*/
+/*Coverage summary*/
+/*----------------------------------------------------------------------------*/
+
+.coverage-summary {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100% auto;
+  background-color: white;
+	padding-bottom: 30px;
+}
+
+.summary-counter {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  padding-bottom: 0px;
+  color: #00629a;
+  font-size: 110px;
+}
+
+.summary-description {
+  margin-top: -25px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+	text-shadow: 0px 0px 1px #333333;
+}
+
+/*----------------------------------------------------------------------------*/
+/*Target details*/
+/*----------------------------------------------------------------------------*/
+
+.target-details {
+  background-color: #406186;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  border-style: solid;
+  border-color: #6589b2;
+  border-width: 0px 0px 1px 0px;
+}
+
+.target-details:hover {
+  background-color: #6589b2;
+  cursor: pointer;
+}
+
+.target-name {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: white;
+  font-size: 22px;
+}
+
+.target-percentage {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 22px;
+}
+
+/*----------------------------------------------------------------------------*/
+/*Target files*/
+/*----------------------------------------------------------------------------*/
+
+.file-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-style: solid;
+  border-color: #202020;
+  border-width: 0px 0px 1px 0px;
+}
+
+.file-row:hover {
+  background: #404040;
+  cursor: pointer;
+}
+
+.file-ignored-row {
+	color: #838383;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-style: solid;
+  border-color: #202020;
+  border-width: 0px 0px 1px 0px;
+}
+
+.target-files {
+  background-color: #363636;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-icon {
+  width: 21px;
+  height: 21px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+/*----------------------------------------------------------------------------*/
+/*File functions*/
+/*----------------------------------------------------------------------------*/
+
+.function-row {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #202020;
+  border-style: solid;
+  border-color: #101010;
+  border-width: 0px 0px 1px 0px;
+}
+
+.function-row:hover {
+  background-color: #282828;
+}
+
+.function-name {
+  font-family: 'PT Mono', sans-serif;
+  padding-left: 46px;
+  padding-top: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*----------------------------------------------------------------------------*/
+/*Footer*/
+/*----------------------------------------------------------------------------*/
+
+.footer {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: #505050;
+  padding-top:15px;
+  padding-bottom: 15px;
+  background-color: #101010;
+}
+
+.footer > div > a {
+  color: #00629a;
+}
