@@ -9,3 +9,41 @@
 // SOFTWARE.
 
 import UIKit
+
+/**
+    Operator which applies the attribute given to the `UILayoutGuide`
+    located in the left hand side of it
+    - parameter lhs: `UILayoutGuide` the attributes will apply to
+    - parameter rhs: Attribute applied to the `UILayoutGuide`
+    - returns: The array of `NSLayoutConstraints` applied
+ */
+@available (iOS 9.0, *)
+public func <- (lhs: UILayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
+    return lhs <- [rhs]
+}
+
+/**
+    Opeator which applies the attributes given to the `UILayoutGuide`
+    located in the left hand side of it
+    - parameter lhs: `UILayoutGuide` the attributes will apply to
+    - parameter rhs: Attributes applied to the `UILayoutGuide`
+    - returns: The array of `NSLayoutConstraints` applied
+ */
+@available (iOS 9.0, *)
+public func <- (lhs: UILayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
+    // Create constraints to install and gather regular attribtues
+    var constraintsToInstall: [NSLayoutConstraint] = []
+    
+    for attribute in rhs {
+        // Create the constraint
+        let newConstraints = attribute.createConstraintsForItem(lhs)
+        constraintsToInstall.appendContentsOf(newConstraints)
+    }
+    
+    // Install these constraints
+    NSLayoutConstraint.activateConstraints(constraintsToInstall)
+    
+    // Return just regular `Attributes`, not `CompoundAttributes`
+    return constraintsToInstall
+}
+
