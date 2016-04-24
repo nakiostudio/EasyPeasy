@@ -18,11 +18,10 @@ internal extension Attribute {
     /**
         Determines whether the `Attribute` must be installed or not
         depending on the `Condition` closure
-        - parameter view: `UIView` which superview will be checked
         - return boolean determining if the `Attribute` has to be
         applied
      */
-    internal func shouldInstallOnView(view: UIView) -> Bool {
+    internal func shouldInstall() -> Bool {
         return self.condition?() ?? true
     }
     

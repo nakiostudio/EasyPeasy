@@ -52,17 +52,7 @@ public func == (lhs: Attribute, rhs: Attribute) -> Bool {
     }
     
     // Conditions
-    var lhsCondition = true
-    if let createItem = lhs.createItem {
-        lhsCondition = lhs.shouldInstallOnView(createItem)
-    }
-    
-    var rhsCondition = true
-    if let createItem = rhs.createItem {
-        rhsCondition = rhs.shouldInstallOnView(createItem)
-    }
-    
-    if lhsCondition != rhsCondition {
+    if lhs.shouldInstall() != rhs.shouldInstall() {
         return false
     }
     
@@ -93,17 +83,7 @@ internal func =~ (installed: Attribute, toInstall: Attribute) -> Bool {
     }
     
     // Conditions conflict
-    var installedCondition = true
-    if let createItem = installed.createItem {
-        installedCondition = installed.shouldInstallOnView(createItem)
-    }
-    
-    var toInstallCondition = true
-    if let createItem = toInstall.createItem {
-        toInstallCondition = toInstall.shouldInstallOnView(createItem)
-    }
-    
-    if installedCondition != toInstallCondition {
+    if installed.shouldInstall() != toInstall.shouldInstall() {
         return false
     }
     

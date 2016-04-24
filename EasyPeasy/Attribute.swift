@@ -140,7 +140,7 @@ public class Attribute {
         self.storeOnView(view)
         
         // If condition is `false` return
-        if self.shouldInstallOnView(view) == false {
+        if self.shouldInstall() == false {
             return []
         }
         
