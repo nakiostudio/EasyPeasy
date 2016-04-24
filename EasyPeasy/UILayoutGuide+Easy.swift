@@ -31,7 +31,7 @@ public func <- (lhs: UILayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
  */
 @available (iOS 9.0, *)
 public func <- (lhs: UILayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
-    // Create constraints to install and gather regular attribtues
+    // Create constraints to install
     var constraintsToInstall: [NSLayoutConstraint] = []
     
     for attribute in rhs {
@@ -43,7 +43,7 @@ public func <- (lhs: UILayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
     // Install these constraints
     NSLayoutConstraint.activateConstraints(constraintsToInstall)
     
-    // Return just regular `Attributes`, not `CompoundAttributes`
+    // Return the installed `NSLayoutConstraints`
     return constraintsToInstall
 }
 
