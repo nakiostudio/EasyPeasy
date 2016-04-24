@@ -19,7 +19,8 @@ platform :ios do
     # Check code coverage
     xcov(
       scheme: scheme,
-      workspace: workspace
+      workspace: workspace,
+      exclude_targets: "Demo.app"
     )
   end
 
