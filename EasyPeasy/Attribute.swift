@@ -124,20 +124,20 @@ public class Attribute {
         - returns an `Array` of `NSLayoutConstraint` objects that will
         be installed on the `UIView` passed as parameter
      */
-    internal func createConstraintForView(view: UIView) -> [NSLayoutConstraint] {
-        guard let _ = view.superview else {
-            debugPrint("EasyPeasy Attribute cannot be applied to view \(view) as its superview is nil")
+    internal func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+        guard let _ = item.owningView else {
+            debugPrint("EasyPeasy Attribute cannot be applied to item \(item) as its superview/owningView is nil")
             return []
         }
         
         // Reference to the target view
-        self.createItem = view
+        self.createItem = item
         
         // Resolve constraint conflicts
-        self.resolveConflictsOnView(view)
+        self.resolveConflictsOnItem(item)
         
         // Store attribute in owner `UIView`
-        self.storeOnView(view)
+        self.storeInItem(item)
         
         // If condition is `false` return
         if self.shouldInstall() == false {
@@ -147,7 +147,7 @@ public class Attribute {
         // Build layout constraint
         let constantFactor: CGFloat = self.createAttribute.shouldInvertConstant ? -1 : 1
         let layoutConstraint = NSLayoutConstraint(
-            item: view,
+            item: item,
             attribute: self.createAttribute.layoutAttribute,
             relatedBy: self.constant.layoutRelation(),
             toItem: self.referenceItem,

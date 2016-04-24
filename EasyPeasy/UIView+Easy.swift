@@ -39,7 +39,7 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [NSLayoutConstraint] {
 
     for attribute in rhs {
         // Create the constraint
-        let newConstraints = attribute.createConstraintForView(lhs)
+        let newConstraints = attribute.createConstraintsForItem(lhs)
         constraintsToInstall.appendContentsOf(newConstraints)
     }
     

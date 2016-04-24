@@ -31,36 +31,37 @@ internal extension Attribute {
         with such `Attribute`
         - parameter view: `UIView` in which the `Attribute` will be installed
      */
-    internal func resolveConflictsOnView(view: UIView) {
+    internal func resolveConflictsOnItem(item: Item) {
         // Find conflicting constraints and attributes already installed
-        let ownerView = self.ownedBySuperview() ? view.superview! : view
-        let conflictingConstraints = ownerView.constraints.filter { constraint in
+        let ownerView = self.ownedBySuperview() ? item.owningView : (item as? UIView)
+        let conflictingConstraints = ownerView?.constraints.filter { constraint in
             if let attribute = constraint.easy_attribute where attribute =~ self {
                 return true
             }
             return false
-        }
+        } ?? []
         
         // Remove conflicting attributes
-        let conflictingAttributes = ownerView.attributes.filter { $0 != self && (($0 =~ self) == false) }
-        ownerView.attributes = conflictingAttributes
+        if let conflictingAttributes = (ownerView?.attributes.filter { $0 != self && (($0 =~ self) == false) }) {
+            ownerView?.attributes = conflictingAttributes
+        }
         
         // Deactivate conflicting installed constraints
         NSLayoutConstraint.deactivateConstraints(conflictingConstraints)
     }
     
     /**
-        Appends the current attribute to the associated object `easy_attributes`
+        Appends the current attribute to the associated object `attributes`
         of the owner `UIView`
-        - parameter view: `UIView` in which the `Attribute` will be installed
+        - parameter item: `Item` in which the `Attribute` will be installed
      */
-    internal func storeOnView(view: UIView) {
-        // Store the attribute applied in the superview
+    internal func storeInItem(item: Item) {
+        // Store the attribute applied in the `ownerView`
         if self.ownedBySuperview() {
-            view.superview?.attributes.append(self)
+            item.owningView?.attributes.append(self)
         }
-        else { // Store the attributes applied in view
-            view.attributes.append(self)
+        else { // Store the attributes applied in `item`
+            item.attributes.append(self)
         }
     }
     
