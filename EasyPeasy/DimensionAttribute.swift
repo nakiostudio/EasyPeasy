@@ -35,6 +35,26 @@ public class DimensionAttribute: Attribute {
         return self
     }
     
+    /**
+        Establishes a relationship between the dimension attribute
+        applied to the `UIView` and the reference `UILayoutGuide` 
+        passed as parameter.
+     
+        It's also possible to link this relationship to a particular
+        attribute of the `layoutGuide` parameter by supplying `attribute`.
+     
+        - parameter layoutGuide: The reference `UILayoutGuide`
+        - parameter attribute: The attribute of `layoutGuide` we are 
+        establishing the relationship to
+        - returns: The current `Attribute` instance
+     */
+    @available (iOS 9.0, *)
+    public func like(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+        self.referenceItem = layoutGuide
+        self.referenceAttribute = attribute
+        return self
+    }
+    
     // MARK: Overriden methods
     
     /**
@@ -137,6 +157,22 @@ public class Size: CompoundAttribute {
         self.referenceItem = view
         for attr in self.attributes {
             attr.referenceItem = view
+        }
+        return self
+    }
+    
+    /**
+        Establishes a relationship between the dimension attribute
+        applied to the `UIView` and the reference `UILayoutGuide` 
+        passed as parameter.
+        - parameter layoutGuide: The reference `UILayoutGuide`
+        - returns: The current `CompoundAttribute` instance
+     */
+    @available (iOS 9.0, *)
+    public func like(layoutGuide: UILayoutGuide) -> Self {
+        self.referenceItem = layoutGuide
+        for attr in self.attributes {
+            attr.referenceItem = layoutGuide
         }
         return self
     }
