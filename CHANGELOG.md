@@ -1,9 +1,13 @@
 # Changelog
 
+## v.0.2.3
+
+* Added `UILayoutGuide` support (iOS 9 and above).
+
 ## v.0.2.2
 
 * Fixed bug clearing conflicting `Attributes` using `easy_reload`.
-* Apply operator `->` returns the `NSLayoutConstraints` created.
+* Apply operator `<-` returns the `NSLayoutConstraints` created.
 
 ## v.0.2.1
 

@@ -8,10 +8,10 @@
 
 **EasyPeasy** is a Swift framework that lets you create *Auto Layout* constraints
 programmatically without headaches and never ending boilerplate code. Besides the
-basics, **EasyPeasy** resolves most of the constraint conflicts for you and lets
-you attach to a constraint conditional closures that are evaluated before applying
-a constraint, this lets you apply (or not) a constraint depending on platform, size
-classes, orientation... or the state of your controller, easy peasy!
+basics, **EasyPeasy** resolves most of the constraint conflicts for you and also
+can attach to a constraint conditional closures that are evaluated before applying
+a constraint, this way you can install an *Auto Layout* constraint depending on
+platform, size classes, orientation... or the state of your controller, easy peasy!
 
 In this quick tour through **EasyPeasy** we assume that you already know the
 advantages and disadvantages of the different *Auto Layout* APIs and therefore you
@@ -22,6 +22,14 @@ whether **EasyPeasy** is for you or not.
 The example below is quite simple but shows how effortless its implementation
 result using **EasyPeasy**.
 ![touch](README/first_touch.png)
+
+### Features
+
+* Lightweight and easy to use domain specific language.
+* Resolution of *Auto Layout* conflicts.
+* Fast and *hassle-free* update of constraints.
+* Conditional application of constraints.
+* `UILayoutGuide` support (iOS 9 and above).
 
 ## Table of contents
 
@@ -34,6 +42,7 @@ result using **EasyPeasy**.
 		* [CompoundAttributes](#compoundattributes)
 	* [Priorities](#priorities)
 	* [Conditions](#conditions)
+	* [UILayoutGuides](#uilayoutguides)
 	* [Lastly](#lastly)
 		* [Updating constraints](#updating-constraints)
 		* [Clearing constraints](#clearing-constraints)
@@ -53,8 +62,8 @@ pod "EasyPeasy"
 ```
 
 ### Carthage
-EasyPeasy is [Carthage](https://github.com/Carthage/Carthage) compatible. 
-To add **EasyPeasy** as a dependency to your project, just add the following line 
+EasyPeasy is [Carthage](https://github.com/Carthage/Carthage) compatible.
+To add **EasyPeasy** as a dependency to your project, just add the following line
 to your Cartfile:
 
 ```ruby
@@ -270,10 +279,64 @@ Bare in mind that these `Condition` closures are stored in properties therefore
 you need to capture those variables you access within the closure. For example:
 ```swift
 descriptionLabel <- [
-	Height(100).when { weak self in
+	Height(100).when { [weak self] in
 		return self?.expandDescriptionLabel ?? false
 	}
 ]
+```
+
+### UILayoutGuides
+Since the version *v.0.2.3* (and for iOS 9 projects and above) **EasyPeasy**
+integrates `UILayoutGuides` support.
+
+#### Applying constraints
+Applying a constraint to an `UILayoutGuide` is as easy as we have discussed in the
+previous sections, just apply the **EasyPeasy** attributes you want using the
+apply operator `<-`.
+```swift
+func viewDidLoad() {
+	super.viewDidLoad()
+
+	let layoutGuide = UILayoutGuide()
+	self.view.addLayoutGuide(layoutGuide)
+
+	layoutGuide <- [
+		Top(10),
+		Left(10),
+		Right(10),
+		Height(100).when { Device() == .iPad },
+		Height(60).when { Device() == .iPhone }
+	]
+}
+```
+
+As you can see, all the different attributes and goodies **EasyPeasy** provides for
+`UIViews` are also applicable to `UILayoutGuides`.
+
+#### Connecting UILayoutGuides and UIViews
+As mentioned in the [Attributes](#attributes) section you can create constraint
+relationships between an `UIView` attribute and other `UIViews` attributes using
+the methods `to(_:_)` and `like(_:_)`. Now you can take advantage of those methods
+to create a relationship between your `UIView` attributes and an `UILayoutGuide`.
+```swift
+let layoutGuide = UILayoutGuide()
+let separatorView: UIView
+let label: UILabel
+
+func setupLabel() {
+	self.label <- [
+		Top(10).to(self.layoutGuide),
+		CenterX(0),
+		Size(60)
+	]
+
+	self.separatorView <- [
+		Width(0).like(self.layoutGuide),
+		Height(2),
+		Top(10).to(self.label),
+		CenterX(0).to(self.label)
+	]
+}
 ```
 
 ### Lastly
