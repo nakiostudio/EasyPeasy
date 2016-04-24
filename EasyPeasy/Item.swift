@@ -15,7 +15,12 @@ internal var easy_attributesReference: Int = 0
 /**
     Protocol enclosing the objects a constraint will apply to
  */
-public protocol Item: NSObjectProtocol { }
+public protocol Item: NSObjectProtocol {
+
+    /// Array of constraints installed in the current `Item`
+    var constraints: [NSLayoutConstraint] { get }
+    
+}
 
 /**
     Item protocol extension implementing some convenience properties
@@ -73,4 +78,14 @@ extension UIView: Item { }
     therefore and inherit the extended methods and properties
  */
 @available(iOS 9.0, *)
-extension UILayoutGuide: Item { }
+extension UILayoutGuide: Item {
+    
+    /// Constraints in `owningView` with the current `UILayoutGuide`
+    /// as `firstItem`
+    public var constraints: [NSLayoutConstraint] {
+        get {
+            return self.owningView?.constraints.filter { $0.firstItem === self } ?? []
+        }
+    }
+    
+}
