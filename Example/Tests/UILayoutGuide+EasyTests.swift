@@ -14,11 +14,14 @@ import XCTest
 @available (iOS 9.0, *)
 class UILayoutGuide_EasyTests: XCTestCase {
 
+    var aFlag: Bool = false
+    
     override func setUp() {
         super.setUp()
     }
     
     override func tearDown() {
+        self.aFlag = false
         super.tearDown()
     }
 
@@ -130,6 +133,81 @@ class UILayoutGuide_EasyTests: XCTestCase {
         XCTAssertTrue(newConstraints.first!.firstAttribute == .Width)
         XCTAssertTrue(superview.constraints.count == 1)
         XCTAssertTrue(superview.constraints.first === newConstraints.first)
+    }
+    
+    func testThatEasyClearClearsTheAttributesAppliedToTheGuide() {
+        // given
+        let superview = UIView(frame: CGRectZero)
+        let layoutGuide = UILayoutGuide()
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide <- [
+            Top(20),
+            Width(<=200),
+            Bottom(20),
+            Left(10).with(.LowPriority),
+            Right(10).with(.LowPriority)
+        ]
+        XCTAssertTrue(superview.constraints.count == 5)
+        XCTAssertTrue(layoutGuide.attributes.count == 1)
+        XCTAssertTrue(superview.attributes.count == 4)
+        
+        // when
+        layoutGuide.easy_clear()
+
+        // then
+        XCTAssertTrue(superview.constraints.count == 0)
+        XCTAssertTrue(layoutGuide.attributes.count == 0)
+        XCTAssertTrue(superview.attributes.count == 0)
+    }
+    
+    func testThatEasyReloadTogglesPositionAttributesDependingOnCondition() {
+        // given
+        let superview = UIView(frame: CGRectZero)
+        let layoutGuide = UILayoutGuide()
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide <- [
+            Left(10).with(.LowPriority).when { [weak self] in return (self!.aFlag) },
+            Left(100).with(.LowPriority).when { [weak self] in return !(self!.aFlag) }
+        ]
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.attributes.count == 0)
+        XCTAssertTrue(superview.attributes.count == 2)
+        XCTAssertTrue(superview.constraints[0].constant == 100)
+        
+        // when
+        self.aFlag = true
+        layoutGuide.easy_reload()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.attributes.count == 0)
+        XCTAssertTrue(superview.attributes.count == 2)
+        XCTAssertTrue(superview.constraints[0].constant == 10)
+    }
+    
+    func testThatEasyReloadTogglesDimensionAttributesDependingOnCondition() {
+        // given
+        let superview = UIView(frame: CGRectZero)
+        let layoutGuide = UILayoutGuide()
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide <- [
+            Width(10).when { [weak self] in return (self!.aFlag) },
+            Width(100).when { [weak self] in return !(self!.aFlag) }
+        ]
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.attributes.count == 2)
+        XCTAssertTrue(superview.attributes.count == 0)
+        XCTAssertTrue(superview.constraints[0].constant == 100)
+        
+        // when
+        self.aFlag = true
+        layoutGuide.easy_reload()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.attributes.count == 2)
+        XCTAssertTrue(superview.attributes.count == 0)
+        XCTAssertTrue(superview.constraints[0].constant == 10)
     }
 
 }
