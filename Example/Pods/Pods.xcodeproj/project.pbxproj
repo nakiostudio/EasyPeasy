@@ -236,6 +236,7 @@
 			children = (
 				AB3CE05E1E0576C19079560C80636D56 /* UIView+Easy.swift */,
 				C16C7D791CCCEA3E005AE021 /* UILayoutGuide+Easy.swift */,
+				8ADE277BF668473287BADD7F923B4213 /* NSLayoutConstraint+Internal.swift */,
 				C16C7D771CCCE52D005AE021 /* Item.swift */,
 				7EBA60F17F71600C170C6F28D42C8017 /* Attribute.swift */,
 				D9B04CC1774E770094D179998E177059 /* Attribute+Install.swift */,
@@ -246,7 +247,6 @@
 				D12D6877AE0E11013683D347AB4FAE85 /* ReferenceAttribute.swift */,
 				CDEBFEA1DB04EA9925E00FA92BDF5C03 /* Constant.swift */,
 				A07E300593A742567F8987659FABEA18 /* Priority.swift */,
-				8ADE277BF668473287BADD7F923B4213 /* NSLayoutConstraint+Internal.swift */,
 			);
 			path = EasyPeasy;
 			sourceTree = "<group>";

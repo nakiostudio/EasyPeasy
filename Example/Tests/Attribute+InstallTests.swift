@@ -211,4 +211,79 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue(true)
     }
     
+    @available (iOS 9.0, *)
+    func testThatPositionRelationshipWithLayoutGuideIsEstablished() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let view = UIView(frame: CGRectZero)
+        let layoutGuide = UILayoutGuide()
+        superview.addSubview(view)
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide <- Edges(0)
+        
+        // when
+        let constraints = view <- Left(10).to(layoutGuide, .Left)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints[0].firstItem === view)
+        XCTAssertTrue(constraints[0].firstAttribute == .Left)
+        XCTAssertTrue(constraints[0].secondItem === layoutGuide)
+        XCTAssertTrue(constraints[0].secondAttribute == .Left)
+        XCTAssertTrue(constraints[0].constant == 10)
+        XCTAssertTrue(superview.constraints.count == 5)
+        XCTAssertTrue((superview.constraints.filter { $0 === constraints[0] }).count == 1)
+    }
+    
+    @available (iOS 9.0, *)
+    func testThatSizeRelationshipWithLayoutGuideIsEstablished() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let view = UIView(frame: CGRectZero)
+        let layoutGuide = UILayoutGuide()
+        superview.addSubview(view)
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide <- Edges(0)
+        
+        // when
+        let constraints = view <- Width(0).like(layoutGuide)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints[0].firstItem === view)
+        XCTAssertTrue(constraints[0].firstAttribute == .Width)
+        XCTAssertTrue(constraints[0].secondItem === layoutGuide)
+        XCTAssertTrue(constraints[0].constant == 0)
+        XCTAssertTrue(superview.constraints.count == 5)
+        XCTAssertTrue((superview.constraints.filter { $0 === constraints[0] }).count == 1)
+    }
+    
+    @available (iOS 9.0, *)
+    func testThatCompoundSizeRelationshipWithLayoutGuideIsEstablished() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let view = UIView(frame: CGRectZero)
+        let layoutGuide = UILayoutGuide()
+        superview.addSubview(view)
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide <- Edges(0)
+        
+        // when
+        let constraints = view <- Size(0).like(layoutGuide)
+        
+        // then
+        XCTAssertTrue(constraints.count == 2)
+        XCTAssertTrue(constraints[0].firstItem === view)
+        XCTAssertTrue(constraints[0].firstAttribute == .Width)
+        XCTAssertTrue(constraints[0].secondItem === layoutGuide)
+        XCTAssertTrue(constraints[0].constant == 0)
+        XCTAssertTrue(constraints[1].firstItem === view)
+        XCTAssertTrue(constraints[1].firstAttribute == .Height)
+        XCTAssertTrue(constraints[1].secondItem === layoutGuide)
+        XCTAssertTrue(constraints[1].constant == 0)
+        XCTAssertTrue(superview.constraints.count == 6)
+        XCTAssertTrue((superview.constraints.filter { $0 === constraints[0] }).count == 1)
+        XCTAssertTrue((superview.constraints.filter { $0 === constraints[1] }).count == 1)
+    }
+    
 }
