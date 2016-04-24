@@ -37,8 +37,8 @@ class Attribute_InstallTests: XCTestCase {
         viewA <- attribute
         
         // then
-        XCTAssertTrue(viewA.easy_attributes.count == 1)
-        XCTAssertTrue(viewA.easy_attributes.first! === attribute)
+        XCTAssertTrue(viewA.attributes.count == 1)
+        XCTAssertTrue(viewA.attributes.first! === attribute)
         XCTAssertTrue(viewA.constraints.count - numberOfPreviousConstraints == 1)
         XCTAssertTrue(viewA.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attribute)
         for constraint in viewA.constraints {
@@ -61,8 +61,8 @@ class Attribute_InstallTests: XCTestCase {
         viewA <- attribute
         
         // then
-        XCTAssertTrue(superview.easy_attributes.count == 1)
-        XCTAssertTrue(superview.easy_attributes.first! === attribute)
+        XCTAssertTrue(superview.attributes.count == 1)
+        XCTAssertTrue(superview.attributes.first! === attribute)
         XCTAssertTrue(superview.constraints.count - numberOfPreviousConstraints == 1)
         XCTAssertTrue(superview.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attribute)
     }
@@ -81,7 +81,7 @@ class Attribute_InstallTests: XCTestCase {
         viewA <- Width(120).when { false }
         
         // then
-        XCTAssertTrue(viewA.easy_attributes.count == 1)
+        XCTAssertTrue(viewA.attributes.count == 1)
         XCTAssertTrue(viewA.constraints.count == numberOfPreviousConstraints)
     }
     
@@ -99,7 +99,7 @@ class Attribute_InstallTests: XCTestCase {
         viewA <- Top(120).when { false }
         
         // then
-        XCTAssertTrue(superview.easy_attributes.count == 1)
+        XCTAssertTrue(superview.attributes.count == 1)
         XCTAssertTrue(superview.constraints.count == numberOfPreviousConstraints)
     }
     
@@ -113,8 +113,8 @@ class Attribute_InstallTests: XCTestCase {
         let attribute = Width(120)
         viewA <- attribute
         
-        XCTAssertTrue(viewA.easy_attributes.count == 1)
-        XCTAssertTrue(viewA.easy_attributes.first! === attribute)
+        XCTAssertTrue(viewA.attributes.count == 1)
+        XCTAssertTrue(viewA.attributes.first! === attribute)
         XCTAssertTrue(viewA.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attribute)
     
         let numberOfPreviousConstraints = viewA.constraints.count
@@ -124,8 +124,8 @@ class Attribute_InstallTests: XCTestCase {
         viewA <- newAttribute
         
         // then
-        XCTAssertTrue(viewA.easy_attributes.count == 1)
-        XCTAssertTrue(viewA.easy_attributes.first! === newAttribute)
+        XCTAssertTrue(viewA.attributes.count == 1)
+        XCTAssertTrue(viewA.attributes.first! === newAttribute)
         XCTAssertTrue(numberOfPreviousConstraints > 0)
         XCTAssertTrue(viewA.constraints.count == numberOfPreviousConstraints)
         XCTAssertTrue(viewA.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === newAttribute)
@@ -140,8 +140,8 @@ class Attribute_InstallTests: XCTestCase {
         superview.addSubview(viewB)
         let attribute = Top(120)
         viewA <- attribute
-        XCTAssertTrue(superview.easy_attributes.count == 1)
-        XCTAssertTrue(superview.easy_attributes.first! === attribute)
+        XCTAssertTrue(superview.attributes.count == 1)
+        XCTAssertTrue(superview.attributes.first! === attribute)
         XCTAssertTrue(superview.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === attribute)
         
         let numberOfPreviousConstraints = superview.constraints.count
@@ -151,8 +151,8 @@ class Attribute_InstallTests: XCTestCase {
         viewA <- newAttribute
         
         // then
-        XCTAssertTrue(superview.easy_attributes.count == 1)
-        XCTAssertTrue(superview.easy_attributes.first! === newAttribute)
+        XCTAssertTrue(superview.attributes.count == 1)
+        XCTAssertTrue(superview.attributes.first! === newAttribute)
         XCTAssertTrue(superview.constraints.count == numberOfPreviousConstraints)
         XCTAssertTrue(superview.constraints.filter { $0.easy_attribute != nil }.first!.easy_attribute! === newAttribute)
     }
@@ -170,8 +170,8 @@ class Attribute_InstallTests: XCTestCase {
             Width(120),
             Height(120)
         ]
-        XCTAssertTrue(superview.easy_attributes.count == 2)
-        XCTAssertTrue(viewB.easy_attributes.count == 2)
+        XCTAssertTrue(superview.attributes.count == 2)
+        XCTAssertTrue(viewB.attributes.count == 2)
         
         // when
         viewA <- [
@@ -182,8 +182,8 @@ class Attribute_InstallTests: XCTestCase {
         ]
         
         // then
-        XCTAssertTrue(superview.easy_attributes.count == 4)
-        XCTAssertTrue(viewA.easy_attributes.count == 2)
+        XCTAssertTrue(superview.attributes.count == 4)
+        XCTAssertTrue(viewA.attributes.count == 2)
         
         // And also test that recreating those attributes doesn't break anything
         
@@ -196,8 +196,8 @@ class Attribute_InstallTests: XCTestCase {
         ]
         
         // then
-        XCTAssertTrue(superview.easy_attributes.count == 4)
-        XCTAssertTrue(viewA.easy_attributes.count == 2)
+        XCTAssertTrue(superview.attributes.count == 4)
+        XCTAssertTrue(viewA.attributes.count == 2)
     }
     
     func testThatAttributesAppliedToViewWithNoSuperviewDoesNotAssert() {

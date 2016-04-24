@@ -39,7 +39,7 @@ public class Attribute {
     public internal(set) var condition: Condition?
     
     /// Target `UIView` of the constraint
-    public internal(set) weak var createItem: UIView?
+    public internal(set) weak var createItem: Item?
     
     /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
@@ -47,7 +47,7 @@ public class Attribute {
     }
     
     /// Reference `UIView` of the constraint
-    public internal(set) weak var referenceItem: AnyObject?
+    public internal(set) weak var referenceItem: Item?
     
     /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?

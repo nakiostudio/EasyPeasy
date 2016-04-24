@@ -42,8 +42,8 @@ internal extension Attribute {
         }
         
         // Remove conflicting attributes
-        let conflictingAttributes = ownerView.easy_attributes.filter { $0 != self && (($0 =~ self) == false) }
-        ownerView.easy_attributes = conflictingAttributes
+        let conflictingAttributes = ownerView.attributes.filter { $0 != self && (($0 =~ self) == false) }
+        ownerView.attributes = conflictingAttributes
         
         // Deactivate conflicting installed constraints
         NSLayoutConstraint.deactivateConstraints(conflictingConstraints)
@@ -57,10 +57,10 @@ internal extension Attribute {
     internal func storeOnView(view: UIView) {
         // Store the attribute applied in the superview
         if self.ownedBySuperview() {
-            view.superview?.easy_attributes.append(self)
+            view.superview?.attributes.append(self)
         }
         else { // Store the attributes applied in view
-            view.easy_attributes.append(self)
+            view.attributes.append(self)
         }
     }
     
@@ -78,7 +78,7 @@ internal extension Attribute {
         
         // If reference view is the superview then return same attribute
         // as `createAttribute`
-        if let referenceItem = self.referenceItem where referenceItem === self.createItem?.superview {
+        if let referenceItem = self.referenceItem where referenceItem === self.createItem?.owningView {
             return self.createAttribute
         }
         

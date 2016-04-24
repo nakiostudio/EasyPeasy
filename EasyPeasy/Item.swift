@@ -24,7 +24,7 @@ internal extension Item {
     
     /// Association with an array containing all the *EasyPeasy*
     /// attributes applied to the current `Item`
-    internal var easy_attributes: [Attribute] {
+    internal var attributes: [Attribute] {
         get {
             if let attributes = objc_getAssociatedObject(self, &easy_attributesReference) as?
                 [Attribute] {
@@ -41,7 +41,7 @@ internal extension Item {
     
     /// Owning `UIView` for the current `Item`. The concept varies
     /// depending on the class conforming the protocol
-    internal var easy_owningView: UIView? {
+    internal var owningView: UIView? {
         get {
             // Owning view for `UIView` is the `superview`
             if let view = self as? UIView {
