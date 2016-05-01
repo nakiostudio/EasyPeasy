@@ -26,6 +26,7 @@
 		C1A3D5861CA8030B00DCC1D0 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5851CA8030B00DCC1D0 /* FeedController.swift */; };
 		C1A3D5881CA8051B00DCC1D0 /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D5871CA8051B00DCC1D0 /* TweetView.swift */; };
 		C1A3D58C1CA81BF800DCC1D0 /* TweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3D58B1CA81BF800DCC1D0 /* TweetModel.swift */; };
+		C1B0D16A1CD5F90D004E53B1 /* String+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B0D1691CD5F90D004E53B1 /* String+Easy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		C1A3D5851CA8030B00DCC1D0 /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		C1A3D5871CA8051B00DCC1D0 /* TweetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetView.swift; sourceTree = "<group>"; };
 		C1A3D58B1CA81BF800DCC1D0 /* TweetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetModel.swift; sourceTree = "<group>"; };
+		C1B0D1691CD5F90D004E53B1 /* String+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Easy.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				C1A3D5831CA8028600DCC1D0 /* UIImage+Easy.swift */,
+				C1B0D1691CD5F90D004E53B1 /* String+Easy.swift */,
 			);
 			name = "Extensions and helpers";
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				C1A3D58C1CA81BF800DCC1D0 /* TweetModel.swift in Sources */,
 				C1A3D5841CA8028600DCC1D0 /* UIImage+Easy.swift in Sources */,
 				C1A3D5881CA8051B00DCC1D0 /* TweetView.swift in Sources */,
+				C1B0D16A1CD5F90D004E53B1 /* String+Easy.swift in Sources */,
 				C1A3D5861CA8030B00DCC1D0 /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
