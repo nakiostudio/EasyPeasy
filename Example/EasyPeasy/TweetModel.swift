@@ -53,10 +53,10 @@ extension TweetModel {
             thumbnail: UIImage.easy_thumbJavi()
         )
         let tweetNacho = TweetModel(
-            name: "Neoモナド",
+            name: "NeoGazpatchOS",
             username: "@NeoNacho",
             displayableDate: "4h",
-            tweet: "Just discovered EasyPeasy... silly name, great framework",
+            tweet: "Just discovered EasyPeasy... silly name, great framework #yatusabes",
             thumbnail: UIImage.easy_thumbNacho()
         )
         return [tweetFelix, tweetEloy, tweetJavi, tweetNacho]
