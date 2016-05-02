@@ -122,6 +122,7 @@ extension TweetView {
 extension TweetView {
     
     @nonobjc static let darkGreyColor = UIColor(red: 140.0/255.0, green: 157.0/255.0, blue: 170.0/255.0, alpha: 1.0)
+    @nonobjc static let lightBlueColor = UIColor(red: 33.0/255.0, green: 151.0/255.0, blue: 225.0/255.0, alpha: 1.0)
     
     static func attributedStringWithDisplayableDate(string: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
@@ -145,7 +146,13 @@ extension TweetView {
             NSForegroundColorAttributeName: UIColor.blackColor()
         ]
         
-        return NSAttributedString(string: tweet, attributes: attributes)
+        let string = NSMutableAttributedString(string: tweet, attributes: attributes)
+    
+        for hashtagRange in tweet.easy_hashtagRanges() {
+            string.addAttribute(NSForegroundColorAttributeName, value: TweetView.lightBlueColor, range: hashtagRange)
+        }
+        
+        return string
     }
     
     static func attributedStringWithName(name: String, username: String) -> NSAttributedString {
