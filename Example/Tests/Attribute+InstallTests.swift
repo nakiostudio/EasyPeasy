@@ -211,6 +211,37 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue(true)
     }
     
+    func testThatConditionsAreSetToAnArrayOfAttributes() {
+        // given
+        let attributes = [Width(200), Height(500), Center(0)]
+        
+        // when
+        attributes.when { false }
+        
+        // then
+        for attribute in attributes {
+            XCTAssertFalse(attribute.condition!())
+        }
+    }
+    
+    func testThatPrioritiesAreSetToAnArrayOfAttributes() {
+        // given
+        let attributes = [Width(200), Height(500), Center(0)]
+        
+        // when
+        attributes.with(.CustomPriority(233.0))
+        
+        // then
+        for attribute in attributes {
+            switch attribute.priority {
+            case let .CustomPriority(value):
+                XCTAssertTrue(value == 233.0)
+            default:
+                break
+            }
+        }
+    }
+    
     @available (iOS 9.0, *)
     func testThatPositionRelationshipWithLayoutGuideIsEstablished() {
         // given
