@@ -1,5 +1,21 @@
 # Changelog
 
+## v.0.2.4
+
+* `Priorities` and `Conditions` now can be easily applied to an `Array` of `Attributes`.
+
+```swift
+view <- [
+	Width(200),
+	Height(240)
+].when { Device() == .iPad }
+
+view <- [
+	Width(120),
+	Height(140)
+].when { Device() == .iPhone }
+```
+
 ## v.0.2.3
 
 * Added `UILayoutGuide` support (iOS 9 and above).
