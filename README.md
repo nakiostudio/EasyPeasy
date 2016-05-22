@@ -3,7 +3,7 @@
 [![CI Status](http://img.shields.io/travis/nakiostudio/EasyPeasy.svg?style=flat)](https://travis-ci.org/nakiostudio/EasyPeasy)
 [![Version](https://img.shields.io/cocoapods/v/EasyPeasy.svg?style=flat)](http://cocoapods.org/pods/EasyPeasy)
 [![Carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](http://htmlpreview.github.io/?https://github.com/nakiostudio/EasyPeasy/blob/master/xcov_report/index.html)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://travis-ci.org/nakiostudio/EasyPeasy)
 [![Docs](https://img.shields.io/cocoapods/metrics/doc-percent/EasyPeasy.svg)](http://cocoadocs.org/docsets/EasyPeasy)
 
 **EasyPeasy** is a Swift framework that lets you create *Auto Layout* constraints
@@ -248,6 +248,16 @@ In order to apply any of these priorities to an `Attribute`, the method
 view <- Top(>=50).with(.MediumPriority)
 ```
 
+You can also apply a `Priority` to an array of `Attributes` (this operation will
+override the priorities previously applied to an `Attribute`).
+
+```swift
+view <- [
+	Width(200),
+	Height(200)
+].with(.MediumPriority)
+```
+
 ### Conditions
 One of the peculiarities of **EasyPeasy** is the usage of `Conditions` or closures
 that evaluate whether a constraint should be applied or not to the view.
@@ -283,6 +293,21 @@ descriptionLabel <- [
 		return self?.expandDescriptionLabel ?? false
 	}
 ]
+```
+
+You can also apply a `Condition` to an array of `Attributes` (this operation will
+override the `Conditions` previously applied to an `Attribute`).
+
+```swift
+view <- [
+	Width(200),
+	Height(240)
+].when { Device() == .iPad }
+
+view <- [
+	Width(120),
+	Height(140)
+].when { Device() == .iPhone }
 ```
 
 ### UILayoutGuides
