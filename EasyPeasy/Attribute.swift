@@ -178,3 +178,44 @@ public class Attribute {
     }
     
 }
+
+/**
+    Methods applicable to an `Array` of `Attributes`. The modifiers
+    will affect to each one of the `Attributes` within the `Array`
+    overriding the values individually set.
+ */
+public extension Array where Element: Attribute {
+   
+    // MARK: Public methods
+    
+    /**
+        Sets the `priority` of each constraint within the current `Array`
+        of `Attributes`. If the priority was already set this method
+        overrides it
+        - parameter priority: `Priority` enum specifying the priority of 
+        the constraint
+        - returns: the `Array` of `Attributes`
+     */
+    public func with(priority: Priority) -> [Attribute] {
+        for attribute in self {
+            attribute.priority = priority
+        }
+        return self
+    }
+    
+    /**
+        Sets the `when` closure of each one of `Attributes` within the
+        current `Array`. If the condition was already set this method
+        overrides it
+        - parameter closure: `Closure` to be called before installing
+        each constraint
+        - returns: the `Array` of `Attributes`
+     */
+    public func when(closure: Condition?) -> [Attribute] {
+        for attribute in self {
+            attribute.condition = closure
+        }
+        return self
+    }
+    
+}
