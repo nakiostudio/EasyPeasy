@@ -21,7 +21,7 @@ public class PositionAttribute: Attribute {
         the `UIView` parameter to `superview` as `referenceItem` in case
         this is not specified by using the `to:view:attribute` method
         - parameter view: `UIView` in which the generated 
-        `NSLayoutConstraint` will be added
+          `NSLayoutConstraint` will be added
      */
     override func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
         if let superview = item.owningView where self.referenceItem == nil {
@@ -31,15 +31,15 @@ public class PositionAttribute: Attribute {
     }
     
     /**
-        Establishes a position relationship between the `UIView` the
-        attribute is applied to and the `UIView` passed as parameter.
+        Establishes a position relationship between the `UIView` the attribute 
+        is applied to and the `UIView` passed as parameter.
         
-        It's also possible to link this relationship to a particular
-        attribute of the `view` parameter by supplying `attribute`.
+        It's also possible to link this relationship to a particular attribute 
+        of the `view` parameter by supplying `attribute`.
      
         - parameter view: The reference view
-        - parameter attribute: The attribute of `view` we are establishing
-        the relationship to
+        - parameter attribute: The attribute of `view` we are establishing the 
+          relationship to
         - returns: The current `Attribute` instance
      */
     public func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
@@ -47,7 +47,37 @@ public class PositionAttribute: Attribute {
         self.referenceAttribute = attribute
         return self
     }
+ 
+    /**
+        Establishes a position relationship between the `UIView` the attribute 
+        is applied to and the `UILayoutSupport` passed as parameter.
+     
+        It's also possible to link this relationship to a particular attribute 
+        of the `layoutSupport` parameter by supplying `attribute`.
+     
+        - parameter layoutSupport: The reference `UILayoutSupport`
+        - parameter attribute: The attribute of `view` we are establishing the 
+          relationship to
+        - returns: The current `Attribute` instance
+     */
+    public func to(layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
+        self.referenceItem = layoutSupport
+        self.referenceAttribute = attribute
+        return self
+    }
     
+    /**
+        Establishes a position relationship between the `UIView` the attribute 
+        is applied to and the `UILayoutGuide` passed as parameter.
+     
+        It's also possible to link this relationship to a particular attribute 
+        of the `view` parameter by supplying `attribute`.
+     
+        - parameter layoutGuide: The reference `UILayoutGuide`
+        - parameter attribute: The attribute of `view` we are establishing the 
+          relationship to
+        - returns: The current `Attribute` instance
+     */
     @available(iOS 9.0, *)
     public func to(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutGuide
