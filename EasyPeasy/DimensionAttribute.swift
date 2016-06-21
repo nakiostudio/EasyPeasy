@@ -25,8 +25,8 @@ public class DimensionAttribute: Attribute {
         attribute of the `view` parameter by supplying `attribute`.
          
         - parameter view: The reference view
-        - parameter attribute: The attribute of `view` we are establishing
-        the relationship to
+        - parameter attribute: The attribute of `view` we are establishing the 
+          relationship to
         - returns: The current `Attribute` instance
      */
     public func like(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
@@ -44,8 +44,8 @@ public class DimensionAttribute: Attribute {
         attribute of the `layoutGuide` parameter by supplying `attribute`.
      
         - parameter layoutGuide: The reference `UILayoutGuide`
-        - parameter attribute: The attribute of `layoutGuide` we are 
-        establishing the relationship to
+        - parameter attribute: The attribute of `layoutGuide` we are  establishing 
+          the relationship to
         - returns: The current `Attribute` instance
      */
     @available (iOS 9.0, *)
@@ -58,10 +58,9 @@ public class DimensionAttribute: Attribute {
     // MARK: Overriden methods
     
     /**
-        Method overriden to indicate that `PositionAttributes` are
-        owned by `createItem` and not `superview`
-        - returns boolean if the resulting constraint is owned by
-        the superview
+        Method overriden to indicate that `PositionAttributes` are owned by 
+        `createItem` and not `superview`
+        - returns boolean if the resulting constraint is owned by the superview
      */
     override func ownedBySuperview() -> Bool {
         return false
