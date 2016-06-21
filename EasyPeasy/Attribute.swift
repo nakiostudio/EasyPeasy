@@ -47,7 +47,7 @@ public class Attribute {
     }
     
     /// Reference `UIView` of the constraint
-    public internal(set) weak var referenceItem: Item?
+    public internal(set) weak var referenceItem: AnyObject?
     
     /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?
