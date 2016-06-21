@@ -1,5 +1,18 @@
 # Changelog
 
+## v.0.2.5
+
+* Added support to `UIViewController` top and bottom layout guides that conform
+the `UILayoutSupport` protocol.
+
+```swift
+view <- [
+	Size(100),
+	CenterX(0),
+	Top(0).to(controller.topLayoutGuide)
+]
+```
+
 ## v.0.2.4
 
 * `Priorities` and `Conditions` now can be easily applied to an `Array` of `Attributes`.
