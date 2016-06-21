@@ -317,4 +317,44 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue((superview.constraints.filter { $0 === constraints[1] }).count == 1)
     }
     
+    func testThatPositionRelationshipWithControllersTopLayoutGuideIsEstablished() {
+        // given
+        let controller = UIViewController()
+        let view = UIView(frame: CGRectZero)
+        controller.view.addSubview(view)
+        
+        // when
+        let constraints = view <- Top(10).to(controller.topLayoutGuide)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints[0].firstItem === view)
+        XCTAssertTrue(constraints[0].firstAttribute == .Top)
+        XCTAssertTrue(constraints[0].secondItem === controller.topLayoutGuide)
+        XCTAssertTrue(constraints[0].secondAttribute == .Bottom)
+        XCTAssertTrue(constraints[0].constant == 10)
+        XCTAssertTrue(controller.view.constraints.count == 3)
+        XCTAssertTrue((controller.view.constraints.filter { $0 === constraints[0] }).count == 1)
+    }
+    
+    func testThatPositionRelationshipWithControllersBottomLayoutGuideIsEstablished() {
+        // given
+        let controller = UIViewController()
+        let view = UIView(frame: CGRectZero)
+        controller.view.addSubview(view)
+        
+        // when
+        let constraints = view <- Bottom(20).to(controller.bottomLayoutGuide)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints[0].firstItem === view)
+        XCTAssertTrue(constraints[0].firstAttribute == .Bottom)
+        XCTAssertTrue(constraints[0].secondItem === controller.bottomLayoutGuide)
+        XCTAssertTrue(constraints[0].secondAttribute == .Top)
+        XCTAssertTrue(constraints[0].constant == -20)
+        XCTAssertTrue(controller.view.constraints.count == 3)
+        XCTAssertTrue((controller.view.constraints.filter { $0 === constraints[0] }).count == 1)
+    }
+    
 }
