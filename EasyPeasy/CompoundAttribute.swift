@@ -8,7 +8,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+#if os(iOS) || os(tvOS)
+import UIKit
+#else
+import AppKit
+#endif
 
 /**
     `Attribute` that leads on the application of multiple

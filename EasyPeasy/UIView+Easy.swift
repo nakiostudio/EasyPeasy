@@ -8,6 +8,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if os(iOS) || os(tvOS)
+    
 import UIKit
 
 infix operator <- {}
@@ -113,3 +115,5 @@ public extension UIView {
     }
     
 }
+
+#endif
