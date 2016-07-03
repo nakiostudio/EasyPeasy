@@ -8,52 +8,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+#if os(iOS) || os(tvOS)
+import UIKit
+#else
+import AppKit
+#endif
 
 /**
     Superclass for those `Attribute` objects that imply dimension
     constraints like width and height
  */
 public class DimensionAttribute: Attribute {
-    
-    /**
-        Establishes a relationship between the dimension attribute 
-        applied to the `UIView` and the reference `UIView` passed as 
-        parameter.
-        
-        It's also possible to link this relationship to a particular
-        attribute of the `view` parameter by supplying `attribute`.
-         
-        - parameter view: The reference view
-        - parameter attribute: The attribute of `view` we are establishing the 
-          relationship to
-        - returns: The current `Attribute` instance
-     */
-    public func like(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
-        self.referenceItem = view
-        self.referenceAttribute = attribute
-        return self
-    }
-    
-    /**
-        Establishes a relationship between the dimension attribute
-        applied to the `UIView` and the reference `UILayoutGuide` 
-        passed as parameter.
-     
-        It's also possible to link this relationship to a particular
-        attribute of the `layoutGuide` parameter by supplying `attribute`.
-     
-        - parameter layoutGuide: The reference `UILayoutGuide`
-        - parameter attribute: The attribute of `layoutGuide` we are  establishing 
-          the relationship to
-        - returns: The current `Attribute` instance
-     */
-    @available (iOS 9.0, *)
-    public func like(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
-        self.referenceItem = layoutGuide
-        self.referenceAttribute = attribute
-        return self
-    }
     
     // MARK: Overriden methods
     
@@ -144,36 +109,5 @@ public class Size: CompoundAttribute {
             Height(CGFloat(size.height))
         ]
     }
-    
-    /**
-        Establishes a relationship between the dimension attribute
-        applied to the `UIView` and the reference `UIView` passed as
-        parameter.
-        - parameter view: The reference view
-        - returns: The current `CompoundAttribute` instance
-     */
-    public func like(view: UIView) -> Self {
-        self.referenceItem = view
-        for attr in self.attributes {
-            attr.referenceItem = view
-        }
-        return self
-    }
-    
-    /**
-        Establishes a relationship between the dimension attribute
-        applied to the `UIView` and the reference `UILayoutGuide` 
-        passed as parameter.
-        - parameter layoutGuide: The reference `UILayoutGuide`
-        - returns: The current `CompoundAttribute` instance
-     */
-    @available (iOS 9.0, *)
-    public func like(layoutGuide: UILayoutGuide) -> Self {
-        self.referenceItem = layoutGuide
-        for attr in self.attributes {
-            attr.referenceItem = layoutGuide
-        }
-        return self
-    }
-    
+
 }
