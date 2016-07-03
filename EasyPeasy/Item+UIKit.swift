@@ -12,6 +12,9 @@
 
 import UIKit
     
+/// Alias of UIView
+public typealias View = UIView
+    
 /**
      Item protocol extension implementing some convenience properties
  */
@@ -19,10 +22,10 @@ internal extension Item {
     
     /// Owning `UIView` for the current `Item`. The concept varies
     /// depending on the class conforming the protocol
-    internal var owningView: UIView? {
+    internal var owningView: View? {
         get {
             // Owning view for `UIView` is the `superview`
-            if let view = self as? UIView {
+            if let view = self as? View {
                 return view.superview
             }
             
