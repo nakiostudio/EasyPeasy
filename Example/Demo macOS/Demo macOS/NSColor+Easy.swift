@@ -10,16 +10,10 @@
 
 import Cocoa
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet weak var window: NSWindow!
-
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        self.window.styleMask = self.window.styleMask | NSFullSizeContentViewWindowMask;
-        self.window.titleVisibility = .Hidden
-        self.window.titlebarAppearsTransparent = true
+extension NSColor {
+    
+    static func easy_backgroundBlue() -> NSColor {
+        return NSColor(red: 35.0/255.0, green: 71.0/255.0, blue: 113.0/255.0, alpha: 1.0)
     }
-
+    
 }
-

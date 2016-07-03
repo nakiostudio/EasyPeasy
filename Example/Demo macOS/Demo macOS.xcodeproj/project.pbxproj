@@ -12,6 +12,10 @@
 		C1B763271D2983DD0054C2B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1B763261D2983DD0054C2B0 /* Assets.xcassets */; };
 		C1B7632A1D2983DD0054C2B0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B763281D2983DD0054C2B0 /* MainMenu.xib */; };
 		C1B763351D2983DD0054C2B0 /* Demo_macOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763341D2983DD0054C2B0 /* Demo_macOSTests.swift */; };
+		C1B763421D298A0F0054C2B0 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763411D298A0F0054C2B0 /* FeedController.swift */; };
+		C1B763441D298C620054C2B0 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763431D298C620054C2B0 /* SideBarView.swift */; };
+		C1B763471D298CD60054C2B0 /* NSColor+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763461D298CD60054C2B0 /* NSColor+Easy.swift */; };
+		C1B763491D298F780054C2B0 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763481D298F780054C2B0 /* FeedView.swift */; };
 		F3E774E62F71E31079E00432 /* Pods_Demo_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E51B42CCA806489A2BD2 /* Pods_Demo_macOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +41,10 @@
 		C1B763301D2983DD0054C2B0 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1B763341D2983DD0054C2B0 /* Demo_macOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo_macOSTests.swift; sourceTree = "<group>"; };
 		C1B763361D2983DD0054C2B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1B763411D298A0F0054C2B0 /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		C1B763431D298C620054C2B0 /* SideBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		C1B763461D298CD60054C2B0 /* NSColor+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Easy.swift"; sourceTree = "<group>"; };
+		C1B763481D298F780054C2B0 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		C5EF169D4A229383D705B53B /* Pods-Tests macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests macOS.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests macOS/Pods-Tests macOS.release.xcconfig"; sourceTree = "<group>"; };
 		F0BA78F0DE5E2B7E635FDA10 /* Pods_Tests_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6C5CBCAF63E84B86F1B8E /* Pods-Demo macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo macOS.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Demo macOS/Pods-Demo macOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,7 +113,11 @@
 		C1B763231D2983DD0054C2B0 /* Demo macOS */ = {
 			isa = PBXGroup;
 			children = (
+				C1B763451D298CC00054C2B0 /* Extensions and helpers */,
 				C1B763241D2983DD0054C2B0 /* AppDelegate.swift */,
+				C1B763431D298C620054C2B0 /* SideBarView.swift */,
+				C1B763481D298F780054C2B0 /* FeedView.swift */,
+				C1B763411D298A0F0054C2B0 /* FeedController.swift */,
 				C1B763261D2983DD0054C2B0 /* Assets.xcassets */,
 				C1B763281D2983DD0054C2B0 /* MainMenu.xib */,
 				C1B7632B1D2983DD0054C2B0 /* Info.plist */,
@@ -120,6 +132,14 @@
 				C1B763361D2983DD0054C2B0 /* Info.plist */,
 			);
 			path = "Demo macOSTests";
+			sourceTree = "<group>";
+		};
+		C1B763451D298CC00054C2B0 /* Extensions and helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C1B763461D298CD60054C2B0 /* NSColor+Easy.swift */,
+			);
+			name = "Extensions and helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,7 +341,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B763491D298F780054C2B0 /* FeedView.swift in Sources */,
+				C1B763441D298C620054C2B0 /* SideBarView.swift in Sources */,
 				C1B763251D2983DD0054C2B0 /* AppDelegate.swift in Sources */,
+				C1B763421D298A0F0054C2B0 /* FeedController.swift in Sources */,
+				C1B763471D298CD60054C2B0 /* NSColor+Easy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
