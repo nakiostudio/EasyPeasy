@@ -27,6 +27,7 @@
 		C16C7D7A1CCCEA3E005AE021 /* UILayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16C7D791CCCEA3E005AE021 /* UILayoutGuide+Easy.swift */; };
 		C1C583BB1D29562500A70F47 /* Item+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C583BA1D29562500A70F47 /* Item+UIKit.swift */; };
 		C1C583BD1D29600E00A70F47 /* DimensionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C583BC1D29600E00A70F47 /* DimensionAttribute+UIKit.swift */; };
+		C1C583BF1D29616000A70F47 /* PositionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C583BE1D29616000A70F47 /* PositionAttribute+UIKit.swift */; };
 		CA45AE6F95BDC846AACB5A2A346BE5EF /* EasyPeasy-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A24C898C38B75485A0E3F0CC79A870EC /* EasyPeasy-dummy.m */; };
 		CB371CBEDEAEF5423EF22D1FB455A43F /* Pods-Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E6D86222C09ADDD2353A0A6C6AFA67E /* Pods-Demo-dummy.m */; };
 		E14B024EEECCD5FFABB29EC48DD7CF16 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D3B5170EC5C5D52175DE395518D3E6 /* Pods-Tests-dummy.m */; };
@@ -89,6 +90,7 @@
 		C16C7D791CCCEA3E005AE021 /* UILayoutGuide+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILayoutGuide+Easy.swift"; sourceTree = "<group>"; };
 		C1C583BA1D29562500A70F47 /* Item+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+UIKit.swift"; sourceTree = "<group>"; };
 		C1C583BC1D29600E00A70F47 /* DimensionAttribute+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DimensionAttribute+UIKit.swift"; sourceTree = "<group>"; };
+		C1C583BE1D29616000A70F47 /* PositionAttribute+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PositionAttribute+UIKit.swift"; sourceTree = "<group>"; };
 		C3B7BDF5CE5CB8F095FE12DA55D9A9BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		CDEBFEA1DB04EA9925E00FA92BDF5C03 /* Constant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		D12D6877AE0E11013683D347AB4FAE85 /* ReferenceAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReferenceAttribute.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				83B978C60451EFCE5C9C566F5E4DFEC6 /* DimensionAttribute.swift */,
 				C1C583BC1D29600E00A70F47 /* DimensionAttribute+UIKit.swift */,
 				E4E44850C1C8B55F9E63D13B13F356E1 /* PositionAttribute.swift */,
+				C1C583BE1D29616000A70F47 /* PositionAttribute+UIKit.swift */,
 				2A9326D2BE6261BA90BDCCDDC137D068 /* CompoundAttribute.swift */,
 				D12D6877AE0E11013683D347AB4FAE85 /* ReferenceAttribute.swift */,
 				CDEBFEA1DB04EA9925E00FA92BDF5C03 /* Constant.swift */,
@@ -406,6 +409,7 @@
 				4B733EA6EBBC89C8D7B4480695EA6C5F /* PositionAttribute.swift in Sources */,
 				51DD90D7CDCAF69D3945CFCF16B9B2F9 /* Priority.swift in Sources */,
 				8ADC9B10A6BBFFC59B23951EE2D23B54 /* ReferenceAttribute.swift in Sources */,
+				C1C583BF1D29616000A70F47 /* PositionAttribute+UIKit.swift in Sources */,
 				68CFC21E5294A5B13C62E157E8DDE5AF /* UIView+Easy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

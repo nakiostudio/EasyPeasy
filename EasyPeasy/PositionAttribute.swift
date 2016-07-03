@@ -8,7 +8,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+#if os(iOS) || os(tvOS)
+import UIKit
+
+/// Alias of UIEdgeInsets
+public typealias EdgeInsets = UIEdgeInsets
+
+#else
+
+import AppKit
+    
+/// Alias of NSEdgeInsets
+public typealias EdgeInsets = NSEdgeInsets
+    
+#endif
 
 /**
      Superclass for those `Attribute` objects that imply position
@@ -28,61 +41,6 @@ public class PositionAttribute: Attribute {
             self.to(superview)
         }
         return super.createConstraintsForItem(item)
-    }
-    
-    /**
-        Establishes a position relationship between the `UIView` the attribute 
-        is applied to and the `UIView` passed as parameter.
-        
-        It's also possible to link this relationship to a particular attribute 
-        of the `view` parameter by supplying `attribute`.
-     
-        - parameter view: The reference view
-        - parameter attribute: The attribute of `view` we are establishing the 
-          relationship to
-        - returns: The current `Attribute` instance
-     */
-    public func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
-        self.referenceItem = view
-        self.referenceAttribute = attribute
-        return self
-    }
- 
-    /**
-        Establishes a position relationship between the `UIView` the attribute 
-        is applied to and the `UILayoutSupport` passed as parameter.
-     
-        It's also possible to link this relationship to a particular attribute 
-        of the `layoutSupport` parameter by supplying `attribute`.
-     
-        - parameter layoutSupport: The reference `UILayoutSupport`
-        - parameter attribute: The attribute of `view` we are establishing the 
-          relationship to
-        - returns: The current `Attribute` instance
-     */
-    public func to(layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
-        self.referenceItem = layoutSupport
-        self.referenceAttribute = attribute
-        return self
-    }
-    
-    /**
-        Establishes a position relationship between the `UIView` the attribute 
-        is applied to and the `UILayoutGuide` passed as parameter.
-     
-        It's also possible to link this relationship to a particular attribute 
-        of the `view` parameter by supplying `attribute`.
-     
-        - parameter layoutGuide: The reference `UILayoutGuide`
-        - parameter attribute: The attribute of `view` we are establishing the 
-          relationship to
-        - returns: The current `Attribute` instance
-     */
-    @available(iOS 9.0, *)
-    public func to(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
-        self.referenceItem = layoutGuide
-        self.referenceAttribute = attribute
-        return self
     }
     
 }
@@ -251,7 +209,7 @@ public class Edges: CompoundAttribute {
         properties of each one of the sub `Attribute` objects
         - returns: the `CompoundAttribute` instance created
      */
-    public init(_ edgeInsets: UIEdgeInsets) {
+    public init(_ edgeInsets: EdgeInsets) {
         super.init()
         self.attributes = [
             Top(CGFloat(edgeInsets.top)),
@@ -396,7 +354,7 @@ public class Margins: CompoundAttribute {
         properties of each one of the sub `Attribute` objects
         - returns: the `CompoundAttribute` instance created
      */
-    public init(_ edgeInsets: UIEdgeInsets) {
+    public init(_ edgeInsets: EdgeInsets) {
         super.init()
         self.attributes = [
             TopMargin(CGFloat(edgeInsets.top)),
