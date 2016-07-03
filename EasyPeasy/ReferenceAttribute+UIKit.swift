@@ -9,10 +9,8 @@
 // SOFTWARE.
 
 #if os(iOS) || os(tvOS)
+
 import UIKit
-#else
-import AppKit
-#endif
 
 /**
     An enum representation of the different attribute
@@ -169,3 +167,5 @@ public enum ReferenceAttribute {
     }
     
 }
+
+#endif
