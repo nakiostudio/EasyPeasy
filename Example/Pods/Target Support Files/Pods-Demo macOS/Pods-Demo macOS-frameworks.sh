@@ -84,8 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/EasyPeasy-iOS/EasyPeasy.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/EasyPeasy-OSX/EasyPeasy.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/EasyPeasy-iOS/EasyPeasy.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/EasyPeasy-OSX/EasyPeasy.framework"
 fi

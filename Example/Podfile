@@ -1,10 +1,28 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'Demo', :exclusive => true do
+workspace 'EasyPeasy'
+
+# iOS
+
+target 'Demo' do
+  project 'EasyPeasy.xcodeproj'
   pod 'EasyPeasy', :path => '../'
 end
 
-target 'Tests', :exclusive => true do
+target 'Tests' do
+  project 'EasyPeasy.xcodeproj'
+  pod 'EasyPeasy', :path => '../'
+end
+
+# macOS
+
+target 'Demo macOS' do
+  project 'Demo macOS/Demo macOS.xcodeproj'
+  pod 'EasyPeasy', :path => '../'
+end
+
+target 'Tests macOS' do
+  project 'Demo macOS/Demo macOS.xcodeproj'
   pod 'EasyPeasy', :path => '../'
 end

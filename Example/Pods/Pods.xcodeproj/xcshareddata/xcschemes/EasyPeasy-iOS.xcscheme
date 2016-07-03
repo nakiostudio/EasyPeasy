@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B22E5CA2A4EFB3B5EE6DDDFB0850E940"
+               BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
                BuildableName = "EasyPeasy.framework"
-               BlueprintName = "EasyPeasy"
+               BlueprintName = "EasyPeasy-iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,9 +43,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B22E5CA2A4EFB3B5EE6DDDFB0850E940"
+            BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
             BuildableName = "EasyPeasy.framework"
-            BlueprintName = "EasyPeasy"
+            BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,9 +65,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B22E5CA2A4EFB3B5EE6DDDFB0850E940"
+            BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
             BuildableName = "EasyPeasy.framework"
-            BlueprintName = "EasyPeasy"
+            BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,9 +83,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B22E5CA2A4EFB3B5EE6DDDFB0850E940"
+            BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
             BuildableName = "EasyPeasy.framework"
-            BlueprintName = "EasyPeasy"
+            BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
