@@ -1,0 +1,6 @@
+framework module EasyPeasy {
+  umbrella header "EasyPeasy-umbrella.h"
+
+  export *
+  module * { export * }
+}
