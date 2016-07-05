@@ -127,7 +127,7 @@ extension TweetView {
         self.tweetLabel <- [
             Height(>=20.0),
             Top(0.0).to(self.userInfoLabel),
-            Bottom(12.0),
+            Bottom(6.0),
             Left(0.0).to(self.userInfoLabel, .Left),
             Right(12.0)
         ]

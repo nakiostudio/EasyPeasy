@@ -19,8 +19,8 @@ class SideBarView: NSView {
     }()
     
     private lazy var composeImageView: NSImageView = {
-        let imageView = NSImageView(frame: CGRectZero)
-        return imageView
+        let composeImageView = NSImageView(frame: CGRectZero)
+        return composeImageView
     }()
     
     required init?(coder: NSCoder) {
@@ -50,14 +50,15 @@ class SideBarView: NSView {
     func configure(with profileImage: String, tabs: String...) {
         self.restore()
         self.profileImageView.image = NSImage(named: profileImage)
-        self.composeImageView.image = NSImage(named: "icon-compose")
+        self.composeImageView.image = NSImage(named: "icon-compose")?.easy_tint(with: NSColor.easy_highlightedBlue())
         
         var previousItem: NSView = self.profileImageView
+        var color: NSColor = NSColor.easy_highlightedBlue()
         var topPadding: CGFloat = 20.0
         
         for tabImage in tabs {
             let tab = NSImageView(frame: CGRectZero)
-            tab.image = NSImage(named: tabImage)
+            tab.image = NSImage(named: tabImage)?.easy_tint(with: color)
             
             self.addSubview(tab)
             tab <- [
@@ -66,6 +67,7 @@ class SideBarView: NSView {
                 Top(topPadding).to(previousItem)
             ]
             
+            color = NSColor.easy_blue()
             previousItem = tab
             topPadding = 14.0
         }

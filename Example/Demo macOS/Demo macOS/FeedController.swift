@@ -13,6 +13,8 @@ import EasyPeasy
 
 class FeedController: NSViewController {
     
+    private let stubData = TweetModel.stubData()
+    
     private lazy var sideBarView: SideBarView = {
         let view = SideBarView(frame: CGRectZero)
         return view
@@ -28,6 +30,7 @@ class FeedController: NSViewController {
         
         self.setup()
         self.feedView.title = "Home"
+        self.feedView.configure(with: self.stubData)
         self.sideBarView.configure(
             with: "thumb-easypeasy",
             tabs: "icon-home",

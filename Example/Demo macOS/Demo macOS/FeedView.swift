@@ -31,6 +31,11 @@ class FeedView: NSView {
         return view
     }()
     
+    private lazy var contentView: NSView = {
+        let view = NSView(frame: CGRectZero)
+        return view
+    }()
+    
     private lazy var separatorView: NSView = {
         let view = NSView(frame: CGRectZero)
         view.alphaValue = 0.5
@@ -65,6 +70,31 @@ class FeedView: NSView {
         self.separatorView.layer?.backgroundColor = NSColor.lightGrayColor().CGColor
     }
     
+    // MARK: Public methods
+    
+    func configure(with tweets: [TweetModel]) {
+        var priority = NSLayoutPriorityDefaultHigh - Float(tweets.count)
+        var previousItem: NSView = self.contentView
+        for tweet in tweets {
+            let tweetView = TweetView(frame: CGRectZero)
+            self.contentView.addSubview(tweetView)
+            tweetView.configure(with: tweet)
+            tweetView <- [
+                Top(0.0).to(previousItem),
+                Left(0.0),
+                Right(0.0),
+                Height(>=0.0)
+            ]
+            
+            self.contentView <- [
+                Bottom(0.0).to(tweetView, .Bottom).with(.CustomPriority(priority))
+            ]
+            
+            previousItem = tweetView
+            priority += 1.0
+        }
+    }
+    
     // MARK: Private methods
     
     private func setup() {
@@ -80,7 +110,15 @@ class FeedView: NSView {
             Top(FeedView.headerPadding).to(self.titleLabel),
             Left(0.0),
             Right(0.0),
-            Height(0.5)
+            Height(1.0)
+        ]
+        
+        self.scrollView.contentView.addSubview(self.contentView)
+        self.contentView <- [
+            Top(0.0),
+            Left(0.0),
+            Width(0.0).like(self.scrollView),
+            Height(>=0.0),
         ]
         
         self.addSubview(self.scrollView)
