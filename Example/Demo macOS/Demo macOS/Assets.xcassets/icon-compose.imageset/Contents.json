@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon-composer.png",
+      "filename" : "ComposeTweet.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "ComposeTweet@2x.png",
       "scale" : "2x"
     },
     {

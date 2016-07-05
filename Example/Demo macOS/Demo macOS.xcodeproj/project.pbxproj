@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A6AE70C6CC0DC5F2E1418545 /* Pods_Tests_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BA78F0DE5E2B7E635FDA10 /* Pods_Tests_macOS.framework */; };
+		C1234B111D2C5CB1004AB3A1 /* TweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1234B0F1D2C5CB1004AB3A1 /* TweetModel.swift */; };
+		C1234B121D2C5CB1004AB3A1 /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1234B101D2C5CB1004AB3A1 /* TweetView.swift */; };
+		C1234B141D2C5CBD004AB3A1 /* NSImage+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1234B131D2C5CBD004AB3A1 /* NSImage+Easy.swift */; };
 		C1B763251D2983DD0054C2B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763241D2983DD0054C2B0 /* AppDelegate.swift */; };
 		C1B763271D2983DD0054C2B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1B763261D2983DD0054C2B0 /* Assets.xcassets */; };
 		C1B7632A1D2983DD0054C2B0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B763281D2983DD0054C2B0 /* MainMenu.xib */; };
@@ -33,6 +36,9 @@
 		0697E51B42CCA806489A2BD2 /* Pods_Demo_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDB8442082DB77EB3748F1F /* Pods-Demo macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo macOS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Demo macOS/Pods-Demo macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		9826534A643C7F0303AB6232 /* Pods-Tests macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests macOS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests macOS/Pods-Tests macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		C1234B0F1D2C5CB1004AB3A1 /* TweetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetModel.swift; sourceTree = "<group>"; };
+		C1234B101D2C5CB1004AB3A1 /* TweetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetView.swift; sourceTree = "<group>"; };
+		C1234B131D2C5CBD004AB3A1 /* NSImage+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSImage+Easy.swift"; sourceTree = "<group>"; };
 		C1B763211D2983DD0054C2B0 /* Demo macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1B763241D2983DD0054C2B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1B763261D2983DD0054C2B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +122,8 @@
 				C1B763451D298CC00054C2B0 /* Extensions and helpers */,
 				C1B763241D2983DD0054C2B0 /* AppDelegate.swift */,
 				C1B763431D298C620054C2B0 /* SideBarView.swift */,
+				C1234B0F1D2C5CB1004AB3A1 /* TweetModel.swift */,
+				C1234B101D2C5CB1004AB3A1 /* TweetView.swift */,
 				C1B763481D298F780054C2B0 /* FeedView.swift */,
 				C1B763411D298A0F0054C2B0 /* FeedController.swift */,
 				C1B763261D2983DD0054C2B0 /* Assets.xcassets */,
@@ -137,6 +145,7 @@
 		C1B763451D298CC00054C2B0 /* Extensions and helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C1234B131D2C5CBD004AB3A1 /* NSImage+Easy.swift */,
 				C1B763461D298CD60054C2B0 /* NSColor+Easy.swift */,
 			);
 			name = "Extensions and helpers";
@@ -342,9 +351,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1B763491D298F780054C2B0 /* FeedView.swift in Sources */,
+				C1234B121D2C5CB1004AB3A1 /* TweetView.swift in Sources */,
 				C1B763441D298C620054C2B0 /* SideBarView.swift in Sources */,
 				C1B763251D2983DD0054C2B0 /* AppDelegate.swift in Sources */,
+				C1234B111D2C5CB1004AB3A1 /* TweetModel.swift in Sources */,
 				C1B763421D298A0F0054C2B0 /* FeedController.swift in Sources */,
+				C1234B141D2C5CBD004AB3A1 /* NSImage+Easy.swift in Sources */,
 				C1B763471D298CD60054C2B0 /* NSColor+Easy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

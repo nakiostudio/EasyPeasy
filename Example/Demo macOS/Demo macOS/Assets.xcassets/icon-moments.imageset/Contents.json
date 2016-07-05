@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon-moments.png",
+      "filename" : "Moments.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Moments@2x.png",
       "scale" : "2x"
     },
     {

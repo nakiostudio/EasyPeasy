@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icon-notifications.png",
+      "filename" : "Notifications.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Notifications@2x.png",
       "scale" : "2x"
     },
     {
