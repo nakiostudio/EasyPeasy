@@ -14,10 +14,24 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F7890C678EB5CC07170DF9078A525A31"
+               BlueprintIdentifier = "C2E533CCE080992330E298BA5DB9E7AF"
                BuildableName = "EasyPeasy.framework"
                BlueprintName = "EasyPeasy-OSX"
                ReferencedContainer = "container:Pods.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C1B7632F1D2983DD0054C2B0"
+               BuildableName = "Tests macOS.xctest"
+               BlueprintName = "Tests macOS"
+               ReferencedContainer = "container:../Demo macOS/Demo macOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -43,7 +57,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F7890C678EB5CC07170DF9078A525A31"
+            BlueprintIdentifier = "C2E533CCE080992330E298BA5DB9E7AF"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-OSX"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -65,7 +79,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F7890C678EB5CC07170DF9078A525A31"
+            BlueprintIdentifier = "C2E533CCE080992330E298BA5DB9E7AF"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-OSX"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -83,7 +97,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F7890C678EB5CC07170DF9078A525A31"
+            BlueprintIdentifier = "C2E533CCE080992330E298BA5DB9E7AF"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-OSX"
             ReferencedContainer = "container:Pods.xcodeproj">

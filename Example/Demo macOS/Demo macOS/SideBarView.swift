@@ -56,10 +56,13 @@ class SideBarView: NSView {
         var color: NSColor = NSColor.easy_highlightedBlue()
         var topPadding: CGFloat = 20.0
         
+        // Creates an UImageView per string within tabs array
         for tabImage in tabs {
+            // Create tab
             let tab = NSImageView(frame: CGRectZero)
             tab.image = NSImage(named: tabImage)?.easy_tint(with: color)
             
+            // Layout UIImageView
             self.addSubview(tab)
             tab <- [
                 Size(33.0),
@@ -67,6 +70,7 @@ class SideBarView: NSView {
                 Top(topPadding).to(previousItem)
             ]
             
+            // Set properties that apply to next UIImageView creation
             color = NSColor.easy_blue()
             previousItem = tab
             topPadding = 14.0
@@ -75,7 +79,22 @@ class SideBarView: NSView {
     
     // MARK: Private methods
     
+    private func restore() {
+        let tabs = self.subviews.filter { $0 !== self.profileImageView  && $0 !== self.composeImageView }
+        for tab in tabs {
+            tab.removeFromSuperview()
+        }
+    }
+    
+}
+
+/**
+    Autolayout constraints
+ */
+extension SideBarView {
+    
     private func setup() {
+        // Profile picture
         self.addSubview(self.profileImageView)
         self.profileImageView <- [
             Size(46.0),
@@ -83,19 +102,13 @@ class SideBarView: NSView {
             CenterX(0.0)
         ]
         
+        // Compose tweet icon
         self.addSubview(self.composeImageView)
         self.composeImageView <- [
             Size(33.0),
             Bottom(20.0),
             CenterX(0.0)
         ]
-    }
-    
-    private func restore() {
-        let tabs = self.subviews.filter { $0 !== self.profileImageView  && $0 !== self.composeImageView }
-        for tab in tabs {
-            tab.removeFromSuperview()
-        }
     }
     
 }

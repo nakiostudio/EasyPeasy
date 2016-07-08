@@ -22,7 +22,6 @@ class FeedView: NSView {
         label.bezeled = false
         label.editable = false
         label.selectable = false
-        label.drawsBackground = false
         return label
     }()
     
@@ -38,7 +37,7 @@ class FeedView: NSView {
     
     private lazy var separatorView: NSView = {
         let view = NSView(frame: CGRectZero)
-        view.alphaValue = 0.5
+        view.alphaValue = 0.4
         return view
     }()
     
@@ -75,10 +74,13 @@ class FeedView: NSView {
     func configure(with tweets: [TweetModel]) {
         var priority = NSLayoutPriorityDefaultHigh - Float(tweets.count)
         var previousItem: NSView = self.contentView
+        // Creates a tweetView for every tweet model within tweets array
         for tweet in tweets {
             let tweetView = TweetView(frame: CGRectZero)
-            self.contentView.addSubview(tweetView)
             tweetView.configure(with: tweet)
+            
+            // Layout "cells"
+            self.contentView.addSubview(tweetView)
             tweetView <- [
                 Top(0.0).to(previousItem),
                 Left(0.0),
@@ -86,18 +88,26 @@ class FeedView: NSView {
                 Height(>=0.0)
             ]
             
+            // Pins contentView to bottom of the this item
             self.contentView <- [
                 Bottom(0.0).to(tweetView, .Bottom).with(.CustomPriority(priority))
             ]
             
+            // Set properties that apply to next tweetview creation
             previousItem = tweetView
             priority += 1.0
         }
     }
     
-    // MARK: Private methods
+}
+
+/**
+    Autolayout constraints
+ */
+extension FeedView {
     
     private func setup() {
+        // Title header
         self.addSubview(self.titleLabel)
         self.titleLabel <- [
             Top(FeedView.headerPadding),
@@ -105,6 +115,7 @@ class FeedView: NSView {
             CenterX(0.0)
         ]
         
+        // Separator beneath title
         self.addSubview(self.separatorView)
         self.separatorView <- [
             Top(FeedView.headerPadding).to(self.titleLabel),
@@ -113,20 +124,22 @@ class FeedView: NSView {
             Height(1.0)
         ]
         
-        self.scrollView.contentView.addSubview(self.contentView)
-        self.contentView <- [
-            Top(0.0),
-            Left(0.0),
-            Width(0.0).like(self.scrollView),
-            Height(>=0.0),
-        ]
-        
+        // Scroll view
         self.addSubview(self.scrollView)
         self.scrollView <- [
             Top(0.0).to(self.separatorView),
             Left(0.0),
             Right(0.0),
             Bottom(0.0)
+        ]
+        
+        // Content of the scroll
+        self.scrollView.contentView.addSubview(self.contentView)
+        self.contentView <- [
+            Top(0.0),
+            Left(0.0),
+            Width(0.0).like(self.scrollView),
+            Height(>=0.0),
         ]
     }
     

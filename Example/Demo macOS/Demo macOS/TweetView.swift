@@ -41,7 +41,6 @@ class TweetView: NSView {
         label.bezeled = false
         label.editable = false
         label.selectable = false
-        label.drawsBackground = false
         label.setContentCompressionResistancePriority(100, forOrientation: .Horizontal)
         label.setContentCompressionResistancePriority(1000, forOrientation: .Vertical)
         return label
@@ -49,7 +48,7 @@ class TweetView: NSView {
     
     private lazy var separatorView: NSView = {
         let view = NSView(frame: CGRectZero)
-        view.alphaValue = 0.5
+        view.alphaValue = 0.4
         return view
     }()
     
@@ -69,6 +68,12 @@ class TweetView: NSView {
         super.layout()
         
         self.separatorView.layer?.backgroundColor = NSColor.lightGrayColor().CGColor
+    }
+    
+    override func viewDidMoveToSuperview() {
+        super.viewDidMoveToSuperview()
+        
+        self <- Bottom(100).to(self.tweetLabel, .Bottom).with(.MediumPriority)
     }
     
     // MARK: Public methods
@@ -108,25 +113,26 @@ extension TweetView {
             Left(12.0)
         ]
         
-        // Displayable date label
-        self.displayableDateLabel <- [
-            Width(<=40.0),
-            Top(0.0).to(self.thumbnailImageView, .Top),
-            Right(12.0)
-        ]
-        
         // UserInfo label
         self.userInfoLabel <- [
-            Height(20.0),
+            Height(>=0.0),
             Top(0.0).to(self.thumbnailImageView, .Top),
             Left(10.0).to(self.thumbnailImageView),
             Right(10.0).to(self.displayableDateLabel)
         ]
         
+        // Displayable date label
+        self.displayableDateLabel <- [
+            Width(<=40.0),
+            Height(>=0.0),
+            CenterY(0.0).to(self.userInfoLabel),
+            Right(12.0)
+        ]
+        
         // Tweet label
         self.tweetLabel <- [
-            Height(>=20.0),
-            Top(0.0).to(self.userInfoLabel),
+            Height(>=0.0),
+            Top(5.0).to(self.userInfoLabel),
             Bottom(6.0),
             Left(0.0).to(self.userInfoLabel, .Left),
             Right(12.0)

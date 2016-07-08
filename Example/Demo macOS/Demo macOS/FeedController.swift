@@ -11,6 +11,9 @@
 import AppKit
 import EasyPeasy
 
+// NOTE:
+// I know this controller could be easily achievable with a regular table 
+// but this way is much easier to show the potential of EasyPeasy
 class FeedController: NSViewController {
     
     private let stubData = TweetModel.stubData()
@@ -41,9 +44,15 @@ class FeedController: NSViewController {
         )
     }
     
-    // MARK: Private methods
+}
+
+/**
+    Autolayout constraints
+ */
+extension FeedController {
     
     private func setup() {
+        // Side bar
         self.view.addSubview(self.sideBarView)
         self.sideBarView <- [
             Width(80.0),
@@ -52,6 +61,7 @@ class FeedController: NSViewController {
             Bottom(0.0)
         ]
         
+        // Feed view
         self.view.addSubview(self.feedView)
         self.feedView <- [
             Top(0.0),
@@ -60,7 +70,5 @@ class FeedController: NSViewController {
             Left(0.0).to(self.sideBarView)
         ]
     }
-    
-    
     
 }

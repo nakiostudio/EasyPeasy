@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
+               BlueprintIdentifier = "2E648B9103406E49C3194EC81B0DDB51"
                BuildableName = "EasyPeasy.framework"
                BlueprintName = "EasyPeasy-iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -43,7 +43,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
+            BlueprintIdentifier = "2E648B9103406E49C3194EC81B0DDB51"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -65,7 +65,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
+            BlueprintIdentifier = "2E648B9103406E49C3194EC81B0DDB51"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -83,7 +83,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7AAA2FF1A26B84DD1D70A4FC0597FE21"
+            BlueprintIdentifier = "2E648B9103406E49C3194EC81B0DDB51"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">

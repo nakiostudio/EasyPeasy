@@ -14,7 +14,7 @@ import EasyPeasy
 // NOTE:
 // I know this controller could be easily achievable with a regular
 // UITableViewController but this way is much easier to show the 
-// potential of EasyPeasy!
+// potential of EasyPeasy
 
 class FeedController: UIViewController {
     

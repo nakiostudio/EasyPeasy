@@ -121,10 +121,10 @@
 			children = (
 				C1B763451D298CC00054C2B0 /* Extensions and helpers */,
 				C1B763241D2983DD0054C2B0 /* AppDelegate.swift */,
-				C1B763431D298C620054C2B0 /* SideBarView.swift */,
 				C1234B0F1D2C5CB1004AB3A1 /* TweetModel.swift */,
 				C1234B101D2C5CB1004AB3A1 /* TweetView.swift */,
 				C1B763481D298F780054C2B0 /* FeedView.swift */,
+				C1B763431D298C620054C2B0 /* SideBarView.swift */,
 				C1B763411D298A0F0054C2B0 /* FeedController.swift */,
 				C1B763261D2983DD0054C2B0 /* Assets.xcassets */,
 				C1B763281D2983DD0054C2B0 /* MainMenu.xib */,
