@@ -114,8 +114,8 @@
 		C1B763181D2983DD0054C2B0 = {
 			isa = PBXGroup;
 			children = (
-				C1B763231D2983DD0054C2B0 /* Demo macOS */,
-				C1B763331D2983DD0054C2B0 /* Demo macOSTests */,
+				C1B763231D2983DD0054C2B0 /* Example for EasyPeasy */,
+				C1B763331D2983DD0054C2B0 /* Tests */,
 				C1B763221D2983DD0054C2B0 /* Products */,
 				6F9AB28A26BCA53176747368 /* Pods */,
 				B463B0C7F0A0F4599F3DC9F0 /* Frameworks */,
@@ -131,7 +131,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C1B763231D2983DD0054C2B0 /* Demo macOS */ = {
+		C1B763231D2983DD0054C2B0 /* Example for EasyPeasy */ = {
 			isa = PBXGroup;
 			children = (
 				C1B763451D298CC00054C2B0 /* Extensions and helpers */,
@@ -143,15 +143,15 @@
 				C1B763411D298A0F0054C2B0 /* FeedController.swift */,
 				C1B763261D2983DD0054C2B0 /* Assets.xcassets */,
 				C1B763281D2983DD0054C2B0 /* MainMenu.xib */,
-				C1B7632B1D2983DD0054C2B0 /* Info.plist */,
+				C1BC9EB11D315EC500FCC163 /* Supporting Files */,
 			);
+			name = "Example for EasyPeasy";
 			path = "Demo macOS";
 			sourceTree = "<group>";
 		};
-		C1B763331D2983DD0054C2B0 /* Demo macOSTests */ = {
+		C1B763331D2983DD0054C2B0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C1E01E321D30F1E6002A7F76 /* Supporting Files */,
 				C1E01E401D30F7E0002A7F76 /* NSView+EasyTests.swift */,
 				C1E01E3E1D30F7A2002A7F76 /* ItemTests.swift */,
 				C1E01E341D30F25B002A7F76 /* Attribute+InstallTests.swift */,
@@ -160,7 +160,9 @@
 				C1E01E441D30F834002A7F76 /* ReferenceAttributeTests.swift */,
 				C1E01E3C1D30F780002A7F76 /* ConstantTests.swift */,
 				C1E01E421D30F812002A7F76 /* PriorityTests.swift */,
+				C1E01E321D30F1E6002A7F76 /* Supporting Files */,
 			);
+			name = Tests;
 			path = "Demo macOSTests";
 			sourceTree = "<group>";
 		};
@@ -171,6 +173,14 @@
 				C1B763461D298CD60054C2B0 /* NSColor+Easy.swift */,
 			);
 			name = "Extensions and helpers";
+			sourceTree = "<group>";
+		};
+		C1BC9EB11D315EC500FCC163 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C1B7632B1D2983DD0054C2B0 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		C1E01E321D30F1E6002A7F76 /* Supporting Files */ = {
