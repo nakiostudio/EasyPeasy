@@ -152,14 +152,14 @@
 			isa = PBXGroup;
 			children = (
 				C1E01E321D30F1E6002A7F76 /* Supporting Files */,
+				C1E01E401D30F7E0002A7F76 /* NSView+EasyTests.swift */,
+				C1E01E3E1D30F7A2002A7F76 /* ItemTests.swift */,
 				C1E01E341D30F25B002A7F76 /* Attribute+InstallTests.swift */,
 				C1E01E361D30F2E4002A7F76 /* Attribute+OperatorsTests.swift */,
 				C1E01E3A1D30F714002A7F76 /* CompoundAttributeTests.swift */,
-				C1E01E3C1D30F780002A7F76 /* ConstantTests.swift */,
-				C1E01E3E1D30F7A2002A7F76 /* ItemTests.swift */,
-				C1E01E401D30F7E0002A7F76 /* NSView+EasyTests.swift */,
-				C1E01E421D30F812002A7F76 /* PriorityTests.swift */,
 				C1E01E441D30F834002A7F76 /* ReferenceAttributeTests.swift */,
+				C1E01E3C1D30F780002A7F76 /* ConstantTests.swift */,
+				C1E01E421D30F812002A7F76 /* PriorityTests.swift */,
 			);
 			path = "Demo macOSTests";
 			sourceTree = "<group>";
@@ -466,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -505,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

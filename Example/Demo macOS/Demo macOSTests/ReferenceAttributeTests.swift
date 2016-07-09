@@ -62,6 +62,7 @@ class ReferenceAttributeTests: XCTestCase {
         XCTAssertTrue(ReferenceAttribute.Width.layoutAttribute == .Width)
     }
     
+    @available(OSX 10.11, *)
     func testThatAutoLayoutEquivalentIsTheExpectedOSX1011AndAbove() {
         // given
         // when
