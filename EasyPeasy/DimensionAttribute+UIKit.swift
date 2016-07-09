@@ -12,6 +12,10 @@
     
 import UIKit
 
+/**
+     DimensionAttribute extension adding some convenience methods to operate with 
+     UIKit elements as `UIViews` or `UILayoutGuides`
+ */
 extension DimensionAttribute {
  
     /**
@@ -54,7 +58,11 @@ extension DimensionAttribute {
     }
     
 }
-    
+
+/**
+     Size extension adding some convenience methods to let this  CompoundAttribute 
+     operate with UIKit elements like `UIViews` or `UILayoutGuides`
+ */
 extension Size {
     
     /**

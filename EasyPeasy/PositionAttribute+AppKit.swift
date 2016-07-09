@@ -12,6 +12,10 @@
     
 import AppKit
 
+/**
+     DimensionAttribute extension adding some convenience methods to operate with
+     `NSViews`
+ */
 extension PositionAttribute {
     
     /**

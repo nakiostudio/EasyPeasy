@@ -20,11 +20,11 @@ public typealias View = NSView
  */
 internal extension Item {
     
-    /// Owning `UIView` for the current `Item`. The concept varies
+    /// Owning `NSView` for the current `Item`. The concept varies
     /// depending on the class conforming the protocol
     internal var owningView: View? {
         get {
-            // Owning view for `UIView` is the `superview`
+            // Owning view for `NSView` is the `superview`
             if let view = self as? View {
                 return view.superview
             }
@@ -36,7 +36,7 @@ internal extension Item {
 }
 
 /**
-     Extension making `UIView` conform the `Item` protocol and
+     Extension making `NSView` conform the `Item` protocol and
      therefore inherit the extended methods and properties
  */
 extension NSView: Item { }

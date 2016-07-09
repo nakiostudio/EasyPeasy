@@ -12,6 +12,10 @@
     
 import UIKit
 
+/**
+     PositionAttribute extension adding some convenience methods to operate with
+     UIKit elements as `UIViews` or `UILayoutGuides`
+ */
 extension PositionAttribute {
     
     /**

@@ -12,11 +12,15 @@
     
 import AppKit
 
+/**
+     DimensionAttribute extension adding some convenience methods to operate with
+     `NSViews`
+ */
 extension DimensionAttribute {
     
     /**
         Establishes a relationship between the dimension attribute
-        applied to the `NSView` and the reference `UIView` passed as
+        applied to the `NSView` and the reference `NSView` passed as
         parameter.
      
         It's also possible to link this relationship to a particular
@@ -35,6 +39,10 @@ extension DimensionAttribute {
     
 }
 
+/**
+     Size extension adding some convenience methods to let this  CompoundAttribute
+     operate with `NSViews`
+ */
 extension Size {
     
     /**
