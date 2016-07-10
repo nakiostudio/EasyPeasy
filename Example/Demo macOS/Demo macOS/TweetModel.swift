@@ -16,14 +16,24 @@ struct TweetModel {
     let username: String
     let displayableDate: String
     let tweet: String
-    let thumbnail: NSImage?
     
-    init(name: String, username: String, displayableDate: String, tweet: String, thumbnail: NSImage?) {
+    var thumbnail: NSImage? {
+        get {
+            return NSImage(named: self.username)
+        }
+    }
+    
+    var displayableUsername: String {
+        get {
+            return "@\(self.username)"
+        }
+    }
+    
+    init(name: String, username: String, displayableDate: String, tweet: String) {
         self.name = name
         self.username = username
         self.displayableDate = displayableDate
         self.tweet = tweet
-        self.thumbnail = thumbnail
     }
     
 }
@@ -31,35 +41,66 @@ struct TweetModel {
 extension TweetModel {
     
     static func stubData() -> [TweetModel] {
-        let tweetFelix = TweetModel(
-            name: "Felix Krause",
-            username: "@KrauseFX",
-            displayableDate: "30m",
-            tweet: "With Fastlane nobody has to deal with xcodebuild anymore. Say goodbye to NSLayoutConstraints thanks to EasyPeasy 🚀",
-            thumbnail: nil
-        )
-        let tweetEloy = TweetModel(
-            name: "Eloy Durán",
-            username: "@alloy",
+        var tweets: [TweetModel] = []
+        
+        let tweetPete = TweetModel(
+            name: "Peter Steinberger",
+            username: "steipete",
             displayableDate: "1h",
-            tweet: "EasyPeasy, best thing since CocoaPods socks were announced!",
-            thumbnail: nil
+            tweet: "My enhance request to incorporate EasyPeasy into UIKit is ready: rdar://27192334"
         )
-        let tweetJavi = TweetModel(
-            name: "Javi.swift",
-            username: "@Javi",
+        tweets.append(tweetPete)
+        
+        let tweetBen = TweetModel(
+            name: "Ben Sandofsky",
+            username: "sandofsky",
             displayableDate: "2h",
-            tweet: "EasyPeasy? another autolayout library? Okay, I can give it a try!",
-            thumbnail: nil
+            tweet: "In 2016, it's nuts to not be using Auto-Layout... in July 2016, it's nuts not" +
+            " to be using EasyPeasy"
         )
-        let tweetNacho = TweetModel(
-            name: "NeoGazpatchOS",
-            username: "@NeoNacho",
+        tweets.append(tweetBen)
+        
+        let tweetChris = TweetModel(
+            name: "Chris Lattner",
+            username: "clattner_llvm",
             displayableDate: "4h",
-            tweet: "Just discovered EasyPeasy... silly name, great framework #yatusabes",
-            thumbnail: nil
+            tweet: "Wouldn't mind sherlocking this EasyPeasy thing 😄"
         )
-        return [tweetFelix, tweetEloy, tweetJavi, tweetNacho]
+        tweets.append(tweetChris)
+        
+        let tweetOrta = TweetModel(
+            name: "Orta Therox",
+            username: "orta",
+            displayableDate: "4h",
+            tweet: "EasyPeasy was nice, aye, but now is rockin' it on OS X too"
+        )
+        tweets.append(tweetOrta)
+        
+        let tweetNatasha = TweetModel(
+            name: "NatashaTheRobot",
+            username: "NatashaTheRobot",
+            displayableDate: "5h",
+            tweet: "The talk \"Mastering Auto Layout with EasyPeasy\" at @tryswiftnyc is now live!"
+        )
+        tweets.append(tweetNatasha)
+        
+        let tweetAsh = TweetModel(
+            name: "Ash Furrow",
+            username: "ashfurrow",
+            displayableDate: "6h",
+            tweet: "Cool Auto Layout framework, the creator is not available in button format though... 🙃"
+        )
+        tweets.append(tweetAsh)
+        
+        let tweetAndy = TweetModel(
+            name: "Andy Matuschak",
+            username: "andy_matuschak",
+            displayableDate: "7h",
+            tweet: "EasyPeasy? hummm... fancy abstraction you should look at"
+        )
+        tweets.append(tweetAndy)
+        
+        return tweets
     }
     
 }

@@ -72,7 +72,7 @@ class FeedView: NSView {
     // MARK: Public methods
     
     func configure(with tweets: [TweetModel]) {
-        var priority = NSLayoutPriorityDefaultHigh - Float(tweets.count)
+        var priority = 500 - Float(tweets.count)
         var previousItem: NSView = self.contentView
         // Creates a tweetView for every tweet model within tweets array
         for tweet in tweets {
@@ -85,12 +85,12 @@ class FeedView: NSView {
                 Top(0.0).to(previousItem),
                 Left(0.0),
                 Right(0.0),
-                Height(>=0.0)
+                Height(>=TweetView.minimumHeight)
             ]
             
             // Pins contentView to bottom of the this item
             self.contentView <- [
-                Bottom(0.0).to(tweetView, .Bottom).with(.CustomPriority(priority))
+                Bottom(>=0.0).to(tweetView, .Bottom).with(.CustomPriority(priority))
             ]
             
             // Set properties that apply to next tweetview creation
@@ -134,13 +134,17 @@ extension FeedView {
         ]
         
         // Content of the scroll
-        self.scrollView.contentView.addSubview(self.contentView)
+        self.scrollView.documentView = self.contentView
         self.contentView <- [
             Top(0.0),
             Left(0.0),
+            Bottom(>=0.0),
             Width(0.0).like(self.scrollView),
-            Height(>=0.0),
+            Height(>=0.0)
         ]
+        
+        
+        self.scrollView.contentSize
     }
     
 }

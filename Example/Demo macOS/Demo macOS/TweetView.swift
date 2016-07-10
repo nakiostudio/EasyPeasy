@@ -13,6 +13,8 @@ import EasyPeasy
 
 class TweetView: NSView {
     
+    static let minimumHeight: CGFloat = 76.0
+    
     private lazy var userInfoLabel: NSTextField = {
         let label = NSTextField(frame: CGRectZero)
         label.bezeled = false
@@ -68,6 +70,7 @@ class TweetView: NSView {
         super.layout()
         
         self.separatorView.layer?.backgroundColor = NSColor.lightGrayColor().CGColor
+        self.thumbnailImageView.layer?.cornerRadius = 4.0
     }
     
     override func viewDidMoveToSuperview() {
@@ -80,7 +83,7 @@ class TweetView: NSView {
     
     func configure(with tweet: TweetModel) {
         self.thumbnailImageView.image = tweet.thumbnail
-        let userInfo = TweetView.attributedStringWithName(tweet.name, username: tweet.username)
+        let userInfo = TweetView.attributedStringWithName(tweet.name, username: tweet.displayableUsername)
         self.userInfoLabel.attributedStringValue = userInfo
         let displayableDate = TweetView.attributedStringWithDisplayableDate(tweet.displayableDate)
         self.displayableDateLabel.attributedStringValue = displayableDate
@@ -132,9 +135,9 @@ extension TweetView {
         // Tweet label
         self.tweetLabel <- [
             Height(>=0.0),
-            Top(5.0).to(self.userInfoLabel),
+            Top(2.0).to(self.userInfoLabel),
             Bottom(6.0),
-            Left(0.0).to(self.userInfoLabel, .Left),
+            Left(-2.0).to(self.userInfoLabel, .Left),
             Right(12.0)
         ]
         
