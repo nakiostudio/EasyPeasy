@@ -5,6 +5,8 @@ gem 'cocoapods'
 
 # Coverage reports
 gem 'xcov'
+gem 'danger-xcov'
 
 # CI
 gem 'fastlane'
+gem 'danger'

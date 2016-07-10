@@ -8,7 +8,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#if os(iOS) || os(tvOS)
 import UIKit
+#else
+import AppKit
+#endif
 
 /**
     Convenience methods applicable to `Attribute` and subclasses
@@ -93,11 +97,14 @@ internal extension Attribute {
  */
 internal extension Attribute {
     
+#if os(iOS) || os(tvOS)
+    
     /**
         Helper that creates the equivalent `ReferenceAttribute` for an
         `Attribute` subclass
         - returns: the equivalent `ReferenceAttribute`
      */
+    
     internal func referenceAttributeFromClass() -> ReferenceAttribute {
         switch self {
         case is Width: return .Width
@@ -123,5 +130,32 @@ internal extension Attribute {
         default: return .NotAnAttribute
         }
     }
+    
+#else
+    
+    /**
+        Helper that creates the equivalent `ReferenceAttribute` for an
+        `Attribute` subclass
+        - returns: the equivalent `ReferenceAttribute`
+     */
+    internal func referenceAttributeFromClass() -> ReferenceAttribute {
+        switch self {
+        case is Width: return .Width
+        case is Height: return .Height
+        case is Left: return .Left
+        case is Right: return .Right
+        case is Top: return .Top
+        case is Bottom: return .Bottom
+        case is Leading: return .Leading
+        case is Trailing: return .Trailing
+        case is CenterX: return .CenterX
+        case is CenterY: return .CenterY
+        case is FirstBaseline: return .FirstBaseline
+        case is LastBaseline: return .LastBaseline
+        default: return .NotAnAttribute
+        }
+    }
+    
+#endif
     
 }

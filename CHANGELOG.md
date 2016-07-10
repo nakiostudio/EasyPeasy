@@ -1,5 +1,10 @@
 # Changelog
 
+## v.3.0
+
+* Supported tvOS and OS X.
+* Added OS X sample project.
+
 ## v.0.2.5
 
 * Added support to `UIViewController` top and bottom layout guides that conform

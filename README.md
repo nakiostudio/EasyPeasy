@@ -25,6 +25,7 @@ result using **EasyPeasy**.
 
 ### Features
 
+* Compatible with iOS, tvOS and OS X.
 * Lightweight and easy to use domain specific language.
 * Resolution of *Auto Layout* conflicts.
 * Fast and *hassle-free* update of constraints.
@@ -72,8 +73,8 @@ github "nakiostudio/EasyPeasy"
 And run ` carthage update ` as usual.
 
 ### Compatibility
-For now **EasyPeasy** is only compatible with iOS 8 and above, although we aim
-to make it compatible with OS X.
+**EasyPeasy** is compatible with iOS (8 and above), tvOS (9 and above) and OS X
+(10.10 and above).
 The framework has been tested with Xcode 7 and Swift 2.0, however don't hesitate
 to report any issues you may find with different versions.
 
@@ -421,12 +422,12 @@ UIView.animateWithDuration(0.3) {
 }
 ```
 
-## Example project
+## Example projects
 
-Don't forget to clone the repository and run the example project to see
-**EasyPeasy** in action.
+Don't forget to clone the repository and run the iOS and OS X example projects
+to see **EasyPeasy** in action.
 
-![demo](README/demo_project.gif)
+![demo](README/demo_ios.gif)![demo](README/demo_macos.gif)
 
 *Note:* the messages in the demo app aren't real and the appearance of
 those *Twitter* accounts no more than a tribute to some kickass developers :)

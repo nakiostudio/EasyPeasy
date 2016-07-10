@@ -9,4 +9,5 @@ before_install:
 script:
   - set -o pipefail
   - fastlane travis
+  - danger --verbose
   - pod lib lint --quick
