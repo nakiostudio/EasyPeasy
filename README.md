@@ -427,9 +427,7 @@ UIView.animateWithDuration(0.3) {
 Don't forget to clone the repository and run the iOS and OS X example projects
 to see **EasyPeasy** in action.
 
-![demo](README/demo_ios.gif)
-
-![demo](README/demo_macos.gif)
+![demo](README/demo_ios.gif)![demo](README/demo_macos.gif)
 
 *Note:* the messages in the demo app aren't real and the appearance of
 those *Twitter* accounts no more than a tribute to some kickass developers :)

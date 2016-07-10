@@ -7,6 +7,21 @@ platform :ios do
   lane :travis do
     workspace = "Example/EasyPeasy.xcworkspace"
 
+    # Run tests (macOS)
+    scheme = "EasyPeasy-OSX"
+    scan(
+      scheme: scheme,
+      workspace: workspace,
+      code_coverage: true
+    )
+
+    # Check code coverage (macOS)
+    xcov(
+      scheme: scheme,
+      workspace: workspace,
+      exclude_targets: "Demo macOS.app"
+    )
+
     # Run tests (iOS)
     scheme = "EasyPeasy-iOS"
     scan(
@@ -21,21 +36,6 @@ platform :ios do
       scheme: scheme,
       workspace: workspace,
       exclude_targets: "Demo.app"
-    )
-
-    # Run tests (macOS)
-    scheme = "EasyPeasy-OSX"
-    scan(
-      scheme: scheme,
-      workspace: workspace,
-      code_coverage: true
-    )
-
-    # Check code coverage (macOS)
-    xcov(
-      scheme: scheme,
-      workspace: workspace,
-      exclude_targets: "Demo macOS.app"
     )
   end
 
