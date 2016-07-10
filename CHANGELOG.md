@@ -1,6 +1,6 @@
 # Changelog
 
-## v.3.0
+## v.0.3.0
 
 * Supported tvOS and OS X.
 * Added OS X sample project.
