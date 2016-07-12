@@ -36,12 +36,26 @@ public class DimensionAttribute: Attribute {
 /**
     The width of the object’s alignment rectangle
  */
-public class Width: DimensionAttribute { }
+public class Width: DimensionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Width
+    }
+
+}
 
 /**
     The height of the object’s alignment rectangle
  */
-public class Height: DimensionAttribute { }
+public class Height: DimensionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Height
+    }
+    
+}
 
 /**
     The size of the object’s rectangle
