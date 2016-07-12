@@ -24,6 +24,34 @@ public protocol Item: NSObjectProtocol {
     /// Array of constraints installed in the current `Item`
     var constraints: [NSLayoutConstraint] { get }
     
+    /// Owning `UIView` for the current `Item`. The concept varies
+    /// depending on the class conforming the protocol
+    var owningView: View? { get }
+    
+}
+
+/**
+ 
+ */
+public extension Item {
+    
+    /**
+        This method will trigger the recreation of the constraints
+        created using *EasyPeasy* for the current view. `Condition`
+        closures will be evaluated again
+     */
+    public func easy_reload() { //TODO:
+        
+    }
+    
+    /**
+        Clears all the constraints applied with EasyPeasy to the
+        current `UIView`
+     */
+    public func easy_clear() { //TODO:
+        
+    }
+    
 }
 
 /**
@@ -31,15 +59,12 @@ public protocol Item: NSObjectProtocol {
  */
 internal extension Item {
     
-    /// Association with an array containing all the *EasyPeasy*
-    /// attributes applied to the current `Item`
-    internal var attributes: [Attribute] {
+    internal var nodes: [String:[Node]]? {
         get {
-            if let attributes = objc_getAssociatedObject(self, &easy_attributesReference) as?
-                [Attribute] {
-                return attributes
+            if let nodes = objc_getAssociatedObject(self, &easy_attributesReference) as? [String:[Node]] {
+                return nodes
             }
-            return []
+            return nil
         }
         
         set {
@@ -47,5 +72,5 @@ internal extension Item {
             objc_setAssociatedObject(self, &easy_attributesReference, newValue, policy)
         }
     }
-    
+
 }
