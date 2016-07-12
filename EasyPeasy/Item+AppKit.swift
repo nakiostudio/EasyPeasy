@@ -14,31 +14,24 @@ import AppKit
 
 /// Alias of NSView
 public typealias View = NSView
-
-/**
-     Item protocol extension implementing some convenience properties
- */
-internal extension Item {
     
-    /// Owning `NSView` for the current `Item`. The concept varies
-    /// depending on the class conforming the protocol
-    internal var owningView: View? {
-        get {
-            // Owning view for `NSView` is the `superview`
-            if let view = self as? View {
-                return view.superview
-            }
-            
-            return nil
-        }
-    }
-    
-}
-
 /**
      Extension making `NSView` conform the `Item` protocol and
      therefore inherit the extended methods and properties
  */
-extension NSView: Item { }
+extension NSView: Item {
+    
+    /// Owning `NSView` for the current `Item`. The concept varies
+    /// depending on the class conforming the protocol
+    public var owningView: View? {
+        // Owning view for `NSView` is the `superview`
+        if let view = self as? View {
+            return view.superview
+        }
+        
+        return nil
+    }
+    
+}
     
 #endif
