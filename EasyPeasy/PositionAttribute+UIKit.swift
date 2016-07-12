@@ -79,49 +79,105 @@ extension PositionAttribute {
      The object’s left margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class LeftMargin: PositionAttribute { }
+public class LeftMargin: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .LeftMargin
+    }
+    
+}
 
 /**
      The object’s right margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class RightMargin: PositionAttribute { }
+public class RightMargin: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .RightMargin
+    }
+    
+}
 
 /**
      The object’s top margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class TopMargin: PositionAttribute { }
+public class TopMargin: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .TopMargin
+    }
+    
+}
 
 /**
      The object’s bottom margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class BottomMargin: PositionAttribute { }
+public class BottomMargin: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .BottomMargin
+    }
+    
+}
 
 /**
      The object’s leading margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class LeadingMargin: PositionAttribute { }
+public class LeadingMargin: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .LeadingMargin
+    }
+    
+}
 
 /**
      The object’s trailing margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class TrailingMargin: PositionAttribute { }
+public class TrailingMargin: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .TrailingMargin
+    }
+    
+}
 
 /**
      The center along the x-axis between the object’s left and right margin.
      For UIView objects, the margins are defined by their layoutMargins property
  */
-public class CenterXWithinMargins: PositionAttribute { }
+public class CenterXWithinMargins: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .CenterXWithinMargins
+    }
+    
+}
 
 /**
      The center along the y-axis between the object’s top and bottom margin.
      For UIView objects, the margins are defined by their layoutMargins property
  */
-public class CenterYWithinMargins: PositionAttribute { }
+public class CenterYWithinMargins: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .CenterYWithinMargins
+    }
+    
+}
     
 /**
      The object’s margins. For UIView objects, the margins are defined
