@@ -36,11 +36,11 @@ public class PositionAttribute: Attribute {
         - parameter view: `UIView` in which the generated 
           `NSLayoutConstraint` will be added
      */
-    override func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+    override func createConstraints(for item: Item) -> [NSLayoutConstraint] {
         if let superview = item.owningView where self.referenceItem == nil {
             self.to(superview)
         }
-        return super.createConstraintsForItem(item)
+        return super.createConstraints(for: item)
     }
     
 }

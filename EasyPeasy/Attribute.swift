@@ -47,7 +47,8 @@ public class Attribute {
     
     /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
-        return self.referenceAttributeFromClass()
+        debugPrint("This point shouldn't have been reached")
+        return .Width
     }
     
     /// Reference `UIView` of the constraint
@@ -55,6 +56,14 @@ public class Attribute {
     
     /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?
+    
+    /// Resulting `NSLayoutConstraint`
+    internal(set) var layoutConstraint: NSLayoutConstraint?
+    
+    ///
+    internal var signature: String { //TODO:
+        return ""
+    }
     
     /**
         Initializer which creates an `Attribute` instance
@@ -128,7 +137,7 @@ public class Attribute {
         - returns an `Array` of `NSLayoutConstraint` objects that will
         be installed on the `UIView` passed as parameter
      */
-    internal func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+    internal func createConstraints(for item: Item) -> [NSLayoutConstraint] {
         guard let _ = item.owningView else {
             debugPrint("EasyPeasy Attribute cannot be applied to item \(item) as its superview/owningView is nil")
             return []
@@ -136,17 +145,6 @@ public class Attribute {
         
         // Reference to the target view
         self.createItem = item
-        
-        // Resolve constraint conflicts
-        self.resolveConflictsOnItem(item)
-        
-        // Store attribute in owner `UIView`
-        self.storeInItem(item)
-        
-        // If condition is `false` return
-        if self.shouldInstall() == false {
-            return []
-        }
         
         // Build layout constraint
         let constantFactor: CGFloat = self.createAttribute.shouldInvertConstant ? -1 : 1
@@ -163,11 +161,21 @@ public class Attribute {
         // Set priority
         layoutConstraint.priority = self.priority.layoutPriority()
         
-        // Set associated Attribute
-        layoutConstraint.easy_attribute = self
+        // Reference resulting constraint
+        self.layoutConstraint = layoutConstraint
         
         // Return the constraint
         return [layoutConstraint]
+    }
+    
+    /**
+        Determines whether the `Attribute` must be installed or not
+        depending on the `Condition` closure
+        - return boolean determining if the `Attribute` has to be
+        applied
+     */
+    internal func shouldInstall() -> Bool {
+        return self.condition?() ?? true
     }
     
     /**
@@ -179,6 +187,28 @@ public class Attribute {
      */
     internal func ownedBySuperview() -> Bool {
         return true
+    }
+    
+    /**
+        Determines which `ReferenceAttribute` must be taken as reference
+        attribute for the actual Attribute class. Usually is the opposite
+        of the one that is going to be installed
+        - returns `ReferenceAttribute` to install
+     */
+    internal func referenceAttributeHelper() -> ReferenceAttribute {
+        // If already set return
+        if let attribute = self.referenceAttribute {
+            return attribute
+        }
+        
+        // If reference view is the superview then return same attribute
+        // as `createAttribute`
+        if let referenceItem = self.referenceItem where referenceItem === self.createItem?.owningView {
+            return self.createAttribute
+        }
+        
+        // Otherwise return the opposite of `createAttribute`
+        return self.createAttribute.opposite
     }
     
 }
