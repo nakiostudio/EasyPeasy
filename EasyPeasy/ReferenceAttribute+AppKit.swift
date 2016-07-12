@@ -34,9 +34,6 @@ public enum ReferenceAttribute {
     case LastBaseline
     case FirstBaseline
     
-    // Default
-    case NotAnAttribute
-    
     /// Reference attribute opposite to the current one
     internal var opposite: ReferenceAttribute {
         switch self {
@@ -51,14 +48,11 @@ public enum ReferenceAttribute {
         case .CenterX: return .CenterX
         case .CenterY: return .CenterY
         case .LastBaseline: return .LastBaseline
-        case .NotAnAttribute: return .NotAnAttribute
         case .FirstBaseline:
             if #available(OSX 10.11, *) {
                 return .FirstBaseline
             }
-            else {
-                return .LastBaseline
-            }
+            return .LastBaseline
         }
     }
     
@@ -77,42 +71,11 @@ public enum ReferenceAttribute {
         case .CenterX: return .CenterX
         case .CenterY: return .CenterY
         case .LastBaseline: return .LastBaseline
-        case .NotAnAttribute: return .NotAnAttribute
         case .FirstBaseline:
             if #available(OSX 10.11, *) {
                 return .FirstBaseline
             }
-            else {
-                return .LastBaseline
-            }
-        }
-    }
-    
-    /// Reference attributes that may conflict with the current one
-    internal var conflictingAttributes: [ReferenceAttribute] {
-        let left: [ReferenceAttribute] = [.Left, .CenterX, .Leading]
-        let right: [ReferenceAttribute] = [.Right, .CenterX, .Trailing]
-        let top: [ReferenceAttribute] = [.Top, .CenterY, .FirstBaseline]
-        let bottom: [ReferenceAttribute] = [.Bottom, .CenterY, LastBaseline]
-        let firstBaseLine: [ReferenceAttribute] = [.Top, .CenterY, .FirstBaseline]
-        let lastBaseLine: [ReferenceAttribute] = [.LastBaseline, .Bottom, .CenterY]
-        let centerX: [ReferenceAttribute] = [.CenterX, .Left, .Right, .Leading, .Trailing]
-        let centerY: [ReferenceAttribute] = [.CenterY, .Top, .Bottom, .LastBaseline, .FirstBaseline]
-        
-        switch self {
-        case .Width: return [.Width]
-        case .Height: return [.Height]
-        case .Left: return left
-        case .Right: return right
-        case .Top: return top
-        case .Bottom: return bottom
-        case .Leading: return left
-        case .Trailing: return right
-        case .CenterX: return centerX
-        case .CenterY: return centerY
-        case .FirstBaseline: return firstBaseLine
-        case .LastBaseline: return lastBaseLine
-        case .NotAnAttribute: return []
+            return .LastBaseline
         }
     }
     
@@ -134,7 +97,6 @@ public enum ReferenceAttribute {
         case .CenterY: return false
         case .FirstBaseline: return false
         case .LastBaseline: return true
-        case .NotAnAttribute: return false
         }
     }
     

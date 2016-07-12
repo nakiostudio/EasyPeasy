@@ -42,9 +42,6 @@ public enum ReferenceAttribute {
     case CenterXWithinMargins
     case CenterYWithinMargins
     
-    // Default
-    case NotAnAttribute
-    
     /// Reference attribute opposite to the current one
     internal var opposite: ReferenceAttribute {
         switch self {
@@ -68,7 +65,6 @@ public enum ReferenceAttribute {
         case .TrailingMargin: return .LeadingMargin
         case .CenterXWithinMargins: return .CenterXWithinMargins
         case .CenterYWithinMargins: return .CenterYWithinMargins
-        case .NotAnAttribute: return .NotAnAttribute
         }
     }
     
@@ -96,43 +92,6 @@ public enum ReferenceAttribute {
         case .TrailingMargin: return .TrailingMargin
         case .CenterXWithinMargins: return .CenterXWithinMargins
         case .CenterYWithinMargins: return .CenterYWithinMargins
-        case .NotAnAttribute: return .NotAnAttribute
-        }
-    }
-    
-    /// Reference attributes that may conflict with the current one
-    internal var conflictingAttributes: [ReferenceAttribute] {
-        let left: [ReferenceAttribute] = [.Left, .CenterX, .Leading, .LeftMargin, .CenterXWithinMargins, .LeadingMargin]
-        let right: [ReferenceAttribute] = [.Right, .CenterX, .Trailing, .RightMargin, .CenterXWithinMargins, .TrailingMargin]
-        let top: [ReferenceAttribute] = [.Top, .CenterY, .FirstBaseline, .TopMargin, .CenterYWithinMargins]
-        let bottom: [ReferenceAttribute] = [.Bottom, .CenterY, LastBaseline, .BottomMargin, .CenterYWithinMargins]
-        let firstBaseLine: [ReferenceAttribute] = [.Top, .CenterY, .FirstBaseline, .TopMargin, .CenterYWithinMargins]
-        let lastBaseLine: [ReferenceAttribute] = [.LastBaseline, .Bottom, .CenterY, .BottomMargin, .CenterYWithinMargins]
-        let centerX: [ReferenceAttribute] = [.CenterX, .Left, .Right, .Leading, .Trailing, .LeftMargin, .RightMargin, .CenterXWithinMargins, .LeadingMargin, .TrailingMargin]
-        let centerY: [ReferenceAttribute] = [.CenterY, .Top, .Bottom, .LastBaseline, .FirstBaseline, .TopMargin, .BottomMargin, .CenterYWithinMargins]
-        
-        switch self {
-        case .Width: return [.Width]
-        case .Height: return [.Height]
-        case .Left: return left
-        case .Right: return right
-        case .Top: return top
-        case .Bottom: return bottom
-        case .Leading: return left
-        case .Trailing: return right
-        case .CenterX: return centerX
-        case .CenterY: return centerY
-        case .FirstBaseline: return firstBaseLine
-        case .LastBaseline: return lastBaseLine
-        case .LeftMargin: return left
-        case .RightMargin: return right
-        case .TopMargin: return top
-        case .BottomMargin: return bottom
-        case .LeadingMargin: return left
-        case .TrailingMargin: return right
-        case .CenterXWithinMargins: return centerX
-        case .CenterYWithinMargins: return centerY
-        case .NotAnAttribute: return []
         }
     }
     
@@ -162,7 +121,6 @@ public enum ReferenceAttribute {
         case .TrailingMargin: return true
         case .CenterXWithinMargins: return false
         case .CenterYWithinMargins: return false
-        case .NotAnAttribute: return false
         }
     }
     
