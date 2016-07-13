@@ -11,45 +11,38 @@
 import Foundation
 
 /**
-    Struct that based on an Attribute object creates
-    the signature that will be used to access a `Node`
-    stored in an `Item`
+    Extension of `String` with a convenience method that
+    eases the creation of an `Attribute` signature
  */
-internal struct Signature {
-    
-    /// String value of the `Signature` which hash is
-    /// going to be used in order to access the persisted
-    /// `Attributes`
-    let stringValue: String
+internal extension String {
     
     /**
-        Creates the `Signature` for the Attribute passed
-        as parameter
+        Creates the string value which hash will be used 
+        to access a `Node` persisting a group of `Attributes`
         - parameter attribute: `Attribute` which properties
         will be used in order to create the `stringValue`
      */
-    init(attribute: Attribute) {
+    static func easy_signature(for attribute: Attribute) -> String {
         // Signature of the create `ReferenceAttribute` of
         // the passed `Attribute`
-        var stringValue = attribute.createAttribute.signatureString
+        var signature = attribute.createAttribute.signatureString
         
         // Signature of the `Modifier` of the passed 
         // `Attribute`
         switch attribute.constant.modifier {
         case .EqualTo, .MultipliedBy:
-            stringValue += "eq_"
+            signature += "eq_"
         case .GreaterThanOrEqualTo:
-            stringValue += "gt_"
+            signature += "gt_"
         case .LessThanOrEqualTo:
-            stringValue += "lt_"
+            signature += "lt_"
         }
         
         // Signature of the `Priority` of the passed
         // `Attribute`
-        stringValue += String(attribute.priority.layoutPriority())
+        signature += String(attribute.priority.layoutPriority())
         
-        // Set stringValue
-        self.stringValue = stringValue
+        return signature
     }
     
 }
@@ -58,7 +51,7 @@ internal struct Signature {
 
 /**
      Extends `ReferenceAttribute` to ease the creation of
-     a `Signature` strung
+     an `Attribute` signature
  */
 private extension ReferenceAttribute {
     
@@ -79,7 +72,7 @@ private extension ReferenceAttribute {
     
 /**
      Extends `ReferenceAttribute` to ease the creation of
-     a `Signature` strung
+     an `Attribute` signature
  */
 private extension ReferenceAttribute {
     

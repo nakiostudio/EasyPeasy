@@ -64,8 +64,8 @@ public class Attribute {
     
     /// Element identifying the node this attribute will be 
     /// stored in
-    internal lazy var signature: Signature = {
-        return Signature(attribute: self)
+    internal lazy var signature: String = {
+        return String.easy_signature(for: self)
     }()
     
     /**
