@@ -36,20 +36,8 @@ public func <- (lhs: NSView, rhs: [Attribute]) -> [NSLayoutConstraint] {
     // Disable autoresizing to constraints translation
     lhs.translatesAutoresizingMaskIntoConstraints = false
     
-    // Create constraints to install
-    var constraintsToInstall: [NSLayoutConstraint] = []
-    
-    for attribute in rhs {
-        // Create the constraint
-        let newConstraints = attribute.createConstraintsForItem(lhs)
-        constraintsToInstall.appendContentsOf(newConstraints)
-    }
-    
-    // Install these constraints
-    NSLayoutConstraint.activateConstraints(constraintsToInstall)
-    
-    // Return the installed `NSLayoutConstraints`
-    return constraintsToInstall
+    // Apply attributes and return the installed `NSLayoutConstraints`
+    return lhs.apply(attributes: rhs)
 }
     
 #endif
