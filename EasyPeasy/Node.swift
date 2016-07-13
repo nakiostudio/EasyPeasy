@@ -8,12 +8,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Foundation
+#if os(iOS) || os(tvOS)
+import UIKit
+#else
+import AppKit
+#endif
 
 /**
  
  */
-internal enum NodeAttribute {
+private enum NodeAttribute {
     
     case Left, Right, Center, Dimension
     
@@ -47,41 +51,63 @@ internal class Node {
     /**
  
      */
-    func add(attribute attribute: Attribute) -> NSLayoutConstraint? {
+    func add(attribute attribute: Attribute) -> [NSLayoutConstraint] {
         //
-        guard attribute.shouldInstall() else {
+        if let compoundAttribute = attribute as? CompoundAttribute {
+            return self.add(compoundAttribute: compoundAttribute)
+        }
+        
+        //
+        if attribute.shouldInstall() == false {
             self.inactiveAttributes.append(attribute)
-            return nil
+            return []
         }
         
         //
         let nodeAttribute = attribute.createAttribute.nodeAttribute
         switch nodeAttribute {
         case .Left:
-            if self.left === attribute { return nil }
+            if self.left === attribute { return [] }
             self.deactivate(attributes: [self.left, self.center])
             self.left = attribute
             self.center = nil
         case .Right:
-            if self.right === attribute { return nil }
+            if self.right === attribute { return [] }
             self.deactivate(attributes: [self.right, self.center])
             self.right = attribute
             self.center = nil
         case .Center:
-            if self.center === attribute { return nil }
+            if self.center === attribute { return [] }
             self.deactivate(attributes: [self.center, self.left, self.right])
             self.center = attribute
             self.left = nil
             self.right = nil
         case .Dimension:
-            if self.dimension === attribute { return nil }
+            if self.dimension === attribute { return [] }
             self.deactivate(attributes: [self.dimension, self.left, self.right])
             self.dimension = attribute
             self.left = nil
             self.right = nil
         }
         
-        return attribute.layoutConstraint
+        //
+        if let layoutConstraint = attribute.layoutConstraint {
+            return [layoutConstraint]
+        }
+        
+        return []
+    }
+    
+    /**
+ 
+     */
+    func add(compoundAttribute compoundAttribute: CompoundAttribute) -> [NSLayoutConstraint] {
+        var layoutConstraints: [NSLayoutConstraint] = []
+        for attribute in compoundAttribute.attributes {
+            let createdConstraints = self.add(attribute: attribute)
+            layoutConstraints.appendContentsOf(createdConstraints)
+        }
+        return layoutConstraints
     }
     
     /**
@@ -121,8 +147,12 @@ internal class Node {
 
 #if os(iOS) || os(tvOS)
     
-internal extension ReferenceAttribute {
+/**
+ 
+ */
+private extension ReferenceAttribute {
     
+    ///
     var nodeAttribute: NodeAttribute {
         switch self {
         case .Left, .Leading, .LeftMargin, .LeadingMargin, .Top, .FirstBaseline, .TopMargin:
@@ -139,9 +169,13 @@ internal extension ReferenceAttribute {
 }
     
 #else
+  
+/**
+ 
+ */
+private extension ReferenceAttribute {
     
-internal extension ReferenceAttribute {
-    
+    ///
     var nodeAttribute: NodeAttribute {
         switch self {
         case .Left, .Leading, .Top, .FirstBaseline:
