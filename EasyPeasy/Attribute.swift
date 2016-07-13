@@ -47,7 +47,9 @@ public class Attribute {
     
     /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
-        debugPrint("This point shouldn't have been reached")
+        if !(self is CompoundAttribute) {
+            debugPrint("This point shouldn't have been reached")
+        }
         return .Width
     }
     
@@ -60,10 +62,11 @@ public class Attribute {
     /// Resulting `NSLayoutConstraint`
     internal(set) var layoutConstraint: NSLayoutConstraint?
     
-    ///
-    internal var signature: String { //TODO:
-        return ""
-    }
+    /// Element identifying the node this attribute will be 
+    /// stored in
+    internal lazy var signature: Signature = {
+        return Signature(attribute: self)
+    }()
     
     /**
         Initializer which creates an `Attribute` instance
