@@ -30,9 +30,6 @@ public protocol Item: NSObjectProtocol {
     
 }
 
-/**
- 
- */
 public extension Item {
     
     /**
@@ -40,31 +37,42 @@ public extension Item {
         created using *EasyPeasy* for the current view. `Condition`
         closures will be evaluated again
      */
-    public func easy_reload() { //TODO:
-        
+    public func easy_reload() {
+        for node in self.nodes.values {
+            node.reload()
+        }
     }
     
     /**
         Clears all the constraints applied with EasyPeasy to the
         current `UIView`
      */
-    public func easy_clear() { //TODO:
-        
+    public func easy_clear() {
+        for node in self.nodes.values {
+            node.clear()
+        }
+        self.nodes = [:]
     }
     
 }
 
 /**
-    Item protocol extension implementing some convenience properties
+ 
  */
 internal extension Item {
     
-    internal var nodes: [String:[Node]]? {
+    ///
+    internal var nodes: [String:Node] {
         get {
-            if let nodes = objc_getAssociatedObject(self, &easy_attributesReference) as? [String:[Node]] {
+            if let nodes = objc_getAssociatedObject(self, &easy_attributesReference) as? [String:Node] {
                 return nodes
             }
-            return nil
+            
+            let nodes: [String:Node] = [:]
+            let policy = objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
+            objc_setAssociatedObject(self, &easy_attributesReference, nodes, policy)
+            
+            return nodes
         }
         
         set {
@@ -72,5 +80,30 @@ internal extension Item {
             objc_setAssociatedObject(self, &easy_attributesReference, newValue, policy)
         }
     }
-
+    
+    /**
+ 
+     */
+    internal func apply(attributes attributes: [Attribute]) -> [NSLayoutConstraint] {
+        var layoutConstraints: [NSLayoutConstraint] = []
+        
+        for attribute in attributes {
+            //
+            attribute.createConstraints(for: self)
+            
+            //
+            let node = self.nodes[attribute.signature] ?? Node()
+            let createdConstraints = node.add(attribute: attribute)
+            layoutConstraints.appendContentsOf(createdConstraints)
+            
+            // Set node
+            self.nodes[attribute.signature] = node
+        }
+        
+        //
+        NSLayoutConstraint.activateConstraints(layoutConstraints)
+        
+        return layoutConstraints
+    }
+    
 }
