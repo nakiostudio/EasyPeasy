@@ -57,11 +57,12 @@ public extension Item {
 }
 
 /**
- 
+    Internal extension that handles the storage and application 
+    of `Attributes` in an `Item`
  */
 internal extension Item {
     
-    ///
+    /// Dictionary persisting the `Nodes` related with this `Item`
     internal var nodes: [String:Node] {
         get {
             if let nodes = objc_getAssociatedObject(self, &easy_attributesReference) as? [String:Node] {
@@ -71,7 +72,6 @@ internal extension Item {
             let nodes: [String:Node] = [:]
             let policy = objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
             objc_setAssociatedObject(self, &easy_attributesReference, nodes, policy)
-            
             return nodes
         }
         
@@ -82,17 +82,24 @@ internal extension Item {
     }
     
     /**
- 
+        Applies the `Attributes` within the passed array to the current `Item`
+        - parameter attributes: Array of `Attributes` to apply into the `Item`
+        - returns the resulting `NSLayoutConstraints`
      */
     internal func apply(attributes attributes: [Attribute]) -> [NSLayoutConstraint] {
         var layoutConstraints: [NSLayoutConstraint] = []
         
         for attribute in attributes {
-            //
+            // Creates the `NSLayoutConstraint` of the `Attribute` holding 
+            // a reference to it from the `Attribute` objects
             attribute.createConstraints(for: self)
             
-            //
+            // Checks the node correspoding to the `Attribute` and creates it
+            // in case it doesn't exist
             let node = self.nodes[attribute.signature] ?? Node()
+            
+            // Add the `Attribute` to the node and appends the `NSLayoutConstraints`
+            // that have to be activated
             let createdConstraints = node.add(attribute: attribute)
             layoutConstraints.appendContentsOf(createdConstraints)
             
@@ -100,7 +107,7 @@ internal extension Item {
             self.nodes[attribute.signature] = node
         }
         
-        //
+        // Activate the `NSLayoutConstraints` returned by the different `Nodes`
         NSLayoutConstraint.activateConstraints(layoutConstraints)
         
         return layoutConstraints
