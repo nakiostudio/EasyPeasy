@@ -59,7 +59,8 @@ public class Attribute {
     /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?
     
-    /// Resulting `NSLayoutConstraint`
+    /// Equivalent `NSLayoutConstraint`. It's `nil` unless the method
+    /// `createConstraints(for item:_)` is called
     internal(set) var layoutConstraint: NSLayoutConstraint?
     
     /// Element identifying the node this attribute will be 
@@ -131,10 +132,9 @@ public class Attribute {
     // MARK: Internal methods (acting as protected)
     
     /** 
-        This method evaluates whether an `Attribute` should be
-        applied, resolves any conflicts with the `Attributes`
-        already applied and it also generates the `NSLayoutConstraint`
-        added to `view`
+        This method creates the `NSLayoutConstraints` equivalent to the
+        current `Attribute`. The resulting constraint is held by the 
+        property `layoutConstraint`
         - parameter view: `UIView` in which the generated
         `NSLayoutConstraint` will be added
         - returns an `Array` of `NSLayoutConstraint` objects that will
