@@ -44,7 +44,7 @@ internal class Node {
     private(set) var inactiveAttributes: [Attribute] = []
    
     ///
-    private var activeAttributes: [Attribute] {
+    internal var activeAttributes: [Attribute] {
         return [self.left, self.right, self.center, self.dimension].flatMap { $0 }
     }
     
@@ -52,13 +52,7 @@ internal class Node {
  
      */
     func add(attribute attribute: Attribute) -> [NSLayoutConstraint] {
-        //
-        if let compoundAttribute = attribute as? CompoundAttribute {
-            return self.add(compoundAttribute: compoundAttribute)
-        }
-        
-        //
-        if attribute.shouldInstall() == false {
+        guard attribute.shouldInstall() else {
             self.inactiveAttributes.append(attribute)
             return []
         }
@@ -68,26 +62,24 @@ internal class Node {
         switch nodeAttribute {
         case .Left:
             if self.left === attribute { return [] }
-            self.deactivate(attributes: [self.left, self.center])
+            self.deactivate(attributes: self.left, self.center)
             self.left = attribute
-            self.center = nil
         case .Right:
             if self.right === attribute { return [] }
-            self.deactivate(attributes: [self.right, self.center])
+            self.deactivate(attributes: self.right, self.center)
             self.right = attribute
-            self.center = nil
         case .Center:
             if self.center === attribute { return [] }
-            self.deactivate(attributes: [self.center, self.left, self.right])
+            self.deactivate(attributes: self.center, self.left, self.right)
             self.center = attribute
-            self.left = nil
-            self.right = nil
         case .Dimension:
             if self.dimension === attribute { return [] }
-            self.deactivate(attributes: [self.dimension, self.left, self.right])
+            var deactivateAttributes = [self.dimension].flatMap { $0 }
+            if let left = self.left, right = self.right {
+                deactivateAttributes.appendContentsOf([left, right])
+            }
+            self.deactivate(attributes: deactivateAttributes)
             self.dimension = attribute
-            self.left = nil
-            self.right = nil
         }
         
         //
@@ -99,22 +91,33 @@ internal class Node {
     }
     
     /**
- 
+     
      */
-    func add(compoundAttribute compoundAttribute: CompoundAttribute) -> [NSLayoutConstraint] {
-        var layoutConstraints: [NSLayoutConstraint] = []
-        for attribute in compoundAttribute.attributes {
-            let createdConstraints = self.add(attribute: attribute)
-            layoutConstraints.appendContentsOf(createdConstraints)
-        }
-        return layoutConstraints
+    func deactivate(attributes attributes: Attribute?...) {
+        self.deactivate(attributes: attributes.flatMap { $0 })
     }
     
     /**
      
      */
-    func deactivate(attributes attributes: [Attribute?]) {
-        let layoutConstraints = attributes.flatMap { $0?.layoutConstraint }
+    func deactivate(attributes attributes: [Attribute]) {
+        var layoutConstraints: [NSLayoutConstraint] = []
+        
+        for attribute in attributes {
+            // Nullify properties refering deactivated attributes
+            if self.left === attribute { self.left = nil }
+            else if self.right === attribute { self.right = nil }
+            else if self.center === attribute { self.center = nil }
+            else if self.dimension === attribute { self.dimension = nil }
+            
+            // Append `Attribute` to the array of `NSLayoutConstraints`
+            // to deactivate
+            if let layoutConstraint = attribute.layoutConstraint {
+                layoutConstraints.append(layoutConstraint)
+            }
+        }
+        
+        // Deactivate `NSLayoutContraints`
         NSLayoutConstraint.deactivateConstraints(layoutConstraints)
     }
     
@@ -122,12 +125,24 @@ internal class Node {
      
      */
     func reload() -> [NSLayoutConstraint] {
-        var activeAttributes = self.activeAttributes
+        
+        // Deactivate `Attributes` which condition changed to false
+        let deactivatedAttributes = self.activeAttributes.filter { $0.shouldInstall() == false }
+        self.deactivate(attributes: deactivatedAttributes)
+        
+        // Gather all the existing `Attributes` that need to be readed
+        // to the `Node`
+        var activeAttributes: [Attribute] = self.activeAttributes
         activeAttributes.appendContentsOf(self.inactiveAttributes)
         
-        self.inactiveAttributes = []
-        
+        // Init `inactiveAttributes` with the `Attributes` which 
+        // condition changed to false
+        self.inactiveAttributes = deactivatedAttributes
+    
+        // Re-add `Attributes` to the `Node` in order to solve conflicts
+        // and re-evaluate `Conditions`
         let layoutAttributes = activeAttributes.flatMap { self.add(attribute: $0) }
+        
         return layoutAttributes
     }
     
@@ -136,10 +151,6 @@ internal class Node {
      */
     func clear() {
         self.deactivate(attributes: self.activeAttributes)
-        self.left = nil
-        self.right = nil
-        self.center = nil
-        self.dimension = nil
         self.inactiveAttributes = []
     }
     

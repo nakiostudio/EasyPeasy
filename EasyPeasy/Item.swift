@@ -38,9 +38,12 @@ public extension Item {
         closures will be evaluated again
      */
     public func easy_reload() {
+        var layoutConstraints: [NSLayoutConstraint] = []
         for node in self.nodes.values {
-            node.reload()
+            layoutConstraints.appendContentsOf(node.reload())
         }
+        // Activate the resulting `NSLayoutConstraints`
+        NSLayoutConstraint.activateConstraints(layoutConstraints)
     }
     
     /**
@@ -90,27 +93,40 @@ internal extension Item {
         var layoutConstraints: [NSLayoutConstraint] = []
         
         for attribute in attributes {
-            // Creates the `NSLayoutConstraint` of the `Attribute` holding 
-            // a reference to it from the `Attribute` objects
-            attribute.createConstraints(for: self)
+            //
+            if let compoundAttribute = attribute as? CompoundAttribute {
+                layoutConstraints.appendContentsOf(self.apply(attributes: compoundAttribute.attributes))
+                break
+            }
             
-            // Checks the node correspoding to the `Attribute` and creates it
-            // in case it doesn't exist
-            let node = self.nodes[attribute.signature] ?? Node()
-            
-            // Add the `Attribute` to the node and appends the `NSLayoutConstraints`
-            // that have to be activated
-            let createdConstraints = node.add(attribute: attribute)
+            //
+            let createdConstraints = self.apply(attribute: attribute)
             layoutConstraints.appendContentsOf(createdConstraints)
-            
-            // Set node
-            self.nodes[attribute.signature] = node
         }
         
         // Activate the `NSLayoutConstraints` returned by the different `Nodes`
         NSLayoutConstraint.activateConstraints(layoutConstraints)
         
         return layoutConstraints
+    }
+    
+    internal func apply(attribute attribute: Attribute) -> [NSLayoutConstraint] {
+        // Creates the `NSLayoutConstraint` of the `Attribute` holding
+        // a reference to it from the `Attribute` objects
+        attribute.createConstraints(for: self)
+        
+        // Checks the node correspoding to the `Attribute` and creates it
+        // in case it doesn't exist
+        let node = self.nodes[attribute.signature] ?? Node()
+        
+        // Add the `Attribute` to the node and appends the `NSLayoutConstraints`
+        // that have to be activated
+        let createdConstraints = node.add(attribute: attribute)
+        
+        // Set node
+        self.nodes[attribute.signature] = node
+        
+        return createdConstraints
     }
     
 }
