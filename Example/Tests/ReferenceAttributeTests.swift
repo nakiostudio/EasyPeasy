@@ -49,7 +49,6 @@ class ReferenceAttributeTests: XCTestCase {
         XCTAssertTrue(ReferenceAttribute.TrailingMargin.opposite == .LeadingMargin)
         XCTAssertTrue(ReferenceAttribute.CenterXWithinMargins.opposite == .CenterXWithinMargins)
         XCTAssertTrue(ReferenceAttribute.CenterYWithinMargins.opposite == .CenterYWithinMargins)
-        XCTAssertTrue(ReferenceAttribute.NotAnAttribute.opposite == .NotAnAttribute)
     }
     
     func testThatAutoLayoutEquivalentIsTheExpected() {
@@ -83,14 +82,6 @@ class ReferenceAttributeTests: XCTestCase {
         XCTAssertTrue(ReferenceAttribute.TrailingMargin.layoutAttribute == .TrailingMargin)
         XCTAssertTrue(ReferenceAttribute.CenterXWithinMargins.layoutAttribute == .CenterXWithinMargins)
         XCTAssertTrue(ReferenceAttribute.CenterYWithinMargins.layoutAttribute == .CenterYWithinMargins)
-        XCTAssertTrue(ReferenceAttribute.NotAnAttribute.layoutAttribute == .NotAnAttribute)
-    }
-    
-    func testThatNotAnAttributeDoesNotHaveConflictingAttributes() {
-        // given
-        // when
-        // then
-        XCTAssertTrue(ReferenceAttribute.NotAnAttribute.conflictingAttributes.count == 0)
     }
     
 }
