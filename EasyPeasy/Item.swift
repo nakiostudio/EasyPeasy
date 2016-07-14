@@ -96,7 +96,7 @@ internal extension Item {
             //
             if let compoundAttribute = attribute as? CompoundAttribute {
                 layoutConstraints.appendContentsOf(self.apply(attributes: compoundAttribute.attributes))
-                break
+                continue
             }
             
             //
