@@ -9,8 +9,10 @@
 // SOFTWARE.
 
 #if os(iOS) || os(tvOS)
-
 import UIKit
+#else
+import AppKit
+#endif
 
 /**
     An enum representation of the different attribute
@@ -33,6 +35,7 @@ public enum ReferenceAttribute {
     case CenterY
     case FirstBaseline
     case LastBaseline
+#if os(iOS) || os(tvOS)
     case LeftMargin
     case RightMargin
     case TopMargin
@@ -41,6 +44,7 @@ public enum ReferenceAttribute {
     case TrailingMargin
     case CenterXWithinMargins
     case CenterYWithinMargins
+#endif
     
     /// Reference attribute opposite to the current one
     internal var opposite: ReferenceAttribute {
@@ -57,14 +61,22 @@ public enum ReferenceAttribute {
         case .CenterY: return .CenterY
         case .LastBaseline: return .LastBaseline
         case .FirstBaseline: return .FirstBaseline
-        case .LeftMargin: return .RightMargin
-        case .RightMargin: return .LeftMargin
-        case .TopMargin: return .BottomMargin
-        case .BottomMargin: return .TopMargin
-        case .LeadingMargin: return .TrailingMargin
-        case .TrailingMargin: return .LeadingMargin
-        case .CenterXWithinMargins: return .CenterXWithinMargins
-        case .CenterYWithinMargins: return .CenterYWithinMargins
+        default:
+            #if os(iOS) || os(tvOS)
+            switch self {
+            case .LeftMargin: return .RightMargin
+            case .RightMargin: return .LeftMargin
+            case .TopMargin: return .BottomMargin
+            case .BottomMargin: return .TopMargin
+            case .LeadingMargin: return .TrailingMargin
+            case .TrailingMargin: return .LeadingMargin
+            case .CenterXWithinMargins: return .CenterXWithinMargins
+            case .CenterYWithinMargins: return .CenterYWithinMargins
+            default: return .Width // This point should never be reached
+            }
+            #else
+            return .Width // This point should never be reached
+            #endif
         }
     }
     
@@ -84,14 +96,22 @@ public enum ReferenceAttribute {
         case .CenterY: return .CenterY
         case .LastBaseline: return .LastBaseline
         case .FirstBaseline: return .FirstBaseline
-        case .LeftMargin: return .LeftMargin
-        case .RightMargin: return .RightMargin
-        case .TopMargin: return .TopMargin
-        case .BottomMargin: return .BottomMargin
-        case .LeadingMargin: return .LeadingMargin
-        case .TrailingMargin: return .TrailingMargin
-        case .CenterXWithinMargins: return .CenterXWithinMargins
-        case .CenterYWithinMargins: return .CenterYWithinMargins
+        default:
+            #if os(iOS) || os(tvOS)
+            switch self {
+            case .LeftMargin: return .LeftMargin
+            case .RightMargin: return .RightMargin
+            case .TopMargin: return .TopMargin
+            case .BottomMargin: return .BottomMargin
+            case .LeadingMargin: return .LeadingMargin
+            case .TrailingMargin: return .TrailingMargin
+            case .CenterXWithinMargins: return .CenterXWithinMargins
+            case .CenterYWithinMargins: return .CenterYWithinMargins
+            default: return .Width // This point should never be reached
+            }
+            #else
+            return .Width // This point should never be reached
+            #endif
         }
     }
     
@@ -113,17 +133,23 @@ public enum ReferenceAttribute {
         case .CenterY: return false
         case .FirstBaseline: return false
         case .LastBaseline: return true
-        case .LeftMargin: return false
-        case .RightMargin: return true
-        case .TopMargin: return false
-        case .BottomMargin: return true
-        case .LeadingMargin: return false
-        case .TrailingMargin: return true
-        case .CenterXWithinMargins: return false
-        case .CenterYWithinMargins: return false
+        default:
+            #if os(iOS) || os(tvOS)
+            switch self {
+            case .LeftMargin: return false
+            case .RightMargin: return true
+            case .TopMargin: return false
+            case .BottomMargin: return true
+            case .LeadingMargin: return false
+            case .TrailingMargin: return true
+            case .CenterXWithinMargins: return false
+            case .CenterYWithinMargins: return false
+            default: return false // This point should never be reached
+            }
+            #else
+            return false // This point should never be reached
+            #endif
         }
     }
     
 }
-
-#endif
