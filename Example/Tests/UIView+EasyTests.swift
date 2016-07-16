@@ -11,35 +11,6 @@
 import XCTest
 @testable import EasyPeasy
 
-extension Item {
-    
-    var test_attributes: [Attribute] {
-        var attributes: [Attribute] = []
-        for node in self.nodes.values {
-            attributes.appendContentsOf(node.inactiveAttributes)
-            attributes.appendContentsOf(node.activeAttributes.flatMap { $0 })
-        }
-        return attributes
-    }
-    
-    var test_activeAttributes: [Attribute] {
-        var attributes: [Attribute] = []
-        for node in self.nodes.values {
-            attributes.appendContentsOf(node.activeAttributes.flatMap { $0 })
-        }
-        return attributes
-    }
-    
-    var test_inactiveAttributes: [Attribute] {
-        var attributes: [Attribute] = []
-        for node in self.nodes.values {
-            attributes.appendContentsOf(node.inactiveAttributes)
-        }
-        return attributes
-    }
-    
-}
-
 class UIView_EasyTests: XCTestCase {
     
     override func setUp() {
