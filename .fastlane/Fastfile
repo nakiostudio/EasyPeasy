@@ -15,13 +15,6 @@ platform :ios do
       code_coverage: true
     )
 
-    # Check code coverage (macOS)
-    xcov(
-      scheme: scheme,
-      workspace: workspace,
-      exclude_targets: "Demo macOS.app"
-    )
-
     # Run tests (iOS)
     scheme = "EasyPeasy-iOS"
     scan(
