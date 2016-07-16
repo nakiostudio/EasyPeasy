@@ -95,7 +95,17 @@ public enum ReferenceAttribute {
         case .CenterX: return .CenterX
         case .CenterY: return .CenterY
         case .LastBaseline: return .LastBaseline
-        case .FirstBaseline: return .FirstBaseline
+        case .FirstBaseline:
+            #if os(iOS) || os(tvOS)
+            return .FirstBaseline
+            #else
+            if #available(OSX 10.11, *) {
+                return .FirstBaseline
+            }
+            else {
+                return .LastBaseline
+            }
+            #endif
         default:
             #if os(iOS) || os(tvOS)
             switch self {

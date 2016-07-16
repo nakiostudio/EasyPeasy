@@ -79,7 +79,7 @@ private extension ReferenceAttribute {
     /// Signature of a `ReferenceAttribute`. Two possible values
     /// depending on the Axis the `ReferenceAttribute` applies
     var signatureString: String {
-        switch attribute.createAttribute {
+        switch self {
         case .Left, .Leading, .Right, .Trailing, .CenterX, .Width:
             return "h_"
         case .Top, .FirstBaseline, .Bottom, .LastBaseline, .CenterY, .Height:
