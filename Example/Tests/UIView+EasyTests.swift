@@ -47,8 +47,8 @@ class UIView_EasyTests: XCTestCase {
         let viewA = UIView(frame: CGRectZero)
         superview.addSubview(viewA)
         var shouldApply = false
-        viewA <- Left(120).when { shouldApply }
-        viewA <- Right(120)
+        viewA <- CenterYWithinMargins(>=120).when { shouldApply }
+        viewA <- Right(>=120)
         XCTAssertTrue(viewA.test_activeAttributes.count == 1)
         
         // when
@@ -82,8 +82,8 @@ class UIView_EasyTests: XCTestCase {
         let viewA = UIView(frame: CGRectZero)
         superview.addSubview(viewA)
         viewA <- [
-            Top(10),
-            Left(10),
+            BottomMargin(10),
+            TrailingMargin(10),
             Width(120),
             Height(300)
         ]
@@ -110,8 +110,8 @@ class UIView_EasyTests: XCTestCase {
         let viewB = UIView(frame: CGRectZero)
         superview.addSubview(viewB)
         viewA <- [
-            Top(10),
-            Left(10),
+            TopMargin(10),
+            LeadingMargin(10),
             Width(120),
             Height(300)
         ]

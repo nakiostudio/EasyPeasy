@@ -12,5 +12,550 @@ import XCTest
 @testable import EasyPeasy
 
 class NodeTests: XCTestCase {
+    
+    // MARK: Left node
 
+    func testThatLeftSubnodeIsSet() {
+        // given
+        let node = Node()
+        let leftAttribute = Left()
+        
+        // when
+        node.add(attribute: leftAttribute)
+        
+        // then
+        XCTAssertNotNil(node.left)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+    }
+    
+    func testThatLeftSubnodeIsNotSetIfAttributeConditionIsFalse() {
+        // given
+        let node = Node()
+        let leftAttribute = Left().when { false }
+        
+        // when
+        node.add(attribute: leftAttribute)
+        
+        // then
+        XCTAssertNil(node.left)
+        XCTAssertTrue(node.activeAttributes.count == 0)
+        XCTAssertTrue(node.inactiveAttributes.count == 1)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.dimension)
+    }
+    
+    func testThatLeftSubnodeIsUpdatedWhenReplacedWithAnotherLeft() {
+        // given
+        let node = Node()
+        let leftAttribute = Left()
+        let leadingAttribute = Leading()
+        node.add(attribute: leftAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leftAttribute)
+        
+        // when
+        node.add(attribute: leadingAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leadingAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.dimension)
+    }
+    
+    func testThatLeftSubnodeIsUpdatedWhenReplacedWithCenterSubnode() {
+        // given
+        let node = Node()
+        let leftAttribute = Left()
+        let centerAttribute = CenterX()
+        node.add(attribute: leftAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leftAttribute)
+        XCTAssertNil(node.center)
+        
+        // when
+        node.add(attribute: centerAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.center === centerAttribute)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.dimension)
+        XCTAssertNil(node.right)
+    }
+    
+    func testThatLeftSubnodeIsNotUpdatedWhenOnlyDimensionSubnodeIsApplied() {
+        // given
+        let node = Node()
+        let leftAttribute = Left()
+        let dimensionAttribute = Width()
+        node.add(attribute: leftAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leftAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.dimension)
+        
+        // when
+        node.add(attribute: dimensionAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === dimensionAttribute)
+        XCTAssertNotNil(node.left)
+        XCTAssertNotNil(node.dimension)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.right)
+    }
+    
+    func testThatLeftSubnodeIsUpdatedWhenDimensionSubnodeIsAppliedAndThereIsARightSubnode() {
+        // given
+        let node = Node()
+        let leftAttribute = Left()
+        let rightAttribute = Right()
+        let dimensionAttribute = Width()
+        node.add(attribute: leftAttribute)
+        node.add(attribute: rightAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leftAttribute)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.dimension)
+        
+        // when
+        node.add(attribute: dimensionAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === dimensionAttribute)
+        XCTAssertNotNil(node.dimension)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.center)
+    }
+    
+    func testThatThereIsNotLayoutConstraintToApplyWhenSameLeftAttributeIsAddedTwice() {
+        // given
+        let node = Node()
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let leftAttribute = Left()
+        leftAttribute.createConstraints(for: view)
+        let constraints = node.add(attribute: leftAttribute)
+        XCTAssertTrue(constraints.count == 1)
+        
+        // when 
+        let newConstraints = node.add(attribute: leftAttribute)
+        
+        // then
+        XCTAssertTrue(newConstraints.count == 0)
+    }
+    
+    // MARK: Right node
+    
+    func testThatRightSubnodeIsSet() {
+        // given
+        let node = Node()
+        let rightAttribute = Right()
+        
+        // when
+        node.add(attribute: rightAttribute)
+        
+        // then
+        XCTAssertNotNil(node.right)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+    }
+    
+    func testThatRightSubnodeIsNotSetIfAttributeConditionIsFalse() {
+        // given
+        let node = Node()
+        let rightAttribute = Right().when { false }
+        
+        // when
+        node.add(attribute: rightAttribute)
+        
+        // then
+        XCTAssertNil(node.right)
+        XCTAssertTrue(node.activeAttributes.count == 0)
+        XCTAssertTrue(node.inactiveAttributes.count == 1)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.dimension)
+    }
+    
+    func testThatRightSubnodeIsUpdatedWhenReplacedWithAnotherRight() {
+        // given
+        let node = Node()
+        let rightAttribute = Right()
+        let trailingAttribute = Trailing()
+        node.add(attribute: rightAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.right === rightAttribute)
+        
+        // when
+        node.add(attribute: trailingAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.right === trailingAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.dimension)
+    }
+    
+    func testThatRightSubnodeIsUpdatedWhenReplacedWithCenterSubnode() {
+        // given
+        let node = Node()
+        let rightAttribute = Right()
+        let centerAttribute = CenterX()
+        node.add(attribute: rightAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertNil(node.center)
+        
+        // when
+        node.add(attribute: centerAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.center === centerAttribute)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.dimension)
+        XCTAssertNil(node.right)
+    }
+    
+    func testThatRightSubnodeIsNotUpdatedWhenOnlyDimensionSubnodeIsApplied() {
+        // given
+        let node = Node()
+        let rightAttribute = Right()
+        let dimensionAttribute = Width()
+        node.add(attribute: rightAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.dimension)
+        
+        // when
+        node.add(attribute: dimensionAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === dimensionAttribute)
+        XCTAssertNotNil(node.right)
+        XCTAssertNotNil(node.dimension)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.left)
+    }
+    
+    func testThatRightSubnodeIsUpdatedWhenDimensionSubnodeIsAppliedAndThereIsALeftSubnode() {
+        // given
+        let node = Node()
+        let leftAttribute = FirstBaseline()
+        let rightAttribute = LastBaseline()
+        let dimensionAttribute = Height()
+        node.add(attribute: rightAttribute)
+        node.add(attribute: dimensionAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === dimensionAttribute)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.left)
+        
+        // when
+        node.add(attribute: leftAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leftAttribute)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertNil(node.dimension)
+        XCTAssertNil(node.center)
+    }
+    
+    func testThatThereIsNotLayoutConstraintToApplyWhenSameRightAttributeIsAddedTwice() {
+        // given
+        let node = Node()
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let rightAttribute = Right()
+        rightAttribute.createConstraints(for: view)
+        let constraints = node.add(attribute: rightAttribute)
+        XCTAssertTrue(constraints.count == 1)
+        
+        // when
+        let newConstraints = node.add(attribute: rightAttribute)
+        
+        // then
+        XCTAssertTrue(newConstraints.count == 0)
+    }
+
+    // MARK: Center node
+    
+    func testThatCenterSubnodeIsSet() {
+        // given
+        let node = Node()
+        let centerAttribute = CenterX()
+        
+        // when
+        node.add(attribute: centerAttribute)
+        
+        // then
+        XCTAssertNotNil(node.center)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+    }
+    
+    func testThatCenterSubnodeIsNotSetIfAttributeConditionIsFalse() {
+        // given
+        let node = Node()
+        let centerAttribute = CenterX().when { false }
+        
+        // when
+        node.add(attribute: centerAttribute)
+        
+        // then
+        XCTAssertNil(node.center)
+        XCTAssertTrue(node.activeAttributes.count == 0)
+        XCTAssertTrue(node.inactiveAttributes.count == 1)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.dimension)
+    }
+    
+    func testThatCenterSubnodeIsUpdatedWhenReplacedWithAnotherCenter() {
+        // given
+        let node = Node()
+        let centerAttribute = CenterX()
+        let centerXWithinMarginsAttribute = CenterXWithinMargins()
+        node.add(attribute: centerAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.center === centerAttribute)
+        
+        // when
+        node.add(attribute: centerXWithinMarginsAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.center === centerXWithinMarginsAttribute)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.dimension)
+    }
+    
+    func testThatCenterSubnodeIsUpdatedWhenReplacedWithLeftSubnode() {
+        // given
+        let node = Node()
+        let leftAttribute = FirstBaseline()
+        let centerAttribute = CenterY()
+        node.add(attribute: centerAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.center === centerAttribute)
+        XCTAssertNil(node.left)
+        
+        // when
+        node.add(attribute: leftAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leftAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.dimension)
+        XCTAssertNil(node.right)
+    }
+    
+    func testThatCenterSubnodeIsNotUpdatedWhenDimensionSubnodeIsApplied() {
+        // given
+        let node = Node()
+        let centerAttribute = CenterX()
+        let dimensionAttribute = Width()
+        node.add(attribute: centerAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.center === centerAttribute)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.dimension)
+        
+        // when
+        node.add(attribute: dimensionAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === dimensionAttribute)
+        XCTAssertNotNil(node.center)
+        XCTAssertNotNil(node.dimension)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+    }
+    
+    func testThatThereIsNotLayoutConstraintToApplyWhenSameCenterAttributeIsAddedTwice() {
+        // given
+        let node = Node()
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let centerAttribute = CenterX()
+        centerAttribute.createConstraints(for: view)
+        let constraints = node.add(attribute: centerAttribute)
+        XCTAssertTrue(constraints.count == 1)
+        
+        // when
+        let newConstraints = node.add(attribute: centerAttribute)
+        
+        // then
+        XCTAssertTrue(newConstraints.count == 0)
+    }
+    
+    // MARK: Dimension node
+    
+    func testThatDimensionSubnodeIsSet() {
+        // given
+        let node = Node()
+        let dimensionAttribute = Width()
+        
+        // when
+        node.add(attribute: dimensionAttribute)
+        
+        // then
+        XCTAssertNotNil(node.dimension)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+    }
+    
+    func testThatDimensionSubnodeIsNotSetIfAttributeConditionIsFalse() {
+        // given
+        let node = Node()
+        let dimensionAttribute = Width().when { false }
+        
+        // when
+        node.add(attribute: dimensionAttribute)
+        
+        // then
+        XCTAssertNil(node.dimension)
+        XCTAssertTrue(node.activeAttributes.count == 0)
+        XCTAssertTrue(node.inactiveAttributes.count == 1)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.left)
+    }
+    
+    func testThatDimensionSubnodeIsUpdatedWhenReplacedWithAnotherDimension() {
+        // given
+        let node = Node()
+        let widthAttributeA = Width()
+        let widthAttributeB = Width()
+        node.add(attribute: widthAttributeA)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === widthAttributeA)
+        
+        // when
+        node.add(attribute: widthAttributeB)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === widthAttributeB)
+        XCTAssertNotNil(node.dimension)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.left)
+    }
+    
+    func testThatDimensionSubnodeIsUpdatedWhenReplacedWithLeftAndRightSubnodes() {
+        // given
+        let node = Node()
+        let leftAttribute = LeftMargin()
+        let rightAttribute = RightMargin()
+        let widthAttribute = Width()
+        node.add(attribute: widthAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === widthAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+        
+        // when
+        node.add(attribute: leftAttribute)
+        node.add(attribute: rightAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.left === leftAttribute)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertNil(node.dimension)
+        XCTAssertNil(node.center)
+    }
+    
+    func testThatDimensionSubnodeIsNotUpdatedWhenCenterSubnodeIsApplied() {
+        // given
+        let node = Node()
+        let centerAttribute = CenterXWithinMargins()
+        let dimensionAttribute = Width()
+        node.add(attribute: dimensionAttribute)
+        XCTAssertTrue(node.activeAttributes.count == 1)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === dimensionAttribute)
+        XCTAssertNil(node.center)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+        
+        // when
+        node.add(attribute: centerAttribute)
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(node.dimension === dimensionAttribute)
+        XCTAssertTrue(node.center === centerAttribute)
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+    }
+    
+    func testThatThereIsNotLayoutConstraintToApplyWhenSameDimensionAttributeIsAddedTwice() {
+        // given
+        let node = Node()
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let widthAttribute = Width()
+        widthAttribute.createConstraints(for: view)
+        let constraints = node.add(attribute: widthAttribute)
+        XCTAssertTrue(constraints.count == 1)
+        
+        // when
+        let newConstraints = node.add(attribute: widthAttribute)
+        
+        // then
+        XCTAssertTrue(newConstraints.count == 0)
+    }
+    
 }

@@ -410,5 +410,14 @@ class CompoundAttributeTests: XCTestCase {
         XCTAssertTrue(marginsAttribute.attributes[3].constant.modifier == .EqualTo)
         XCTAssertTrue(marginsAttribute.attributes[3].constant.layoutMultiplier() == 1.0)
     }
+    
+    func testThatCreateAtrributeIsWidthByDefault() {
+        // given
+        let attribute = Size()
+        
+        // when
+        // then
+        XCTAssertTrue(attribute.createAttribute == .Width)
+    }
 
 }
