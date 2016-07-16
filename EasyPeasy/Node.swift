@@ -15,41 +15,55 @@ import AppKit
 #endif
 
 /**
- 
+    `Nodes` group the `Attributes` classifying them depending
+    on the other `Attributes` they can conflict with. Those
+    subnodes are four and are defined by this enum
  */
-private enum NodeAttribute {
+private enum Subnode {
     
     case Left, Right, Center, Dimension
     
 }
 
 /**
- 
+    This class is in charge of handling those `Attributes` that
+    conflict or that may conflict in the feature in a `Condition`
+    change and `easy_reload` is triggered
  */
 internal class Node {
     
-    ///
+    /// `Attribute` occupying the left `Subnode`
     private(set) var left: Attribute?
     
-    ///
+    /// `Attribute` occupying the right `Subnode`
     private(set) var right: Attribute?
     
-    ///
+    /// `Attribute` occupying the center `Subnode`
     private(set) var center: Attribute?
     
-    ///
+    /// `Attribute` occupying the dimension `Subnode`
     private(set) var dimension: Attribute?
     
-    ///
+    /// Array of inactive `Attributes` not occupying any `Subnode`
     private(set) var inactiveAttributes: [Attribute] = []
    
-    ///
+    /// `Attributes` occupying any `Subnode`
     internal var activeAttributes: [Attribute] {
         return [self.left, self.right, self.center, self.dimension].flatMap { $0 }
     }
     
     /**
- 
+        Adds an `Attribute` to the `Node`. If the `Condition` for 
+        the `Attribute` is `false` then it's added to the array of
+        inactive `Attributes`. If the `Condition` is `true` evaluates
+        whether this `Attribute` is in conflict with any of the
+        `Subnodes` and if so deactivates those `Subnodes`. As a 
+        result, the active `Attribute` is added to its corresponding
+        `Node` and its associated `NSLayoutConstraint` returned in 
+        order to be activated by the `Item` owning the `Node`.
+        - parameter attribute: `Attribute` to be added to the `Node`
+        - returns: `NSLayoutConstraints` to be activated by the 
+        `Item` owning the current `Node`
      */
     func add(attribute attribute: Attribute) -> [NSLayoutConstraint] {
         guard attribute.shouldInstall() else {
@@ -57,8 +71,10 @@ internal class Node {
             return []
         }
         
-        //
-        let nodeAttribute = attribute.createAttribute.nodeAttribute
+        // Checks whether the `Attribute` is conflicting with any of
+        // the existing `Subnodes`. If so deactivates the conflicting
+        // `Subnodes`
+        let nodeAttribute = attribute.createAttribute.subnode
         switch nodeAttribute {
         case .Left:
             if self.left === attribute { return [] }
@@ -82,7 +98,8 @@ internal class Node {
             self.dimension = attribute
         }
         
-        //
+        // Returns the associated `NSLayoutConstraint` to be activated
+        // by the `Item` owning the `Node`
         if let layoutConstraint = attribute.layoutConstraint {
             return [layoutConstraint]
         }
@@ -91,14 +108,18 @@ internal class Node {
     }
     
     /**
-     
+        Deactivates the `NSLayoutConstraints` for the `Attributes`
+        given. Also nullifies the `Subnodes` for those `Attributes`
+        - parameter attributes: `Attributes` to be deactivated
      */
     func deactivate(attributes attributes: Attribute?...) {
         self.deactivate(attributes: attributes.flatMap { $0 })
     }
     
     /**
-     
+        Deactivates the `NSLayoutConstraints` for the `Attributes`
+        given. Also nullifies the `Subnodes` for those `Attributes`
+        - parameter attributes: `Attributes` to be deactivated
      */
     func deactivate(attributes attributes: [Attribute]) {
         var layoutConstraints: [NSLayoutConstraint] = []
@@ -122,7 +143,13 @@ internal class Node {
     }
     
     /**
-     
+        Re-evaluates every `Condition` closure within the active and
+        inactive `Attributes`, in case an active `Attribute` has 
+        become inactive deactivates it and the `NSLayoutConstraints` of
+        those that have changed to active are passed to the `Item` owner
+        of the `Node` to active them along with other `Nodes` active
+        `NSLayoutConstraints`
+        - returns the `NSLayoutConstraints` to be activated
      */
     func reload() -> [NSLayoutConstraint] {
         
@@ -130,8 +157,8 @@ internal class Node {
         let deactivatedAttributes = self.activeAttributes.filter { $0.shouldInstall() == false }
         self.deactivate(attributes: deactivatedAttributes)
         
-        // Gather all the existing `Attributes` that need to be readed
-        // to the `Node`
+        // Gather all the existing `Attributes` that need to be added
+        // again to the `Node`
         var activeAttributes: [Attribute] = self.activeAttributes
         activeAttributes.appendContentsOf(self.inactiveAttributes)
         
@@ -147,7 +174,8 @@ internal class Node {
     }
     
     /**
- 
+        Deactives all the active `Attributes` within the node and
+        clears all the persisted ones
      */
     func clear() {
         self.deactivate(attributes: self.activeAttributes)
@@ -159,12 +187,14 @@ internal class Node {
 #if os(iOS) || os(tvOS)
     
 /**
- 
+     Extends `ReferenceAttribute` to ease the work carried
+     out by a `Node`
  */
 private extension ReferenceAttribute {
     
-    ///
-    var nodeAttribute: NodeAttribute {
+    /// This computed variable defines which subnode
+    /// every `Attribute` belongs to
+    var subnode: Subnode {
         switch self {
         case .Left, .Leading, .LeftMargin, .LeadingMargin, .Top, .FirstBaseline, .TopMargin:
             return .Left
@@ -182,12 +212,14 @@ private extension ReferenceAttribute {
 #else
   
 /**
- 
+     Extends `ReferenceAttribute` to ease the work carried
+     out by a `Node`
  */
 private extension ReferenceAttribute {
     
-    ///
-    var nodeAttribute: NodeAttribute {
+    /// This computed variable defines which subnode
+    /// every `Attribute` belongs to
+    var subnode: Subnode {
         switch self {
         case .Left, .Leading, .Top, .FirstBaseline:
             return .Left
