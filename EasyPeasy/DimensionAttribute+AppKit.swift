@@ -37,6 +37,26 @@ extension DimensionAttribute {
         return self
     }
     
+    /**
+        Establishes a relationship between the dimension attribute
+        applied to the `NSView` and the reference `NSLayoutGuide`
+        passed as parameter.
+     
+        It's also possible to link this relationship to a particular
+        attribute of the `layoutGuide` parameter by supplying `attribute`.
+     
+        - parameter layoutGuide: The reference `NSLayoutGuide`
+        - parameter attribute: The attribute of `layoutGuide` we are  establishing
+        the relationship to
+        - returns: The current `Attribute` instance
+     */
+    @available (OSX 10.11, *)
+    public func like(layoutGuide: NSLayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+        self.referenceItem = layoutGuide
+        self.referenceAttribute = attribute
+        return self
+    }
+    
 }
 
 /**
@@ -56,6 +76,22 @@ extension Size {
         self.referenceItem = view
         for attr in self.attributes {
             attr.referenceItem = view
+        }
+        return self
+    }
+    
+    /**
+        Establishes a relationship between the dimension attribute
+        applied to the `NSView` and the reference `NSLayoutGuide`
+        passed as parameter.
+        - parameter layoutGuide: The reference `NSLayoutGuide`
+        - returns: The current `CompoundAttribute` instance
+     */
+    @available (OSX 10.11, *)
+    public func like(layoutGuide: NSLayoutGuide) -> Self {
+        self.referenceItem = layoutGuide
+        for attr in self.attributes {
+            attr.referenceItem = layoutGuide
         }
         return self
     }

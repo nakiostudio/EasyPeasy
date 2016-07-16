@@ -51,6 +51,7 @@
 		C1359F601D36E1170069859A /* String+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1359F5F1D36E1170069859A /* String+Easy.swift */; };
 		C1359F611D36E1230069859A /* String+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1359F5F1D36E1170069859A /* String+Easy.swift */; };
 		C18551E616C549C961F3842CFDD84CDC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74ADF0F15F949C3EB31AF19C7C4AD5E /* Constant.swift */; };
+		C1B3DF301D3A3AA100E264FC /* NSLayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B3DF2F1D3A3AA100E264FC /* NSLayoutGuide+Easy.swift */; };
 		C2A5A2D446EB3E9739DE42174EC70E09 /* Item+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2FBC9DE2A3B4993A5BE50213691957 /* Item+UIKit.swift */; };
 		C57BC2104082154D78F602B4566A1FBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
 		C8B8B0ECA85C4F7E6FE8D4748C1E7055 /* PositionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54468F7D5489FD0E70BF20755400A9B3 /* PositionAttribute.swift */; };
@@ -160,6 +161,7 @@
 		B740E034106F6E91AFC1145ACAF75417 /* EasyPeasy-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EasyPeasy-iOS-umbrella.h"; path = "../EasyPeasy-iOS/EasyPeasy-iOS-umbrella.h"; sourceTree = "<group>"; };
 		B74ADF0F15F949C3EB31AF19C7C4AD5E /* Constant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C1359F5F1D36E1170069859A /* String+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Easy.swift"; sourceTree = "<group>"; };
+		C1B3DF2F1D3A3AA100E264FC /* NSLayoutGuide+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutGuide+Easy.swift"; sourceTree = "<group>"; };
 		C5F658456807460565E37CF3B4D892DE /* DimensionAttribute+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DimensionAttribute+UIKit.swift"; sourceTree = "<group>"; };
 		C6D119197185218478A15FED13F70296 /* Node.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		C74480BECC69D224774F4366F49178A0 /* EasyPeasy-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "EasyPeasy-OSX.xcconfig"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				7356B546E5C2676EF6178EFDF7F74953 /* UIView+Easy.swift */,
 				591FEAE540EA245113819C98496A71F9 /* UILayoutGuide+Easy.swift */,
 				7A8AB2612F2C9AE0B3A5E9F272745B6B /* NSView+Easy.swift */,
+				C1B3DF2F1D3A3AA100E264FC /* NSLayoutGuide+Easy.swift */,
 				C1359F5F1D36E1170069859A /* String+Easy.swift */,
 				C6D119197185218478A15FED13F70296 /* Node.swift */,
 				F911952AD369E8938571824C4BFEF7B8 /* Item.swift */,
@@ -640,6 +643,7 @@
 				8133683FB2EAF85FD881A36531C32F81 /* PositionAttribute+UIKit.swift in Sources */,
 				08EDDBEC816A26A8DD568C2918365C15 /* PositionAttribute.swift in Sources */,
 				380646682A321F294CC8CBA2C2685127 /* Priority.swift in Sources */,
+				C1B3DF301D3A3AA100E264FC /* NSLayoutGuide+Easy.swift in Sources */,
 				D0A776B7384C080ED59FAF84490B7C61 /* ReferenceAttribute.swift in Sources */,
 				2FE3401E61B96532C346878C349D2D58 /* UILayoutGuide+Easy.swift in Sources */,
 				F316A642E16CDA42E552CFD0BF0FE41A /* UIView+Easy.swift in Sources */,

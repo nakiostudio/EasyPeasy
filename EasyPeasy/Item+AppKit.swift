@@ -34,4 +34,19 @@ extension NSView: Item {
     
 }
     
+/**
+     Extension making `UILayoutGuide` conform the `Item` protocol
+     therefore and inherit the extended methods and properties
+ */
+@available(OSX 10.11, *)
+extension NSLayoutGuide: Item {
+    
+    /// Constraints in `owningView` with the current `NSLayoutGuide`
+    /// as `firstItem`
+    public var constraints: [NSLayoutConstraint] {
+        return self.owningView?.constraints.filter { $0.firstItem === self } ?? []
+    }
+    
+}
+    
 #endif
