@@ -47,9 +47,7 @@ public class Attribute {
     
     /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
-        if !(self is CompoundAttribute) {
-            debugPrint("This point shouldn't have been reached")
-        }
+        debugPrint("This point shouldn't have been reached")
         return .Width
     }
     
@@ -180,18 +178,7 @@ public class Attribute {
     internal func shouldInstall() -> Bool {
         return self.condition?() ?? true
     }
-    
-    /**
-        Method to be overriden by the child classes, determines
-        whether the `NSLayoutConstraint` created by the `Attribute`
-        will be stored by the `superview` or the `createItem`
-        - returns boolean if the resulting constraint is owned by
-        the superview
-     */
-    internal func ownedBySuperview() -> Bool {
-        return true
-    }
-    
+
     /**
         Determines which `ReferenceAttribute` must be taken as reference
         attribute for the actual Attribute class. Usually is the opposite
