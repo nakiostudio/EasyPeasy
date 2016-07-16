@@ -78,15 +78,24 @@ internal class Node {
         switch nodeAttribute {
         case .Left:
             if self.left === attribute { return [] }
-            self.deactivate(attributes: self.left, self.center)
+            var deactivateAttributes = [self.left, self.center].flatMap { $0 }
+            if let _ = self.right, dimension = self.dimension {
+                deactivateAttributes.append(dimension)
+            }
+            self.deactivate(attributes: deactivateAttributes)
             self.left = attribute
         case .Right:
             if self.right === attribute { return [] }
-            self.deactivate(attributes: self.right, self.center)
+            var deactivateAttributes = [self.right, self.center].flatMap { $0 }
+            if let _ = self.left, dimension = self.dimension {
+                deactivateAttributes.append(dimension)
+            }
+            self.deactivate(attributes: deactivateAttributes)
             self.right = attribute
         case .Center:
             if self.center === attribute { return [] }
-            self.deactivate(attributes: self.center, self.left, self.right)
+            let deactivateAttributes = [self.center, self.left, self.right].flatMap { $0 }
+            self.deactivate(attributes: deactivateAttributes)
             self.center = attribute
         case .Dimension:
             if self.dimension === attribute { return [] }
@@ -105,15 +114,6 @@ internal class Node {
         }
         
         return []
-    }
-    
-    /**
-        Deactivates the `NSLayoutConstraints` for the `Attributes`
-        given. Also nullifies the `Subnodes` for those `Attributes`
-        - parameter attributes: `Attributes` to be deactivated
-     */
-    func deactivate(attributes attributes: Attribute?...) {
-        self.deactivate(attributes: attributes.flatMap { $0 })
     }
     
     /**
