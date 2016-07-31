@@ -476,4 +476,85 @@ class NodeTests: XCTestCase {
         XCTAssertTrue(newConstraints.count == 0)
     }
     
+    func testThatReloadHandlesCorrectlyEachSubnode() {
+        // given
+        var value = true
+        let node = Node()
+        let leftAttributeA = LeftMargin().when { value }
+        let leftAttributeB = Left().when { value == false }
+        let rightAttribute = RightMargin()
+        node.add(attribute: leftAttributeA)
+        node.add(attribute: leftAttributeB)
+        node.add(attribute: rightAttribute)
+        
+        let activeAttributes = node.activeAttributes
+        let inactiveAttributes = node.inactiveAttributes
+        
+        XCTAssertTrue(activeAttributes.count == 2)
+        XCTAssertTrue(inactiveAttributes.count == 1)
+        XCTAssertTrue(node.left === leftAttributeA)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertTrue(inactiveAttributes.first === leftAttributeB)
+        XCTAssertNil(node.center)
+        
+        // when
+        value = false
+        node.reload()
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 1)
+        XCTAssertTrue(node.left === leftAttributeB)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertTrue(inactiveAttributes.first === leftAttributeB)
+        XCTAssertNil(node.center)
+        
+        // And again
+        
+        // when
+        value = true
+        node.reload()
+        
+        // then
+        XCTAssertTrue(node.activeAttributes.count == 2)
+        XCTAssertTrue(node.inactiveAttributes.count == 1)
+        XCTAssertTrue(node.left === leftAttributeA)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertTrue(inactiveAttributes.first === leftAttributeB)
+        XCTAssertNil(node.center)
+    }
+    
+    func testThatClearMethodRemovesEverySubnode() {
+        // given
+        let node = Node()
+        let leftAttributeA = TopMargin().when { true }
+        let leftAttributeB = Top().when { false }
+        let rightAttribute = LastBaseline()
+        let dimension = Width()
+        let center = CenterXWithinMargins().when { false }
+        node.add(attribute: leftAttributeA)
+        node.add(attribute: leftAttributeB)
+        node.add(attribute: rightAttribute)
+        node.add(attribute: dimension)
+        node.add(attribute: center)
+        
+        XCTAssertTrue(node.left === leftAttributeA)
+        XCTAssertTrue(node.right === rightAttribute)
+        XCTAssertTrue(node.dimension === dimension)
+        XCTAssertTrue(node.activeAttributes.count == 3)
+        XCTAssertTrue(node.inactiveAttributes.count == 2)
+        XCTAssertNil(node.center)
+        
+        // when
+        node.clear()
+        
+        // then
+        XCTAssertNil(node.left)
+        XCTAssertNil(node.right)
+        XCTAssertNil(node.dimension)
+        XCTAssertNil(node.center)
+        XCTAssertTrue(node.activeAttributes.count == 0)
+        XCTAssertTrue(node.inactiveAttributes.count == 0)
+    }
+    
 }

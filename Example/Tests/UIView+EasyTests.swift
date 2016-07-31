@@ -41,14 +41,16 @@ class UIView_EasyTests: XCTestCase {
         XCTAssertTrue(viewA.test_activeAttributes.count == 2)
     }
     
-    func testThatReloadMethodReinstallsTheAttributesAppliedAndThisIsOwnedByTheSuperview() {
+    func testThatReloadBehaveAsExpectedAfterASecondPass() {
         // given
         let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
         let viewA = UIView(frame: CGRectZero)
         superview.addSubview(viewA)
+        let viewB = UIView(frame: CGRectZero)
+        superview.addSubview(viewB)
         var shouldApply = false
-        viewA <- CenterYWithinMargins(>=120).when { shouldApply }
-        viewA <- Right(>=120)
+        viewA <- Width(120).when { shouldApply }
+        viewA <- Height(120)
         XCTAssertTrue(viewA.test_activeAttributes.count == 1)
         
         // when
@@ -57,6 +59,41 @@ class UIView_EasyTests: XCTestCase {
         
         // then
         XCTAssertTrue(viewA.test_activeAttributes.count == 2)
+        
+    }
+    
+    func testThatReloadMethodReinstallsTheAttributesAppliedAndThisIsOwnedByTheSuperview() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        var shouldApply = false
+        viewA <- [
+            FirstBaseline(>=0.0).when { shouldApply },
+            CenterY().when { !shouldApply },
+            LastBaseline(>=0.0).when { shouldApply },
+            Size(20)
+        ]
+        XCTAssertTrue(viewA.test_activeAttributes.count == 3)
+        XCTAssertTrue(viewA.test_inactiveAttributes.count == 2)
+        
+        // when
+        shouldApply = true
+        viewA.easy_reload()
+        
+        // then
+        XCTAssertTrue(viewA.test_activeAttributes.count == 4)
+        XCTAssertTrue(viewA.test_inactiveAttributes.count == 1)
+        
+        // And again
+        
+        // when
+        shouldApply = false
+        viewA.easy_reload()
+        
+        // then
+        XCTAssertTrue(viewA.test_activeAttributes.count == 3)
+        XCTAssertTrue(viewA.test_inactiveAttributes.count == 2)
     }
     
     func testThatCompoundAttributesAreNotReturnedAndOnlyRegularAttributesStoredInView() {
