@@ -7,14 +7,6 @@ platform :ios do
   lane :travis do
     workspace = "Example/EasyPeasy.xcworkspace"
 
-    # Run tests (macOS)
-    scheme = "EasyPeasy-OSX"
-    scan(
-      scheme: scheme,
-      workspace: workspace,
-      code_coverage: true
-    )
-
     # Run tests (iOS)
     scheme = "EasyPeasy-iOS"
     scan(
