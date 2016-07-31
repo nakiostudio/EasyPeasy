@@ -20,7 +20,7 @@ platform :ios do
     xcov(
       scheme: scheme,
       workspace: workspace,
-      exclude_targets: "Demo.app"
+      exclude_targets: "Demo.app,Demo macOS.app"
     )
   end
 
