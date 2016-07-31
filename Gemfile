@@ -9,4 +9,5 @@ gem 'danger-xcov'
 
 # CI
 gem 'fastlane'
-gem 'danger', '2.0.0'
+gem 'danger'
+
