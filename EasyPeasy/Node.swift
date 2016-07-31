@@ -78,32 +78,21 @@ internal class Node {
         switch nodeAttribute {
         case .Left:
             if self.left === attribute { return [] }
-            var deactivateAttributes = [self.left, self.center].flatMap { $0 }
-            if let _ = self.right, dimension = self.dimension {
-                deactivateAttributes.append(dimension)
-            }
-            self.deactivate(attributes: deactivateAttributes)
+            self.deactivate(attributes: [self.left, self.center].flatMap { $0 })
             self.left = attribute
         case .Right:
             if self.right === attribute { return [] }
-            var deactivateAttributes = [self.right, self.center].flatMap { $0 }
-            if let _ = self.left, dimension = self.dimension {
-                deactivateAttributes.append(dimension)
-            }
-            self.deactivate(attributes: deactivateAttributes)
+            self.deactivate(attributes: [self.right, self.center].flatMap { $0 })
             self.right = attribute
         case .Center:
             if self.center === attribute { return [] }
-            let deactivateAttributes = [self.center, self.left, self.right].flatMap { $0 }
-            self.deactivate(attributes: deactivateAttributes)
+            self.deactivate(attributes: [self.center, self.left, self.right].flatMap { $0 })
             self.center = attribute
         case .Dimension:
             if self.dimension === attribute { return [] }
-            var deactivateAttributes = [self.dimension].flatMap { $0 }
-            if let left = self.left, right = self.right {
-                deactivateAttributes.appendContentsOf([left, right])
+            if let previousDimension = self.dimension {
+                self.deactivate(attributes: [previousDimension])
             }
-            self.deactivate(attributes: deactivateAttributes)
             self.dimension = attribute
         }
         
@@ -122,6 +111,10 @@ internal class Node {
         - parameter attributes: `Attributes` to be deactivated
      */
     func deactivate(attributes attributes: [Attribute]) {
+        guard attributes.count > 0 else {
+            return
+        }
+        
         var layoutConstraints: [NSLayoutConstraint] = []
         
         for attribute in attributes {

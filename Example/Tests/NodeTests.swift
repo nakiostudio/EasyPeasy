@@ -115,35 +115,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.center)
         XCTAssertNil(node.right)
     }
-    
-    func testThatLeftSubnodeIsUpdatedWhenDimensionSubnodeIsAppliedAndThereIsARightSubnode() {
-        // given
-        let node = Node()
-        let leftAttribute = Left()
-        let rightAttribute = Right()
-        let dimensionAttribute = Width()
-        node.add(attribute: leftAttribute)
-        node.add(attribute: rightAttribute)
-        XCTAssertTrue(node.activeAttributes.count == 2)
-        XCTAssertTrue(node.inactiveAttributes.count == 0)
-        XCTAssertTrue(node.left === leftAttribute)
-        XCTAssertTrue(node.right === rightAttribute)
-        XCTAssertNil(node.center)
-        XCTAssertNil(node.dimension)
-        
-        // when
-        node.add(attribute: dimensionAttribute)
-        
-        // then
-        XCTAssertTrue(node.activeAttributes.count == 1)
-        XCTAssertTrue(node.inactiveAttributes.count == 0)
-        XCTAssertTrue(node.dimension === dimensionAttribute)
-        XCTAssertNotNil(node.dimension)
-        XCTAssertNil(node.right)
-        XCTAssertNil(node.left)
-        XCTAssertNil(node.center)
-    }
-    
+
     func testThatThereIsNotLayoutConstraintToApplyWhenSameLeftAttributeIsAddedTwice() {
         // given
         let node = Node()
@@ -263,33 +235,6 @@ class NodeTests: XCTestCase {
         XCTAssertNotNil(node.dimension)
         XCTAssertNil(node.center)
         XCTAssertNil(node.left)
-    }
-    
-    func testThatRightSubnodeIsUpdatedWhenDimensionSubnodeIsAppliedAndThereIsALeftSubnode() {
-        // given
-        let node = Node()
-        let leftAttribute = FirstBaseline()
-        let rightAttribute = LastBaseline()
-        let dimensionAttribute = Height()
-        node.add(attribute: rightAttribute)
-        node.add(attribute: dimensionAttribute)
-        XCTAssertTrue(node.activeAttributes.count == 2)
-        XCTAssertTrue(node.inactiveAttributes.count == 0)
-        XCTAssertTrue(node.dimension === dimensionAttribute)
-        XCTAssertTrue(node.right === rightAttribute)
-        XCTAssertNil(node.center)
-        XCTAssertNil(node.left)
-        
-        // when
-        node.add(attribute: leftAttribute)
-        
-        // then
-        XCTAssertTrue(node.activeAttributes.count == 2)
-        XCTAssertTrue(node.inactiveAttributes.count == 0)
-        XCTAssertTrue(node.left === leftAttribute)
-        XCTAssertTrue(node.right === rightAttribute)
-        XCTAssertNil(node.dimension)
-        XCTAssertNil(node.center)
     }
     
     func testThatThereIsNotLayoutConstraintToApplyWhenSameRightAttributeIsAddedTwice() {
@@ -486,33 +431,6 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.center)
         XCTAssertNil(node.right)
         XCTAssertNil(node.left)
-    }
-    
-    func testThatDimensionSubnodeIsUpdatedWhenReplacedWithLeftAndRightSubnodes() {
-        // given
-        let node = Node()
-        let leftAttribute = LeftMargin()
-        let rightAttribute = RightMargin()
-        let widthAttribute = Width()
-        node.add(attribute: widthAttribute)
-        XCTAssertTrue(node.activeAttributes.count == 1)
-        XCTAssertTrue(node.inactiveAttributes.count == 0)
-        XCTAssertTrue(node.dimension === widthAttribute)
-        XCTAssertNil(node.center)
-        XCTAssertNil(node.left)
-        XCTAssertNil(node.right)
-        
-        // when
-        node.add(attribute: leftAttribute)
-        node.add(attribute: rightAttribute)
-        
-        // then
-        XCTAssertTrue(node.activeAttributes.count == 2)
-        XCTAssertTrue(node.inactiveAttributes.count == 0)
-        XCTAssertTrue(node.left === leftAttribute)
-        XCTAssertTrue(node.right === rightAttribute)
-        XCTAssertNil(node.dimension)
-        XCTAssertNil(node.center)
     }
     
     func testThatDimensionSubnodeIsNotUpdatedWhenCenterSubnodeIsApplied() {
