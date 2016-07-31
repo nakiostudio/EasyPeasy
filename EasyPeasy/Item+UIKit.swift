@@ -16,38 +16,18 @@ import UIKit
 public typealias View = UIView
     
 /**
-     Item protocol extension implementing some convenience properties
- */
-internal extension Item {
-    
-    /// Owning `UIView` for the current `Item`. The concept varies
-    /// depending on the class conforming the protocol
-    internal var owningView: View? {
-        get {
-            // Owning view for `UIView` is the `superview`
-            if let view = self as? View {
-                return view.superview
-            }
-            
-            // Owning view for `UILayoutGuide` is the `owningView`
-            // iOS 9 and above only
-            if #available(iOS 9.0, *) {
-                if let layoutGuide = self as? UILayoutGuide {
-                    return layoutGuide.owningView
-                }
-            }
-            
-            return nil
-        }
-    }
-    
-}
-    
-/**
      Extension making `UIView` conform the `Item` protocol and
      therefore inherit the extended methods and properties
  */
-extension UIView: Item { }
+extension UIView: Item {
+
+    /// Owning `UIView` for the current `Item`. The concept varies
+    /// depending on the class conforming the protocol
+    public var owningView: View? {
+        return self.superview
+    }
+    
+}
 
 /**
      Extension making `UILayoutGuide` conform the `Item` protocol
@@ -59,9 +39,7 @@ extension UILayoutGuide: Item {
     /// Constraints in `owningView` with the current `UILayoutGuide`
     /// as `firstItem`
     public var constraints: [NSLayoutConstraint] {
-        get {
-            return self.owningView?.constraints.filter { $0.firstItem === self } ?? []
-        }
+        return self.owningView?.constraints.filter { $0.firstItem === self } ?? []
     }
     
 }

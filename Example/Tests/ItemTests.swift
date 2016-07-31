@@ -102,6 +102,9 @@ class ItemTests: XCTestCase {
                     return self.owningView?.constraints.filter { $0.firstItem === self } ?? []
                 }
             }
+            
+            private var owningView: View?
+            
         }
         let testClassInstance = TestClass()
         

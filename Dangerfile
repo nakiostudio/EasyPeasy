@@ -1,7 +1,7 @@
 workspace = "Example/EasyPeasy.xcworkspace"
-
-# Coverage report(iOS)
 scheme = "EasyPeasy-iOS"
+
+# Coverage report
 xcov.report(
    scheme: scheme,
    workspace: workspace,

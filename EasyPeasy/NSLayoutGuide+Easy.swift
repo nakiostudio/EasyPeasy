@@ -12,32 +12,29 @@
     
 import AppKit
 
-infix operator <- {}
-
 /**
-     Operator which applies the attribute given to the view located
-     in the left hand side of it
-     - parameter lhs: `NSView` the attributes will apply to
-     - parameter rhs: Attribute applied to the `NSView`
+     Operator which applies the attribute given to the `NSLayoutGuide`
+     located in the left hand side of it
+     - parameter lhs: `NSLayoutGuide` the attributes will apply to
+     - parameter rhs: Attribute applied to the `NSLayoutGuide`
      - returns: The array of `NSLayoutConstraints` applied
  */
-public func <- (lhs: NSView, rhs: Attribute) -> [NSLayoutConstraint] {
+@available (OSX 10.11, *)
+public func <- (lhs: NSLayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
     return lhs <- [rhs]
 }
 
 /**
-     Opeator which applies the attributes given to the view located
-     in the left hand side of it
-     - parameter lhs: NSView the attributes will apply to
-     - parameter rhs: Attributes applied to the NSView
+     Opeator which applies the attributes given to the `NSLayoutGuide`
+     located in the left hand side of it
+     - parameter lhs: `NSLayoutGuide` the attributes will apply to
+     - parameter rhs: Attributes applied to the `NSLayoutGuide`
      - returns: The array of `NSLayoutConstraints` applied
  */
-public func <- (lhs: NSView, rhs: [Attribute]) -> [NSLayoutConstraint] {
-    // Disable autoresizing to constraints translation
-    lhs.translatesAutoresizingMaskIntoConstraints = false
-    
+@available (OSX 10.11, *)
+public func <- (lhs: NSLayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
     // Apply attributes and return the installed `NSLayoutConstraints`
     return lhs.apply(attributes: rhs)
 }
-    
+
 #endif

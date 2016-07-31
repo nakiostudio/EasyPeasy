@@ -8,13 +8,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if !(os(iOS) || os(tvOS))
-    
+#if os(iOS) || os(tvOS)
+import UIKit
+#else
 import AppKit
+#endif
 
 /**
-     An enum representation of the different attribute
-     classes available
+    An enum representation of the different attribute
+    classes available
  */
 public enum ReferenceAttribute {
     
@@ -31,11 +33,18 @@ public enum ReferenceAttribute {
     case Trailing
     case CenterX
     case CenterY
-    case LastBaseline
     case FirstBaseline
-    
-    // Default
-    case NotAnAttribute
+    case LastBaseline
+#if os(iOS) || os(tvOS)
+    case LeftMargin
+    case RightMargin
+    case TopMargin
+    case BottomMargin
+    case LeadingMargin
+    case TrailingMargin
+    case CenterXWithinMargins
+    case CenterYWithinMargins
+#endif
     
     /// Reference attribute opposite to the current one
     internal var opposite: ReferenceAttribute {
@@ -51,14 +60,23 @@ public enum ReferenceAttribute {
         case .CenterX: return .CenterX
         case .CenterY: return .CenterY
         case .LastBaseline: return .LastBaseline
-        case .NotAnAttribute: return .NotAnAttribute
-        case .FirstBaseline:
-            if #available(OSX 10.11, *) {
-                return .FirstBaseline
+        case .FirstBaseline: return .FirstBaseline
+        default:
+            #if os(iOS) || os(tvOS)
+            switch self {
+            case .LeftMargin: return .RightMargin
+            case .RightMargin: return .LeftMargin
+            case .TopMargin: return .BottomMargin
+            case .BottomMargin: return .TopMargin
+            case .LeadingMargin: return .TrailingMargin
+            case .TrailingMargin: return .LeadingMargin
+            case .CenterXWithinMargins: return .CenterXWithinMargins
+            case .CenterYWithinMargins: return .CenterYWithinMargins
+            default: return .Width // This point should never be reached
             }
-            else {
-                return .LastBaseline
-            }
+            #else
+            return .Width // This point should never be reached
+            #endif
         }
     }
     
@@ -77,46 +95,37 @@ public enum ReferenceAttribute {
         case .CenterX: return .CenterX
         case .CenterY: return .CenterY
         case .LastBaseline: return .LastBaseline
-        case .NotAnAttribute: return .NotAnAttribute
         case .FirstBaseline:
+            #if os(iOS) || os(tvOS)
+            return .FirstBaseline
+            #else
             if #available(OSX 10.11, *) {
                 return .FirstBaseline
             }
             else {
                 return .LastBaseline
             }
+            #endif
+        default:
+            #if os(iOS) || os(tvOS)
+            switch self {
+            case .LeftMargin: return .LeftMargin
+            case .RightMargin: return .RightMargin
+            case .TopMargin: return .TopMargin
+            case .BottomMargin: return .BottomMargin
+            case .LeadingMargin: return .LeadingMargin
+            case .TrailingMargin: return .TrailingMargin
+            case .CenterXWithinMargins: return .CenterXWithinMargins
+            case .CenterYWithinMargins: return .CenterYWithinMargins
+            default: return .Width // This point should never be reached
+            }
+            #else
+            return .Width // This point should never be reached
+            #endif
         }
     }
     
-    /// Reference attributes that may conflict with the current one
-    internal var conflictingAttributes: [ReferenceAttribute] {
-        let left: [ReferenceAttribute] = [.Left, .CenterX, .Leading]
-        let right: [ReferenceAttribute] = [.Right, .CenterX, .Trailing]
-        let top: [ReferenceAttribute] = [.Top, .CenterY, .FirstBaseline]
-        let bottom: [ReferenceAttribute] = [.Bottom, .CenterY, LastBaseline]
-        let firstBaseLine: [ReferenceAttribute] = [.Top, .CenterY, .FirstBaseline]
-        let lastBaseLine: [ReferenceAttribute] = [.LastBaseline, .Bottom, .CenterY]
-        let centerX: [ReferenceAttribute] = [.CenterX, .Left, .Right, .Leading, .Trailing]
-        let centerY: [ReferenceAttribute] = [.CenterY, .Top, .Bottom, .LastBaseline, .FirstBaseline]
-        
-        switch self {
-        case .Width: return [.Width]
-        case .Height: return [.Height]
-        case .Left: return left
-        case .Right: return right
-        case .Top: return top
-        case .Bottom: return bottom
-        case .Leading: return left
-        case .Trailing: return right
-        case .CenterX: return centerX
-        case .CenterY: return centerY
-        case .FirstBaseline: return firstBaseLine
-        case .LastBaseline: return lastBaseLine
-        case .NotAnAttribute: return []
-        }
-    }
-    
-    /// Property that determines whether the constant of
+    /// Property that determines whether the constant of 
     /// the `Attribute` should be multiplied by `-1`. This
     /// is usually done for right hand `PositionAttribute`
     /// objects
@@ -134,10 +143,23 @@ public enum ReferenceAttribute {
         case .CenterY: return false
         case .FirstBaseline: return false
         case .LastBaseline: return true
-        case .NotAnAttribute: return false
+        default:
+            #if os(iOS) || os(tvOS)
+            switch self {
+            case .LeftMargin: return false
+            case .RightMargin: return true
+            case .TopMargin: return false
+            case .BottomMargin: return true
+            case .LeadingMargin: return false
+            case .TrailingMargin: return true
+            case .CenterXWithinMargins: return false
+            case .CenterYWithinMargins: return false
+            default: return false // This point should never be reached
+            }
+            #else
+            return false // This point should never be reached
+            #endif
         }
     }
     
 }
-    
-#endif

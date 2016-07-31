@@ -1,5 +1,12 @@
 # Changelog
 
+# v.1.0.0
+
+* Improved performance, benchmarks show up to a 250% improvement applying `Attributes` with the apply operator `<-`, resolving
+conflicts and using `easy_clear` and `easy_reload` methods.
+* `NSLayoutConstraint` conflict resolution is more accurate and strict.
+* Added support to `NSLayoutGuide`.
+
 ## v.0.3.0
 
 * Supported tvOS and OS X.

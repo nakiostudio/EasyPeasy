@@ -18,14 +18,6 @@
 		C1B763441D298C620054C2B0 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763431D298C620054C2B0 /* SideBarView.swift */; };
 		C1B763471D298CD60054C2B0 /* NSColor+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763461D298CD60054C2B0 /* NSColor+Easy.swift */; };
 		C1B763491D298F780054C2B0 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B763481D298F780054C2B0 /* FeedView.swift */; };
-		C1E01E351D30F25B002A7F76 /* Attribute+InstallTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E341D30F25B002A7F76 /* Attribute+InstallTests.swift */; };
-		C1E01E371D30F2E4002A7F76 /* Attribute+OperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E361D30F2E4002A7F76 /* Attribute+OperatorsTests.swift */; };
-		C1E01E3B1D30F714002A7F76 /* CompoundAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E3A1D30F714002A7F76 /* CompoundAttributeTests.swift */; };
-		C1E01E3D1D30F780002A7F76 /* ConstantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E3C1D30F780002A7F76 /* ConstantTests.swift */; };
-		C1E01E3F1D30F7A2002A7F76 /* ItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E3E1D30F7A2002A7F76 /* ItemTests.swift */; };
-		C1E01E411D30F7E0002A7F76 /* NSView+EasyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E401D30F7E0002A7F76 /* NSView+EasyTests.swift */; };
-		C1E01E431D30F812002A7F76 /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E421D30F812002A7F76 /* PriorityTests.swift */; };
-		C1E01E451D30F834002A7F76 /* ReferenceAttributeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E01E441D30F834002A7F76 /* ReferenceAttributeTests.swift */; };
 		F3E774E62F71E31079E00432 /* Pods_Demo_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E51B42CCA806489A2BD2 /* Pods_Demo_macOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,14 +50,6 @@
 		C1B763461D298CD60054C2B0 /* NSColor+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Easy.swift"; sourceTree = "<group>"; };
 		C1B763481D298F780054C2B0 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		C1E01E331D30F25A002A7F76 /* Tests macOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests macOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		C1E01E341D30F25B002A7F76 /* Attribute+InstallTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+InstallTests.swift"; sourceTree = "<group>"; };
-		C1E01E361D30F2E4002A7F76 /* Attribute+OperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Attribute+OperatorsTests.swift"; sourceTree = "<group>"; };
-		C1E01E3A1D30F714002A7F76 /* CompoundAttributeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompoundAttributeTests.swift; sourceTree = "<group>"; };
-		C1E01E3C1D30F780002A7F76 /* ConstantTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantTests.swift; sourceTree = "<group>"; };
-		C1E01E3E1D30F7A2002A7F76 /* ItemTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTests.swift; sourceTree = "<group>"; };
-		C1E01E401D30F7E0002A7F76 /* NSView+EasyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSView+EasyTests.swift"; sourceTree = "<group>"; };
-		C1E01E421D30F812002A7F76 /* PriorityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTests.swift; sourceTree = "<group>"; };
-		C1E01E441D30F834002A7F76 /* ReferenceAttributeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferenceAttributeTests.swift; sourceTree = "<group>"; };
 		C5EF169D4A229383D705B53B /* Pods-Tests macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests macOS.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests macOS/Pods-Tests macOS.release.xcconfig"; sourceTree = "<group>"; };
 		F0BA78F0DE5E2B7E635FDA10 /* Pods_Tests_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6C5CBCAF63E84B86F1B8E /* Pods-Demo macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo macOS.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Demo macOS/Pods-Demo macOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,14 +136,6 @@
 		C1B763331D2983DD0054C2B0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C1E01E401D30F7E0002A7F76 /* NSView+EasyTests.swift */,
-				C1E01E3E1D30F7A2002A7F76 /* ItemTests.swift */,
-				C1E01E341D30F25B002A7F76 /* Attribute+InstallTests.swift */,
-				C1E01E361D30F2E4002A7F76 /* Attribute+OperatorsTests.swift */,
-				C1E01E3A1D30F714002A7F76 /* CompoundAttributeTests.swift */,
-				C1E01E441D30F834002A7F76 /* ReferenceAttributeTests.swift */,
-				C1E01E3C1D30F780002A7F76 /* ConstantTests.swift */,
-				C1E01E421D30F812002A7F76 /* PriorityTests.swift */,
 				C1E01E321D30F1E6002A7F76 /* Supporting Files */,
 			);
 			name = Tests;
@@ -406,14 +382,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1E01E371D30F2E4002A7F76 /* Attribute+OperatorsTests.swift in Sources */,
-				C1E01E351D30F25B002A7F76 /* Attribute+InstallTests.swift in Sources */,
-				C1E01E431D30F812002A7F76 /* PriorityTests.swift in Sources */,
-				C1E01E3B1D30F714002A7F76 /* CompoundAttributeTests.swift in Sources */,
-				C1E01E3D1D30F780002A7F76 /* ConstantTests.swift in Sources */,
-				C1E01E3F1D30F7A2002A7F76 /* ItemTests.swift in Sources */,
-				C1E01E451D30F834002A7F76 /* ReferenceAttributeTests.swift in Sources */,
-				C1E01E411D30F7E0002A7F76 /* NSView+EasyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

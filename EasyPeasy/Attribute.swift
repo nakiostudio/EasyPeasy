@@ -47,7 +47,8 @@ public class Attribute {
     
     /// `Attribute` applied to the view
     public var createAttribute: ReferenceAttribute {
-        return self.referenceAttributeFromClass()
+        debugPrint("This point shouldn't have been reached")
+        return .Width
     }
     
     /// Reference `UIView` of the constraint
@@ -55,6 +56,16 @@ public class Attribute {
     
     /// Referencce `Attribute` of the constraint
     public internal(set) var referenceAttribute: ReferenceAttribute?
+    
+    /// Equivalent `NSLayoutConstraint`. It's `nil` unless the method
+    /// `createConstraints(for item:_)` is called
+    internal(set) var layoutConstraint: NSLayoutConstraint?
+    
+    /// Element identifying the node this attribute will be 
+    /// stored in
+    internal lazy var signature: String = {
+        return String.easy_signature(for: self)
+    }()
     
     /**
         Initializer which creates an `Attribute` instance
@@ -119,16 +130,15 @@ public class Attribute {
     // MARK: Internal methods (acting as protected)
     
     /** 
-        This method evaluates whether an `Attribute` should be
-        applied, resolves any conflicts with the `Attributes`
-        already applied and it also generates the `NSLayoutConstraint`
-        added to `view`
+        This method creates the `NSLayoutConstraints` equivalent to the
+        current `Attribute`. The resulting constraint is held by the 
+        property `layoutConstraint`
         - parameter view: `UIView` in which the generated
         `NSLayoutConstraint` will be added
         - returns an `Array` of `NSLayoutConstraint` objects that will
         be installed on the `UIView` passed as parameter
      */
-    internal func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+    internal func createConstraints(for item: Item) -> [NSLayoutConstraint] {
         guard let _ = item.owningView else {
             debugPrint("EasyPeasy Attribute cannot be applied to item \(item) as its superview/owningView is nil")
             return []
@@ -136,17 +146,6 @@ public class Attribute {
         
         // Reference to the target view
         self.createItem = item
-        
-        // Resolve constraint conflicts
-        self.resolveConflictsOnItem(item)
-        
-        // Store attribute in owner `UIView`
-        self.storeInItem(item)
-        
-        // If condition is `false` return
-        if self.shouldInstall() == false {
-            return []
-        }
         
         // Build layout constraint
         let constantFactor: CGFloat = self.createAttribute.shouldInvertConstant ? -1 : 1
@@ -163,22 +162,43 @@ public class Attribute {
         // Set priority
         layoutConstraint.priority = self.priority.layoutPriority()
         
-        // Set associated Attribute
-        layoutConstraint.easy_attribute = self
+        // Reference resulting constraint
+        self.layoutConstraint = layoutConstraint
         
         // Return the constraint
         return [layoutConstraint]
     }
     
     /**
-        Method to be overriden by the child classes, determines
-        whether the `NSLayoutConstraint` created by the `Attribute`
-        will be stored by the `superview` or the `createItem`
-        - returns boolean if the resulting constraint is owned by
-        the superview
+        Determines whether the `Attribute` must be installed or not
+        depending on the `Condition` closure
+        - return boolean determining if the `Attribute` has to be
+        applied
      */
-    internal func ownedBySuperview() -> Bool {
-        return true
+    internal func shouldInstall() -> Bool {
+        return self.condition?() ?? true
+    }
+
+    /**
+        Determines which `ReferenceAttribute` must be taken as reference
+        attribute for the actual Attribute class. Usually is the opposite
+        of the one that is going to be installed
+        - returns `ReferenceAttribute` to install
+     */
+    internal func referenceAttributeHelper() -> ReferenceAttribute {
+        // If already set return
+        if let attribute = self.referenceAttribute {
+            return attribute
+        }
+        
+        // If reference view is the superview then return same attribute
+        // as `createAttribute`
+        if let referenceItem = self.referenceItem where referenceItem === self.createItem?.owningView {
+            return self.createAttribute
+        }
+        
+        // Otherwise return the opposite of `createAttribute`
+        return self.createAttribute.opposite
     }
     
 }

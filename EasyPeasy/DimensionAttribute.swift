@@ -18,30 +18,31 @@ import AppKit
     Superclass for those `Attribute` objects that imply dimension
     constraints like width and height
  */
-public class DimensionAttribute: Attribute {
-    
-    // MARK: Overriden methods
-    
-    /**
-        Method overriden to indicate that `PositionAttributes` are owned by 
-        `createItem` and not `superview`
-        - returns boolean if the resulting constraint is owned by the superview
-     */
-    override func ownedBySuperview() -> Bool {
-        return false
-    }
-    
-}
+public class DimensionAttribute: Attribute { }
 
 /**
     The width of the object’s alignment rectangle
  */
-public class Width: DimensionAttribute { }
+public class Width: DimensionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Width
+    }
+
+}
 
 /**
     The height of the object’s alignment rectangle
  */
-public class Height: DimensionAttribute { }
+public class Height: DimensionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Height
+    }
+    
+}
 
 /**
     The size of the object’s rectangle

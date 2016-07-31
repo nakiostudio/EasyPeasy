@@ -7,66 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00848B56913F66EA1305129619ECAFC7 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D772472C9EDA65F463A42B7501A575 /* Priority.swift */; };
-		075C2FA5ADA5D014607FD576B599B186 /* NSView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2BF49CB59133DCC2B679F82D7977A8 /* NSView+Easy.swift */; };
-		084E6A0533CC70A6B7EF9191E48B3F7D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E0D36DC3ED58A955C15D678CC124A0 /* Constant.swift */; };
-		09A1882350BE58A1A3741914486BF3FF /* Attribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E972A723D01FA03E5EF9DF2966D9780F /* Attribute+Operators.swift */; };
-		17A211BC0AD14A0E016A3B82E3788324 /* EasyPeasy-OSX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F7AB69E3CC1735BFC03DED88A7FA4837 /* EasyPeasy-OSX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		236F68953C51A8A6EA2CE2B99DB51988 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
-		2778752309B395DAD47F73B64227A7A8 /* NSLayoutConstraint+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF41DA629DE951EDA7671ED0E9C739 /* NSLayoutConstraint+Internal.swift */; };
-		2868D293B4769F8776DBE170510AD9EC /* ReferenceAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D863CE4CA52F3003B6F6AE65364F9C /* ReferenceAttribute+UIKit.swift */; };
-		2EF47053DA457BEF011C80CD449D09DD /* ReferenceAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D863CE4CA52F3003B6F6AE65364F9C /* ReferenceAttribute+UIKit.swift */; };
-		2F317F5F8576545F321E731BAEA48B86 /* PositionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F549D9850622BBA7ED0C847E845284 /* PositionAttribute.swift */; };
-		3D8961E273699C4040C76A070813C0DC /* UILayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D820D1ECB6D927B73E3064AE949FBE /* UILayoutGuide+Easy.swift */; };
-		3ED062F0249E3C4E600607A71FB69B4E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
-		3ED2D41FD1F1ABE30A9A02B4A954D104 /* Attribute+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6920EFA27A9EB376B53AC2B58F10BAF /* Attribute+Install.swift */; };
-		3F0668816342536A19D45726AB503D7D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E0D36DC3ED58A955C15D678CC124A0 /* Constant.swift */; };
+		03CA5576988DD060C61159B615FFD96C /* Item+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C86378ED1E103C5949976F067F165 /* Item+AppKit.swift */; };
+		063AC53DE960CF7DCD7BF31F4D2ED333 /* DimensionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E04212502EE688C6BFC401465EDA25 /* DimensionAttribute+AppKit.swift */; };
+		08EDDBEC816A26A8DD568C2918365C15 /* PositionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54468F7D5489FD0E70BF20755400A9B3 /* PositionAttribute.swift */; };
+		12D39A65B1820D5A503BD4C9137BF8EE /* DimensionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51448B50CC1C9726C9BB30CF1FF79E8 /* DimensionAttribute.swift */; };
+		142A46D851E2694FD79CAABFE6C91366 /* Item+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2FBC9DE2A3B4993A5BE50213691957 /* Item+UIKit.swift */; };
+		206D4D0C072B022AA1A4AB21FFDF0BDE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
+		20DFE9E76DFC0E59BB48E2F7A0149D93 /* EasyPeasy-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B740E034106F6E91AFC1145ACAF75417 /* EasyPeasy-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2630660C1574AD2843D30ADDBA6D38F7 /* DimensionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E04212502EE688C6BFC401465EDA25 /* DimensionAttribute+AppKit.swift */; };
+		2FE3401E61B96532C346878C349D2D58 /* UILayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591FEAE540EA245113819C98496A71F9 /* UILayoutGuide+Easy.swift */; };
+		3197F8A2743BE867B93F2C82C54E051A /* EasyPeasy-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2252792E562F36F097C8CA669AC7DA /* EasyPeasy-iOS-dummy.m */; };
+		3649E18C3E1CE993B6D3009C8C20F45B /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA8BE9168B2B571CF0EA64410632DB /* Attribute.swift */; };
+		380646682A321F294CC8CBA2C2685127 /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C367B4C31D86763C6C503746A43EEDA /* Priority.swift */; };
+		3D20EB280ABF533DBD890EFBA63481E1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911952AD369E8938571824C4BFEF7B8 /* Item.swift */; };
+		3EFEFB0965C4C69F53B4CFF7653797BC /* Item+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C86378ED1E103C5949976F067F165 /* Item+AppKit.swift */; };
 		448E09E0F0F2E0BAF69CE68F7FFBFC90 /* Pods-Tests macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3735301686A93DF457E61A0B72E8E7EB /* Pods-Tests macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4AB5AF168CF9A880855ABF912CB3DEB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
-		4B1CE648734584824E6EBE6E0905F4DF /* DimensionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F553D0E65323375F69E41B9B6CECC /* DimensionAttribute+UIKit.swift */; };
 		545171AE4B96DF53282D8A23C0657DA0 /* Pods-Demo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A088C2963F4CF87ADE140755D8AF2F80 /* Pods-Demo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FCC15E035D1DA287CCCBE16A151FAD7 /* Pods-Tests macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A94195915FBBDB636E839AFA6EFF3E6E /* Pods-Tests macOS-dummy.m */; };
 		63CA938D1ED10F5035DA7DF22A36396C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
-		654EA4F64709BD9EDFB0458330D4A13F /* DimensionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B45302BB182E29542DB69137131F701 /* DimensionAttribute.swift */; };
-		6C903E02D1B111A9260F1F55D2DB982D /* EasyPeasy-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E4BBF3A8E0B08D5584A4CFBABE59FC1 /* EasyPeasy-OSX-dummy.m */; };
-		6CBC8CBF2617C8713F0820B8F45FA1B2 /* DimensionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F553D0E65323375F69E41B9B6CECC /* DimensionAttribute+UIKit.swift */; };
+		640395683FD03AAF4376F2A9E4A6C9F9 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA8BE9168B2B571CF0EA64410632DB /* Attribute.swift */; };
+		65F0FA914FC0B1058D23308CFBE79019 /* PositionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8BA1B7225168A32AB259F9C8C1D9E /* PositionAttribute+UIKit.swift */; };
 		6CECDEC163AA06708E597981C7659C98 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A09E699D04445763DD883C7945879BD6 /* Pods-Tests-dummy.m */; };
-		6D03BA730BC9C190D3F4277C415A37C2 /* PositionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F549D9850622BBA7ED0C847E845284 /* PositionAttribute.swift */; };
-		719C95AB2287586BBF613B1922F4CB33 /* Item+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA139E92D44077DE7A8DA5170270D8A0 /* Item+AppKit.swift */; };
-		7C09BDB161C8AFF4CCFA856450205163 /* DimensionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051032F61D927810C05E7312920A6EF2 /* DimensionAttribute+AppKit.swift */; };
-		7D729A16737DCBD3431857D0282E3D2F /* UILayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D820D1ECB6D927B73E3064AE949FBE /* UILayoutGuide+Easy.swift */; };
-		855BB7F4DD19F5F97EDBE2AC5FA3E526 /* NSView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2BF49CB59133DCC2B679F82D7977A8 /* NSView+Easy.swift */; };
-		8607C0902AFEB4C1323DAD7F76038CB6 /* UIView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41AC1A036D6CB7BF2C7301F0D6B5EE /* UIView+Easy.swift */; };
-		8D4465C9B8DE2E28B7C2B8CA67ED64DE /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D772472C9EDA65F463A42B7501A575 /* Priority.swift */; };
-		9AF52B24D0F934509F1D06D4521C90E8 /* Attribute+Install.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6920EFA27A9EB376B53AC2B58F10BAF /* Attribute+Install.swift */; };
-		A1251D33FD58250B7F4F74645591BFFA /* Item+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA139E92D44077DE7A8DA5170270D8A0 /* Item+AppKit.swift */; };
-		A1F83AB08769AE8B2FBB894EB09E69E5 /* NSLayoutConstraint+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF41DA629DE951EDA7671ED0E9C739 /* NSLayoutConstraint+Internal.swift */; };
-		A41B41C61279B0C074DA0BDCF2599189 /* PositionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D23A4743E7101C4DBC32909ECF3E71 /* PositionAttribute+UIKit.swift */; };
-		ACB597615E3585BD9316BCBE40085E1A /* PositionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7655F12872E1467064FF4695E73DA /* PositionAttribute+AppKit.swift */; };
-		AD195ACC981DEB0452E0793DF8B33A55 /* EasyPeasy-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E13AEE0A21DB97F30546B4090BE1058 /* EasyPeasy-iOS-dummy.m */; };
-		AE5ECCA480E85FA697118A47CDDA551B /* Item+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1929D58C35E6A19F5A794BE1E8E813C8 /* Item+UIKit.swift */; };
+		79E9DF3D37E347B6EFDB7168484A1F6A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74ADF0F15F949C3EB31AF19C7C4AD5E /* Constant.swift */; };
+		7BC57F445F34016D9D04E84E811B3C1D /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D119197185218478A15FED13F70296 /* Node.swift */; };
+		7FE5796E6F978E7BC2566EEB1542E256 /* DimensionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51448B50CC1C9726C9BB30CF1FF79E8 /* DimensionAttribute.swift */; };
+		8129EBD49A2F1680A47D5EC86612D12A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D119197185218478A15FED13F70296 /* Node.swift */; };
+		8133683FB2EAF85FD881A36531C32F81 /* PositionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F8BA1B7225168A32AB259F9C8C1D9E /* PositionAttribute+UIKit.swift */; };
+		8775066165BDD41CB54A75C07055BB89 /* DimensionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F658456807460565E37CF3B4D892DE /* DimensionAttribute+UIKit.swift */; };
+		92CE210F45359599A71E2270A997F79E /* CompoundAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9DB456273508BFFDD7A656963592 /* CompoundAttribute.swift */; };
+		9402410C4C9FD97F264FE7424CBAC78A /* Priority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C367B4C31D86763C6C503746A43EEDA /* Priority.swift */; };
+		947092423DF7982AE6BB82FBF29FEDAD /* UILayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591FEAE540EA245113819C98496A71F9 /* UILayoutGuide+Easy.swift */; };
+		9494C88B5D30E6EE7CC72ED81938C721 /* NSView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8AB2612F2C9AE0B3A5E9F272745B6B /* NSView+Easy.swift */; };
+		9EEA8314BCBFE6CE17B9651A7E8ED130 /* UIView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7356B546E5C2676EF6178EFDF7F74953 /* UIView+Easy.swift */; };
+		AB06A0D030B9DD1D153E0BDF5478E9DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
+		AE5325033795CC2210A89E6E8193448B /* DimensionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F658456807460565E37CF3B4D892DE /* DimensionAttribute+UIKit.swift */; };
+		AEF3EF0D2DCA35275DA80A79F7A06D97 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911952AD369E8938571824C4BFEF7B8 /* Item.swift */; };
 		AF96C26E753376463419DCFB2482F199 /* Pods-Demo macOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8872A918069314603E9AF9C36DF16DE4 /* Pods-Demo macOS-dummy.m */; };
-		B09F79BBD6F49AB19EF8ADA2A2714D8A /* DimensionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051032F61D927810C05E7312920A6EF2 /* DimensionAttribute+AppKit.swift */; };
 		B480F3988862139840D8140D4A95EA6C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */; };
+		B73197D74AD93886D6A17FCA9644B31B /* EasyPeasy-OSX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 32136D53785FF0D61801CC9D36D4B116 /* EasyPeasy-OSX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF2173A7B74C096DA4327D0B75FB37FC /* NSView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8AB2612F2C9AE0B3A5E9F272745B6B /* NSView+Easy.swift */; };
 		C1122DB7CF405074A8EF0D3053744051 /* Pods-Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 162681A64439823480E5AB5E64D338B3 /* Pods-Demo-dummy.m */; };
-		C51F770EE02AA88B5D09501A1B673ED7 /* Attribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E972A723D01FA03E5EF9DF2966D9780F /* Attribute+Operators.swift */; };
+		C1359F601D36E1170069859A /* String+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1359F5F1D36E1170069859A /* String+Easy.swift */; };
+		C1359F611D36E1230069859A /* String+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1359F5F1D36E1170069859A /* String+Easy.swift */; };
+		C18551E616C549C961F3842CFDD84CDC /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74ADF0F15F949C3EB31AF19C7C4AD5E /* Constant.swift */; };
+		C1B3DF301D3A3AA100E264FC /* NSLayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B3DF2F1D3A3AA100E264FC /* NSLayoutGuide+Easy.swift */; };
+		C2A5A2D446EB3E9739DE42174EC70E09 /* Item+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2FBC9DE2A3B4993A5BE50213691957 /* Item+UIKit.swift */; };
 		C57BC2104082154D78F602B4566A1FBF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */; };
-		C73A7F29F3F2237C2366163107B89403 /* ReferenceAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E66B2F7207C40AE0BCE5B8DB06D0DC1 /* ReferenceAttribute+AppKit.swift */; };
-		C921F4616239B90E7500EA3DF66C9353 /* ReferenceAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E66B2F7207C40AE0BCE5B8DB06D0DC1 /* ReferenceAttribute+AppKit.swift */; };
+		C8B8B0ECA85C4F7E6FE8D4748C1E7055 /* PositionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54468F7D5489FD0E70BF20755400A9B3 /* PositionAttribute.swift */; };
 		C980B7DD1FDA8CE447E1D7302263C511 /* Pods-Demo macOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A3AC51413BBE911B6EEF0354A5C7D8 /* Pods-Demo macOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CBA8EF8FFEC9E65476E6E34C0878D68E /* PositionAttribute+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D23A4743E7101C4DBC32909ECF3E71 /* PositionAttribute+UIKit.swift */; };
-		CC2E6649032759F9EB6B31BD26EC3BD4 /* Item+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1929D58C35E6A19F5A794BE1E8E813C8 /* Item+UIKit.swift */; };
-		CC7AB806B8657053EED6FC63AF887CE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD25AEE03910A69FB983E79E2991D4 /* Item.swift */; };
-		CE186E413839D3BF7C65D5A8E6322C5C /* CompoundAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB1670A60E70001E31BD2315759C86F /* CompoundAttribute.swift */; };
+		CE157D16A883FBCF25DA6A4505B37085 /* PositionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7678397E98CE2B513B6865E6BE58280 /* PositionAttribute+AppKit.swift */; };
 		CF810ABD5D4E948B62B67D8FD11EC02C /* Pods-Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 85B9B80A5BE6F0B63983F03721836619 /* Pods-Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DA5F249E70CD01508A8BC1DF291C8C9C /* DimensionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B45302BB182E29542DB69137131F701 /* DimensionAttribute.swift */; };
-		DAA0F72231A24B76BC85140414C5A4C0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BD25AEE03910A69FB983E79E2991D4 /* Item.swift */; };
-		DEAE7F5FB3AF0FE1BD5B47AFE84C19B5 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB848B0BDDA7F021119F6A0E90F384 /* Attribute.swift */; };
-		EA06B2A74D47B44033EFEA39E37EAEC9 /* UIView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A41AC1A036D6CB7BF2C7301F0D6B5EE /* UIView+Easy.swift */; };
-		F032D6F038C698BB30707B3A9EFCBF44 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FB848B0BDDA7F021119F6A0E90F384 /* Attribute.swift */; };
-		F495BDF1D169CA7B58EE11A8E78869A4 /* EasyPeasy-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 73A0C0CFB66D73CCA6D0E2E3A3C69AD2 /* EasyPeasy-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F88CA88F6D92B16547083233E2E143AC /* PositionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7655F12872E1467064FF4695E73DA /* PositionAttribute+AppKit.swift */; };
-		FCE7AE11AD21701F2051ABDE962A9B04 /* CompoundAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CB1670A60E70001E31BD2315759C86F /* CompoundAttribute.swift */; };
+		D0A776B7384C080ED59FAF84490B7C61 /* ReferenceAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741105563550DDC13927F57111C9094 /* ReferenceAttribute.swift */; };
+		D4D89BF94260A5FE69B75975722EA02B /* PositionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7678397E98CE2B513B6865E6BE58280 /* PositionAttribute+AppKit.swift */; };
+		F316A642E16CDA42E552CFD0BF0FE41A /* UIView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7356B546E5C2676EF6178EFDF7F74953 /* UIView+Easy.swift */; };
+		FBAB8AF1E9854B75A1648FC3641B4CE2 /* CompoundAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CE9DB456273508BFFDD7A656963592 /* CompoundAttribute.swift */; };
+		FC9524C56F8384A1C623EA15EF8FA786 /* ReferenceAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7741105563550DDC13927F57111C9094 /* ReferenceAttribute.swift */; };
+		FD36CC21320B127F96769345A3CB7BD7 /* EasyPeasy-OSX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0283F78C0C384A3890B9425C38FFD808 /* EasyPeasy-OSX-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,113 +71,112 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2E648B9103406E49C3194EC81B0DDB51;
+			remoteGlobalIDString = 37F718DA0DA2E0EA0BCF0A4125259DBA;
 			remoteInfo = "EasyPeasy-iOS";
 		};
 		641EF83A925007F9C87D91428027C9B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C2E533CCE080992330E298BA5DB9E7AF;
+			remoteGlobalIDString = 64348356E92581E5770CDE30AD9A96FC;
 			remoteInfo = "EasyPeasy-OSX";
 		};
 		A0A74D8D97D4CEBC463091FBE99F5362 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2E648B9103406E49C3194EC81B0DDB51;
+			remoteGlobalIDString = 37F718DA0DA2E0EA0BCF0A4125259DBA;
 			remoteInfo = "EasyPeasy-iOS";
 		};
 		F543F3871580D1AF931C957C9AF3B4DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C2E533CCE080992330E298BA5DB9E7AF;
+			remoteGlobalIDString = 64348356E92581E5770CDE30AD9A96FC;
 			remoteInfo = "EasyPeasy-OSX";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00A3AC51413BBE911B6EEF0354A5C7D8 /* Pods-Demo macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Demo macOS-umbrella.h"; sourceTree = "<group>"; };
-		051032F61D927810C05E7312920A6EF2 /* DimensionAttribute+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DimensionAttribute+AppKit.swift"; sourceTree = "<group>"; };
+		0283F78C0C384A3890B9425C38FFD808 /* EasyPeasy-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EasyPeasy-OSX-dummy.m"; sourceTree = "<group>"; };
+		05E04212502EE688C6BFC401465EDA25 /* DimensionAttribute+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DimensionAttribute+AppKit.swift"; sourceTree = "<group>"; };
 		085584304D92AEE105C5EBE1ECDFE3AA /* Pods-Demo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Demo-frameworks.sh"; sourceTree = "<group>"; };
+		09CE9DB456273508BFFDD7A656963592 /* CompoundAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CompoundAttribute.swift; sourceTree = "<group>"; };
+		0E2FBC9DE2A3B4993A5BE50213691957 /* Item+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Item+UIKit.swift"; sourceTree = "<group>"; };
 		14ED3BAC75F62FC6E5781EDAB804F151 /* Pods-Tests macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests macOS.release.xcconfig"; sourceTree = "<group>"; };
 		162681A64439823480E5AB5E64D338B3 /* Pods-Demo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Demo-dummy.m"; sourceTree = "<group>"; };
 		179FE16E8EA7DAA04502E09B4009C5DB /* Pods-Demo macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		182567636C3952FF00F0B9EF9C016833 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1929D58C35E6A19F5A794BE1E8E813C8 /* Item+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Item+UIKit.swift"; sourceTree = "<group>"; };
 		1D853594B37FC997CF76BD2B54231545 /* Pods-Demo macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Demo macOS.modulemap"; sourceTree = "<group>"; };
-		22D772472C9EDA65F463A42B7501A575 /* Priority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		32136D53785FF0D61801CC9D36D4B116 /* EasyPeasy-OSX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyPeasy-OSX-umbrella.h"; sourceTree = "<group>"; };
 		33742C723A1163C23E61C9E1E14A3403 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		3735301686A93DF457E61A0B72E8E7EB /* Pods-Tests macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests macOS-umbrella.h"; sourceTree = "<group>"; };
-		3E13AEE0A21DB97F30546B4090BE1058 /* EasyPeasy-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EasyPeasy-iOS-dummy.m"; path = "../EasyPeasy-iOS/EasyPeasy-iOS-dummy.m"; sourceTree = "<group>"; };
+		3C367B4C31D86763C6C503746A43EEDA /* Priority.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Priority.swift; sourceTree = "<group>"; };
+		3D2252792E562F36F097C8CA669AC7DA /* EasyPeasy-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EasyPeasy-iOS-dummy.m"; path = "../EasyPeasy-iOS/EasyPeasy-iOS-dummy.m"; sourceTree = "<group>"; };
+		42622479BE3C1B0B267A87879114B626 /* EasyPeasy-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "EasyPeasy-iOS.modulemap"; path = "../EasyPeasy-iOS/EasyPeasy-iOS.modulemap"; sourceTree = "<group>"; };
 		4381A7D68120BAB2720DB92BEB3DA213 /* Pods-Tests macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Tests macOS.modulemap"; sourceTree = "<group>"; };
 		47A8C3A8A916E17041BBB18D0FECF87F /* Pods_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4BC95E7FF5A697C361C007721F0CE3D2 /* EasyPeasy-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "EasyPeasy-OSX.modulemap"; sourceTree = "<group>"; };
+		4F0D82730B8181E7AD9D72A221DA575C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		524130042CDC7A563C5874CCAE052198 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56D820D1ECB6D927B73E3064AE949FBE /* UILayoutGuide+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UILayoutGuide+Easy.swift"; sourceTree = "<group>"; };
+		54468F7D5489FD0E70BF20755400A9B3 /* PositionAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PositionAttribute.swift; sourceTree = "<group>"; };
 		57098C4B320EA71A74D8C651B3B83E26 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CB1670A60E70001E31BD2315759C86F /* CompoundAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CompoundAttribute.swift; sourceTree = "<group>"; };
+		591FEAE540EA245113819C98496A71F9 /* UILayoutGuide+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UILayoutGuide+Easy.swift"; sourceTree = "<group>"; };
 		604F6A983BC4FFBE986CCBD16563FB92 /* Pods-Demo macOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Demo macOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		60E0D36DC3ED58A955C15D678CC124A0 /* Constant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		61FEBB33EC704C0BE0880189DE513F2E /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		62AA8BE9168B2B571CF0EA64410632DB /* Attribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		62EED7EEEB3CFEBCC2932DDCBEE74B98 /* Pods-Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-frameworks.sh"; sourceTree = "<group>"; };
 		631B9F00CECB0385E08949C83FA30042 /* Pods-Demo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Demo-acknowledgements.markdown"; sourceTree = "<group>"; };
 		641953D4A4DFBB6EF3CA2456C9713E67 /* EasyPeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyPeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		69FBFE4A3A649529EF114A2FCE3C98B3 /* EasyPeasy-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "EasyPeasy-iOS.xcconfig"; path = "../EasyPeasy-iOS/EasyPeasy-iOS.xcconfig"; sourceTree = "<group>"; };
+		6B32CAA3EB8A31444A3257D77A3AEE14 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../EasyPeasy-iOS/Info.plist"; sourceTree = "<group>"; };
 		6E436184D793F4510904E1A6C3D76EB3 /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
 		70D1D2ED49370B0D1DE0E31CAF7593F6 /* Pods-Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Tests.modulemap"; sourceTree = "<group>"; };
-		73A0C0CFB66D73CCA6D0E2E3A3C69AD2 /* EasyPeasy-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EasyPeasy-iOS-umbrella.h"; path = "../EasyPeasy-iOS/EasyPeasy-iOS-umbrella.h"; sourceTree = "<group>"; };
+		7356B546E5C2676EF6178EFDF7F74953 /* UIView+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Easy.swift"; sourceTree = "<group>"; };
 		760B675DD0121559E051793246E4136B /* Pods-Demo macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo macOS.release.xcconfig"; sourceTree = "<group>"; };
 		76C554EBE172322B33A38A3C202E915A /* Pods-Tests macOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests macOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7C6F642B0A53C6F837716A7A86EABCD2 /* EasyPeasy-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "EasyPeasy-iOS.modulemap"; path = "../EasyPeasy-iOS/EasyPeasy-iOS.modulemap"; sourceTree = "<group>"; };
-		7E4BBF3A8E0B08D5584A4CFBABE59FC1 /* EasyPeasy-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EasyPeasy-OSX-dummy.m"; sourceTree = "<group>"; };
-		7E66B2F7207C40AE0BCE5B8DB06D0DC1 /* ReferenceAttribute+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ReferenceAttribute+AppKit.swift"; sourceTree = "<group>"; };
-		7EB7655F12872E1467064FF4695E73DA /* PositionAttribute+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PositionAttribute+AppKit.swift"; sourceTree = "<group>"; };
-		7EDF6D2D95D36D9745EA542C7AD75507 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../EasyPeasy-iOS/Info.plist"; sourceTree = "<group>"; };
+		7741105563550DDC13927F57111C9094 /* ReferenceAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReferenceAttribute.swift; sourceTree = "<group>"; };
+		7A8AB2612F2C9AE0B3A5E9F272745B6B /* NSView+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSView+Easy.swift"; sourceTree = "<group>"; };
 		7F5F64F77A6E26CAC6F0E056EE269555 /* Pods-Tests macOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests macOS-frameworks.sh"; sourceTree = "<group>"; };
-		81D863CE4CA52F3003B6F6AE65364F9C /* ReferenceAttribute+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "ReferenceAttribute+UIKit.swift"; sourceTree = "<group>"; };
+		805233598422836A78D13EBFB6F6814A /* EasyPeasy-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EasyPeasy-iOS-prefix.pch"; path = "../EasyPeasy-iOS/EasyPeasy-iOS-prefix.pch"; sourceTree = "<group>"; };
 		82CE201444A159ACE45C44EA75928049 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83F549D9850622BBA7ED0C847E845284 /* PositionAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PositionAttribute.swift; sourceTree = "<group>"; };
-		84D36871A81A79F7AD542681C87D40C8 /* EasyPeasy-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "EasyPeasy-iOS.xcconfig"; path = "../EasyPeasy-iOS/EasyPeasy-iOS.xcconfig"; sourceTree = "<group>"; };
 		85B9B80A5BE6F0B63983F03721836619 /* Pods-Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-umbrella.h"; sourceTree = "<group>"; };
 		87E5C54CFD756F95AEAA5DBF3884C4ED /* Pods-Demo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Demo-resources.sh"; sourceTree = "<group>"; };
 		8872A918069314603E9AF9C36DF16DE4 /* Pods-Demo macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Demo macOS-dummy.m"; sourceTree = "<group>"; };
-		88FB848B0BDDA7F021119F6A0E90F384 /* Attribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		892FAEDD8AB39F56ADA287CAD44AD141 /* Pods-Demo macOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Demo macOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		89BE8B005E7F2487C1A56424BF6DA67A /* Pods-Demo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Demo-acknowledgements.plist"; sourceTree = "<group>"; };
-		8A41AC1A036D6CB7BF2C7301F0D6B5EE /* UIView+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIView+Easy.swift"; sourceTree = "<group>"; };
 		9229D0B1ABA76B14B1DB36778189B43A /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B35BBCD9A32B7FF89E35D3EDAF1D777 /* Pods-Demo macOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Demo macOS-frameworks.sh"; sourceTree = "<group>"; };
-		9B45302BB182E29542DB69137131F701 /* DimensionAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DimensionAttribute.swift; sourceTree = "<group>"; };
 		9C321B34A873800977A68DEFCD77373E /* Pods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A04DF22487A9F1186FB575544592FD62 /* EasyPeasy-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "EasyPeasy-OSX.modulemap"; sourceTree = "<group>"; };
 		A088C2963F4CF87ADE140755D8AF2F80 /* Pods-Demo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Demo-umbrella.h"; sourceTree = "<group>"; };
 		A09E699D04445763DD883C7945879BD6 /* Pods-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-dummy.m"; sourceTree = "<group>"; };
 		A1A9C5004E4AFF628E881DF044CD958E /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A94195915FBBDB636E839AFA6EFF3E6E /* Pods-Tests macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests macOS-dummy.m"; sourceTree = "<group>"; };
 		B0C89EDC2EC27D60F4934F3C043A7D91 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B3F8BA1B7225168A32AB259F9C8C1D9E /* PositionAttribute+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PositionAttribute+UIKit.swift"; sourceTree = "<group>"; };
 		B54AEC3BAF3CD99E3247701CE110383E /* Pods-Tests macOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests macOS-resources.sh"; sourceTree = "<group>"; };
-		B6920EFA27A9EB376B53AC2B58F10BAF /* Attribute+Install.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Attribute+Install.swift"; sourceTree = "<group>"; };
-		B767E606DE7E4231DCC9D639D0246FBC /* EasyPeasy-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "EasyPeasy-OSX.xcconfig"; sourceTree = "<group>"; };
-		BB42B93306E54A9CAF0C1073618893E3 /* EasyPeasy-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EasyPeasy-iOS-prefix.pch"; path = "../EasyPeasy-iOS/EasyPeasy-iOS-prefix.pch"; sourceTree = "<group>"; };
-		BEE363D5B39E012A67E58184457C274B /* EasyPeasy-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyPeasy-OSX-prefix.pch"; sourceTree = "<group>"; };
+		B5910775DEBA82C76975EA2BB82BA795 /* EasyPeasy-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyPeasy-OSX-prefix.pch"; sourceTree = "<group>"; };
+		B740E034106F6E91AFC1145ACAF75417 /* EasyPeasy-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EasyPeasy-iOS-umbrella.h"; path = "../EasyPeasy-iOS/EasyPeasy-iOS-umbrella.h"; sourceTree = "<group>"; };
+		B74ADF0F15F949C3EB31AF19C7C4AD5E /* Constant.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C1359F5F1D36E1170069859A /* String+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Easy.swift"; sourceTree = "<group>"; };
+		C1B3DF2F1D3A3AA100E264FC /* NSLayoutGuide+Easy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutGuide+Easy.swift"; sourceTree = "<group>"; };
+		C5F658456807460565E37CF3B4D892DE /* DimensionAttribute+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DimensionAttribute+UIKit.swift"; sourceTree = "<group>"; };
+		C6D119197185218478A15FED13F70296 /* Node.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		C74480BECC69D224774F4366F49178A0 /* EasyPeasy-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "EasyPeasy-OSX.xcconfig"; sourceTree = "<group>"; };
 		C88A8BFB2B88910E6D91DD6796FB61B0 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		CD6E16E33851B955D44B99178C95F7B4 /* Pods-Demo macOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Demo macOS-resources.sh"; sourceTree = "<group>"; };
-		D2BD25AEE03910A69FB983E79E2991D4 /* Item.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		D56DE4EFA5FE86B6AE85AF8EF8E1AA99 /* Pods_Demo_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9B9E217E367348EDA48C6B461178936 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA139E92D44077DE7A8DA5170270D8A0 /* Item+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Item+AppKit.swift"; sourceTree = "<group>"; };
+		D7678397E98CE2B513B6865E6BE58280 /* PositionAttribute+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PositionAttribute+AppKit.swift"; sourceTree = "<group>"; };
 		DA47B781157CA3B37E7757828F982C49 /* Pods-Tests macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests macOS.debug.xcconfig"; sourceTree = "<group>"; };
-		DC2BF49CB59133DCC2B679F82D7977A8 /* NSView+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSView+Easy.swift"; sourceTree = "<group>"; };
 		DE25DD04263CA735DBC0065D686C708D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		E3FF41DA629DE951EDA7671ED0E9C739 /* NSLayoutConstraint+Internal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Internal.swift"; sourceTree = "<group>"; };
 		E569811F36663F3A90304739D282BAF0 /* Pods_Tests_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E972A723D01FA03E5EF9DF2966D9780F /* Attribute+Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Attribute+Operators.swift"; sourceTree = "<group>"; };
-		EC6F553D0E65323375F69E41B9B6CECC /* DimensionAttribute+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "DimensionAttribute+UIKit.swift"; sourceTree = "<group>"; };
+		E60C86378ED1E103C5949976F067F165 /* Item+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Item+AppKit.swift"; sourceTree = "<group>"; };
 		EFB1DF18B023FF4D5358B5BE2341CA7A /* EasyPeasy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EasyPeasy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4419B0376DB3E51CA813D739FC768EC /* Pods-Tests macOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests macOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		F6D23A4743E7101C4DBC32909ECF3E71 /* PositionAttribute+UIKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "PositionAttribute+UIKit.swift"; sourceTree = "<group>"; };
-		F7AB69E3CC1735BFC03DED88A7FA4837 /* EasyPeasy-OSX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "EasyPeasy-OSX-umbrella.h"; sourceTree = "<group>"; };
+		F51448B50CC1C9726C9BB30CF1FF79E8 /* DimensionAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DimensionAttribute.swift; sourceTree = "<group>"; };
+		F911952AD369E8938571824C4BFEF7B8 /* Item.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F9E81CAD7DBD481ECE108C15CF064AEE /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FB4982F01DFEC869D8D85AF416DD2F8A /* Pods-Demo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Demo.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,14 +198,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B6B9B92D3366A791628B10DBC816C09 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3ED062F0249E3C4E600607A71FB69B4E /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		83DC33B2FB32E5F308CF44EF2154F169 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,11 +214,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A630CD28096E5E5269044182868ECD40 /* Frameworks */ = {
+		9C6A88F4F1A633575935D54906421A6B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				236F68953C51A8A6EA2CE2B99DB51988 /* Foundation.framework in Frameworks */,
+				206D4D0C072B022AA1A4AB21FFDF0BDE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE2D2A5E86A82E9971D64308E8128030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB06A0D030B9DD1D153E0BDF5478E9DF /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +249,53 @@
 			);
 			name = "Pods-Tests macOS";
 			path = "Target Support Files/Pods-Tests macOS";
+			sourceTree = "<group>";
+		};
+		1CE95AD9E98A9D6E1EC2ED3B4510BA62 /* EasyPeasy */ = {
+			isa = PBXGroup;
+			children = (
+				7356B546E5C2676EF6178EFDF7F74953 /* UIView+Easy.swift */,
+				591FEAE540EA245113819C98496A71F9 /* UILayoutGuide+Easy.swift */,
+				7A8AB2612F2C9AE0B3A5E9F272745B6B /* NSView+Easy.swift */,
+				C1B3DF2F1D3A3AA100E264FC /* NSLayoutGuide+Easy.swift */,
+				C1359F5F1D36E1170069859A /* String+Easy.swift */,
+				C6D119197185218478A15FED13F70296 /* Node.swift */,
+				F911952AD369E8938571824C4BFEF7B8 /* Item.swift */,
+				0E2FBC9DE2A3B4993A5BE50213691957 /* Item+UIKit.swift */,
+				E60C86378ED1E103C5949976F067F165 /* Item+AppKit.swift */,
+				62AA8BE9168B2B571CF0EA64410632DB /* Attribute.swift */,
+				F51448B50CC1C9726C9BB30CF1FF79E8 /* DimensionAttribute.swift */,
+				C5F658456807460565E37CF3B4D892DE /* DimensionAttribute+UIKit.swift */,
+				05E04212502EE688C6BFC401465EDA25 /* DimensionAttribute+AppKit.swift */,
+				54468F7D5489FD0E70BF20755400A9B3 /* PositionAttribute.swift */,
+				B3F8BA1B7225168A32AB259F9C8C1D9E /* PositionAttribute+UIKit.swift */,
+				D7678397E98CE2B513B6865E6BE58280 /* PositionAttribute+AppKit.swift */,
+				09CE9DB456273508BFFDD7A656963592 /* CompoundAttribute.swift */,
+				7741105563550DDC13927F57111C9094 /* ReferenceAttribute.swift */,
+				B74ADF0F15F949C3EB31AF19C7C4AD5E /* Constant.swift */,
+				3C367B4C31D86763C6C503746A43EEDA /* Priority.swift */,
+			);
+			path = EasyPeasy;
+			sourceTree = "<group>";
+		};
+		2032FA1C3737E65C627ED0EF21DF79BC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				42622479BE3C1B0B267A87879114B626 /* EasyPeasy-iOS.modulemap */,
+				69FBFE4A3A649529EF114A2FCE3C98B3 /* EasyPeasy-iOS.xcconfig */,
+				3D2252792E562F36F097C8CA669AC7DA /* EasyPeasy-iOS-dummy.m */,
+				805233598422836A78D13EBFB6F6814A /* EasyPeasy-iOS-prefix.pch */,
+				B740E034106F6E91AFC1145ACAF75417 /* EasyPeasy-iOS-umbrella.h */,
+				A04DF22487A9F1186FB575544592FD62 /* EasyPeasy-OSX.modulemap */,
+				C74480BECC69D224774F4366F49178A0 /* EasyPeasy-OSX.xcconfig */,
+				0283F78C0C384A3890B9425C38FFD808 /* EasyPeasy-OSX-dummy.m */,
+				B5910775DEBA82C76975EA2BB82BA795 /* EasyPeasy-OSX-prefix.pch */,
+				32136D53785FF0D61801CC9D36D4B116 /* EasyPeasy-OSX-umbrella.h */,
+				4F0D82730B8181E7AD9D72A221DA575C /* Info.plist */,
+				6B32CAA3EB8A31444A3257D77A3AEE14 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/EasyPeasy-OSX";
 			sourceTree = "<group>";
 		};
 		2929219BE54068A4863F82913B2A3019 /* Pods-Demo macOS */ = {
@@ -300,59 +343,11 @@
 			path = "Target Support Files/Pods-Tests";
 			sourceTree = "<group>";
 		};
-		56DA12C9D148C93D32DC5175BC3217BF /* Support Files */ = {
+		5FA7ED6CC349A679349B46A0B5EDE112 /* EasyPeasy */ = {
 			isa = PBXGroup;
 			children = (
-				7C6F642B0A53C6F837716A7A86EABCD2 /* EasyPeasy-iOS.modulemap */,
-				84D36871A81A79F7AD542681C87D40C8 /* EasyPeasy-iOS.xcconfig */,
-				3E13AEE0A21DB97F30546B4090BE1058 /* EasyPeasy-iOS-dummy.m */,
-				BB42B93306E54A9CAF0C1073618893E3 /* EasyPeasy-iOS-prefix.pch */,
-				73A0C0CFB66D73CCA6D0E2E3A3C69AD2 /* EasyPeasy-iOS-umbrella.h */,
-				4BC95E7FF5A697C361C007721F0CE3D2 /* EasyPeasy-OSX.modulemap */,
-				B767E606DE7E4231DCC9D639D0246FBC /* EasyPeasy-OSX.xcconfig */,
-				7E4BBF3A8E0B08D5584A4CFBABE59FC1 /* EasyPeasy-OSX-dummy.m */,
-				BEE363D5B39E012A67E58184457C274B /* EasyPeasy-OSX-prefix.pch */,
-				F7AB69E3CC1735BFC03DED88A7FA4837 /* EasyPeasy-OSX-umbrella.h */,
-				D9B9E217E367348EDA48C6B461178936 /* Info.plist */,
-				7EDF6D2D95D36D9745EA542C7AD75507 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/EasyPeasy-OSX";
-			sourceTree = "<group>";
-		};
-		585265C5D78ACC1B477B906AD670F545 /* EasyPeasy */ = {
-			isa = PBXGroup;
-			children = (
-				8A41AC1A036D6CB7BF2C7301F0D6B5EE /* UIView+Easy.swift */,
-				56D820D1ECB6D927B73E3064AE949FBE /* UILayoutGuide+Easy.swift */,
-				DC2BF49CB59133DCC2B679F82D7977A8 /* NSView+Easy.swift */,
-				E3FF41DA629DE951EDA7671ED0E9C739 /* NSLayoutConstraint+Internal.swift */,
-				D2BD25AEE03910A69FB983E79E2991D4 /* Item.swift */,
-				1929D58C35E6A19F5A794BE1E8E813C8 /* Item+UIKit.swift */,
-				DA139E92D44077DE7A8DA5170270D8A0 /* Item+AppKit.swift */,
-				88FB848B0BDDA7F021119F6A0E90F384 /* Attribute.swift */,
-				B6920EFA27A9EB376B53AC2B58F10BAF /* Attribute+Install.swift */,
-				E972A723D01FA03E5EF9DF2966D9780F /* Attribute+Operators.swift */,
-				9B45302BB182E29542DB69137131F701 /* DimensionAttribute.swift */,
-				EC6F553D0E65323375F69E41B9B6CECC /* DimensionAttribute+UIKit.swift */,
-				051032F61D927810C05E7312920A6EF2 /* DimensionAttribute+AppKit.swift */,
-				83F549D9850622BBA7ED0C847E845284 /* PositionAttribute.swift */,
-				F6D23A4743E7101C4DBC32909ECF3E71 /* PositionAttribute+UIKit.swift */,
-				7EB7655F12872E1467064FF4695E73DA /* PositionAttribute+AppKit.swift */,
-				5CB1670A60E70001E31BD2315759C86F /* CompoundAttribute.swift */,
-				81D863CE4CA52F3003B6F6AE65364F9C /* ReferenceAttribute+UIKit.swift */,
-				7E66B2F7207C40AE0BCE5B8DB06D0DC1 /* ReferenceAttribute+AppKit.swift */,
-				60E0D36DC3ED58A955C15D678CC124A0 /* Constant.swift */,
-				22D772472C9EDA65F463A42B7501A575 /* Priority.swift */,
-			);
-			path = EasyPeasy;
-			sourceTree = "<group>";
-		};
-		6938F5DFE3FFCD9F496F94B95D6B41F5 /* EasyPeasy */ = {
-			isa = PBXGroup;
-			children = (
-				585265C5D78ACC1B477B906AD670F545 /* EasyPeasy */,
-				56DA12C9D148C93D32DC5175BC3217BF /* Support Files */,
+				1CE95AD9E98A9D6E1EC2ED3B4510BA62 /* EasyPeasy */,
+				2032FA1C3737E65C627ED0EF21DF79BC /* Support Files */,
 			);
 			name = EasyPeasy;
 			path = ../..;
@@ -422,7 +417,7 @@
 		D6AF84AC1A204E3F1C6E85851939E394 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6938F5DFE3FFCD9F496F94B95D6B41F5 /* EasyPeasy */,
+				5FA7ED6CC349A679349B46A0B5EDE112 /* EasyPeasy */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -438,11 +433,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		06BB16312A494CD297928993AC4FF78E /* Headers */ = {
+		01DAB7ED8ED3159EC9ED1BF235F203FB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F495BDF1D169CA7B58EE11A8E78869A4 /* EasyPeasy-iOS-umbrella.h in Headers */,
+				B73197D74AD93886D6A17FCA9644B31B /* EasyPeasy-OSX-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,11 +449,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		36A295C727A3BB771CBEAC1F8D1CE101 /* Headers */ = {
+		AB102BB80101A9443A2264510CCBD553 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17A211BC0AD14A0E016A3B82E3788324 /* EasyPeasy-OSX-umbrella.h in Headers */,
+				20DFE9E76DFC0E59BB48E2F7A0149D93 /* EasyPeasy-iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,13 +484,13 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2E648B9103406E49C3194EC81B0DDB51 /* EasyPeasy-iOS */ = {
+		37F718DA0DA2E0EA0BCF0A4125259DBA /* EasyPeasy-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DB3C26DB44FAA95F0C75C33D3C4F375 /* Build configuration list for PBXNativeTarget "EasyPeasy-iOS" */;
+			buildConfigurationList = 85436C5CC9567D09A90FBB2B4569D883 /* Build configuration list for PBXNativeTarget "EasyPeasy-iOS" */;
 			buildPhases = (
-				25E5FFA82A1D7ADC77C374370BB620C6 /* Sources */,
-				A630CD28096E5E5269044182868ECD40 /* Frameworks */,
-				06BB16312A494CD297928993AC4FF78E /* Headers */,
+				65E58698D2FC975241CFBB1043FD81B3 /* Sources */,
+				9C6A88F4F1A633575935D54906421A6B /* Frameworks */,
+				AB102BB80101A9443A2264510CCBD553 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -504,6 +499,23 @@
 			name = "EasyPeasy-iOS";
 			productName = "EasyPeasy-iOS";
 			productReference = 641953D4A4DFBB6EF3CA2456C9713E67 /* EasyPeasy.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		64348356E92581E5770CDE30AD9A96FC /* EasyPeasy-OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6D6C54B7BFA1FA3B7E57B511E074B86 /* Build configuration list for PBXNativeTarget "EasyPeasy-OSX" */;
+			buildPhases = (
+				C628C3B272D98ED333DD40624DC088A6 /* Sources */,
+				FE2D2A5E86A82E9971D64308E8128030 /* Frameworks */,
+				01DAB7ED8ED3159EC9ED1BF235F203FB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EasyPeasy-OSX";
+			productName = "EasyPeasy-OSX";
+			productReference = EFB1DF18B023FF4D5358B5BE2341CA7A /* EasyPeasy.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		94936C9AC81B2115820C12BC8AEF4D23 /* Pods-Demo macOS */ = {
@@ -560,23 +572,6 @@
 			productReference = 47A8C3A8A916E17041BBB18D0FECF87F /* Pods_Demo.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C2E533CCE080992330E298BA5DB9E7AF /* EasyPeasy-OSX */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EBA079C7DB0D470E35992B00F5CB94D7 /* Build configuration list for PBXNativeTarget "EasyPeasy-OSX" */;
-			buildPhases = (
-				CA647A120D6BE0F576E1A530D812F3F3 /* Sources */,
-				5B6B9B92D3366A791628B10DBC816C09 /* Frameworks */,
-				36A295C727A3BB771CBEAC1F8D1CE101 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "EasyPeasy-OSX";
-			productName = "EasyPeasy-OSX";
-			productReference = EFB1DF18B023FF4D5358B5BE2341CA7A /* EasyPeasy.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		FDB08CE3F5DA101992272918B99D2735 /* Pods-Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B97B62121765951D17D4DC7209B41C1 /* Build configuration list for PBXNativeTarget "Pods-Tests" */;
@@ -616,8 +611,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2E648B9103406E49C3194EC81B0DDB51 /* EasyPeasy-iOS */,
-				C2E533CCE080992330E298BA5DB9E7AF /* EasyPeasy-OSX */,
+				37F718DA0DA2E0EA0BCF0A4125259DBA /* EasyPeasy-iOS */,
+				64348356E92581E5770CDE30AD9A96FC /* EasyPeasy-OSX */,
 				A2477C4082F66A09E64A7985F8849841 /* Pods-Demo */,
 				94936C9AC81B2115820C12BC8AEF4D23 /* Pods-Demo macOS */,
 				FDB08CE3F5DA101992272918B99D2735 /* Pods-Tests */,
@@ -627,32 +622,31 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		25E5FFA82A1D7ADC77C374370BB620C6 /* Sources */ = {
+		65E58698D2FC975241CFBB1043FD81B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AF52B24D0F934509F1D06D4521C90E8 /* Attribute+Install.swift in Sources */,
-				C51F770EE02AA88B5D09501A1B673ED7 /* Attribute+Operators.swift in Sources */,
-				F032D6F038C698BB30707B3A9EFCBF44 /* Attribute.swift in Sources */,
-				FCE7AE11AD21701F2051ABDE962A9B04 /* CompoundAttribute.swift in Sources */,
-				3F0668816342536A19D45726AB503D7D /* Constant.swift in Sources */,
-				7C09BDB161C8AFF4CCFA856450205163 /* DimensionAttribute+AppKit.swift in Sources */,
-				4B1CE648734584824E6EBE6E0905F4DF /* DimensionAttribute+UIKit.swift in Sources */,
-				DA5F249E70CD01508A8BC1DF291C8C9C /* DimensionAttribute.swift in Sources */,
-				AD195ACC981DEB0452E0793DF8B33A55 /* EasyPeasy-iOS-dummy.m in Sources */,
-				A1251D33FD58250B7F4F74645591BFFA /* Item+AppKit.swift in Sources */,
-				AE5ECCA480E85FA697118A47CDDA551B /* Item+UIKit.swift in Sources */,
-				CC7AB806B8657053EED6FC63AF887CE1 /* Item.swift in Sources */,
-				A1F83AB08769AE8B2FBB894EB09E69E5 /* NSLayoutConstraint+Internal.swift in Sources */,
-				075C2FA5ADA5D014607FD576B599B186 /* NSView+Easy.swift in Sources */,
-				ACB597615E3585BD9316BCBE40085E1A /* PositionAttribute+AppKit.swift in Sources */,
-				A41B41C61279B0C074DA0BDCF2599189 /* PositionAttribute+UIKit.swift in Sources */,
-				6D03BA730BC9C190D3F4277C415A37C2 /* PositionAttribute.swift in Sources */,
-				00848B56913F66EA1305129619ECAFC7 /* Priority.swift in Sources */,
-				C921F4616239B90E7500EA3DF66C9353 /* ReferenceAttribute+AppKit.swift in Sources */,
-				2EF47053DA457BEF011C80CD449D09DD /* ReferenceAttribute+UIKit.swift in Sources */,
-				3D8961E273699C4040C76A070813C0DC /* UILayoutGuide+Easy.swift in Sources */,
-				8607C0902AFEB4C1323DAD7F76038CB6 /* UIView+Easy.swift in Sources */,
+				3649E18C3E1CE993B6D3009C8C20F45B /* Attribute.swift in Sources */,
+				92CE210F45359599A71E2270A997F79E /* CompoundAttribute.swift in Sources */,
+				79E9DF3D37E347B6EFDB7168484A1F6A /* Constant.swift in Sources */,
+				063AC53DE960CF7DCD7BF31F4D2ED333 /* DimensionAttribute+AppKit.swift in Sources */,
+				AE5325033795CC2210A89E6E8193448B /* DimensionAttribute+UIKit.swift in Sources */,
+				7FE5796E6F978E7BC2566EEB1542E256 /* DimensionAttribute.swift in Sources */,
+				3197F8A2743BE867B93F2C82C54E051A /* EasyPeasy-iOS-dummy.m in Sources */,
+				03CA5576988DD060C61159B615FFD96C /* Item+AppKit.swift in Sources */,
+				142A46D851E2694FD79CAABFE6C91366 /* Item+UIKit.swift in Sources */,
+				C1359F601D36E1170069859A /* String+Easy.swift in Sources */,
+				3D20EB280ABF533DBD890EFBA63481E1 /* Item.swift in Sources */,
+				7BC57F445F34016D9D04E84E811B3C1D /* Node.swift in Sources */,
+				9494C88B5D30E6EE7CC72ED81938C721 /* NSView+Easy.swift in Sources */,
+				D4D89BF94260A5FE69B75975722EA02B /* PositionAttribute+AppKit.swift in Sources */,
+				8133683FB2EAF85FD881A36531C32F81 /* PositionAttribute+UIKit.swift in Sources */,
+				08EDDBEC816A26A8DD568C2918365C15 /* PositionAttribute.swift in Sources */,
+				380646682A321F294CC8CBA2C2685127 /* Priority.swift in Sources */,
+				C1B3DF301D3A3AA100E264FC /* NSLayoutGuide+Easy.swift in Sources */,
+				D0A776B7384C080ED59FAF84490B7C61 /* ReferenceAttribute.swift in Sources */,
+				2FE3401E61B96532C346878C349D2D58 /* UILayoutGuide+Easy.swift in Sources */,
+				F316A642E16CDA42E552CFD0BF0FE41A /* UIView+Easy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,32 +682,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CA647A120D6BE0F576E1A530D812F3F3 /* Sources */ = {
+		C628C3B272D98ED333DD40624DC088A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ED2D41FD1F1ABE30A9A02B4A954D104 /* Attribute+Install.swift in Sources */,
-				09A1882350BE58A1A3741914486BF3FF /* Attribute+Operators.swift in Sources */,
-				DEAE7F5FB3AF0FE1BD5B47AFE84C19B5 /* Attribute.swift in Sources */,
-				CE186E413839D3BF7C65D5A8E6322C5C /* CompoundAttribute.swift in Sources */,
-				084E6A0533CC70A6B7EF9191E48B3F7D /* Constant.swift in Sources */,
-				B09F79BBD6F49AB19EF8ADA2A2714D8A /* DimensionAttribute+AppKit.swift in Sources */,
-				6CBC8CBF2617C8713F0820B8F45FA1B2 /* DimensionAttribute+UIKit.swift in Sources */,
-				654EA4F64709BD9EDFB0458330D4A13F /* DimensionAttribute.swift in Sources */,
-				6C903E02D1B111A9260F1F55D2DB982D /* EasyPeasy-OSX-dummy.m in Sources */,
-				719C95AB2287586BBF613B1922F4CB33 /* Item+AppKit.swift in Sources */,
-				CC2E6649032759F9EB6B31BD26EC3BD4 /* Item+UIKit.swift in Sources */,
-				DAA0F72231A24B76BC85140414C5A4C0 /* Item.swift in Sources */,
-				2778752309B395DAD47F73B64227A7A8 /* NSLayoutConstraint+Internal.swift in Sources */,
-				855BB7F4DD19F5F97EDBE2AC5FA3E526 /* NSView+Easy.swift in Sources */,
-				F88CA88F6D92B16547083233E2E143AC /* PositionAttribute+AppKit.swift in Sources */,
-				CBA8EF8FFEC9E65476E6E34C0878D68E /* PositionAttribute+UIKit.swift in Sources */,
-				2F317F5F8576545F321E731BAEA48B86 /* PositionAttribute.swift in Sources */,
-				8D4465C9B8DE2E28B7C2B8CA67ED64DE /* Priority.swift in Sources */,
-				C73A7F29F3F2237C2366163107B89403 /* ReferenceAttribute+AppKit.swift in Sources */,
-				2868D293B4769F8776DBE170510AD9EC /* ReferenceAttribute+UIKit.swift in Sources */,
-				7D729A16737DCBD3431857D0282E3D2F /* UILayoutGuide+Easy.swift in Sources */,
-				EA06B2A74D47B44033EFEA39E37EAEC9 /* UIView+Easy.swift in Sources */,
+				640395683FD03AAF4376F2A9E4A6C9F9 /* Attribute.swift in Sources */,
+				FBAB8AF1E9854B75A1648FC3641B4CE2 /* CompoundAttribute.swift in Sources */,
+				C18551E616C549C961F3842CFDD84CDC /* Constant.swift in Sources */,
+				2630660C1574AD2843D30ADDBA6D38F7 /* DimensionAttribute+AppKit.swift in Sources */,
+				8775066165BDD41CB54A75C07055BB89 /* DimensionAttribute+UIKit.swift in Sources */,
+				12D39A65B1820D5A503BD4C9137BF8EE /* DimensionAttribute.swift in Sources */,
+				FD36CC21320B127F96769345A3CB7BD7 /* EasyPeasy-OSX-dummy.m in Sources */,
+				3EFEFB0965C4C69F53B4CFF7653797BC /* Item+AppKit.swift in Sources */,
+				C2A5A2D446EB3E9739DE42174EC70E09 /* Item+UIKit.swift in Sources */,
+				C1359F611D36E1230069859A /* String+Easy.swift in Sources */,
+				AEF3EF0D2DCA35275DA80A79F7A06D97 /* Item.swift in Sources */,
+				8129EBD49A2F1680A47D5EC86612D12A /* Node.swift in Sources */,
+				BF2173A7B74C096DA4327D0B75FB37FC /* NSView+Easy.swift in Sources */,
+				CE157D16A883FBCF25DA6A4505B37085 /* PositionAttribute+AppKit.swift in Sources */,
+				65F0FA914FC0B1058D23308CFBE79019 /* PositionAttribute+UIKit.swift in Sources */,
+				C8B8B0ECA85C4F7E6FE8D4748C1E7055 /* PositionAttribute.swift in Sources */,
+				9402410C4C9FD97F264FE7424CBAC78A /* Priority.swift in Sources */,
+				FC9524C56F8384A1C623EA15EF8FA786 /* ReferenceAttribute.swift in Sources */,
+				947092423DF7982AE6BB82FBF29FEDAD /* UILayoutGuide+Easy.swift in Sources */,
+				9EEA8314BCBFE6CE17B9651A7E8ED130 /* UIView+Easy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,33 +715,63 @@
 		3B6FF9D6A8B3660D6071E83A875813F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "EasyPeasy-OSX";
-			target = C2E533CCE080992330E298BA5DB9E7AF /* EasyPeasy-OSX */;
+			target = 64348356E92581E5770CDE30AD9A96FC /* EasyPeasy-OSX */;
 			targetProxy = 641EF83A925007F9C87D91428027C9B4 /* PBXContainerItemProxy */;
 		};
 		937CA7D106A59770A32CB61958245364 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "EasyPeasy-OSX";
-			target = C2E533CCE080992330E298BA5DB9E7AF /* EasyPeasy-OSX */;
+			target = 64348356E92581E5770CDE30AD9A96FC /* EasyPeasy-OSX */;
 			targetProxy = F543F3871580D1AF931C957C9AF3B4DC /* PBXContainerItemProxy */;
 		};
 		9A3594DF8F872B20B62E63E6B75FC86D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "EasyPeasy-iOS";
-			target = 2E648B9103406E49C3194EC81B0DDB51 /* EasyPeasy-iOS */;
+			target = 37F718DA0DA2E0EA0BCF0A4125259DBA /* EasyPeasy-iOS */;
 			targetProxy = A0A74D8D97D4CEBC463091FBE99F5362 /* PBXContainerItemProxy */;
 		};
 		9EB185D57F7CA702FA7FEA11525F3632 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "EasyPeasy-iOS";
-			target = 2E648B9103406E49C3194EC81B0DDB51 /* EasyPeasy-iOS */;
+			target = 37F718DA0DA2E0EA0BCF0A4125259DBA /* EasyPeasy-iOS */;
 			targetProxy = 0642AD85F80A12A07B67C3F65505C478 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0D41FE09355485F3A4DB61E56A3F72CE /* Debug */ = {
+		0CAE06985AE044A70A9554FA7683F1FA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA47B781157CA3B37E7757828F982C49 /* Pods-Tests macOS.debug.xcconfig */;
+			baseConfigurationReference = 69FBFE4A3A649529EF114A2FCE3C98B3 /* EasyPeasy-iOS.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy-iOS/EasyPeasy-iOS-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EasyPeasy-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EasyPeasy-iOS/EasyPeasy-iOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = EasyPeasy;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		27C083AFCF4D81AF9C8CB141F80D8091 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 179FE16E8EA7DAA04502E09B4009C5DB /* Pods-Demo macOS.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -762,18 +784,18 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Tests macOS/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Demo macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-Tests macOS/Pods-Tests macOS.modulemap";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Demo macOS/Pods-Demo macOS.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Tests_macOS;
+				PRODUCT_NAME = Pods_Demo_macOS;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -815,9 +837,91 @@
 			};
 			name = Release;
 		};
-		2FFBE4D0698DDB670C458D698F597107 /* Release */ = {
+		29D45868CDD6D493E3113B2A8DC1DB88 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14ED3BAC75F62FC6E5781EDAB804F151 /* Pods-Tests macOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		3B010177C6528DC26466E68582FC053B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		43938FCA9AC4024CB73E7081246DAA56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 760B675DD0121559E051793246E4136B /* Pods-Demo macOS.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -830,18 +934,18 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Tests macOS/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Demo macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-Tests macOS/Pods-Tests macOS.modulemap";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Demo macOS/Pods-Demo macOS.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Tests_macOS;
+				PRODUCT_NAME = Pods_Demo_macOS;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -849,9 +953,70 @@
 			};
 			name = Release;
 		};
-		388C86AEE317F6AF052EAB7D4B91DD44 /* Release */ = {
+		4F9F8A0A7066B3CC9A4FD8CC0D5D638D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84D36871A81A79F7AD542681C87D40C8 /* EasyPeasy-iOS.xcconfig */;
+			baseConfigurationReference = C74480BECC69D224774F4366F49178A0 /* EasyPeasy-OSX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EasyPeasy-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = EasyPeasy;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5DEDCD00ED7DEA9281E1A7D37FA13D4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C74480BECC69D224774F4366F49178A0 /* EasyPeasy-OSX.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EasyPeasy-OSX/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = EasyPeasy;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		68D215DFD597ACDA842A084ED2AFE6CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69FBFE4A3A649529EF114A2FCE3C98B3 /* EasyPeasy-iOS.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -873,136 +1038,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		418164909F6836042019CEB9D9F3BAFA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B767E606DE7E4231DCC9D639D0246FBC /* EasyPeasy-OSX.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EasyPeasy-OSX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = EasyPeasy;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		41E3FD7727877A354CF25A6D58ADDFC6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 179FE16E8EA7DAA04502E09B4009C5DB /* Pods-Demo macOS.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Demo macOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-Demo macOS/Pods-Demo macOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Demo_macOS;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		58BEF0F24326E704142C137E4CD3BF30 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B767E606DE7E4231DCC9D639D0246FBC /* EasyPeasy-OSX.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EasyPeasy-OSX/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MODULEMAP_FILE = "Target Support Files/EasyPeasy-OSX/EasyPeasy-OSX.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = EasyPeasy;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		77323F548898D39F67BBD794C0149B12 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 760B675DD0121559E051793246E4136B /* Pods-Demo macOS.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Demo macOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-Demo macOS/Pods-Demo macOS.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Demo_macOS;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1042,11 +1077,12 @@
 			};
 			name = Debug;
 		};
-		8EDE5A21664C87D8C58E32648748DA1E /* Debug */ = {
+		A62A864D9286E81EB554E709749BD373 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84D36871A81A79F7AD542681C87D40C8 /* EasyPeasy-iOS.xcconfig */;
+			baseConfigurationReference = DA47B781157CA3B37E7757828F982C49 /* Pods-Tests macOS.debug.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
@@ -1054,103 +1090,59 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/EasyPeasy-iOS/EasyPeasy-iOS-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EasyPeasy-iOS/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Tests macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/EasyPeasy-iOS/EasyPeasy-iOS.modulemap";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Tests macOS/Pods-Tests macOS.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = EasyPeasy;
-				SDKROOT = iphoneos;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Tests_macOS;
+				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		A988364E9CC5018943E7378061A9B15E /* Debug */ = {
+		B15247682866AD468B6FFF55163DDFFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14ED3BAC75F62FC6E5781EDAB804F151 /* Pods-Tests macOS.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				ONLY_ACTIVE_ARCH = YES;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		B885691A288627BC0413BD6E54DB4A3B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Tests macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MODULEMAP_FILE = "Target Support Files/Pods-Tests macOS/Pods-Tests macOS.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Tests_macOS;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1227,8 +1219,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A988364E9CC5018943E7378061A9B15E /* Debug */,
-				B885691A288627BC0413BD6E54DB4A3B /* Release */,
+				29D45868CDD6D493E3113B2A8DC1DB88 /* Debug */,
+				3B010177C6528DC26466E68582FC053B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1236,17 +1228,8 @@
 		39BD90BD24C1758F8FEE2CF8B280222C /* Build configuration list for PBXNativeTarget "Pods-Tests macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D41FE09355485F3A4DB61E56A3F72CE /* Debug */,
-				2FFBE4D0698DDB670C458D698F597107 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4DB3C26DB44FAA95F0C75C33D3C4F375 /* Build configuration list for PBXNativeTarget "EasyPeasy-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8EDE5A21664C87D8C58E32648748DA1E /* Debug */,
-				388C86AEE317F6AF052EAB7D4B91DD44 /* Release */,
+				A62A864D9286E81EB554E709749BD373 /* Debug */,
+				B15247682866AD468B6FFF55163DDFFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1254,8 +1237,8 @@
 		4F13436F064FA43C5440A0AF62DA942F /* Build configuration list for PBXNativeTarget "Pods-Demo macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				41E3FD7727877A354CF25A6D58ADDFC6 /* Debug */,
-				77323F548898D39F67BBD794C0149B12 /* Release */,
+				27C083AFCF4D81AF9C8CB141F80D8091 /* Debug */,
+				43938FCA9AC4024CB73E7081246DAA56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1278,11 +1261,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EBA079C7DB0D470E35992B00F5CB94D7 /* Build configuration list for PBXNativeTarget "EasyPeasy-OSX" */ = {
+		85436C5CC9567D09A90FBB2B4569D883 /* Build configuration list for PBXNativeTarget "EasyPeasy-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				58BEF0F24326E704142C137E4CD3BF30 /* Debug */,
-				418164909F6836042019CEB9D9F3BAFA /* Release */,
+				0CAE06985AE044A70A9554FA7683F1FA /* Debug */,
+				68D215DFD597ACDA842A084ED2AFE6CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6D6C54B7BFA1FA3B7E57B511E074B86 /* Build configuration list for PBXNativeTarget "EasyPeasy-OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F9F8A0A7066B3CC9A4FD8CC0D5D638D /* Debug */,
+				5DEDCD00ED7DEA9281E1A7D37FA13D4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

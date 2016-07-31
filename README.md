@@ -30,7 +30,7 @@ result using **EasyPeasy**.
 * Resolution of *Auto Layout* conflicts.
 * Fast and *hassle-free* update of constraints.
 * Conditional application of constraints.
-* `UILayoutGuide` support (iOS 9 and above).
+* `UILayoutGuide` and `NSLayoutGuide` support.
 
 ## Table of contents
 

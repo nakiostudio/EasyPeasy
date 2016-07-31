@@ -54,32 +54,4 @@ public class CompoundAttribute: Attribute {
         return self
     }
     
-    // MARK: Internal methods
-    
-    /**
-        This method evaluates whether an `Attribute` should be
-        applied, resolves any conflicts with the `Attributes`
-        already applied and it also generates the `NSLayoutConstraint`
-        added to `view` for each one of the `Attribute` objects
-        shaping the `CompoundAttribute`
-        - parameter view: `UIView` in which the generated
-        `NSLayoutConstraint` will be added
-        - returns an `Array` of `NSLayoutConstraint` objects that will
-        be installed on the `UIView` passed as parameter
-     */
-    override func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
-        // Reference to the target item
-        self.createItem = item
-        
-        // Create the constraints that will be installed in
-        // the `UIView` given composing the `CompoundAttribute`
-        var constraints: [NSLayoutConstraint] = []
-        for attribute in self.attributes {
-            let newConstraints = attribute.createConstraintsForItem(item)
-            constraints.appendContentsOf(newConstraints)
-        }
-        
-        return constraints
-    }
-    
 }

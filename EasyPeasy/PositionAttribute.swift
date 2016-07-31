@@ -9,6 +9,7 @@
 // SOFTWARE.
 
 #if os(iOS) || os(tvOS)
+
 import UIKit
 
 /// Alias of UIEdgeInsets
@@ -36,11 +37,11 @@ public class PositionAttribute: Attribute {
         - parameter view: `UIView` in which the generated 
           `NSLayoutConstraint` will be added
      */
-    override func createConstraintsForItem(item: Item) -> [NSLayoutConstraint] {
+    override func createConstraints(for item: Item) -> [NSLayoutConstraint] {
         if let superview = item.owningView where self.referenceItem == nil {
             self.to(superview)
         }
-        return super.createConstraintsForItem(item)
+        return super.createConstraints(for: item)
     }
     
 }
@@ -48,54 +49,124 @@ public class PositionAttribute: Attribute {
 /**
     The left side of the object’s alignment rectangle
  */
-public class Left: PositionAttribute { }
+public class Left: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Left
+    }
+    
+}
 
 /**
     The right side of the object’s alignment rectangle
  */
-public class Right: PositionAttribute { }
+public class Right: PositionAttribute {
+
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Right
+    }
+    
+}
 
 /**
     The top of the object’s alignment rectangle
  */
-public class Top: PositionAttribute { }
+public class Top: PositionAttribute {
+    
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Top
+    }
+    
+}
 
 /**
     The bottom of the object’s alignment rectangle
  */
-public class Bottom: PositionAttribute { }
+public class Bottom: PositionAttribute {
+
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Bottom
+    }
+    
+}
 
 /**
     The leading edge of the object’s alignment rectangle
  */
-public class Leading: PositionAttribute { }
+public class Leading: PositionAttribute {
+
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Leading
+    }
+    
+}
 
 /**
     The trailing edge of the object’s alignment rectangle
  */
-public class Trailing: PositionAttribute { }
+public class Trailing: PositionAttribute {
+
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .Trailing
+    }
+
+}
 
 /**
     The center along the x-axis of the object’s alignment rectangle
  */
-public class CenterX: PositionAttribute { }
+public class CenterX: PositionAttribute {
+
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .CenterX
+    }
+    
+}
 
 /**
     The center along the y-axis of the object’s alignment rectangle
  */
-public class CenterY: PositionAttribute { }
+public class CenterY: PositionAttribute {
+ 
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .CenterY
+    }
+
+}
 
 /**
     The object’s baseline. For objects with more than one line of text, 
     this is the baseline for the topmost line of text
  */
-public class FirstBaseline: PositionAttribute { }
+public class FirstBaseline: PositionAttribute {
+
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .FirstBaseline
+    }
+    
+}
 
 /**
     The object’s baseline. For objects with more than one line of text, 
     this is the baseline for the bottommost line of text
  */
-public class LastBaseline: PositionAttribute { }
+public class LastBaseline: PositionAttribute {
+
+    /// `Attribute` applied to the view
+    public override var createAttribute: ReferenceAttribute {
+        return .LastBaseline
+    }
+
+}
 
 /**
     The size of the object’s rectangle
