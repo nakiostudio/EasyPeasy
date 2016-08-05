@@ -277,8 +277,20 @@ view <- [
 ]
 ```
 
-*Note:* the global function `Device()` in the example above is not implemented in
-the framework.
+You can also use size classes in conditions, for example:
+
+```swift
+someView <- [
+	Top(10),
+	Bottom(10),
+	Width(250),
+	Left(10).when { HorizontalSizeClass(someView) == .Compact },
+	CenterX(0).when { HorizontalSizeClass(someView) == .Regular }
+]
+```
+
+*Note:* the global function `Device()` and local function `HorizontalSizeClass()` 
+in the examples above are not implemented in the EasyPeasy framework.
 
 These `Condition` closures can be re-evaluated during the lifecycle of an `UIView`,
 to do so you just need to call the `UIView` convenience method `easy_reload()`.
