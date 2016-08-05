@@ -12,7 +12,7 @@ platform :ios do
     scan(
       scheme: scheme,
       workspace: workspace,
-      destination: "platform=iOS Simulator,name=iPhone 6,OS=9.3",
+      devices: ["iPhone 6s"],
       code_coverage: true
     )
 
