@@ -74,7 +74,7 @@ public class Attribute {
         - returns: the `Attribute` instance created
      */
     public init() {
-        self.constant = Constant(0.0)
+        self.constant = Constant(value: 0.0, relation: .Equal, multiplier: 1.0)
         self.priority = .HighPriority
     }
     
@@ -86,7 +86,7 @@ public class Attribute {
         - returns: the `Attribute` instance created
      */
     public init(_ value: CGFloat) {
-        self.constant = Constant(value)
+        self.constant = Constant(value: value, relation: .Equal, multiplier: 1.0)
         self.priority = .HighPriority
     }
     
@@ -152,11 +152,11 @@ public class Attribute {
         let layoutConstraint = NSLayoutConstraint(
             item: item,
             attribute: self.createAttribute.layoutAttribute,
-            relatedBy: self.constant.layoutRelation(),
+            relatedBy: self.constant.relation,
             toItem: self.referenceItem,
             attribute: self.referenceAttributeHelper().layoutAttribute,
-            multiplier: self.constant.layoutMultiplier(),
-            constant: (self.constant.layoutValue() * constantFactor)
+            multiplier: self.constant.multiplier,
+            constant: (self.constant.value * constantFactor)
         )
         
         // Set priority

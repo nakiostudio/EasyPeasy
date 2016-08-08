@@ -29,12 +29,12 @@ internal extension String {
         
         // Signature of the `Modifier` of the passed 
         // `Attribute`
-        switch attribute.constant.modifier {
-        case .EqualTo, .MultipliedBy:
+        switch attribute.constant.relation {
+        case .Equal:
             signature += "eq_"
-        case .GreaterThanOrEqualTo:
+        case .GreaterThanOrEqual:
             signature += "gt_"
-        case .LessThanOrEqualTo:
+        case .LessThanOrEqual:
             signature += "lt_"
         }
         
