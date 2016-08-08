@@ -14,21 +14,8 @@ import UIKit
 import AppKit
 #endif
 
-/**
-    Modifier used when a relationship is created between the target `UIView`
-    and the reference `UIView`. 
- 
-    Unlike `NSLayoutRelation` this enum also includes a `MultipliedBy` case
-    which acts as the `multiplier property of a `NSLayoutConstraint`
- */
-public enum Modifier {
-    
-    case EqualTo
-    case GreaterThanOrEqualTo
-    case LessThanOrEqualTo
-    case MultipliedBy
-    
-}
+//
+typealias Relation = NSLayoutRelation
 
 /**
     Struct that aggregates `NSLayoutRelation`, constant and multiplier of a 
@@ -40,18 +27,10 @@ public struct Constant {
     let value: CGFloat
     
     /// Modifier applied to the `value` of the `Constant`
-    var modifier: Modifier
+    let relation: Relation
     
-    /**
-        This initializer creates a `Constant` with the value supplied
-        and the modifier `.EqualTo`
-        - parameter value: Value of the `Constant`
-        - returns: the `Constant` struct created
-     */
-    init(_ value: CGFloat) {
-        self.value = value
-        self.modifier = .EqualTo
-    }
+    //
+    let multiplier: CGFloat
     
     /**
         This initializer creates a `Constant` with the `value` and `modifier` 
@@ -60,47 +39,10 @@ public struct Constant {
         - parameter modifier: Modifier applied to the `value`
         - returns: the `Constant` struct created
      */
-    init(value: CGFloat, modifier: Modifier) {
+    init(value: CGFloat, relation: Relation, multiplier: CGFloat) {
         self.value = value
-        self.modifier = modifier
-    }
-    
-    /**
-        `NSLayoutRelation` equivalent to the `modifier` of the `Constant`
-        - returns: `NSLayoutRelation` equivalent
-     */
-    internal func layoutRelation() -> NSLayoutRelation {
-        switch self.modifier {
-        case .EqualTo: return .Equal
-        case .LessThanOrEqualTo: return .LessThanOrEqual
-        case .GreaterThanOrEqualTo: return .GreaterThanOrEqual
-        case .MultipliedBy: return .Equal
-        }
-    }
-    
-    /**
-        Determines the `CGFloat` value of the multiplier for the `modifier`
-        property
-        - returns: `CGFloat` multiplier
-     */
-    internal func layoutMultiplier() -> CGFloat {
-        switch self.modifier {
-        case .EqualTo: return 1.0
-        case .LessThanOrEqualTo: return 1.0
-        case .GreaterThanOrEqualTo: return 1.0
-        case .MultipliedBy: return CGFloat(self.value)
-        }
-    }
-    
-    /**
-        Value of the `Constant`
-        - returns: `CGFloat` value of the `Constant`
-     */
-    internal func layoutValue() -> CGFloat {
-        switch self.modifier {
-        case .MultipliedBy: return 0.0
-        default: return CGFloat(self.value)
-        }
+        self.relation = relation
+        self.multiplier = multiplier
     }
     
 }
@@ -114,7 +56,7 @@ prefix operator >= {}
     - returns: The resulting `Constant` struct
  */
 public prefix func >= (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, modifier: .GreaterThanOrEqualTo)
+    return Constant(value: rhs, relation: .GreaterThanOrEqual, multiplier: 1.0)
 }
 
 prefix operator <= {}
@@ -126,7 +68,7 @@ prefix operator <= {}
     - returns: The resulting `Constant` struct
  */
 public prefix func <= (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, modifier: .LessThanOrEqualTo)
+    return Constant(value: rhs, relation: .LessThanOrEqual, multiplier: 1.0)
 }
 
 prefix operator * {}
@@ -138,5 +80,12 @@ prefix operator * {}
     - returns: The resulting `Constant` struct
  */
 public prefix func * (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, modifier: .MultipliedBy)
+    return Constant(value: rhs, relation: .Equal, multiplier: rhs)
+}
+
+/**
+ 
+ */
+public func * (lhs: Constant, rhs: CGFloat) -> Constant {
+    return Constant(value: lhs.value, relation: lhs.relation, multiplier: lhs.multiplier * rhs)
 }
