@@ -64,7 +64,25 @@ public class Attribute {
     /// Element identifying the node this attribute will be 
     /// stored in
     internal lazy var signature: String = {
-        return String.easy_signature(for: self)
+        // Signature of the create `ReferenceAttribute` of
+        // the passed `Attribute`
+        var signature = self.createAttribute.signatureString
+        
+        // Signature of the `Relation` of the passed `Attribute`
+        switch self.constant.relation {
+        case .Equal:
+            signature += "eq_"
+        case .GreaterThanOrEqual:
+            signature += "gt_"
+        case .LessThanOrEqual:
+            signature += "lt_"
+        }
+        
+        // Signature of the `Priority` of the passed
+        // `Attribute`
+        signature += String(self.priority.layoutPriority())
+        
+        return signature
     }()
     
     /**
@@ -204,8 +222,8 @@ public class Attribute {
 }
 
 /**
-    Methods applicable to an `Array` of `Attributes`. The modifiers
-    will affect to each one of the `Attributes` within the `Array`
+    Methods applicable to an `Array` of `Attributes`. The `Constants`
+    will apply to each one of the `Attributes` within the `Array`
     overriding the values individually set.
  */
 public extension Array where Element: Attribute {
