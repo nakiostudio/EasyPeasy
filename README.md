@@ -105,7 +105,7 @@ with `constant = 120`.
 Without really knowing it, we have just created an **EasyPeasy** `Constant` struct 
 containing the constant, multipler and the relation of a `NSLayoutConstraint`.
 
-### Relations
+#### Relations
 **EasyPeasy** provides an easy way of creating constants with different 
 `NSLayoutRelations`:
 
