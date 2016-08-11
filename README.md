@@ -120,8 +120,10 @@ You can use it like this `Width(*2)` and means that the width of our view is two
 *something*, we will mention later how to establish the relationship with that *something*.
 
 In addition, you can combine `multipliers` with `Equal`, `.GreaterThanOrEqual` and 
-`LessThanOrEqual` relations. i.e. `Width((>=10.0)*0.5)` will create a `NSLayoutConstraint`
-with `value = 10.0`, `relation = .GreaterThanOrEqual` and `multiplier = 0.5`.
+`LessThanOrEqual` relations. i.e. `Width(>=10.0*0.5)` creates a `NSLayoutConstraint`
+with `value = 10.0`, `relation = .GreaterThanOrEqual` and `multiplier = 0.5`, whereas
+`Width(==10.0*0.5)` creates a `NSLayoutConstraint` with `value = 10.0`, 
+`relation = .Equal` and `multiplier = 0.5`.
 
 ### Attributes
 **EasyPeasy** provides as many `Attribute` classes as attributes `NSLayoutConstraint`
