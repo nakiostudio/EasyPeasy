@@ -21,6 +21,16 @@ class ConstantTests: XCTestCase {
         super.tearDown()
     }
     
+    func testThatConstantCreatedWithEqualPrefixCreatesTheExpectedProperties() {
+        // given
+        // when
+        let constant = (==350)
+        
+        // then
+        XCTAssertTrue(constant.value == 350)
+        XCTAssertTrue(constant.relation == .Equal)
+    }
+    
     func testThatConstantCreatedWithGreaterThanPrefixCreatesTheExpectedProperties() {
         // given
         // when
@@ -69,18 +79,21 @@ class ConstantTests: XCTestCase {
         let lessThan = (<=200)
         let multipliedBy = (*200)
         let equalTo = Constant(value: 200, relation: .Equal, multiplier: 1.0)
+        let equalToPref = (==200)
         
         // when
         let greaterThanRelation = greaterThan.relation
         let lessThanRelation = lessThan.relation
         let multipliedByRelation = multipliedBy.relation
         let equalToRelation = equalTo.relation
+        let equalToPrefRelation = equalToPref.relation
         
         // then
         XCTAssertTrue(greaterThanRelation == .GreaterThanOrEqual)
         XCTAssertTrue(lessThanRelation == .LessThanOrEqual)
         XCTAssertTrue(multipliedByRelation == .Equal)
         XCTAssertTrue(equalToRelation == .Equal)
+        XCTAssertTrue(equalToPrefRelation == .Equal)
     }
     
     func testThatLayoutMultiplierIsTheExpected() {
@@ -89,18 +102,21 @@ class ConstantTests: XCTestCase {
         let lessThan = (<=200)
         let multipliedBy = (*200)
         let equalTo = Constant(value: 200, relation: .Equal, multiplier: 1.0)
+        let equalToPref = (==200)
         
         // when
         let greaterThanMultiplier = greaterThan.multiplier
         let lessThanMultiplier = lessThan.multiplier
         let multipliedByMultiplier = multipliedBy.multiplier
         let equalToMultiplier = equalTo.multiplier
+        let equalToPrefMultiplier = equalToPref.multiplier
         
         // then
         XCTAssertTrue(greaterThanMultiplier == 1.0)
         XCTAssertTrue(lessThanMultiplier == 1.0)
         XCTAssertTrue(multipliedByMultiplier == 200.0)
         XCTAssertTrue(equalToMultiplier == 1.0)
+        XCTAssertTrue(equalToPrefMultiplier == 1.0)
     }
     
     func testThatLayoutValueIsTheExpected() {
@@ -109,18 +125,40 @@ class ConstantTests: XCTestCase {
         let lessThan = (<=200)
         let multipliedBy = (*200)
         let equalTo = Constant(value: 200, relation: .Equal, multiplier: 1.0)
+        let equalToPref = (==200)
         
         // when
         let greaterThanValue = greaterThan.value
         let lessThanValue = lessThan.value
         let multipliedByValue = multipliedBy.value
         let equalToValue = equalTo.value
+        let equalToPrefValue = equalToPref.value
         
         // then
         XCTAssertTrue(greaterThanValue == 200.0)
         XCTAssertTrue(lessThanValue == 200.0)
         XCTAssertTrue(multipliedByValue == 200.0)
         XCTAssertTrue(equalToValue == 200.0)
+        XCTAssertTrue(equalToPrefValue == 200.0)
+    }
+    
+    func testThatMultiplierIsCorrectlyCombinedWithAConstant() {
+        // given
+        let eqMult = ==20.0*0.5
+        let gtMult = >=20*0.5
+        let ltMult = <=20*0.5
+        
+        // when
+        // then
+        XCTAssertTrue(eqMult.multiplier == 0.5)
+        XCTAssertTrue(eqMult.value == 20)
+        XCTAssertTrue(eqMult.relation == .Equal)
+        XCTAssertTrue(gtMult.multiplier == 0.5)
+        XCTAssertTrue(gtMult.value == 20)
+        XCTAssertTrue(gtMult.relation == .GreaterThanOrEqual)
+        XCTAssertTrue(ltMult.multiplier == 0.5)
+        XCTAssertTrue(ltMult.value == 20)
+        XCTAssertTrue(ltMult.relation == .LessThanOrEqual)
     }
     
 }
