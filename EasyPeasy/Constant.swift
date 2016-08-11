@@ -50,6 +50,18 @@ public struct Constant {
     
 }
 
+prefix operator == {}
+
+/**
+    Prefix operator that eases the creation of a `Constant` with a
+    `.Equal` relation
+    - parameter rhs: Value for the `Constant`
+    - returns: The resulting `Constant` struct
+ */
+public prefix func == (rhs: CGFloat) -> Constant {
+    return Constant(value: rhs, relation: .Equal, multiplier: 1.0)
+}
+
 prefix operator >= {}
 
 /**
