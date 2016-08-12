@@ -1,5 +1,17 @@
 # Changelog
 
+## v.1.1.0
+
+* Now it's possible to combine `multipliers` with `Equal`, `GreaterThatOrEqual`
+and `LessThanOrEqual` relations.
+
+```swift
+// i.e.
+Width(>=20*0.5) // value = 20, multiplier = 0.5, relation = .GreaterThanOrEqual
+Width(<=20*0.5) // value = 20, multiplier = 0.5, relation = .LessThanOrEqual
+Width(==20*0.5) // value = 20, multiplier = 0.5, relation = .Equal
+```
+
 # v.1.0.0
 
 * Improved performance, benchmarks show up to a 250% improvement applying `Attributes` with the apply operator `<-`, resolving

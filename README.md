@@ -36,7 +36,7 @@ result using **EasyPeasy**.
 
 * [Installation](#installation)
 * [Usage](#usage)
-	* [Modifiers](#modifiers)
+	* [Constants](#constants)
 	* [Attributes](#attributes)
 		* [DimensionAttributes](#dimensionattributes)
 		* [PositionAttributes](#positionattributes)
@@ -101,22 +101,29 @@ In the previous example, two attributes have been applied and therefore two cons
 created and added: a width constraint with `constant = 200` and a height constraint
 with `constant = 120`.
 
-### Modifiers
-Without really knowing it, we have just created an **EasyPeasy** `Constant`
-struct containing the constant and the relation of a `NSLayoutConstraint`.
-That relation is a `Modifier` and **EasyPeasy** provides four different modifiers:
-* `.EqualTo`: the equivalent of `NSLayoutRelationEqual`, it's created like in
-our previous example. `Width(200)`
-* `.GreaterThanOrEqualTo`: the equivalent of `NSLayoutRelationGreaterThanOrEqual`,
-it's created as easy as this `Width(>=200)` and it means that our view has a width
-greater than or equal to 200px.
-* `.LessThanOrEqualTo`: the equivalent of `NSLayoutRelationLessThanOrEqual`
-is created as follows `Width(<=200)`.
-* `.MultipliedBy`: this modifier is a bit particular as it does not match any
-`NSLayoutRelation`, instead, this modifier replaces the `multiplier` property
-of a `NSLayoutConstraint`. It's created like this `Width(*2)` and means that the
-width of our view is two times *something*, we will mention later how to establish
-the relationship with that *something*.
+### Constants
+Without really knowing it, we have just created an **EasyPeasy** `Constant` struct 
+containing the constant, multipler and the relation of a `NSLayoutConstraint`.
+
+#### Relations
+**EasyPeasy** provides an easy way of creating constants with different 
+`NSLayoutRelations`:
+
+* `.Equal`: it is created like in our previous example `Width(200)`.
+* `.GreaterThanOrEqual`: it is created as easy as this `Width(>=200)` and it means 
+that our view has a width greater than or equal to 200px.
+* `.LessThanOrEqual`: it is created as follows `Width(<=200)`.
+
+#### Multipliers
+There is a custom operator that eases the creation of a `NSLayoutConstraint` multiplier. 
+You can use it like this `Width(*2)` and means that the width of our view is two times 
+*something*, we will mention later how to establish the relationship with that *something*.
+
+In addition, you can combine `multipliers` with `Equal`, `.GreaterThanOrEqual` and 
+`LessThanOrEqual` relations. i.e. `Width(>=10.0*0.5)` creates a `NSLayoutConstraint`
+with `value = 10.0`, `relation = .GreaterThanOrEqual` and `multiplier = 0.5`, whereas
+`Width(==10.0*0.5)` creates a `NSLayoutConstraint` with `value = 10.0`, 
+`relation = .Equal` and `multiplier = 0.5`.
 
 ### Attributes
 **EasyPeasy** provides as many `Attribute` classes as attributes `NSLayoutConstraint`

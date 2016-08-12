@@ -345,4 +345,27 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue((controller.view.constraints.filter { $0 === constraints[0] }).count == 1)
     }
     
+    func testThatAGoodBunchOfAttributesHaveTheExpectedSignature() {
+        // given
+        let a: Attribute = Width(>=10).with(.CustomPriority(300))
+        let b: Attribute = Height(100)
+        let c: Attribute = Left(<=40).with(.LowPriority)
+        let d: Attribute = CenterXWithinMargins().with(.MediumPriority)
+        let e: Attribute = LastBaseline(>=30)
+        let f: Attribute = BottomMargin()
+        let g: Attribute = CenterYWithinMargins(<=40)
+        let h: Attribute = CenterX(>=0).with(.CustomPriority(244))
+        
+        // when
+        // then
+        XCTAssertTrue(a.signature == "h_gt_300.0")
+        XCTAssertTrue(b.signature == "v_eq_1000.0")
+        XCTAssertTrue(c.signature == "h_lt_1.0")
+        XCTAssertTrue(d.signature == "h_eq_500.0")
+        XCTAssertTrue(e.signature == "v_gt_1000.0")
+        XCTAssertTrue(f.signature == "v_eq_1000.0")
+        XCTAssertTrue(g.signature == "v_lt_1000.0")
+        XCTAssertTrue(h.signature == "h_gt_244.0")
+    }
+    
 }

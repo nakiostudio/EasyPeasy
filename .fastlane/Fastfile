@@ -12,7 +12,7 @@ platform :ios do
     scan(
       scheme: scheme,
       workspace: workspace,
-      devices: ["iPhone 6s"],
+      device: "iPhone 6s",
       code_coverage: true
     )
 

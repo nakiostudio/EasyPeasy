@@ -163,3 +163,47 @@ public enum ReferenceAttribute {
     }
     
 }
+
+#if os(iOS) || os(tvOS)
+    
+/**
+    Extends `ReferenceAttribute` to ease the creation of
+    an `Attribute` signature
+ */
+internal extension ReferenceAttribute {
+    
+    /// Signature of a `ReferenceAttribute`. Two possible values
+    /// depending on the Axis the `ReferenceAttribute` applies
+    var signatureString: String {
+        switch self {
+        case .Left, .Leading, .LeftMargin, .LeadingMargin, .Right, .Trailing, .RightMargin, .TrailingMargin, .CenterX, .CenterXWithinMargins, .Width:
+            return "h_"
+        case .Top, .FirstBaseline, .TopMargin, .Bottom, .LastBaseline, .BottomMargin, .CenterY, .CenterYWithinMargins, .Height:
+            return "v_"
+        }
+    }
+    
+}
+    
+#else
+    
+/**
+    Extends `ReferenceAttribute` to ease the creation of
+    an `Attribute` signature
+ */
+internal extension ReferenceAttribute {
+    
+    /// Signature of a `ReferenceAttribute`. Two possible values
+    /// depending on the Axis the `ReferenceAttribute` applies
+    var signatureString: String {
+        switch self {
+        case .Left, .Leading, .Right, .Trailing, .CenterX, .Width:
+            return "h_"
+        case .Top, .FirstBaseline, .Bottom, .LastBaseline, .CenterY, .Height:
+            return "v_"
+        }
+    }
+    
+}
+    
+#endif

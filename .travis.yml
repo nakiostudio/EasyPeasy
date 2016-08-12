@@ -6,6 +6,7 @@ branches:
     - develop
 before_install:
   - bundle install
+  - instruments -s
 script:
   - set -o pipefail
   - fastlane travis
