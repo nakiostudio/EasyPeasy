@@ -39,7 +39,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         for subAttribute in sizeAttribute.attributes {
-            XCTAssertFalse(subAttribute.condition!())
+            XCTAssertFalse((subAttribute.condition! as! Condition)())
         }
     }
     

@@ -208,7 +208,7 @@ class Attribute_InstallTests: XCTestCase {
         
         // then
         for attribute in attributes {
-            XCTAssertFalse(attribute.condition!())
+            XCTAssertFalse((attribute.condition! as! Condition)())
         }
     }
     

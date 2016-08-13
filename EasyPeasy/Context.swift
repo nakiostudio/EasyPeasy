@@ -56,7 +56,7 @@ public struct Context {
         self.isVerticalCompact = traitCollection.verticalSizeClass == .Compact
         self.isCompact = traitCollection.horizontalSizeClass == .Compact && traitCollection.verticalSizeClass == .Compact
         
-        // Vertical size classes
+        // Regular size classes
         self.isVerticalRegular = traitCollection.verticalSizeClass == .Regular
         self.isHorizontalRegular = traitCollection.horizontalSizeClass == .Regular
         self.isRegular = traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular
