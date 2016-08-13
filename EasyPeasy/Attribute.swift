@@ -38,9 +38,11 @@ public class Attribute {
     /// Priority level of the constraint
     public internal(set) var priority: Priority
     
-    /// Condition to evaluate in order to apply
-    /// (or not) the constraint
-    public internal(set) var condition: Condition?
+    /// `Condition` to evaluate in order to apply
+    /// (or not) the constraint. In iOS this 
+    /// property may hold a closure of type
+    /// `ContextualCondition`.
+    public internal(set) var condition: Any?
     
     /// Target `UIView` of the constraint
     public internal(set) weak var createItem: Item?
@@ -194,7 +196,21 @@ public class Attribute {
         applied
      */
     internal func shouldInstall() -> Bool {
-        return self.condition?() ?? true
+        // If there is a ContextualCondition then create the context
+        // struct and call the closure
+        #if os(iOS)
+        if let contextualCondition = self.condition as? ContextualCondition, view = self.createItem?.owningView {
+            return contextualCondition(Context(with: view.traitCollection))
+        }
+        #endif
+        
+        // Evaluate condition result
+        if let condition = self.condition as? Condition {
+            return condition()
+        }
+        
+        // Otherwise default to true
+        return true
     }
 
     /**
