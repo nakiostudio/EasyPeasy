@@ -72,7 +72,7 @@ internal class Node {
             return nil
         }
         
-        var deactivateConstraints: [NSLayoutConstraint] = []
+        var deactivate: [NSLayoutConstraint]?
         
         // Checks whether the `Attribute` is conflicting with any of
         // the existing `Subnodes`. If so deactivates the conflicting
@@ -81,28 +81,20 @@ internal class Node {
         switch nodeAttribute {
         case .Left:
             if self.left === attribute { return nil }
-            deactivateConstraints.appendContentsOf(
-                self.deactivate(attributes: [self.left, self.center].flatMap { $0 })
-            )
+            deactivate = self.deactivate(attributes: [self.left, self.center].flatMap { $0 })
             self.left = attribute
         case .Right:
             if self.right === attribute { return nil }
-            deactivateConstraints.appendContentsOf(
-                self.deactivate(attributes: [self.right, self.center].flatMap { $0 })
-            )
+            deactivate = self.deactivate(attributes: [self.right, self.center].flatMap { $0 })
             self.right = attribute
         case .Center:
             if self.center === attribute { return nil }
-            deactivateConstraints.appendContentsOf(
-                self.deactivate(attributes: [self.center, self.left, self.right].flatMap { $0 })
-            )
+            deactivate = self.deactivate(attributes: [self.center, self.left, self.right].flatMap { $0 })
             self.center = attribute
         case .Dimension:
             if self.dimension === attribute { return nil }
             if let previousDimension = self.dimension {
-                deactivateConstraints.appendContentsOf(
-                    self.deactivate(attributes: [previousDimension])
-                )
+                deactivate = self.deactivate(attributes: [previousDimension])
             }
             self.dimension = attribute
         }
@@ -110,10 +102,15 @@ internal class Node {
         // Returns the associated `NSLayoutConstraint` to be activated
         // by the `Item` owning the `Node`
         if let layoutConstraint = attribute.layoutConstraint {
-            return ([layoutConstraint], deactivateConstraints)
+            return ([layoutConstraint], deactivate ?? [])
         }
         
-        return ([], deactivateConstraints)
+        // Return constraints to deactivate
+        if let deactivateConstraints = deactivate {
+            return ([], deactivateConstraints)
+        }
+        
+        return nil
     }
     
     /**
