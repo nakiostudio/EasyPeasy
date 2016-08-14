@@ -202,4 +202,46 @@ class UIView_EasyTests: XCTestCase {
         XCTAssertTrue(constraints.count == 0)
     }
     
+    func testThatConstraintsAreTheExpectedUponEasyClear() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        viewA <- [ Left(), Size(20), Top() ]
+        XCTAssertTrue(superview.constraints.count == 2)
+        XCTAssertTrue(viewA.constraints.count == 2)
+            
+        // when
+        viewA.easy_clear()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 0)
+        XCTAssertTrue(viewA.constraints.count == 0)
+    }
+    
+    func testThatConstraintsAreTheExpectedUponEasyReload() {
+        // given
+        var condition = true
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        viewA <- [
+            Left().when { condition },
+            Right().when { condition },
+            CenterX().when { !condition },
+            Size(20),
+            Top()
+        ]
+        XCTAssertTrue(superview.constraints.count == 3)
+        XCTAssertTrue(viewA.constraints.count == 2)
+        
+        // when
+        condition = false
+        viewA.easy_reload()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 2)
+        XCTAssertTrue(viewA.constraints.count == 2)
+    }
+    
 }
