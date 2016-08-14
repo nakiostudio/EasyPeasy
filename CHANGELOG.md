@@ -1,5 +1,11 @@
 # Changelog
 
+## v.1.1.1
+
+* Grouped deactivation of `NSLayoutConstraints`. Before, the deactivation of `NSLayoutConstraints` was taking place upon finding
+a conflict, whereas now a single `NSLayoutConstraint.deactivateConstraints(_:)` takes place per `<-`, `easy_reload` or  `easy_clear`
+operation.
+
 ## v.1.1.0
 
 * Now it's possible to combine `multipliers` with `Equal`, `GreaterThatOrEqual`

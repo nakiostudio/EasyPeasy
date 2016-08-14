@@ -125,13 +125,14 @@ class NodeTests: XCTestCase {
         let leftAttribute = Left()
         leftAttribute.createConstraints(for: view)
         let constraints = node.add(attribute: leftAttribute)
-        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints?.0.count == 1)
+        XCTAssertTrue(constraints?.1.count == 0)
         
         // when 
         let newConstraints = node.add(attribute: leftAttribute)
         
         // then
-        XCTAssertTrue(newConstraints.count == 0)
+        XCTAssertNil(newConstraints)
     }
     
     // MARK: Right node
@@ -246,13 +247,14 @@ class NodeTests: XCTestCase {
         let rightAttribute = Right()
         rightAttribute.createConstraints(for: view)
         let constraints = node.add(attribute: rightAttribute)
-        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints?.0.count == 1)
+        XCTAssertTrue(constraints?.1.count == 0)
         
         // when
         let newConstraints = node.add(attribute: rightAttribute)
         
         // then
-        XCTAssertTrue(newConstraints.count == 0)
+        XCTAssertNil(newConstraints)
     }
 
     // MARK: Center node
@@ -368,13 +370,14 @@ class NodeTests: XCTestCase {
         let centerAttribute = CenterX()
         centerAttribute.createConstraints(for: view)
         let constraints = node.add(attribute: centerAttribute)
-        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints?.0.count == 1)
+        XCTAssertTrue(constraints?.1.count == 0)
         
         // when
         let newConstraints = node.add(attribute: centerAttribute)
         
         // then
-        XCTAssertTrue(newConstraints.count == 0)
+        XCTAssertNil(newConstraints)
     }
     
     // MARK: Dimension node
@@ -467,25 +470,32 @@ class NodeTests: XCTestCase {
         let widthAttribute = Width()
         widthAttribute.createConstraints(for: view)
         let constraints = node.add(attribute: widthAttribute)
-        XCTAssertTrue(constraints.count == 1)
+        XCTAssertTrue(constraints?.0.count == 1)
+        XCTAssertTrue(constraints?.1.count == 0)
         
         // when
         let newConstraints = node.add(attribute: widthAttribute)
         
         // then
-        XCTAssertTrue(newConstraints.count == 0)
+        XCTAssertNil(newConstraints)
     }
     
     func testThatReloadHandlesCorrectlyEachSubnode() {
         // given
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
         var value = true
         let node = Node()
         let leftAttributeA = LeftMargin().when { value }
+        leftAttributeA.createConstraints(for: view)
         let leftAttributeB = Left().when { value == false }
+        leftAttributeB.createConstraints(for: view)
         let rightAttribute = RightMargin()
-        node.add(attribute: leftAttributeA)
-        node.add(attribute: leftAttributeB)
-        node.add(attribute: rightAttribute)
+        rightAttribute.createConstraints(for: view)
+        let activationGroupA = node.add(attribute: leftAttributeA)
+        let activationGroupB = node.add(attribute: leftAttributeB)
+        let activationGroupC = node.add(attribute: rightAttribute)
         
         let activeAttributes = node.activeAttributes
         let inactiveAttributes = node.inactiveAttributes
@@ -496,10 +506,15 @@ class NodeTests: XCTestCase {
         XCTAssertTrue(node.right === rightAttribute)
         XCTAssertTrue(inactiveAttributes.first === leftAttributeB)
         XCTAssertNil(node.center)
+        XCTAssertTrue(activationGroupA?.0.count == 1)
+        XCTAssertTrue(activationGroupA?.1.count == 0)
+        XCTAssertNil(activationGroupB)
+        XCTAssertTrue(activationGroupC?.0.count == 1)
+        XCTAssertTrue(activationGroupC?.1.count == 0)
         
         // when
         value = false
-        node.reload()
+        let reloadActivationGroup = node.reload()
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 2)
@@ -508,12 +523,14 @@ class NodeTests: XCTestCase {
         XCTAssertTrue(node.right === rightAttribute)
         XCTAssertTrue(inactiveAttributes.first === leftAttributeB)
         XCTAssertNil(node.center)
+        XCTAssertTrue(reloadActivationGroup.0.count == 1)
+        XCTAssertTrue(reloadActivationGroup.1.count == 1)
         
         // And again
         
         // when
         value = true
-        node.reload()
+        let reloadActivationGroupB = node.reload()
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 2)
@@ -522,16 +539,26 @@ class NodeTests: XCTestCase {
         XCTAssertTrue(node.right === rightAttribute)
         XCTAssertTrue(inactiveAttributes.first === leftAttributeB)
         XCTAssertNil(node.center)
+        XCTAssertTrue(reloadActivationGroupB.0.count == 1)
+        XCTAssertTrue(reloadActivationGroupB.1.count == 1)
     }
     
-    func testThatClearMethodRemovesEverySubnode() {
+    func testThatClearMethodRemovesEverySubnodeAndReturnsTheExpectedConstraints() {
         // given
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
         let node = Node()
         let leftAttributeA = TopMargin().when { true }
+        leftAttributeA.createConstraints(for: view)
         let leftAttributeB = Top().when { false }
+        leftAttributeB.createConstraints(for: view)
         let rightAttribute = LastBaseline()
+        rightAttribute.createConstraints(for: view)
         let dimension = Width()
+        dimension.createConstraints(for: view)
         let center = CenterXWithinMargins().when { false }
+        center.createConstraints(for: view)
         node.add(attribute: leftAttributeA)
         node.add(attribute: leftAttributeB)
         node.add(attribute: rightAttribute)
@@ -546,7 +573,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.center)
         
         // when
-        node.clear()
+        let constraints = node.clear()
         
         // then
         XCTAssertNil(node.left)
@@ -555,6 +582,150 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.center)
         XCTAssertTrue(node.activeAttributes.count == 0)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
+        XCTAssertTrue(constraints.count == 3)
+    }
+    
+    func testThatActivationGroupIsTheExpectedAddingAttributes() {
+        // given
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let node = Node()
+        
+        let leftAttributeA = Left(100)
+        leftAttributeA.createConstraints(for: view)
+        let rightAttributeA = Right(100)
+        rightAttributeA.createConstraints(for: view)
+        
+        let activationGroupLeftA = node.add(attribute: leftAttributeA)
+        XCTAssertTrue(activationGroupLeftA!.0.count == 1)
+        XCTAssertTrue(activationGroupLeftA!.0.first === leftAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupLeftA!.1.count == 0)
+        
+        let activationGroupRightA = node.add(attribute: rightAttributeA)
+        XCTAssertTrue(activationGroupRightA!.0.count == 1)
+        XCTAssertTrue(activationGroupRightA!.0.first === rightAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupRightA!.1.count == 0)
+        
+        // when
+        let centerAttribute = CenterX(0.0)
+        centerAttribute.createConstraints(for: view)
+        let activationGroupCenter = node.add(attribute: centerAttribute)
+        
+        // then
+        XCTAssertTrue(activationGroupCenter!.0.count == 1)
+        XCTAssertTrue(activationGroupCenter!.0.first === centerAttribute.layoutConstraint)
+        XCTAssertTrue(activationGroupCenter!.1.count == 2)
+        XCTAssertTrue(activationGroupCenter!.1[0] === leftAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupCenter!.1[1] === rightAttributeA.layoutConstraint)
+    }
+    
+    func testThatActivationGroupIsTheExpectedWhenSameAttributeIsAppliedTwice() {
+        // given
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let node = Node()
+        
+        let leftAttributeA = Left(100)
+        leftAttributeA.createConstraints(for: view)
+        
+        let activationGroupLeftA = node.add(attribute: leftAttributeA)
+        XCTAssertTrue(activationGroupLeftA!.0.count == 1)
+        XCTAssertTrue(activationGroupLeftA!.0.first === leftAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupLeftA!.1.count == 0)
+        
+        // when
+        let activationGroupLeftB = node.add(attribute: leftAttributeA)
+        
+        // then
+        XCTAssertNil(activationGroupLeftB)
+    }
+    
+    func testThatActivationGroupIsTheExpectedWhenShouldInstallIsFalse() {
+        // given
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let node = Node()
+        
+        let leftAttributeA = Left(100).when { false }
+        leftAttributeA.createConstraints(for: view)
+        
+        // when
+        let activationGroupLeftA = node.add(attribute: leftAttributeA)
+        
+        // then
+        XCTAssertNil(activationGroupLeftA)
+    }
+    
+    func testThatActivationGroupIsTheExpectedUponReloadWithNoChanges() {
+        // given
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let node = Node()
+        
+        let leftAttributeA = Left(100)
+        leftAttributeA.createConstraints(for: view)
+        let rightAttributeA = Right(100)
+        rightAttributeA.createConstraints(for: view)
+        
+        let activationGroupLeftA = node.add(attribute: leftAttributeA)
+        XCTAssertTrue(activationGroupLeftA!.0.count == 1)
+        XCTAssertTrue(activationGroupLeftA!.0.first === leftAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupLeftA!.1.count == 0)
+        
+        let activationGroupRightA = node.add(attribute: rightAttributeA)
+        XCTAssertTrue(activationGroupRightA!.0.count == 1)
+        XCTAssertTrue(activationGroupRightA!.0.first === rightAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupRightA!.1.count == 0)
+        
+        // when
+        let activationGroupReload = node.reload()
+        
+        // then
+        XCTAssertTrue(activationGroupReload.0.count == 0)
+        XCTAssertTrue(activationGroupReload.1.count == 0)
+    }
+    
+    func testThatActivationGroupIsTheExpectedUponReloadWithChanges() {
+        // given
+        let superview = UIView()
+        let view = UIView()
+        superview.addSubview(view)
+        let node = Node()
+        var condition = true
+        
+        let leftAttributeA = Left(100).when { condition }
+        leftAttributeA.createConstraints(for: view)
+        let leftAttributeB = Left(100).when { !condition }
+        leftAttributeB.createConstraints(for: view)
+        let rightAttributeA = Right(100)
+        rightAttributeA.createConstraints(for: view)
+        
+        let activationGroupLeftA = node.add(attribute: leftAttributeA)
+        XCTAssertTrue(activationGroupLeftA!.0.count == 1)
+        XCTAssertTrue(activationGroupLeftA!.0.first === leftAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupLeftA!.1.count == 0)
+        
+        let activationGroupLeftB = node.add(attribute: leftAttributeB)
+        XCTAssertNil(activationGroupLeftB)
+        
+        let activationGroupRightA = node.add(attribute: rightAttributeA)
+        XCTAssertTrue(activationGroupRightA!.0.count == 1)
+        XCTAssertTrue(activationGroupRightA!.0.first === rightAttributeA.layoutConstraint)
+        XCTAssertTrue(activationGroupRightA!.1.count == 0)
+        
+        // when
+        condition = false
+        let activationGroupReload = node.reload()
+        
+        // then
+        XCTAssertTrue(activationGroupReload.0.count == 1)
+        XCTAssertTrue(activationGroupReload.0.first === leftAttributeB.layoutConstraint)
+        XCTAssertTrue(activationGroupReload.1.count == 1)
+        XCTAssertTrue(activationGroupReload.1.first === leftAttributeA.layoutConstraint)
     }
     
 }
