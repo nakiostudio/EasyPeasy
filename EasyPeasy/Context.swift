@@ -19,13 +19,13 @@ import UIKit
 public struct Context {
     
     /// `true` if the current device is an iPad
-    public let isiPad: Bool
+    public let isPad: Bool
     
     /// `true` if the current device is an iPhone
-    public let isiPhone: Bool
+    public let isPhone: Bool
     
     /// `true` if both horizontal and vertical size classes are `.Compact`
-    public let isCompact: Bool
+    public let isHorizontalVerticalCompact: Bool
     
     /// `true` if horizontal size class is `.Compact`
     public let isHorizontalCompact: Bool
@@ -34,7 +34,7 @@ public struct Context {
     public let isVerticalCompact: Bool
     
     /// `true` if both horizontal and vertical size classes are `.Regular`
-    public let isRegular: Bool
+    public let isHorizontalVerticalRegular: Bool
     
     /// `true` if horizontal size class is `.Regular`
     public let isHorizontalRegular: Bool
@@ -48,18 +48,18 @@ public struct Context {
      */
     internal init(with traitCollection: UITraitCollection) {
         // Device info
-        self.isiPad = traitCollection.userInterfaceIdiom == .Pad
-        self.isiPhone = UIDevice.currentDevice().userInterfaceIdiom == .Phone
+        self.isPad = traitCollection.userInterfaceIdiom == .Pad
+        self.isPhone = UIDevice.currentDevice().userInterfaceIdiom == .Phone
         
         // Compact size classes
         self.isHorizontalCompact = traitCollection.horizontalSizeClass == .Compact
         self.isVerticalCompact = traitCollection.verticalSizeClass == .Compact
-        self.isCompact = traitCollection.horizontalSizeClass == .Compact && traitCollection.verticalSizeClass == .Compact
+        self.isHorizontalVerticalCompact = traitCollection.horizontalSizeClass == .Compact && traitCollection.verticalSizeClass == .Compact
         
         // Regular size classes
         self.isVerticalRegular = traitCollection.verticalSizeClass == .Regular
         self.isHorizontalRegular = traitCollection.horizontalSizeClass == .Regular
-        self.isRegular = traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular
+        self.isHorizontalVerticalRegular = traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular
     }
     
 }
