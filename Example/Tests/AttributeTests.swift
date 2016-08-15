@@ -367,5 +367,89 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue(g.signature == "v_lt_1000.0")
         XCTAssertTrue(h.signature == "h_gt_244.0")
     }
+
+    func testThatAttributeWithFalseContextualConditionIsNotInstalled() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        
+        // when
+        if UI_USER_INTERFACE_IDIOM() == .Pad {
+            viewA <- Width(120).when { $0.isPhone }
+        }
+        else {
+            viewA <- Width(120).when { $0.isPad }
+        }
+        
+        // then
+        XCTAssertTrue(viewA.constraints.count == 0)
+        XCTAssertTrue(viewA.test_attributes.count == 1)
+    }
+    
+    func testThatAttributeWithTrueContextualConditionIsInstalled() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        
+        // when
+        if UI_USER_INTERFACE_IDIOM() == .Pad {
+            viewA <- Width(120).when { $0.isPad }
+        }
+        else {
+            viewA <- Width(120).when { $0.isPhone }
+        }
+        
+        // then
+        XCTAssertTrue(viewA.constraints.count == 1)
+        XCTAssertTrue(viewA.test_attributes.count == 1)
+    }
+    
+    func testThatArrayOfAttributesWithFalseContextualConditionIsNotInstalled() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        
+        // when
+        if UI_USER_INTERFACE_IDIOM() == .Pad {
+            viewA <- [
+                Width(120), Height(120)
+            ].when { $0.isPhone }
+        }
+        else {
+            viewA <- [
+                Width(120), Height(120)
+            ].when { $0.isPad }
+        }
+        
+        // then
+        XCTAssertTrue(viewA.constraints.count == 0)
+        XCTAssertTrue(viewA.test_attributes.count == 2)
+    }
+    
+    func testThatArrayOfAttributesWithTrueContextualConditionIsInstalled() {
+        // given
+        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
+        let viewA = UIView(frame: CGRectZero)
+        superview.addSubview(viewA)
+        
+        // when
+        if UI_USER_INTERFACE_IDIOM() == .Pad {
+            viewA <- [
+                Width(120), Height(120)
+            ].when { $0.isPad }
+        }
+        else {
+            viewA <- [
+                Width(120), Height(120)
+            ].when { $0.isPhone }
+        }
+        
+        // then
+        XCTAssertTrue(viewA.constraints.count == 2)
+        XCTAssertTrue(viewA.test_attributes.count == 2)
+    }
     
 }

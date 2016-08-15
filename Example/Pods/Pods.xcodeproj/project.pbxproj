@@ -271,9 +271,9 @@
 				B3F8BA1B7225168A32AB259F9C8C1D9E /* PositionAttribute+UIKit.swift */,
 				D7678397E98CE2B513B6865E6BE58280 /* PositionAttribute+AppKit.swift */,
 				7741105563550DDC13927F57111C9094 /* ReferenceAttribute.swift */,
-				C1D24D781D5F7AF0003D1225 /* Context.swift */,
 				B74ADF0F15F949C3EB31AF19C7C4AD5E /* Constant.swift */,
 				3C367B4C31D86763C6C503746A43EEDA /* Priority.swift */,
+				C1D24D781D5F7AF0003D1225 /* Context.swift */,
 			);
 			path = EasyPeasy;
 			sourceTree = "<group>";
