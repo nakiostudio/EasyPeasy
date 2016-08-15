@@ -23,8 +23,19 @@ import AppKit
  */
 public typealias Condition = () -> Bool
 
+#if os(iOS)
 /**
-    This class is the abstraction of `NSLayoutConstraint` 
+    Typealias of a closure with a `Context` struct as parameter and `Bool`
+    as returning type.
+
+    This type of closure is used to evaluate whether an `Attribute` should
+    be applied or not.
+ */
+public typealias ContextualCondition = (Context) -> Bool
+#endif
+
+/**
+    This class is the abstraction of `NSLayoutConstraint`
     objects used by **EasyPeasy** to create and update
     `UIView` constraints
  */
@@ -147,6 +158,19 @@ public class Attribute {
         return self
     }
     
+    #if os(iOS)
+    /**
+        Sets the `when` closure of the `Attribute`
+        - parameter closure: `Closure` to be called before installing a
+        constraint
+        - returns: the `Attribute` instance
+     */
+    public func when(closure: ContextualCondition?) -> Self {
+        self.condition = closure
+        return self
+    }
+    #endif
+    
     // MARK: Internal methods (acting as protected)
     
     /** 
@@ -256,7 +280,7 @@ public extension Array where Element: Attribute {
      */
     public func with(priority: Priority) -> [Attribute] {
         for attribute in self {
-            attribute.priority = priority
+            attribute.with(priority)
         }
         return self
     }
@@ -271,9 +295,25 @@ public extension Array where Element: Attribute {
      */
     public func when(closure: Condition?) -> [Attribute] {
         for attribute in self {
-            attribute.condition = closure
+            attribute.when(closure)
         }
         return self
     }
+    
+    #if os(iOS)
+    /**
+        Sets the `when` closure of each one of `Attributes` within the current
+        `Array`. If the condition was already set this method overrides it
+        - parameter closure: `Closure` to be called before installing each
+        constraint
+        - returns: the `Array` of `Attributes`
+     */
+    public func when(closure: ContextualCondition?) -> [Attribute] {
+        for attribute in self {
+            attribute.when(closure)
+        }
+        return self
+    }
+    #endif
     
 }
