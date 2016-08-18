@@ -189,7 +189,7 @@ view <- Size().like(referenceView)
 // Apply width = 100 and height = 100 constraints
 view <- Size(100)
 // Apply width = 200 and height = 100 constraints
-view <- Size(CGsize(width: 200, height: 100))
+view <- Size(CGSize(width: 200, height: 100))
 ```
 
 * `Edges`: This attribute creates `Left`, `Right`, `Top` and `Bottom` attributes
