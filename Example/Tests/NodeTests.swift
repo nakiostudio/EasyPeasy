@@ -46,7 +46,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.dimension)
     }
     
-    func testThatLeftSubnodeIsUpdatedWhenReplacedWithAnotherLeft() {
+    func testThatLeftSubnodeIsUpdatedWhenReplacedWithAnotherleft() {
         // given
         let node = Node()
         let leftAttribute = Left()
@@ -168,7 +168,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.dimension)
     }
     
-    func testThatRightSubnodeIsUpdatedWhenReplacedWithAnotherRight() {
+    func testThatRightSubnodeIsUpdatedWhenReplacedWithAnotherright() {
         // given
         let node = Node()
         let rightAttribute = Right()
@@ -290,7 +290,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.dimension)
     }
     
-    func testThatCenterSubnodeIsUpdatedWhenReplacedWithAnotherCenter() {
+    func testThatCenterSubnodeIsUpdatedWhenReplacedWithAnothercenter() {
         // given
         let node = Node()
         let centerAttribute = CenterX()

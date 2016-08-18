@@ -18,16 +18,16 @@ import AppKit
     Superclass for those `Attribute` objects that imply dimension
     constraints like width and height
  */
-public class DimensionAttribute: Attribute { }
+open class DimensionAttribute: Attribute { }
 
 /**
     The width of the object’s alignment rectangle
  */
-public class Width: DimensionAttribute {
+open class Width: DimensionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Width
+    open override var createAttribute: ReferenceAttribute {
+        return .width
     }
 
 }
@@ -35,11 +35,11 @@ public class Width: DimensionAttribute {
 /**
     The height of the object’s alignment rectangle
  */
-public class Height: DimensionAttribute {
+open class Height: DimensionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Height
+    open override var createAttribute: ReferenceAttribute {
+        return .height
     }
     
 }
@@ -47,7 +47,7 @@ public class Height: DimensionAttribute {
 /**
     The size of the object’s rectangle
  */
-public class Size: CompoundAttribute {
+open class Size: CompoundAttribute {
     
     /**
         Initializer which creates a `CompountAttribute` instance formed

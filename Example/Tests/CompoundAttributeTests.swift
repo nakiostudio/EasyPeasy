@@ -24,11 +24,11 @@ class CompoundAttributeTests: XCTestCase {
     func testThatPriorityAffectsEverySubAttributeOfCompoundAttribute() {
         // given
         // when
-        let sizeAttribute = Size(CGSize(width: 100, height: 100)).with(.LowPriority)
+        let sizeAttribute = Size(CGSize(width: 100, height: 100)).with(.lowPriority)
         
         // then
         for subAttribute in sizeAttribute.attributes {
-            XCTAssertTrue(subAttribute.priority.layoutPriority() == Priority.LowPriority.layoutPriority())
+            XCTAssertTrue(subAttribute.priority.layoutPriority() == Priority.lowPriority.layoutPriority())
         }
     }
     
@@ -53,7 +53,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in sizeAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 0.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -66,7 +66,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in sizeAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -79,7 +79,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in sizeAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .GreaterThanOrEqual)
+            XCTAssertTrue(attribute.constant.relation == .greaterThanOrEqual)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -92,7 +92,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in sizeAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 2.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
     }
@@ -104,17 +104,17 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         XCTAssertTrue(sizeAttribute.attributes[0].constant.value == 120.0)
-        XCTAssertTrue(sizeAttribute.attributes[0].constant.relation == .Equal)
+        XCTAssertTrue(sizeAttribute.attributes[0].constant.relation == .equal)
         XCTAssertTrue(sizeAttribute.attributes[0].constant.multiplier == 1.0)
         
         XCTAssertTrue(sizeAttribute.attributes[1].constant.value == 200.0)
-        XCTAssertTrue(sizeAttribute.attributes[1].constant.relation == .Equal)
+        XCTAssertTrue(sizeAttribute.attributes[1].constant.relation == .equal)
         XCTAssertTrue(sizeAttribute.attributes[1].constant.multiplier == 1.0)
     }
     
     func testThatLikeMethodSetsTheReferenceViewToEachOneOfTheSubAttributes() {
         // given
-        let referenceView = UIView(frame: CGRectZero)
+        let referenceView = UIView(frame: CGRect.zero)
         
         // when
         let sizeAttribute = Size(100).like(referenceView)
@@ -135,7 +135,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in edgesAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 0.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -148,7 +148,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in edgesAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -161,7 +161,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in edgesAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .GreaterThanOrEqual)
+            XCTAssertTrue(attribute.constant.relation == .greaterThanOrEqual)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -174,7 +174,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in edgesAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 2.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
     }
@@ -186,19 +186,19 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         XCTAssertTrue(edgesAttribute.attributes[0].constant.value == 100.0)
-        XCTAssertTrue(edgesAttribute.attributes[0].constant.relation == .Equal)
+        XCTAssertTrue(edgesAttribute.attributes[0].constant.relation == .equal)
         XCTAssertTrue(edgesAttribute.attributes[0].constant.multiplier == 1.0)
         
         XCTAssertTrue(edgesAttribute.attributes[1].constant.value == 20.0)
-        XCTAssertTrue(edgesAttribute.attributes[1].constant.relation == .Equal)
+        XCTAssertTrue(edgesAttribute.attributes[1].constant.relation == .equal)
         XCTAssertTrue(edgesAttribute.attributes[1].constant.multiplier == 1.0)
         
         XCTAssertTrue(edgesAttribute.attributes[2].constant.value == 10.0)
-        XCTAssertTrue(edgesAttribute.attributes[2].constant.relation == .Equal)
+        XCTAssertTrue(edgesAttribute.attributes[2].constant.relation == .equal)
         XCTAssertTrue(edgesAttribute.attributes[2].constant.multiplier == 1.0)
         
         XCTAssertTrue(edgesAttribute.attributes[3].constant.value == 50.0)
-        XCTAssertTrue(edgesAttribute.attributes[3].constant.relation == .Equal)
+        XCTAssertTrue(edgesAttribute.attributes[3].constant.relation == .equal)
         XCTAssertTrue(edgesAttribute.attributes[3].constant.multiplier == 1.0)
     }
     
@@ -210,7 +210,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 0.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -223,7 +223,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -236,7 +236,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .GreaterThanOrEqual)
+            XCTAssertTrue(attribute.constant.relation == .greaterThanOrEqual)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -249,7 +249,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 2.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
     }
@@ -261,15 +261,15 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         XCTAssertTrue(centerAttribute.attributes[0].constant.value == 210.0)
-        XCTAssertTrue(centerAttribute.attributes[0].constant.relation == .Equal)
+        XCTAssertTrue(centerAttribute.attributes[0].constant.relation == .equal)
         XCTAssertTrue(centerAttribute.attributes[0].constant.multiplier == 1.0)
         
         XCTAssertTrue(centerAttribute.attributes[1].constant.value == 430.0)
-        XCTAssertTrue(centerAttribute.attributes[1].constant.relation == .Equal)
+        XCTAssertTrue(centerAttribute.attributes[1].constant.relation == .equal)
         XCTAssertTrue(centerAttribute.attributes[1].constant.multiplier == 1.0)
     }
     
-    func testThatCenterWithinMarginsAttributeInitWithNoParamsSetsTheExpectedConstants() {
+    func testThatcenterWithinMarginsAttributeInitWithNoParamsSetsTheExpectedConstants() {
         // given
         // when
         let centerWithinMarginsAttribute = CenterWithinMargins()
@@ -277,12 +277,12 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerWithinMarginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 0.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
     
-    func testThatCenterWithinMarginsAttributeInitWithSingleDoubleParamSetsTheExpectedConstants() {
+    func testThatcenterWithinMarginsAttributeInitWithSingleDoubleParamSetsTheExpectedConstants() {
         // given
         // when
         let centerWithinMarginsAttribute = CenterWithinMargins(50)
@@ -290,12 +290,12 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerWithinMarginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
     
-    func testThatCenterWithinMarginsAttributeInitWithSingleConstantParamSetsTheExpectedConstants() {
+    func testThatcenterWithinMarginsAttributeInitWithSingleConstantParamSetsTheExpectedConstants() {
         // given
         // when
         let centerWithinMarginsAttribute = CenterWithinMargins(>=50)
@@ -303,12 +303,12 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerWithinMarginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .GreaterThanOrEqual)
+            XCTAssertTrue(attribute.constant.relation == .greaterThanOrEqual)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
     
-    func testThatCenterWithinMarginsAttributeInitWithMultiplierConstantParamSetsTheExpectedConstants() {
+    func testThatcenterWithinMarginsAttributeInitWithMultiplierConstantParamSetsTheExpectedConstants() {
         // given
         // when
         let centerWithinMarginsAttribute = CenterWithinMargins(*2)
@@ -316,23 +316,23 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in centerWithinMarginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 2.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
     }
     
-    func testThatCenterWithinMarginsAttributeInitWithUIEdgeInsertsParamSetsTheExpectedConstants() {
+    func testThatcenterWithinMarginsAttributeInitWithUIEdgeInsertsParamSetsTheExpectedConstants() {
         // given
         // when
         let centerWithinMarginsAttribute = CenterWithinMargins(CGPoint(x: 210, y: 430))
         
         // then
         XCTAssertTrue(centerWithinMarginsAttribute.attributes[0].constant.value == 210.0)
-        XCTAssertTrue(centerWithinMarginsAttribute.attributes[0].constant.relation == .Equal)
+        XCTAssertTrue(centerWithinMarginsAttribute.attributes[0].constant.relation == .equal)
         XCTAssertTrue(centerWithinMarginsAttribute.attributes[0].constant.multiplier == 1.0)
         
         XCTAssertTrue(centerWithinMarginsAttribute.attributes[1].constant.value == 430.0)
-        XCTAssertTrue(centerWithinMarginsAttribute.attributes[1].constant.relation == .Equal)
+        XCTAssertTrue(centerWithinMarginsAttribute.attributes[1].constant.relation == .equal)
         XCTAssertTrue(centerWithinMarginsAttribute.attributes[1].constant.multiplier == 1.0)
     }
     
@@ -344,7 +344,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in marginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 0.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -357,7 +357,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in marginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -370,7 +370,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in marginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 50)
-            XCTAssertTrue(attribute.constant.relation == .GreaterThanOrEqual)
+            XCTAssertTrue(attribute.constant.relation == .greaterThanOrEqual)
             XCTAssertTrue(attribute.constant.multiplier == 1.0)
         }
     }
@@ -383,7 +383,7 @@ class CompoundAttributeTests: XCTestCase {
         // then
         for attribute in marginsAttribute.attributes {
             XCTAssertTrue(attribute.constant.value == 2.0)
-            XCTAssertTrue(attribute.constant.relation == .Equal)
+            XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
     }
@@ -395,19 +395,19 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         XCTAssertTrue(marginsAttribute.attributes[0].constant.value == 100.0)
-        XCTAssertTrue(marginsAttribute.attributes[0].constant.relation == .Equal)
+        XCTAssertTrue(marginsAttribute.attributes[0].constant.relation == .equal)
         XCTAssertTrue(marginsAttribute.attributes[0].constant.multiplier == 1.0)
         
         XCTAssertTrue(marginsAttribute.attributes[1].constant.value == 20.0)
-        XCTAssertTrue(marginsAttribute.attributes[1].constant.relation == .Equal)
+        XCTAssertTrue(marginsAttribute.attributes[1].constant.relation == .equal)
         XCTAssertTrue(marginsAttribute.attributes[1].constant.multiplier == 1.0)
         
         XCTAssertTrue(marginsAttribute.attributes[2].constant.value == 10.0)
-        XCTAssertTrue(marginsAttribute.attributes[2].constant.relation == .Equal)
+        XCTAssertTrue(marginsAttribute.attributes[2].constant.relation == .equal)
         XCTAssertTrue(marginsAttribute.attributes[2].constant.multiplier == 1.0)
         
         XCTAssertTrue(marginsAttribute.attributes[3].constant.value == 50.0)
-        XCTAssertTrue(marginsAttribute.attributes[3].constant.relation == .Equal)
+        XCTAssertTrue(marginsAttribute.attributes[3].constant.relation == .equal)
         XCTAssertTrue(marginsAttribute.attributes[3].constant.multiplier == 1.0)
     }
     
@@ -417,7 +417,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // when
         // then
-        XCTAssertTrue(attribute.createAttribute == .Width)
+        XCTAssertTrue(attribute.createAttribute == .width)
     }
 
 }

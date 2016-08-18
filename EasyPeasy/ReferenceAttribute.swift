@@ -21,61 +21,61 @@ import AppKit
 public enum ReferenceAttribute {
     
     // Dimesion attributes
-    case Width
-    case Height
+    case width
+    case height
     
     // Position attributes
-    case Left
-    case Right
-    case Top
-    case Bottom
-    case Leading
-    case Trailing
-    case CenterX
-    case CenterY
-    case FirstBaseline
-    case LastBaseline
+    case left
+    case right
+    case top
+    case bottom
+    case leading
+    case trailing
+    case centerX
+    case centerY
+    case firstBaseline
+    case lastBaseline
 #if os(iOS) || os(tvOS)
-    case LeftMargin
-    case RightMargin
-    case TopMargin
-    case BottomMargin
-    case LeadingMargin
-    case TrailingMargin
-    case CenterXWithinMargins
-    case CenterYWithinMargins
+    case leftMargin
+    case rightMargin
+    case topMargin
+    case bottomMargin
+    case leadingMargin
+    case trailingMargin
+    case centerXWithinMargins
+    case centerYWithinMargins
 #endif
     
     /// Reference attribute opposite to the current one
     internal var opposite: ReferenceAttribute {
         switch self {
-        case .Width: return .Width
-        case .Height: return .Height
-        case .Left: return .Right
-        case .Right: return .Left
-        case .Top: return .Bottom
-        case .Bottom:return .Top
-        case .Leading: return .Trailing
-        case .Trailing: return .Leading
-        case .CenterX: return .CenterX
-        case .CenterY: return .CenterY
-        case .LastBaseline: return .LastBaseline
-        case .FirstBaseline: return .FirstBaseline
+        case .width: return .width
+        case .height: return .height
+        case .left: return .right
+        case .right: return .left
+        case .top: return .bottom
+        case .bottom:return .top
+        case .leading: return .trailing
+        case .trailing: return .leading
+        case .centerX: return .centerX
+        case .centerY: return .centerY
+        case .lastBaseline: return .lastBaseline
+        case .firstBaseline: return .firstBaseline
         default:
             #if os(iOS) || os(tvOS)
             switch self {
-            case .LeftMargin: return .RightMargin
-            case .RightMargin: return .LeftMargin
-            case .TopMargin: return .BottomMargin
-            case .BottomMargin: return .TopMargin
-            case .LeadingMargin: return .TrailingMargin
-            case .TrailingMargin: return .LeadingMargin
-            case .CenterXWithinMargins: return .CenterXWithinMargins
-            case .CenterYWithinMargins: return .CenterYWithinMargins
-            default: return .Width // This point should never be reached
+            case .leftMargin: return .rightMargin
+            case .rightMargin: return .leftMargin
+            case .topMargin: return .bottomMargin
+            case .bottomMargin: return .topMargin
+            case .leadingMargin: return .trailingMargin
+            case .trailingMargin: return .leadingMargin
+            case .centerXWithinMargins: return .centerXWithinMargins
+            case .centerYWithinMargins: return .centerYWithinMargins
+            default: return .width // This point should never be reached
             }
             #else
-            return .Width // This point should never be reached
+            return .width // This point should never be reached
             #endif
         }
     }
@@ -84,43 +84,43 @@ public enum ReferenceAttribute {
     /// attribute
     internal var layoutAttribute: NSLayoutAttribute {
         switch self {
-        case .Width: return .Width
-        case .Height: return .Height
-        case .Left: return .Left
-        case .Right: return .Right
-        case .Top: return .Top
-        case .Bottom:return .Bottom
-        case .Leading: return .Leading
-        case .Trailing: return .Trailing
-        case .CenterX: return .CenterX
-        case .CenterY: return .CenterY
-        case .LastBaseline: return .LastBaseline
-        case .FirstBaseline:
+        case .width: return .width
+        case .height: return .height
+        case .left: return .left
+        case .right: return .right
+        case .top: return .top
+        case .bottom:return .bottom
+        case .leading: return .leading
+        case .trailing: return .trailing
+        case .centerX: return .centerX
+        case .centerY: return .centerY
+        case .lastBaseline: return .lastBaseline
+        case .firstBaseline:
             #if os(iOS) || os(tvOS)
-            return .FirstBaseline
+            return .firstBaseline
             #else
             if #available(OSX 10.11, *) {
-                return .FirstBaseline
+                return .firstBaseline
             }
             else {
-                return .LastBaseline
+                return .lastBaseline
             }
             #endif
         default:
             #if os(iOS) || os(tvOS)
             switch self {
-            case .LeftMargin: return .LeftMargin
-            case .RightMargin: return .RightMargin
-            case .TopMargin: return .TopMargin
-            case .BottomMargin: return .BottomMargin
-            case .LeadingMargin: return .LeadingMargin
-            case .TrailingMargin: return .TrailingMargin
-            case .CenterXWithinMargins: return .CenterXWithinMargins
-            case .CenterYWithinMargins: return .CenterYWithinMargins
-            default: return .Width // This point should never be reached
+            case .leftMargin: return .leftMargin
+            case .rightMargin: return .rightMargin
+            case .topMargin: return .topMargin
+            case .bottomMargin: return .bottomMargin
+            case .leadingMargin: return .leadingMargin
+            case .trailingMargin: return .trailingMargin
+            case .centerXWithinMargins: return .centerXWithinMargins
+            case .centerYWithinMargins: return .centerYWithinMargins
+            default: return .width // This point should never be reached
             }
             #else
-            return .Width // This point should never be reached
+            return .width // This point should never be reached
             #endif
         }
     }
@@ -131,29 +131,29 @@ public enum ReferenceAttribute {
     /// objects
     internal var shouldInvertConstant: Bool {
         switch self {
-        case .Width: return false
-        case .Height: return false
-        case .Left: return false
-        case .Right: return true
-        case .Top: return false
-        case .Bottom:return true
-        case .Leading: return false
-        case .Trailing: return true
-        case .CenterX: return false
-        case .CenterY: return false
-        case .FirstBaseline: return false
-        case .LastBaseline: return true
+        case .width: return false
+        case .height: return false
+        case .left: return false
+        case .right: return true
+        case .top: return false
+        case .bottom:return true
+        case .leading: return false
+        case .trailing: return true
+        case .centerX: return false
+        case .centerY: return false
+        case .firstBaseline: return false
+        case .lastBaseline: return true
         default:
             #if os(iOS) || os(tvOS)
             switch self {
-            case .LeftMargin: return false
-            case .RightMargin: return true
-            case .TopMargin: return false
-            case .BottomMargin: return true
-            case .LeadingMargin: return false
-            case .TrailingMargin: return true
-            case .CenterXWithinMargins: return false
-            case .CenterYWithinMargins: return false
+            case .leftMargin: return false
+            case .rightMargin: return true
+            case .topMargin: return false
+            case .bottomMargin: return true
+            case .leadingMargin: return false
+            case .trailingMargin: return true
+            case .centerXWithinMargins: return false
+            case .centerYWithinMargins: return false
             default: return false // This point should never be reached
             }
             #else
@@ -176,9 +176,9 @@ internal extension ReferenceAttribute {
     /// depending on the Axis the `ReferenceAttribute` applies
     var signatureString: String {
         switch self {
-        case .Left, .Leading, .LeftMargin, .LeadingMargin, .Right, .Trailing, .RightMargin, .TrailingMargin, .CenterX, .CenterXWithinMargins, .Width:
+        case .left, .leading, .leftMargin, .leadingMargin, .right, .trailing, .rightMargin, .trailingMargin, .centerX, .centerXWithinMargins, .width:
             return "h_"
-        case .Top, .FirstBaseline, .TopMargin, .Bottom, .LastBaseline, .BottomMargin, .CenterY, .CenterYWithinMargins, .Height:
+        case .top, .firstBaseline, .topMargin, .bottom, .lastBaseline, .bottomMargin, .centerY, .centerYWithinMargins, .height:
             return "v_"
         }
     }
@@ -197,9 +197,9 @@ internal extension ReferenceAttribute {
     /// depending on the Axis the `ReferenceAttribute` applies
     var signatureString: String {
         switch self {
-        case .Left, .Leading, .Right, .Trailing, .CenterX, .Width:
+        case .left, .leading, .right, .trailing, .centerX, .width:
             return "h_"
-        case .Top, .FirstBaseline, .Bottom, .LastBaseline, .CenterY, .Height:
+        case .top, .firstBaseline, .bottom, .lastBaseline, .centerY, .height:
             return "v_"
         }
     }

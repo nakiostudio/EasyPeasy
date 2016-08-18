@@ -15,8 +15,8 @@ extension Item {
     var test_attributes: [Attribute] {
         var attributes: [Attribute] = []
         for node in self.nodes.values {
-            attributes.appendContentsOf(node.inactiveAttributes)
-            attributes.appendContentsOf(node.activeAttributes.flatMap { $0 })
+            attributes.append(contentsOf: node.inactiveAttributes)
+            attributes.append(contentsOf: node.activeAttributes.flatMap { $0 })
         }
         return attributes
     }
@@ -24,7 +24,8 @@ extension Item {
     var test_activeAttributes: [Attribute] {
         var attributes: [Attribute] = []
         for node in self.nodes.values {
-            attributes.appendContentsOf(node.activeAttributes.flatMap { $0 })
+			
+			attributes.append(contentsOf: node.activeAttributes.flatMap { $0 })
         }
         return attributes
     }
@@ -32,7 +33,7 @@ extension Item {
     var test_inactiveAttributes: [Attribute] {
         var attributes: [Attribute] = []
         for node in self.nodes.values {
-            attributes.appendContentsOf(node.inactiveAttributes)
+            attributes.append(contentsOf: node.inactiveAttributes)
         }
         return attributes
     }

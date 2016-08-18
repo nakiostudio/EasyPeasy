@@ -13,30 +13,30 @@ import EasyPeasy
 
 class FeedView: NSView {
     
-    private static let headerPadding: CGFloat = 12.0
+    static let headerPadding: CGFloat = 12.0
 
-    private lazy var titleLabel: NSTextField = {
-        let label = NSTextField(frame: CGRectZero)
-        label.font = NSFont.boldSystemFontOfSize(14.0)
-        label.textColor = NSColor.darkGrayColor()
-        label.bezeled = false
-        label.editable = false
-        label.selectable = false
+    fileprivate lazy var titleLabel: NSTextField = {
+        let label = NSTextField(frame: CGRect.zero)
+        label.font = NSFont.boldSystemFont(ofSize: 14)
+        label.textColor = NSColor.darkGray
+        label.isBezeled = false
+        label.isEditable = false
+        label.isSelectable = false
         return label
     }()
     
-    private lazy var scrollView: NSScrollView = {
-        let view = NSScrollView(frame: CGRectZero)
+    fileprivate lazy var scrollView: NSScrollView = {
+        let view = NSScrollView(frame: CGRect.zero)
         return view
     }()
     
-    private lazy var contentView: NSView = {
-        let view = NSView(frame: CGRectZero)
+    fileprivate lazy var contentView: NSView = {
+        let view = NSView(frame: CGRect.zero)
         return view
     }()
     
-    private lazy var separatorView: NSView = {
-        let view = NSView(frame: CGRectZero)
+    fileprivate lazy var separatorView: NSView = {
+        let view = NSView(frame: CGRect.zero)
         view.alphaValue = 0.4
         return view
     }()
@@ -56,17 +56,17 @@ class FeedView: NSView {
         super.init(frame: frameRect)
         self.setup()
     }
-    
-    override func drawRect(dirtyRect: NSRect) {
-        NSColor.whiteColor().setFill()
-        NSRectFill(dirtyRect)
-        super.drawRect(dirtyRect)
+	
+    override func draw(_ rect: NSRect) {
+        NSColor.white.setFill()
+        NSRectFill(rect)
+		super.draw(rect)
     }
     
     override func layout() {
         super.layout()
         
-        self.separatorView.layer?.backgroundColor = NSColor.lightGrayColor().CGColor
+        self.separatorView.layer?.backgroundColor = NSColor.lightGray.cgColor
     }
     
     // MARK: Public methods
@@ -76,7 +76,7 @@ class FeedView: NSView {
         var previousItem: NSView = self.contentView
         // Creates a tweetView for every tweet model within tweets array
         for tweet in tweets {
-            let tweetView = TweetView(frame: CGRectZero)
+            let tweetView = TweetView(frame: CGRect.zero)
             tweetView.configure(with: tweet)
             
             // Layout "cells"
@@ -90,7 +90,7 @@ class FeedView: NSView {
             
             // Pins contentView to bottom of the this item
             self.contentView <- [
-                Bottom(>=0.0).to(tweetView, .Bottom).with(.CustomPriority(priority))
+                Bottom(>=0.0).to(tweetView, .bottom).with(.customPriority(priority))
             ]
             
             // Set properties that apply to next tweetview creation
@@ -106,7 +106,7 @@ class FeedView: NSView {
  */
 extension FeedView {
     
-    private func setup() {
+    fileprivate func setup() {
         // Title header
         self.addSubview(self.titleLabel)
         self.titleLabel <- [
@@ -139,12 +139,12 @@ extension FeedView {
             Top(0.0),
             Left(0.0),
             Bottom(>=0.0),
-            Width(0.0).like(self.scrollView),
+            Width(0.0).like(view: self.scrollView),
             Height(>=0.0)
         ]
         
         
-        self.scrollView.contentSize
+        let _ = self.scrollView.contentSize
     }
     
 }

@@ -21,7 +21,7 @@ whether **EasyPeasy** is for you or not.
 ### A touch of EasyPeasy
 The example below is quite simple but shows how effortless its implementation
 result using **EasyPeasy**.
-![touch](README/first_touch.png)
+![touch](README/first_touch.png?001)
 
 ### Features
 
@@ -116,7 +116,7 @@ that our view has a width greater than or equal to 200px.
 
 #### Multipliers
 There is a custom operator that eases the creation of a `NSLayoutConstraint` multiplier. 
-You can use it like this `Width(*2)` and means that the width of our view is two times 
+You can use it like this `width(*2)` and means that the width of our view is two times 
 *something*, we will mention later how to establish the relationship with that *something*.
 
 In addition, you can combine `multipliers` with `Equal`, `.GreaterThanOrEqual` and 
@@ -151,7 +151,7 @@ Attribute | Attribute | Attribute | Attribute
 Left | Right | Top | Bottom
 Leading | Trailing | CenterX | CenterY
 LeftMargin | RightMargin | TopMargin | BottomMargin
-LeadingMargin | TrailingMargin | CenterXWithinMargins | CenterYWithinMargins
+LeadingMargin | TrailingMargin | centerXWithinMargins | centerYWithinMargins
 FirstBaseline | LastBaseline | -- | --
 
 As well as the **DimensionAttributes** have the `like:` method to establish
@@ -165,8 +165,8 @@ The example below positions `contentLabel` 10px under `headerView` with the same
 left margin as `headerView`.
 ```swift
 contentLabel <- [
-	Top(10).to(headerView),
-	Left().to(headerView, .Left)
+	top(10).to(headerView),
+	left().to(headerView, .left)
 ]
 ```
 
@@ -189,7 +189,7 @@ view <- Size().like(referenceView)
 // Apply width = 100 and height = 100 constraints
 view <- Size(100)
 // Apply width = 200 and height = 100 constraints
-view <- Size(CGSize(width: 200, height: 100))
+view <- Size(CGsize(width: 200, height: 100))
 ```
 
 * `Edges`: This attribute creates `Left`, `Right`, `Top` and `Bottom` attributes
@@ -224,7 +224,7 @@ view <- Margins(10)
 view <- Margins(UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
 ```
 
-* `CenterWithinMargins`: It creates `CenterXWithinMargins` and `CenterYWithinMargins`
+* `centerWithinMargins(`: It creates `centerXWithinMargins` and `centerYWithinMargins`
 attributes. Examples:
 ```swift
 // Apply centerXWithinMargins = 0 and centerYWithinMargins = 0 constraints to its superview
@@ -239,21 +239,21 @@ view <- CenterWithinMargins(CGPoint(x: 0, y: 50))
 
 The `Priority` enum does the same function as `UILayoutPriority` and it's shaped
 by four cases:
-* `LowPriority`: it creates an *Auto Layout* priority with `Float` value `1`.
+* `lowPriority`: it creates an *Auto Layout* priority with `Float` value `1`.
 
-* `MediumPriority`: it creates an *Auto Layout* priority with `Float` value `500`.
+* `mediumPriority`: it creates an *Auto Layout* priority with `Float` value `500`.
 
-* `HighPriority`: it creates an *Auto Layout* priority with `Float` value `1000`.
+* `highPriority`: it creates an *Auto Layout* priority with `Float` value `1000`.
 
-* `CustomPriority`: it specifies the *Auto Layout* priority defined by the
-developer in the case associated value `value`. Example: `.CustomPriority(value: 750.0)`
+* `customPriority`: it specifies the *Auto Layout* priority defined by the
+developer in the case associated value `value`. Example: `.customPriority(value: 750.0)`
 
 In order to apply any of these priorities to an `Attribute`, the method
 `.with(priority: Priority)` must be used. The following example gives an
 `UILayoutPriority` of `500` to the `Top` `Attribute` applied to `view`:
 
 ```swift
-view <- Top(>=50).with(.MediumPriority)
+view <- Top(>=50).with(.mediumPriority)
 ```
 
 You can also apply a `Priority` to an array of `Attributes` (this operation will
@@ -263,7 +263,7 @@ override the priorities previously applied to an `Attribute`).
 view <- [
 	Width(200),
 	Height(200)
-].with(.MediumPriority)
+].with(.mediumPriority)
 ```
 
 ### Conditions
@@ -291,8 +291,8 @@ someView <- [
 	Top(10),
 	Bottom(10),
 	Width(250),
-	Left(10).when { HorizontalSizeClass(someView) == .Compact },
-	CenterX(0).when { HorizontalSizeClass(someView) == .Regular }
+	Left(10).when { HorizontalSizeClass(someView) == .compact },
+	CenterX(0).when { HorizontalSizeClass(someView) == .regular }
 ]
 ```
 

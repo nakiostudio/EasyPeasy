@@ -18,10 +18,10 @@ import AppKit
     `Attribute` that leads on the application of multiple
     `Attribute` objects
  */
-public class CompoundAttribute: Attribute {
+open class CompoundAttribute: Attribute {
     
     /// Array of attributes that shape the `CompoundAttribute`
-    public internal(set) var attributes: [Attribute] = []
+    open internal(set) var attributes: [Attribute] = []
     
     // MARK: Public methods
     
@@ -31,7 +31,7 @@ public class CompoundAttribute: Attribute {
          priority of the constraint
          - returns: the `Attribute` instance
      */
-    public override func with(priority: Priority) -> Self {
+    @discardableResult open override func with(_ priority: Priority) -> Self {
         super.with(priority)
         for attribute in self.attributes {
             attribute.with(priority)
@@ -46,7 +46,7 @@ public class CompoundAttribute: Attribute {
          installing a constraint
          - returns: the `Attribute` instance
      */
-    public override func when(closure: Condition?) -> Self {
+    @discardableResult open override func when(_ closure: Condition?) -> Self {
         super.when(closure)
         for attribute in self.attributes {
             attribute.when(closure)

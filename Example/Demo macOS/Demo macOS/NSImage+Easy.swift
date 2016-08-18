@@ -14,10 +14,10 @@ extension NSImage {
     
     func easy_tint(with color: NSColor) -> NSImage? {
         if let image = self.copy() as? NSImage {
-            let bounds = CGRect(origin: CGPointZero, size: self.size)
+            let bounds = CGRect(origin: CGPoint.zero, size: self.size)
             image.lockFocus()
             color.set()
-            NSRectFillUsingOperation(bounds, .CompositeSourceAtop)
+            NSRectFillUsingOperation(bounds, .sourceAtop)
             image.unlockFocus()
             return image
         }

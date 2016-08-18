@@ -23,8 +23,8 @@ class ItemTests: XCTestCase {
 
     func testThatOwningViewReturnsViewSuperview() {
         // given
-        let superview = UIView(frame: CGRectZero)
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect.zero)
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
         
         // when
@@ -38,7 +38,7 @@ class ItemTests: XCTestCase {
     @available (iOS 9.0, *)
     func testThatOwningViewReturnsLayoutGuideOwningView() {
         // given
-        let view = UIView(frame: CGRectZero)
+        let view = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         view.addLayoutGuide(layoutGuide)
         
@@ -52,8 +52,8 @@ class ItemTests: XCTestCase {
     
     func testThatConstraintsArrayReturnsViewConstraints() {
         // given
-        let superview = UIView(frame: CGRectZero)
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect.zero)
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
         
         // when
@@ -67,7 +67,7 @@ class ItemTests: XCTestCase {
     @available (iOS 9.0, *)
     func testThatConstraintsArrayReturnsLayoutGuideConstraints() {
         // given
-        let view = UIView(frame: CGRectZero)
+        let view = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         view.addLayoutGuide(layoutGuide)
         
@@ -82,7 +82,7 @@ class ItemTests: XCTestCase {
     @available (iOS 9.0, *)
     func testThatConstraintsArrayReturnsLayoutGuideConstraintsOwnedByGuide() {
         // given
-        let view = UIView(frame: CGRectZero)
+        let view = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         view.addLayoutGuide(layoutGuide)
         
@@ -103,7 +103,7 @@ class ItemTests: XCTestCase {
                 }
             }
             
-            private var owningView: View?
+            fileprivate var owningView: View?
             
         }
         let testClassInstance = TestClass()

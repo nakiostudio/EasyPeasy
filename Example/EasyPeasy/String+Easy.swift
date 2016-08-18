@@ -1,3 +1,4 @@
+
 // The MIT License (MIT) - Copyright (c) 2016 Carlos Vidal
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -12,15 +13,15 @@ import Foundation
 
 extension String {
     
-    private static let regex = try! NSRegularExpression(
+    fileprivate static let regex = try! NSRegularExpression(
         pattern: "#\\w+",
-        options: .CaseInsensitive
+        options: .caseInsensitive
     )
     
     func easy_hashtagRanges() -> [NSRange] {
-        let matches = String.regex.matchesInString(
-            self,
-            options: .ReportCompletion,
+		let matches = String.regex.matches(
+			in: self,
+            options: .reportCompletion,
             range: NSMakeRange(0, self.characters.count)
         )
         

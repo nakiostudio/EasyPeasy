@@ -30,7 +30,7 @@ extension PositionAttribute {
         relationship to
         - returns: The current `Attribute` instance
      */
-    public func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func to(_ view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = view
         self.referenceAttribute = attribute
         return self
@@ -48,7 +48,7 @@ extension PositionAttribute {
         relationship to
         - returns: The current `Attribute` instance
      */
-    public func to(layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func to(_ layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutSupport
         self.referenceAttribute = attribute
         return self
@@ -67,7 +67,7 @@ extension PositionAttribute {
         - returns: The current `Attribute` instance
      */
     @available(iOS 9.0, *)
-    public func to(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func to(_ layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutGuide
         self.referenceAttribute = attribute
         return self
@@ -79,11 +79,11 @@ extension PositionAttribute {
      The object’s left margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class LeftMargin: PositionAttribute {
+open class LeftMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .LeftMargin
+    open override var createAttribute: ReferenceAttribute {
+        return .leftMargin
     }
     
 }
@@ -92,11 +92,11 @@ public class LeftMargin: PositionAttribute {
      The object’s right margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class RightMargin: PositionAttribute {
+open class RightMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .RightMargin
+    open override var createAttribute: ReferenceAttribute {
+        return .rightMargin
     }
     
 }
@@ -105,11 +105,11 @@ public class RightMargin: PositionAttribute {
      The object’s top margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class TopMargin: PositionAttribute {
+open class TopMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .TopMargin
+    open override var createAttribute: ReferenceAttribute {
+        return .topMargin
     }
     
 }
@@ -118,11 +118,11 @@ public class TopMargin: PositionAttribute {
      The object’s bottom margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class BottomMargin: PositionAttribute {
+open class BottomMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .BottomMargin
+    open override var createAttribute: ReferenceAttribute {
+        return .bottomMargin
     }
     
 }
@@ -131,11 +131,11 @@ public class BottomMargin: PositionAttribute {
      The object’s leading margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class LeadingMargin: PositionAttribute {
+open class LeadingMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .LeadingMargin
+    open override var createAttribute: ReferenceAttribute {
+        return .leadingMargin
     }
     
 }
@@ -144,11 +144,11 @@ public class LeadingMargin: PositionAttribute {
      The object’s trailing margin. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class TrailingMargin: PositionAttribute {
+open class TrailingMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .TrailingMargin
+    open override var createAttribute: ReferenceAttribute {
+        return .trailingMargin
     }
     
 }
@@ -157,11 +157,11 @@ public class TrailingMargin: PositionAttribute {
      The center along the x-axis between the object’s left and right margin.
      For UIView objects, the margins are defined by their layoutMargins property
  */
-public class CenterXWithinMargins: PositionAttribute {
+open class CenterXWithinMargins: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .CenterXWithinMargins
+    open override var createAttribute: ReferenceAttribute {
+        return .centerXWithinMargins
     }
     
 }
@@ -170,11 +170,11 @@ public class CenterXWithinMargins: PositionAttribute {
      The center along the y-axis between the object’s top and bottom margin.
      For UIView objects, the margins are defined by their layoutMargins property
  */
-public class CenterYWithinMargins: PositionAttribute {
+open class CenterYWithinMargins: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .CenterYWithinMargins
+    open override var createAttribute: ReferenceAttribute {
+        return .centerYWithinMargins
     }
     
 }
@@ -183,7 +183,7 @@ public class CenterYWithinMargins: PositionAttribute {
      The object’s margins. For UIView objects, the margins are defined
      by their layoutMargins property
  */
-public class Margins: CompoundAttribute {
+open class Margins: CompoundAttribute {
     
     /**
         Initializer that creates the sub `Attribute` objects
@@ -260,7 +260,7 @@ public class Margins: CompoundAttribute {
      The center along the x-axis between the object’s left and right margin.
      For UIView objects, the margins are defined by their layoutMargins property
  */
-public class CenterWithinMargins: CompoundAttribute {
+open class CenterWithinMargins: CompoundAttribute {
     
     /**
         Initializer that creates the sub `Attribute` objects

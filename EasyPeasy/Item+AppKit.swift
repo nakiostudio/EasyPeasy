@@ -25,11 +25,7 @@ extension NSView: Item {
     /// depending on the class conforming the protocol
     public var owningView: View? {
         // Owning view for `NSView` is the `superview`
-        if let view = self as? View {
-            return view.superview
-        }
-        
-        return nil
+		return self.superview
     }
     
 }

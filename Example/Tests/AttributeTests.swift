@@ -23,10 +23,10 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatAttributeIsInstalled() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         
         let numberOfPreviousConstraints = viewA.constraints.count
@@ -44,10 +44,10 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatAttributeIsInstalledWhenItsOwnedByTheSuperview() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         
         let numberOfPreviousConstraints = superview.constraints.count
@@ -64,10 +64,10 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatAttributeWithFalseConditionIsNotInstalledButAttributeStored() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         
         let numberOfPreviousConstraints = viewA.constraints.count
@@ -82,10 +82,10 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatAttributeWithFalseConditionIsNotInstalledButAttributeStoredAndItsOwnedByTheSuperview() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         
         let numberOfPreviousConstraints = superview.constraints.count
@@ -100,10 +100,10 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatInstallationOfAConflictingAttributeReplacesTheInitialAttribute() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         let attribute = Width(120)
         viewA <- attribute
@@ -126,10 +126,10 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatInstallationOfAConflictingAttributeReplacesTheInitialAttributeAndItsOwnedByTheSuperview() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         let attribute = Top(120)
         viewA <- attribute
@@ -150,10 +150,10 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatInstallationOfAttributesDoesntAffectToAttributesAlreadyInstalledForADifferentView() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         viewB <- [
             Top(20).to(superview),
@@ -178,7 +178,7 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         viewA <- [
-            Top(200).to(viewB, .Top),
+            Top(200).to(viewB, .top),
             Left(20).to(superview),
             Width(220),
             Height(220)
@@ -190,7 +190,7 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatAttributesAppliedToViewWithNoSuperviewDoesNotAssert() {
         // given
-        let viewA = UIView(frame: CGRectZero)
+        let viewA = UIView(frame: CGRect.zero)
         
         // when
         viewA <- Width(120)
@@ -217,12 +217,12 @@ class Attribute_InstallTests: XCTestCase {
         let attributes = [Width(200), Height(500), Center(0)]
         
         // when
-        attributes.with(.CustomPriority(233.0))
+        attributes.with(.customPriority(233.0))
         
         // then
         for attribute in attributes {
             switch attribute.priority {
-            case let .CustomPriority(value):
+            case let .customPriority(value):
                 XCTAssertTrue(value == 233.0)
             default:
                 break
@@ -233,22 +233,22 @@ class Attribute_InstallTests: XCTestCase {
     @available (iOS 9.0, *)
     func testThatPositionRelationshipWithLayoutGuideIsEstablished() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let view = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let view = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addSubview(view)
         superview.addLayoutGuide(layoutGuide)
         layoutGuide <- Edges(0)
         
         // when
-        let constraints = view <- Left(10).to(layoutGuide, .Left)
+        let constraints = view <- Left(10).to(layoutGuide, .left)
         
         // then
         XCTAssertTrue(constraints.count == 1)
         XCTAssertTrue(constraints[0].firstItem === view)
-        XCTAssertTrue(constraints[0].firstAttribute == .Left)
+        XCTAssertTrue(constraints[0].firstAttribute == .left)
         XCTAssertTrue(constraints[0].secondItem === layoutGuide)
-        XCTAssertTrue(constraints[0].secondAttribute == .Left)
+        XCTAssertTrue(constraints[0].secondAttribute == .left)
         XCTAssertTrue(constraints[0].constant == 10)
         XCTAssertTrue(superview.constraints.count == 5)
         XCTAssertTrue((superview.constraints.filter { $0 === constraints[0] }).count == 1)
@@ -257,8 +257,8 @@ class Attribute_InstallTests: XCTestCase {
     @available (iOS 9.0, *)
     func testThatSizeRelationshipWithLayoutGuideIsEstablished() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let view = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let view = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addSubview(view)
         superview.addLayoutGuide(layoutGuide)
@@ -270,7 +270,7 @@ class Attribute_InstallTests: XCTestCase {
         // then
         XCTAssertTrue(constraints.count == 1)
         XCTAssertTrue(constraints[0].firstItem === view)
-        XCTAssertTrue(constraints[0].firstAttribute == .Width)
+        XCTAssertTrue(constraints[0].firstAttribute == .width)
         XCTAssertTrue(constraints[0].secondItem === layoutGuide)
         XCTAssertTrue(constraints[0].constant == 0)
         XCTAssertTrue(superview.constraints.count == 5)
@@ -280,8 +280,8 @@ class Attribute_InstallTests: XCTestCase {
     @available (iOS 9.0, *)
     func testThatCompoundSizeRelationshipWithLayoutGuideIsEstablished() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let view = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let view = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addSubview(view)
         superview.addLayoutGuide(layoutGuide)
@@ -293,11 +293,11 @@ class Attribute_InstallTests: XCTestCase {
         // then
         XCTAssertTrue(constraints.count == 2)
         XCTAssertTrue(constraints[0].firstItem === view)
-        XCTAssertTrue(constraints[0].firstAttribute == .Width)
+        XCTAssertTrue(constraints[0].firstAttribute == .width)
         XCTAssertTrue(constraints[0].secondItem === layoutGuide)
         XCTAssertTrue(constraints[0].constant == 0)
         XCTAssertTrue(constraints[1].firstItem === view)
-        XCTAssertTrue(constraints[1].firstAttribute == .Height)
+        XCTAssertTrue(constraints[1].firstAttribute == .height)
         XCTAssertTrue(constraints[1].secondItem === layoutGuide)
         XCTAssertTrue(constraints[1].constant == 0)
         XCTAssertTrue(superview.constraints.count == 6)
@@ -308,7 +308,7 @@ class Attribute_InstallTests: XCTestCase {
     func testThatPositionRelationshipWithControllersTopLayoutGuideIsEstablished() {
         // given
         let controller = UIViewController()
-        let view = UIView(frame: CGRectZero)
+        let view = UIView(frame: CGRect.zero)
         controller.view.addSubview(view)
         
         // when
@@ -317,9 +317,9 @@ class Attribute_InstallTests: XCTestCase {
         // then
         XCTAssertTrue(constraints.count == 1)
         XCTAssertTrue(constraints[0].firstItem === view)
-        XCTAssertTrue(constraints[0].firstAttribute == .Top)
+        XCTAssertTrue(constraints[0].firstAttribute == .top)
         XCTAssertTrue(constraints[0].secondItem === controller.topLayoutGuide)
-        XCTAssertTrue(constraints[0].secondAttribute == .Bottom)
+        XCTAssertTrue(constraints[0].secondAttribute == .bottom)
         XCTAssertTrue(constraints[0].constant == 10)
         XCTAssertTrue(controller.view.constraints.count == 3)
         XCTAssertTrue((controller.view.constraints.filter { $0 === constraints[0] }).count == 1)
@@ -328,7 +328,7 @@ class Attribute_InstallTests: XCTestCase {
     func testThatPositionRelationshipWithControllersBottomLayoutGuideIsEstablished() {
         // given
         let controller = UIViewController()
-        let view = UIView(frame: CGRectZero)
+        let view = UIView(frame: CGRect.zero)
         controller.view.addSubview(view)
         
         // when
@@ -337,9 +337,9 @@ class Attribute_InstallTests: XCTestCase {
         // then
         XCTAssertTrue(constraints.count == 1)
         XCTAssertTrue(constraints[0].firstItem === view)
-        XCTAssertTrue(constraints[0].firstAttribute == .Bottom)
+        XCTAssertTrue(constraints[0].firstAttribute == .bottom)
         XCTAssertTrue(constraints[0].secondItem === controller.bottomLayoutGuide)
-        XCTAssertTrue(constraints[0].secondAttribute == .Top)
+        XCTAssertTrue(constraints[0].secondAttribute == .top)
         XCTAssertTrue(constraints[0].constant == -20)
         XCTAssertTrue(controller.view.constraints.count == 3)
         XCTAssertTrue((controller.view.constraints.filter { $0 === constraints[0] }).count == 1)
@@ -347,14 +347,14 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatAGoodBunchOfAttributesHaveTheExpectedSignature() {
         // given
-        let a: Attribute = Width(>=10).with(.CustomPriority(300))
+        let a: Attribute = Width(>=10).with(.customPriority(300))
         let b: Attribute = Height(100)
-        let c: Attribute = Left(<=40).with(.LowPriority)
-        let d: Attribute = CenterXWithinMargins().with(.MediumPriority)
+        let c: Attribute = Left(<=40).with(.lowPriority)
+        let d: Attribute = CenterXWithinMargins().with(.mediumPriority)
         let e: Attribute = LastBaseline(>=30)
         let f: Attribute = BottomMargin()
         let g: Attribute = CenterYWithinMargins(<=40)
-        let h: Attribute = CenterX(>=0).with(.CustomPriority(244))
+        let h: Attribute = CenterX(>=0).with(.customPriority(244))
         
         // when
         // then

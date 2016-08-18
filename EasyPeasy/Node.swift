@@ -21,7 +21,7 @@ import AppKit
  */
 private enum Subnode {
     
-    case Left, Right, Center, Dimension
+    case left, right, center, dimension
     
 }
 
@@ -33,19 +33,19 @@ private enum Subnode {
 internal class Node {
     
     /// `Attribute` occupying the left `Subnode`
-    private(set) var left: Attribute?
+    fileprivate(set) var left: Attribute?
     
     /// `Attribute` occupying the right `Subnode`
-    private(set) var right: Attribute?
+    fileprivate(set) var right: Attribute?
     
     /// `Attribute` occupying the center `Subnode`
-    private(set) var center: Attribute?
+    fileprivate(set) var center: Attribute?
     
     /// `Attribute` occupying the dimension `Subnode`
-    private(set) var dimension: Attribute?
+    fileprivate(set) var dimension: Attribute?
     
     /// Array of inactive `Attributes` not occupying any `Subnode`
-    private(set) var inactiveAttributes: [Attribute] = []
+    fileprivate(set) var inactiveAttributes: [Attribute] = []
    
     /// `Attributes` occupying any `Subnode`
     internal var activeAttributes: [Attribute] {
@@ -66,7 +66,7 @@ internal class Node {
         to be activated/deactivated by the `Item` owning the current 
         `Node`
      */
-    func add(attribute attribute: Attribute) -> ActivationGroup? {
+    @discardableResult func add(attribute: Attribute) -> ActivationGroup? {
         guard attribute.shouldInstall() else {
             self.inactiveAttributes.append(attribute)
             return nil
@@ -79,19 +79,19 @@ internal class Node {
         // `Subnodes`
         let nodeAttribute = attribute.createAttribute.subnode
         switch nodeAttribute {
-        case .Left:
+        case .left:
             if self.left === attribute { return nil }
             deactivate = self.deactivate(attributes: [self.left, self.center].flatMap { $0 })
             self.left = attribute
-        case .Right:
+        case .right:
             if self.right === attribute { return nil }
             deactivate = self.deactivate(attributes: [self.right, self.center].flatMap { $0 })
             self.right = attribute
-        case .Center:
+        case .center:
             if self.center === attribute { return nil }
             deactivate = self.deactivate(attributes: [self.center, self.left, self.right].flatMap { $0 })
             self.center = attribute
-        case .Dimension:
+        case .dimension:
             if self.dimension === attribute { return nil }
             if let previousDimension = self.dimension {
                 deactivate = self.deactivate(attributes: [previousDimension])
@@ -119,7 +119,7 @@ internal class Node {
         - parameter attributes: `Attributes` to be deactivated
         - returns an array of `NSLayoutConstraints` to be deactivated
      */
-    func deactivate(attributes attributes: [Attribute]) -> [NSLayoutConstraint] {
+    @discardableResult func deactivate(attributes: [Attribute]) -> [NSLayoutConstraint] {
         guard attributes.count > 0 else {
             return []
         }
@@ -153,19 +153,19 @@ internal class Node {
         - returns an `ActivationGroup` gathering the `NSLayoutConstraints` 
         to be activated and deactivated
      */
-    func reload() -> ActivationGroup {
+    @discardableResult func reload() -> ActivationGroup {
         var activateConstraints: [NSLayoutConstraint] = []
         var deactivateConstraints: [NSLayoutConstraint] = []
         
         // Get the `Attributes` its condition changed to false in order to
         // deactivate the associated `NSLayoutConstraint`
         let deactivatedAttributes = self.activeAttributes.filter { $0.shouldInstall() == false }
-        deactivateConstraints.appendContentsOf(self.deactivate(attributes: deactivatedAttributes))
+        deactivateConstraints.append(contentsOf: self.deactivate(attributes: deactivatedAttributes))
         
         // Gather all the existing `Attributes` that need to be added
         // again to the `Node`
         var activeAttributes: [Attribute] = self.activeAttributes
-        activeAttributes.appendContentsOf(self.inactiveAttributes)
+        activeAttributes.append(contentsOf: self.inactiveAttributes)
         
         // Init `inactiveAttributes` with the `Attributes` which 
         // condition changed to false
@@ -175,8 +175,8 @@ internal class Node {
         // and re-evaluate `Conditions`
         activeAttributes.forEach { attribute in
             if let activationGroup = self.add(attribute: attribute) {
-                activateConstraints.appendContentsOf(activationGroup.0)
-                deactivateConstraints.appendContentsOf(activationGroup.1)
+                activateConstraints.append(contentsOf: activationGroup.0)
+                deactivateConstraints.append(contentsOf: activationGroup.1)
             }
         }
         
@@ -188,7 +188,7 @@ internal class Node {
         clears all the persisted `Attributes`
         - returns an array of `NSLayoutConstraints` to deactivate
      */
-    func clear() -> [NSLayoutConstraint] {
+    @discardableResult func clear() -> [NSLayoutConstraint] {
         let deactivateConstraints = self.deactivate(attributes: self.activeAttributes)
         self.inactiveAttributes = []
         
@@ -209,14 +209,14 @@ private extension ReferenceAttribute {
     /// every `Attribute` belongs to
     var subnode: Subnode {
         switch self {
-        case .Left, .Leading, .LeftMargin, .LeadingMargin, .Top, .FirstBaseline, .TopMargin:
-            return .Left
-        case .Right, .Trailing, .RightMargin, .TrailingMargin, .Bottom, .LastBaseline, .BottomMargin:
-            return .Right
-        case .CenterX, .CenterY, .CenterXWithinMargins, .CenterYWithinMargins:
-            return .Center
-        case .Width, .Height:
-            return .Dimension
+        case .left, .leading, .leftMargin, .leadingMargin, .top, .firstBaseline, .topMargin:
+            return .left
+        case .right, .trailing, .rightMargin, .trailingMargin, .bottom, .lastBaseline, .bottomMargin:
+            return .right
+        case .centerX, .centerY, .centerXWithinMargins, .centerYWithinMargins:
+            return .center
+        case .width, .height:
+            return .dimension
         }
     }
     
@@ -234,14 +234,14 @@ private extension ReferenceAttribute {
     /// every `Attribute` belongs to
     var subnode: Subnode {
         switch self {
-        case .Left, .Leading, .Top, .FirstBaseline:
-            return .Left
-        case .Right, .Trailing, .Bottom, .LastBaseline:
-            return .Right
-        case .CenterX, .CenterY:
-            return .Center
-        case .Width, .Height:
-            return .Dimension
+        case .left, .leading, .top, .firstBaseline:
+            return .left
+        case .right, .trailing, .bottom, .lastBaseline:
+            return .right
+        case .centerX, .centerY:
+            return .center
+        case .width, .height:
+            return .dimension
         }
     }
     

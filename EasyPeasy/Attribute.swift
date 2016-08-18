@@ -28,34 +28,34 @@ public typealias Condition = () -> Bool
     objects used by **EasyPeasy** to create and update
     `UIView` constraints
  */
-public class Attribute {
+open class Attribute {
     
     /// This property aggregates the `NSLayoutRelation`,
     /// the constant and the multiplier of a layout 
     /// constraint
-    public internal(set) var constant: Constant
+    open internal(set) var constant: Constant
     
     /// Priority level of the constraint
-    public internal(set) var priority: Priority
+    open internal(set) var priority: Priority
     
     /// Condition to evaluate in order to apply
     /// (or not) the constraint
-    public internal(set) var condition: Condition?
+    open internal(set) var condition: Condition?
     
     /// Target `UIView` of the constraint
-    public internal(set) weak var createItem: Item?
+    open internal(set) weak var createItem: Item?
     
     /// `Attribute` applied to the view
-    public var createAttribute: ReferenceAttribute {
+    open var createAttribute: ReferenceAttribute {
         debugPrint("This point shouldn't have been reached")
-        return .Width
+        return .width
     }
     
     /// Reference `UIView` of the constraint
-    public internal(set) weak var referenceItem: AnyObject?
+    open internal(set) weak var referenceItem: AnyObject?
     
     /// Referencce `Attribute` of the constraint
-    public internal(set) var referenceAttribute: ReferenceAttribute?
+    open internal(set) var referenceAttribute: ReferenceAttribute?
     
     /// Equivalent `NSLayoutConstraint`. It's `nil` unless the method
     /// `createConstraints(for item:_)` is called
@@ -70,11 +70,11 @@ public class Attribute {
         
         // Signature of the `Relation` of the passed `Attribute`
         switch self.constant.relation {
-        case .Equal:
+        case .equal:
             signature += "eq_"
-        case .GreaterThanOrEqual:
+        case .greaterThanOrEqual:
             signature += "gt_"
-        case .LessThanOrEqual:
+        case .lessThanOrEqual:
             signature += "lt_"
         }
         
@@ -92,8 +92,8 @@ public class Attribute {
         - returns: the `Attribute` instance created
      */
     public init() {
-        self.constant = Constant(value: 0.0, relation: .Equal, multiplier: 1.0)
-        self.priority = .HighPriority
+        self.constant = Constant(value: 0.0, relation: .equal, multiplier: 1.0)
+        self.priority = .highPriority
     }
     
     /**
@@ -104,8 +104,8 @@ public class Attribute {
         - returns: the `Attribute` instance created
      */
     public init(_ value: CGFloat) {
-        self.constant = Constant(value: value, relation: .Equal, multiplier: 1.0)
-        self.priority = .HighPriority
+        self.constant = Constant(value: value, relation: .equal, multiplier: 1.0)
+        self.priority = .highPriority
     }
     
     /**
@@ -118,7 +118,7 @@ public class Attribute {
      */
     public init(_ constant: Constant) {
         self.constant = constant
-        self.priority = .HighPriority
+        self.priority = .highPriority
     }
     
     // MARK: Public methods
@@ -129,7 +129,7 @@ public class Attribute {
         priority of the constraint
         - returns: the `Attribute` instance
      */
-    public func with(priority: Priority) -> Self {
+    @discardableResult open func with(_ priority: Priority) -> Self {
         self.priority = priority
         return self
     }
@@ -140,7 +140,7 @@ public class Attribute {
         installing a constraint
         - returns: the `Attribute` instance
      */
-    public func when(closure: Condition?) -> Self {
+    @discardableResult open func when(_ closure: Condition?) -> Self {
         self.condition = closure
         return self
     }
@@ -156,7 +156,7 @@ public class Attribute {
         - returns an `Array` of `NSLayoutConstraint` objects that will
         be installed on the `UIView` passed as parameter
      */
-    internal func createConstraints(for item: Item) -> [NSLayoutConstraint] {
+    @discardableResult internal func createConstraints(for item: Item) -> [NSLayoutConstraint] {
         guard let _ = item.owningView else {
             debugPrint("EasyPeasy Attribute cannot be applied to item \(item) as its superview/owningView is nil")
             return []
@@ -211,7 +211,7 @@ public class Attribute {
         
         // If reference view is the superview then return same attribute
         // as `createAttribute`
-        if let referenceItem = self.referenceItem where referenceItem === self.createItem?.owningView {
+        if let referenceItem = self.referenceItem , referenceItem === self.createItem?.owningView {
             return self.createAttribute
         }
         
@@ -238,7 +238,7 @@ public extension Array where Element: Attribute {
         the constraint
         - returns: the `Array` of `Attributes`
      */
-    public func with(priority: Priority) -> [Attribute] {
+    @discardableResult public func with(_ priority: Priority) -> [Attribute] {
         for attribute in self {
             attribute.priority = priority
         }
@@ -253,7 +253,7 @@ public extension Array where Element: Attribute {
         each constraint
         - returns: the `Array` of `Attributes`
      */
-    public func when(closure: Condition?) -> [Attribute] {
+    @discardableResult public func when(_ closure: Condition?) -> [Attribute] {
         for attribute in self {
             attribute.condition = closure
         }

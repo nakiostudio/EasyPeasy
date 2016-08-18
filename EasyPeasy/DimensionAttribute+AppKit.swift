@@ -31,7 +31,7 @@ extension DimensionAttribute {
         relationship to
         - returns: The current `Attribute` instance
      */
-    public func like(view: NSView, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func like(view: NSView, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = view
         self.referenceAttribute = attribute
         return self
@@ -51,7 +51,7 @@ extension DimensionAttribute {
         - returns: The current `Attribute` instance
      */
     @available (OSX 10.11, *)
-    public func like(layoutGuide: NSLayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func like(layoutGuide: NSLayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutGuide
         self.referenceAttribute = attribute
         return self
@@ -72,7 +72,7 @@ extension Size {
         - parameter view: The reference view
         - returns: The current `CompoundAttribute` instance
      */
-    public func like(view: NSView) -> Self {
+    @discardableResult public func like(view: NSView) -> Self {
         self.referenceItem = view
         for attr in self.attributes {
             attr.referenceItem = view
@@ -88,7 +88,7 @@ extension Size {
         - returns: The current `CompoundAttribute` instance
      */
     @available (OSX 10.11, *)
-    public func like(layoutGuide: NSLayoutGuide) -> Self {
+    @discardableResult public func like(layoutGuide: NSLayoutGuide) -> Self {
         self.referenceItem = layoutGuide
         for attr in self.attributes {
             attr.referenceItem = layoutGuide

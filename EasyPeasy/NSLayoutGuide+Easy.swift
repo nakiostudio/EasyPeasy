@@ -20,7 +20,7 @@ import AppKit
      - returns: The array of `NSLayoutConstraints` applied
  */
 @available (OSX 10.11, *)
-public func <- (lhs: NSLayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
+@discardableResult public func <- (lhs: NSLayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
     return lhs <- [rhs]
 }
 
@@ -32,7 +32,7 @@ public func <- (lhs: NSLayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
      - returns: The array of `NSLayoutConstraints` applied
  */
 @available (OSX 10.11, *)
-public func <- (lhs: NSLayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
+@discardableResult public func <- (lhs: NSLayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
     // Apply attributes and return the installed `NSLayoutConstraints`
     return lhs.apply(attributes: rhs)
 }

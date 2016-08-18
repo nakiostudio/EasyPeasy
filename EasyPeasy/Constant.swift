@@ -50,7 +50,7 @@ public struct Constant {
     
 }
 
-prefix operator == {}
+prefix operator ==
 
 /**
     Prefix operator that eases the creation of a `Constant` with a
@@ -58,11 +58,11 @@ prefix operator == {}
     - parameter rhs: Value for the `Constant`
     - returns: The resulting `Constant` struct
  */
-public prefix func == (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .Equal, multiplier: 1.0)
+@discardableResult public prefix func == (rhs: CGFloat) -> Constant {
+    return Constant(value: rhs, relation: .equal, multiplier: 1.0)
 }
 
-prefix operator >= {}
+prefix operator >=
 
 /**
     Prefix operator that eases the creation of a `Constant` with a
@@ -70,11 +70,11 @@ prefix operator >= {}
     - parameter rhs: Value for the `Constant`
     - returns: The resulting `Constant` struct
  */
-public prefix func >= (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .GreaterThanOrEqual, multiplier: 1.0)
+@discardableResult public prefix func >= (rhs: CGFloat) -> Constant {
+    return Constant(value: rhs, relation: .greaterThanOrEqual, multiplier: 1.0)
 }
 
-prefix operator <= {}
+prefix operator <=
 
 /**
     Prefix operator that eases the creation of a `Constant` with a
@@ -82,11 +82,11 @@ prefix operator <= {}
     - parameter rhs: Value for the `Constant`
     - returns: The resulting `Constant` struct
  */
-public prefix func <= (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .LessThanOrEqual, multiplier: 1.0)
+@discardableResult public prefix func <= (rhs: CGFloat) -> Constant {
+    return Constant(value: rhs, relation: .lessThanOrEqual, multiplier: 1.0)
 }
 
-prefix operator * {}
+prefix operator *
 
 /**
     Prefix operator that eases the creation of a `Constant` with `value = 0.0`
@@ -94,14 +94,14 @@ prefix operator * {}
     - parameter rhs: Value for the `multiplier`
     - returns: The resulting `Constant` struct
  */
-public prefix func * (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .Equal, multiplier: rhs)
+@discardableResult public prefix func * (rhs: CGFloat) -> Constant {
+    return Constant(value: rhs, relation: .equal, multiplier: rhs)
 }
 
 /**
     Infix operator that applies the `multiplier` at the right hand side to the
     `Constant` at the left hand side. 
-    i.e. `Width((>=200.0)*0.5)` creates a `Constant` with `multiplier = 0.5`,
+    i.e. `width((>=200.0)*0.5)` creates a `Constant` with `multiplier = 0.5`,
     `relation = .GreaterThanOrEqual` and `value = 200.0`.
     If the left hand side `Constant` already has a `multiplier` defined the 
     resulting `multiplier` will be the multiplication of both, previous and new
@@ -110,6 +110,6 @@ public prefix func * (rhs: CGFloat) -> Constant {
     - parameter rhs: a `CGFloat` multiplier
     - returns: A new `Constant` with the `multiplier` applied
  */
-public func * (lhs: Constant, rhs: CGFloat) -> Constant {
+@discardableResult public func * (lhs: Constant, rhs: CGFloat) -> Constant {
     return Constant(value: lhs.value, relation: lhs.relation, multiplier: lhs.multiplier * rhs)
 }

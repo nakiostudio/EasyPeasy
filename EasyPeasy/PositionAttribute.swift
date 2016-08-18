@@ -19,16 +19,13 @@ public typealias EdgeInsets = UIEdgeInsets
 
 import AppKit
     
-/// Alias of NSEdgeInsets
-public typealias EdgeInsets = NSEdgeInsets
-    
 #endif
 
 /**
      Superclass for those `Attribute` objects that imply position
      constraints like left, right, top and bottom margins
  */
-public class PositionAttribute: Attribute {
+open class PositionAttribute: Attribute {
     
     /**
         This method overrides super's `createConstraintForView` to set 
@@ -37,8 +34,8 @@ public class PositionAttribute: Attribute {
         - parameter view: `UIView` in which the generated 
           `NSLayoutConstraint` will be added
      */
-    override func createConstraints(for item: Item) -> [NSLayoutConstraint] {
-        if let superview = item.owningView where self.referenceItem == nil {
+    @discardableResult override func createConstraints(for item: Item) -> [NSLayoutConstraint] {
+        if let superview = item.owningView , self.referenceItem == nil {
             self.to(superview)
         }
         return super.createConstraints(for: item)
@@ -49,11 +46,11 @@ public class PositionAttribute: Attribute {
 /**
     The left side of the object’s alignment rectangle
  */
-public class Left: PositionAttribute {
+open class Left: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Left
+    open override var createAttribute: ReferenceAttribute {
+        return .left
     }
     
 }
@@ -61,11 +58,11 @@ public class Left: PositionAttribute {
 /**
     The right side of the object’s alignment rectangle
  */
-public class Right: PositionAttribute {
+open class Right: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Right
+    open override var createAttribute: ReferenceAttribute {
+        return .right
     }
     
 }
@@ -73,11 +70,11 @@ public class Right: PositionAttribute {
 /**
     The top of the object’s alignment rectangle
  */
-public class Top: PositionAttribute {
+open class Top: PositionAttribute {
     
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Top
+    open override var createAttribute: ReferenceAttribute {
+        return .top
     }
     
 }
@@ -85,11 +82,11 @@ public class Top: PositionAttribute {
 /**
     The bottom of the object’s alignment rectangle
  */
-public class Bottom: PositionAttribute {
+open class Bottom: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Bottom
+    open override var createAttribute: ReferenceAttribute {
+        return .bottom
     }
     
 }
@@ -97,11 +94,11 @@ public class Bottom: PositionAttribute {
 /**
     The leading edge of the object’s alignment rectangle
  */
-public class Leading: PositionAttribute {
+open class Leading: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Leading
+    open override var createAttribute: ReferenceAttribute {
+        return .leading
     }
     
 }
@@ -109,11 +106,11 @@ public class Leading: PositionAttribute {
 /**
     The trailing edge of the object’s alignment rectangle
  */
-public class Trailing: PositionAttribute {
+open class Trailing: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Trailing
+    open override var createAttribute: ReferenceAttribute {
+        return .trailing
     }
 
 }
@@ -121,11 +118,11 @@ public class Trailing: PositionAttribute {
 /**
     The center along the x-axis of the object’s alignment rectangle
  */
-public class CenterX: PositionAttribute {
+open class CenterX: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .CenterX
+    open override var createAttribute: ReferenceAttribute {
+        return .centerX
     }
     
 }
@@ -133,11 +130,11 @@ public class CenterX: PositionAttribute {
 /**
     The center along the y-axis of the object’s alignment rectangle
  */
-public class CenterY: PositionAttribute {
+open class CenterY: PositionAttribute {
  
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .CenterY
+    open override var createAttribute: ReferenceAttribute {
+        return .centerY
     }
 
 }
@@ -146,11 +143,11 @@ public class CenterY: PositionAttribute {
     The object’s baseline. For objects with more than one line of text, 
     this is the baseline for the topmost line of text
  */
-public class FirstBaseline: PositionAttribute {
+open class FirstBaseline: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .FirstBaseline
+    open override var createAttribute: ReferenceAttribute {
+        return .firstBaseline
     }
     
 }
@@ -159,11 +156,11 @@ public class FirstBaseline: PositionAttribute {
     The object’s baseline. For objects with more than one line of text, 
     this is the baseline for the bottommost line of text
  */
-public class LastBaseline: PositionAttribute {
+open class LastBaseline: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .LastBaseline
+    open override var createAttribute: ReferenceAttribute {
+        return .lastBaseline
     }
 
 }
@@ -171,7 +168,7 @@ public class LastBaseline: PositionAttribute {
 /**
     The size of the object’s rectangle
  */
-public class Edges: CompoundAttribute {
+open class Edges: CompoundAttribute {
     
     /**
         Initializer that creates the sub `Attribute` objects
@@ -247,7 +244,7 @@ public class Edges: CompoundAttribute {
 /**
     The center along the x and y axis of the object’s alignment rectangle
  */
-public class Center: CompoundAttribute {
+open class Center: CompoundAttribute {
     
     /**
         Initializer that creates the sub `Attribute` objects

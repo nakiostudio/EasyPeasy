@@ -13,13 +13,13 @@ import EasyPeasy
 
 class SideBarView: NSView {
     
-    private lazy var profileImageView: NSImageView = {
-        let imageView = NSImageView(frame: CGRectZero)
+    fileprivate lazy var profileImageView: NSImageView = {
+        let imageView = NSImageView(frame: CGRect.zero)
         return imageView
     }()
     
-    private lazy var composeImageView: NSImageView = {
-        let composeImageView = NSImageView(frame: CGRectZero)
+    fileprivate lazy var composeImageView: NSImageView = {
+        let composeImageView = NSImageView(frame: CGRect.zero)
         return composeImageView
     }()
     
@@ -33,10 +33,10 @@ class SideBarView: NSView {
         self.setup()
     }
     
-    override func drawRect(dirtyRect: NSRect) {
+    override func draw(_ rect: NSRect) {
         NSColor.easy_backgroundBlue().setFill()
-        NSRectFill(dirtyRect)
-        super.drawRect(dirtyRect)
+        NSRectFill(rect)
+        super.draw(rect)
     }
     
     override func layout() {
@@ -59,7 +59,7 @@ class SideBarView: NSView {
         // Creates an UImageView per string within tabs array
         for tabImage in tabs {
             // Create tab
-            let tab = NSImageView(frame: CGRectZero)
+            let tab = NSImageView(frame: CGRect.zero)
             tab.image = NSImage(named: tabImage)?.easy_tint(with: color)
             
             // Layout UIImageView
@@ -93,7 +93,7 @@ class SideBarView: NSView {
  */
 extension SideBarView {
     
-    private func setup() {
+    fileprivate func setup() {
         // Profile picture
         self.addSubview(self.profileImageView)
         self.profileImageView <- [

@@ -12,8 +12,8 @@
     
 import AppKit
 
-infix operator <- {}
-
+infix operator <-
+	
 /**
      Operator which applies the attribute given to the view located
      in the left hand side of it
@@ -21,7 +21,7 @@ infix operator <- {}
      - parameter rhs: Attribute applied to the `NSView`
      - returns: The array of `NSLayoutConstraints` applied
  */
-public func <- (lhs: NSView, rhs: Attribute) -> [NSLayoutConstraint] {
+@discardableResult public func <- (lhs: NSView, rhs: Attribute) -> [NSLayoutConstraint] {
     return lhs <- [rhs]
 }
 
@@ -32,7 +32,7 @@ public func <- (lhs: NSView, rhs: Attribute) -> [NSLayoutConstraint] {
      - parameter rhs: Attributes applied to the NSView
      - returns: The array of `NSLayoutConstraints` applied
  */
-public func <- (lhs: NSView, rhs: [Attribute]) -> [NSLayoutConstraint] {
+@discardableResult public func <- (lhs: NSView, rhs: [Attribute]) -> [NSLayoutConstraint] {
     // Disable autoresizing to constraints translation
     lhs.translatesAutoresizingMaskIntoConstraints = false
     
