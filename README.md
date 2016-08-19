@@ -116,7 +116,7 @@ that our view has a width greater than or equal to 200px.
 
 #### Multipliers
 There is a custom operator that eases the creation of a `NSLayoutConstraint` multiplier. 
-You can use it like this `width(*2)` and means that the width of our view is two times 
+You can use it like this `Width(*2)` and means that the width of our view is two times 
 *something*, we will mention later how to establish the relationship with that *something*.
 
 In addition, you can combine `multipliers` with `Equal`, `.GreaterThanOrEqual` and 
@@ -151,14 +151,14 @@ Attribute | Attribute | Attribute | Attribute
 Left | Right | Top | Bottom
 Leading | Trailing | CenterX | CenterY
 LeftMargin | RightMargin | TopMargin | BottomMargin
-LeadingMargin | TrailingMargin | centerXWithinMargins | centerYWithinMargins
+LeadingMargin | TrailingMargin | CenterXWithinMargins | CenterYWithinMargins
 FirstBaseline | LastBaseline | -- | --
 
 As well as the **DimensionAttributes** have the `like:` method to establish
 *Auto Layout* relationships, you can use a similar method to do the same with
 **PositionAttributes**. This method is:
 ```swift
-func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self
+func to(_ view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self
 ```
 
 The example below positions `contentLabel` 10px under `headerView` with the same
