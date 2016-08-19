@@ -165,8 +165,8 @@ The example below positions `contentLabel` 10px under `headerView` with the same
 left margin as `headerView`.
 ```swift
 contentLabel <- [
-	top(10).to(headerView),
-	left().to(headerView, .left)
+	Top(10).to(headerView),
+	Left().to(headerView, .left)
 ]
 ```
 
