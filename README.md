@@ -43,6 +43,7 @@ result using **EasyPeasy**.
 		* [CompoundAttributes](#compoundattributes)
 	* [Priorities](#priorities)
 	* [Conditions](#conditions)
+		*[ContextualConditions](#contextualconditions)
 	* [UILayoutGuides](#uilayoutguides)
 	* [Lastly](#lastly)
 		* [Updating constraints](#updating-constraints)
@@ -70,6 +71,7 @@ to your Cartfile:
 ```ruby
 github "nakiostudio/EasyPeasy"
 ```
+
 And run ` carthage update ` as usual.
 
 ### Compatibility
@@ -84,12 +86,14 @@ to report any issues you may find with different versions.
 to your views. For instance, to set a width of 200px to a view you would create
 an attribute of class `Width` with a constant value of `200`, then the attribute
 is applied to the view by using the custom *apply* operator `<-`.
+
 ```swift
 myView <- Width(200)
 ```
 
 Because our view without height is nothing we can apply multiple attributes at
 once as follows:
+
 ```swift
 myView <- [
 	Width(200),
@@ -134,6 +138,7 @@ attributes later).
 There are just two dimension attributes `Width` and `Height`. You can create an
 *Auto Layout* relationship between your view `DimensionAttribute` and another view
 by using the method `func like(view: UIView) -> Self`. Example:
+
 ```swift
 contentLabel <- Width().like(headerView)
 ```
@@ -157,12 +162,14 @@ FirstBaseline | LastBaseline | -- | --
 As well as the **DimensionAttributes** have the `like:` method to establish
 *Auto Layout* relationships, you can use a similar method to do the same with
 **PositionAttributes**. This method is:
+
 ```swift
 func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self
 ```
 
 The example below positions `contentLabel` 10px under `headerView` with the same
 left margin as `headerView`.
+
 ```swift
 contentLabel <- [
 	Top(10).to(headerView),
@@ -181,6 +188,7 @@ These are the `CompoundAttributes` available:
 * `Size`: As mentioned before this attribute will apply a `Width` and a `Height`
 attribute to the view. It can be initialized in many ways and depending on that
 the result may change. These are some examples:
+
 ```swift
 // Apply width = 0 and height = 0 constraints
 view <- Size()
@@ -194,6 +202,7 @@ view <- Size(CGSize(width: 200, height: 100))
 
 * `Edges`: This attribute creates `Left`, `Right`, `Top` and `Bottom` attributes
 at once. Examples:
+
 ```swift
 // Apply left = 0, right = 0, top = 0 and bottom = 0 constraints to its superview
 view <- Edges()
@@ -204,6 +213,7 @@ view <- Edges(UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
 ```
 
 * `Center`: It creates `CenterX` and `CenterY` attributes. Examples:
+
 ```swift
 // Apply centerX = 0 and centerY = 0 constraints to its superview
 view <- Center()
@@ -215,6 +225,7 @@ view <- Center(CGPoint(x: 0, y: 50))
 
 * `Margins`: This attribute creates `LeftMargin`, `RightMargin`, `TopMargin` and
 `BottomMargin` attributes at once. Examples:
+
 ```swift
 // Apply leftMargin = 0, rightMargin = 0, topMargin = 0 and bottomMargin = 0 constraints to its superview
 view <- Margins()
@@ -226,6 +237,7 @@ view <- Margins(UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
 
 * `CenterWithinMargins`: It creates `CenterXWithinMargins` and `CenterYWithinMargins`
 attributes. Examples:
+
 ```swift
 // Apply centerXWithinMargins = 0 and centerYWithinMargins = 0 constraints to its superview
 view <- CenterWithinMargins()
@@ -273,40 +285,31 @@ that evaluate whether a constraint should be applied or not to the view.
 The method `when(condition: Condition)` sets the `Condition` closure to an `Attribute`.
 
 There is plenty of use cases, the example below shows how to apply different
-constraints depending on the device:
+constraints depending on a custom variable:
+
 ```swift
+var isCenterAligned = true
+...
 view <- [
 	Top(10),
 	Bottom(10),
 	Width(250),
-	Left(10).when { Device() == .iPad },
-	CenterX(0).when { Device() == .iPhone }
+	Left(10).when { !isCenterAligned },
+	CenterX(0).when { isCenterAligned }
 ]
 ```
 
-You can also use size classes in conditions, for example:
+#### Condition re-evaluation
+These `Condition` closures can be re-evaluated during the lifecycle of a view,
+to do so you just need to call the convenience method `easy_reload()`.
 
-```swift
-someView <- [
-	Top(10),
-	Bottom(10),
-	Width(250),
-	Left(10).when { HorizontalSizeClass(someView) == .Compact },
-	CenterX(0).when { HorizontalSizeClass(someView) == .Regular }
-]
-```
-
-*Note:* the global function `Device()` and local function `HorizontalSizeClass()` 
-in the examples above are not implemented in the EasyPeasy framework.
-
-These `Condition` closures can be re-evaluated during the lifecycle of an `UIView`,
-to do so you just need to call the `UIView` convenience method `easy_reload()`.
 ```swift
 view.easy_reload()
 ```
 
 Bare in mind that these `Condition` closures are stored in properties therefore
 you need to capture those variables you access within the closure. For example:
+
 ```swift
 descriptionLabel <- [
 	Height(100).when { [weak self] in
@@ -322,13 +325,60 @@ override the `Conditions` previously applied to an `Attribute`).
 view <- [
 	Width(200),
 	Height(240)
-].when { Device() == .iPad }
+].when { isFirstItem  }
 
 view <- [
 	Width(120),
 	Height(140)
-].when { Device() == .iPhone }
+].when { !isFirstItem }
 ```
+
+#### ContextualConditions
+This iOS only feature is a variant of the `Condition` closures that receive no
+parameters and return a boolean value. Instead, a `Context` struct is passed
+as parameter providing some extra information based on the `UITraitCollection`
+of the `UIView` the `Attributes` are going to be applied to. 
+
+The properties available on this `Context` struct are:
+
+* `isPad`: true if the current device is iPad.
+* `isPhone`: true if the current device is iPhone.
+* `isHorizontalVerticalCompact`: true if both horizontal and vertical size
+classes are `.Compact`.
+* `isHorizontalCompact`: true if the horizontal size class is `.Compact`.
+* `isVerticalCompact`: true if the vertical size class is `.Compact`.
+* `isHorizontalVerticalRegular`: true if both horizontal and vertical size
+classes are `.Regular`.
+* `isHorizontalRegular`: true if the horizontal size class is `.Regular`.
+* `isVerticalRegular`: true if the vertical size class is `.Regular`.
+
+This is an example of `ContextualConditions` applied to an array of
+`Attributes`:
+
+```swift
+view <- [
+	Size(250),
+	Center(0)
+].when { $0.isHorizontalRegular }
+
+view <- [
+  Top(0),
+  Left(0),
+  Right(0),
+  Height(250)
+].when { $0.isHorizontalCompact }
+```
+
+##### ContextualCondition re-evaluation
+As we have seen before, you can re-evaluate a `Condition` closure by calling
+the `easy_reload()` convenience method. This also applies to 
+`ContextualConditions`, therefore if you want your constraints to be updated
+upon a change on your view `UITraitCollection` then you need to call the
+`easy_reload()` method within `traitCollectionDidChange(_:)`.
+
+Alternatively, **EasyPeasy** can do this step for you automatically. This is
+disabled by default as it requires method swizzling; to enable it simply
+**compile the framework** adding the compiler flags `-D EASY_RELOAD`.
 
 ### UILayoutGuides
 Since the version *v.0.2.3* (and for iOS 9 projects and above) **EasyPeasy**
@@ -338,6 +388,7 @@ integrates `UILayoutGuides` support.
 Applying a constraint to an `UILayoutGuide` is as easy as we have discussed in the
 previous sections, just apply the **EasyPeasy** attributes you want using the
 apply operator `<-`.
+
 ```swift
 func viewDidLoad() {
 	super.viewDidLoad()
@@ -363,6 +414,7 @@ As mentioned in the [Attributes](#attributes) section you can create constraint
 relationships between an `UIView` attribute and other `UIViews` attributes using
 the methods `to(_:_)` and `like(_:_)`. Now you can take advantage of those methods
 to create a relationship between your `UIView` attributes and an `UILayoutGuide`.
+
 ```swift
 let layoutGuide = UILayoutGuide()
 let separatorView: UIView
@@ -398,6 +450,7 @@ just need to apply another `Attribute` to your `UIView` of the same or different
 type. In the example below we have two methods, the one in which we setup our
 constraints `viewDidLoad()` and a method in which we want to update the `Top`
 attribute of our `headerView`.
+
 ```swift
 func viewDidLoad() {
 	super.viewDidLoad()
@@ -414,6 +467,7 @@ func didTapButton(sender: UIButton?) {
 	headerView <- Top(100)
 }
 ```
+
 That's it! we have updated our `Top` constraint without caring about keeping
 references or installing/uninstalling new constraints.
 
@@ -426,6 +480,7 @@ i.e. when replacing a `Left` and `Right` attributes with a `CenterX` attribute.
 #### Clearing constraints
 **EasyPeasy** provides a method extending `UIView` that clears all the constraints
 installed in an `UIView` by the framework. This method is `func easy_clear()`.
+
 ```swift
 view.easy_clear()
 ```
@@ -434,6 +489,7 @@ view.easy_clear()
 Animating constraints with **EasyPeasy** is very straightforward, just apply one
 or more `Attributes` to your view within an animation block and you are ready to
 go, without worrying about constraint conflicts. Example:
+
 ```swift
 UIView.animateWithDuration(0.3) {
 	view <- Top(10)
@@ -470,3 +526,4 @@ Carlos Vidal - [@carlostify](https://twitter.com/carlostify)
 ## License
 
 EasyPeasy is available under the MIT license. See the LICENSE file for more info.
+

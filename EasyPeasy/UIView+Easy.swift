@@ -41,3 +41,57 @@ public func <- (lhs: UIView, rhs: [Attribute]) -> [NSLayoutConstraint] {
 }
     
 #endif
+
+#if os(iOS) && EASY_RELOAD
+    
+/**
+    `UIView` extension that swizzles `traitCollectionDidChange` if the
+     compiler flag `EASY_RELOAD` has been defined
+ */
+public extension UIView {
+    
+    /**
+        `traitCollectionDidChange` swizzling
+     */
+    public override class func initialize() {
+        struct Static {
+            static var token: dispatch_once_t = 0
+        }
+        
+        if self !== UIView.self {
+            return
+        }
+        
+        dispatch_once(&Static.token) {
+            let originalSelector = #selector(traitCollectionDidChange(_:))
+            let swizzledSelector = #selector(easy_traitCollectionDidChange(_:))
+            let originalMethod = class_getInstanceMethod(self, originalSelector)
+            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
+            
+            if class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) {
+                class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+                return
+            }
+            
+            method_exchangeImplementations(originalMethod, swizzledMethod)
+        }
+    }
+    
+    /**
+        Performs `easy_reload` when the `UITraitCollection` has changed for
+        the current `UIView`, triggering the re-evaluation of the `Attributes`
+        applied
+     */
+    func easy_traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+        self.easy_traitCollectionDidChange(previousTraitCollection)
+        
+        // If at least one `Attribute has been applied to the current
+        // `UIView` then perform `easy_reload`
+        if self.traitCollection.containsTraitsInCollection(previousTraitCollection) == false && self.nodes.values.count > 0 {
+            self.easy_reload()
+        }
+    }
+    
+}
+    
+#endif

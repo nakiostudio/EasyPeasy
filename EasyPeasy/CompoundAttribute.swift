@@ -54,4 +54,21 @@ public class CompoundAttribute: Attribute {
         return self
     }
     
+    #if os(iOS)
+    /**
+        Sets the `when` closure of the `Attribute` and each one
+        of the `Attribute` objects shaping the `CompoundAttribute`
+        - parameter closure: `Closure` to be called before installing a
+        constraint
+        - returns: the `Attribute` instance
+     */
+    public override func when(closure: ContextualCondition?) -> Self {
+        super.when(closure)
+        for attribute in self.attributes {
+            attribute.when(closure)
+        }
+        return self
+    }
+    #endif
+    
 }
