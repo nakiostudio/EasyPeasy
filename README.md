@@ -43,7 +43,7 @@ result using **EasyPeasy**.
 		* [CompoundAttributes](#compoundattributes)
 	* [Priorities](#priorities)
 	* [Conditions](#conditions)
-    * [ContextualConditions](#contextualconditions)
+		*[ContextualConditions](#contextualconditions)
 	* [UILayoutGuides](#uilayoutguides)
 	* [Lastly](#lastly)
 		* [Updating constraints](#updating-constraints)

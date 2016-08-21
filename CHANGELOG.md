@@ -1,5 +1,28 @@
 # Changelog
 
+## v.1.2
+
+* Implemented `ContextualConditions`, a variant of the `Condition` closures 
+where a `Context` struct is passed as parameter to the closure providing some
+extra information (size class and device) based on the `UITraitCollection`
+of the `UIView` the `Attributes` are going to be applied to. Examples:
+
+```swift
+view <- [
+	Size(250),
+	Center(0)
+].when { $0.isHorizontalRegular }
+``` 
+
+```swift
+view <- [
+  Top(0),
+  Left(0),
+  Right(0),
+  Height(250)
+].when { $0.isPad }
+```
+
 ## v.1.1.1
 
 * Grouped deactivation of `NSLayoutConstraints`. Before, the deactivation of `NSLayoutConstraints` was taking place upon finding
