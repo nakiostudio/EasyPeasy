@@ -229,7 +229,8 @@ public class Attribute {
         // If there is a ContextualCondition then create the context
         // struct and call the closure
         #if os(iOS)
-        if let contextualCondition = self.condition as? ContextualCondition, view = self.createItem?.owningView {
+        let item = self.createItem?.owningView ?? self.createItem
+        if let contextualCondition = self.condition as? ContextualCondition, view = item as? View {
             return contextualCondition(Context(with: view.traitCollection))
         }
         #endif
