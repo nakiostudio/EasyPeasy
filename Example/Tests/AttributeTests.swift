@@ -452,4 +452,160 @@ class Attribute_InstallTests: XCTestCase {
         XCTAssertTrue(viewA.test_attributes.count == 2)
     }
     
+    func testThatConstraintIsCreatedForWidthAttributeNotInTheViewHierarchy() {
+        // given
+        let attribute = Width(20)
+        let view = UIView()
+        
+        // when
+        let constraints = attribute.createConstraints(for: view)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+    }
+    
+    func testThatConstraintIsCreatedForWidthAttributeInTheViewHierarchy() {
+        // given
+        let attribute = Width(20)
+        let view = UIView()
+        let superview = UIView()
+        superview.addSubview(view)
+        
+        // when
+        let constraints = attribute.createConstraints(for: view)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+    }
+    
+    func testThatConstraintIsCreatedForHeightAttributeNotInTheViewHierarchy() {
+        // given
+        let attribute = Height(20)
+        let view = UIView()
+        
+        // when
+        let constraints = attribute.createConstraints(for: view)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+    }
+    
+    func testThatConstraintIsCreatedForHeightAttributeInTheViewHierarchy() {
+        // given
+        let attribute = Height(20)
+        let view = UIView()
+        let superview = UIView()
+        superview.addSubview(view)
+        
+        // when
+        let constraints = attribute.createConstraints(for: view)
+        
+        // then
+        XCTAssertTrue(constraints.count == 1)
+    }
+    
+    func testThatConstraintAreNotCreatedForSomePositionAttributesNotInTheViewHierarchy() {
+        // given
+        let attributeA = Top(20)
+        let attributeB = Left(20)
+        let attributeC = Right(20)
+        let attributeD = Bottom(20)
+        let attributeE = CenterX(20)
+        let attributeF = CenterY(20)
+        let attributeG = Leading(20)
+        let attributeH = Trailing(20)
+        let attributeI = CenterXWithinMargins(20)
+        let attributeJ = CenterYWithinMargins(20)
+        let attributeK = LeftMargin(20)
+        let attributeL = RightMargin(20)
+        let attributeM = TopMargin(20)
+        let attributeN = BottomMargin(20)
+        let view = UIView()
+        
+        // when
+        let constraintsA = attributeA.createConstraints(for: view)
+        let constraintsB = attributeB.createConstraints(for: view)
+        let constraintsC = attributeC.createConstraints(for: view)
+        let constraintsD = attributeD.createConstraints(for: view)
+        let constraintsE = attributeE.createConstraints(for: view)
+        let constraintsF = attributeF.createConstraints(for: view)
+        let constraintsG = attributeG.createConstraints(for: view)
+        let constraintsH = attributeH.createConstraints(for: view)
+        let constraintsI = attributeI.createConstraints(for: view)
+        let constraintsJ = attributeJ.createConstraints(for: view)
+        let constraintsK = attributeK.createConstraints(for: view)
+        let constraintsL = attributeL.createConstraints(for: view)
+        let constraintsM = attributeM.createConstraints(for: view)
+        let constraintsN = attributeN.createConstraints(for: view)
+        
+        // then
+        XCTAssertTrue(constraintsA.count == 0)
+        XCTAssertTrue(constraintsB.count == 0)
+        XCTAssertTrue(constraintsC.count == 0)
+        XCTAssertTrue(constraintsD.count == 0)
+        XCTAssertTrue(constraintsE.count == 0)
+        XCTAssertTrue(constraintsF.count == 0)
+        XCTAssertTrue(constraintsG.count == 0)
+        XCTAssertTrue(constraintsH.count == 0)
+        XCTAssertTrue(constraintsI.count == 0)
+        XCTAssertTrue(constraintsJ.count == 0)
+        XCTAssertTrue(constraintsK.count == 0)
+        XCTAssertTrue(constraintsL.count == 0)
+        XCTAssertTrue(constraintsM.count == 0)
+        XCTAssertTrue(constraintsN.count == 0)
+    }
+    
+    func testThatConstrainAreCreatedForSomePositionAttributesNotInTheViewHierarchy() {
+        // given
+        let attributeA = Top(20)
+        let attributeB = Left(20)
+        let attributeC = Right(20)
+        let attributeD = Bottom(20)
+        let attributeE = CenterX(20)
+        let attributeF = CenterY(20)
+        let attributeG = Leading(20)
+        let attributeH = Trailing(20)
+        let attributeI = CenterXWithinMargins(20)
+        let attributeJ = CenterYWithinMargins(20)
+        let attributeK = LeftMargin(20)
+        let attributeL = RightMargin(20)
+        let attributeM = TopMargin(20)
+        let attributeN = BottomMargin(20)
+        let view = UIView()
+        let superview = UIView()
+        superview.addSubview(view)
+        
+        // when
+        let constraintsA = attributeA.createConstraints(for: view)
+        let constraintsB = attributeB.createConstraints(for: view)
+        let constraintsC = attributeC.createConstraints(for: view)
+        let constraintsD = attributeD.createConstraints(for: view)
+        let constraintsE = attributeE.createConstraints(for: view)
+        let constraintsF = attributeF.createConstraints(for: view)
+        let constraintsG = attributeG.createConstraints(for: view)
+        let constraintsH = attributeH.createConstraints(for: view)
+        let constraintsI = attributeI.createConstraints(for: view)
+        let constraintsJ = attributeJ.createConstraints(for: view)
+        let constraintsK = attributeK.createConstraints(for: view)
+        let constraintsL = attributeL.createConstraints(for: view)
+        let constraintsM = attributeM.createConstraints(for: view)
+        let constraintsN = attributeN.createConstraints(for: view)
+        
+        // then
+        XCTAssertTrue(constraintsA.count == 1)
+        XCTAssertTrue(constraintsB.count == 1)
+        XCTAssertTrue(constraintsC.count == 1)
+        XCTAssertTrue(constraintsD.count == 1)
+        XCTAssertTrue(constraintsE.count == 1)
+        XCTAssertTrue(constraintsF.count == 1)
+        XCTAssertTrue(constraintsG.count == 1)
+        XCTAssertTrue(constraintsH.count == 1)
+        XCTAssertTrue(constraintsI.count == 1)
+        XCTAssertTrue(constraintsJ.count == 1)
+        XCTAssertTrue(constraintsK.count == 1)
+        XCTAssertTrue(constraintsL.count == 1)
+        XCTAssertTrue(constraintsM.count == 1)
+        XCTAssertTrue(constraintsN.count == 1)
+    }
+    
 }
