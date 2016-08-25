@@ -1,5 +1,10 @@
 # Changelog
 
+## v.1.2.1
+
+* Now you can apply `DimensionAttributes`, like `Width`, `Height` and `Size`,
+to views not in the view hierarchy, i.e. when `superview == nil`.
+
 ## v.1.2
 
 * Implemented `ContextualConditions`, a variant of the `Condition` closures 
