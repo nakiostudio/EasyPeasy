@@ -1,8 +1,12 @@
 # Changelog
 
+## v.1.3.1
+
+* Fixed `podspec`.
+
 ## v.1.3
 
-* Swift 2.3 compatibility
+* Swift 2.3 compatibility.
 
 ## v.1.2.1
 
