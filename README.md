@@ -60,7 +60,7 @@ EasyPeasy is being updated in order to support the latest Swift versions, right
 now the library is compatible with Swift 2.2 and 2.3.
 
 * To work with Swift 2.2 use EasyPeasy `v.1.2.1` or earlier versions of the library.
-* To work with Swift 2.3 use EasyPeasy `v.1.3`.
+* To work with Swift 2.3 use EasyPeasy `v.1.3.1`.
 * To work with Swift 3 fetch the library from the experimental branch `swift-3` 
 (thanks [Bas van Kuijck](https://github.com/basvankuijck)).
 
