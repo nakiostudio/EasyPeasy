@@ -1,5 +1,9 @@
 # Changelog
 
+## v.1.3
+
+* Swift 2.3 compatibility
+
 ## v.1.2.1
 
 * Now you can apply `DimensionAttributes`, like `Width`, `Height` and `Size`,
