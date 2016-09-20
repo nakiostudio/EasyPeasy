@@ -19,16 +19,13 @@ public typealias EdgeInsets = UIEdgeInsets
 
 import AppKit
     
-/// Alias of NSEdgeInsets
-public typealias EdgeInsets = NSEdgeInsets
-    
 #endif
 
 /**
      Superclass for those `Attribute` objects that imply position
      constraints like left, right, top and bottom margins
  */
-public class PositionAttribute: Attribute {
+open class PositionAttribute: Attribute {
     
     /**
         This method overrides super's `createConstraintForView` to set 
@@ -37,8 +34,8 @@ public class PositionAttribute: Attribute {
         - parameter view: `UIView` in which the generated 
           `NSLayoutConstraint` will be added
      */
-    override func createConstraints(for item: Item) -> [NSLayoutConstraint] {
-        if let superview = item.owningView where self.referenceItem == nil {
+    @discardableResult override func createConstraints(for item: Item) -> [NSLayoutConstraint] {
+        if let superview = item.owningView, self.referenceItem == nil {
             self.to(superview)
         }
         return super.createConstraints(for: item)
@@ -53,7 +50,7 @@ public class Left: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .Left
+        return .left
     }
     
 }
@@ -65,7 +62,7 @@ public class Right: PositionAttribute {
 
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .Right
+        return .right
     }
     
 }
@@ -77,7 +74,7 @@ public class Top: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .Top
+        return .top
     }
     
 }
@@ -89,7 +86,7 @@ public class Bottom: PositionAttribute {
 
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .Bottom
+        return .bottom
     }
     
 }
@@ -97,11 +94,11 @@ public class Bottom: PositionAttribute {
 /**
     The leading edge of the object’s alignment rectangle
  */
-public class Leading: PositionAttribute {
+open class Leading: PositionAttribute {
 
     /// `Attribute` applied to the view
-    public override var createAttribute: ReferenceAttribute {
-        return .Leading
+    open override var createAttribute: ReferenceAttribute {
+        return .leading
     }
     
 }
@@ -113,7 +110,7 @@ public class Trailing: PositionAttribute {
 
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .Trailing
+        return .trailing
     }
 
 }
@@ -125,7 +122,7 @@ public class CenterX: PositionAttribute {
 
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .CenterX
+        return .centerX
     }
     
 }
@@ -137,7 +134,7 @@ public class CenterY: PositionAttribute {
  
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .CenterY
+        return .centerY
     }
 
 }
@@ -150,7 +147,7 @@ public class FirstBaseline: PositionAttribute {
 
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .FirstBaseline
+        return .firstBaseline
     }
     
 }
@@ -163,7 +160,7 @@ public class LastBaseline: PositionAttribute {
 
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .LastBaseline
+        return .lastBaseline
     }
 
 }

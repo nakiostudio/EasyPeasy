@@ -46,20 +46,20 @@ public struct Context {
         Given an `UITraitCollection` object populates device and size class
         helper properties
      */
-    internal init(with traitCollection: UITraitCollection) {
+    init(with traitCollection: UITraitCollection) {
         // Device info
-        self.isPad = traitCollection.userInterfaceIdiom == .Pad
-        self.isPhone = UIDevice.currentDevice().userInterfaceIdiom == .Phone
+        self.isPad = traitCollection.userInterfaceIdiom == .pad
+        self.isPhone = UIDevice.current.userInterfaceIdiom == .phone
         
         // Compact size classes
-        self.isHorizontalCompact = traitCollection.horizontalSizeClass == .Compact
-        self.isVerticalCompact = traitCollection.verticalSizeClass == .Compact
-        self.isHorizontalVerticalCompact = traitCollection.horizontalSizeClass == .Compact && traitCollection.verticalSizeClass == .Compact
+        self.isHorizontalCompact = traitCollection.horizontalSizeClass == .compact
+        self.isVerticalCompact = traitCollection.verticalSizeClass == .compact
+        self.isHorizontalVerticalCompact = traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .compact
         
         // Regular size classes
-        self.isVerticalRegular = traitCollection.verticalSizeClass == .Regular
-        self.isHorizontalRegular = traitCollection.horizontalSizeClass == .Regular
-        self.isHorizontalVerticalRegular = traitCollection.horizontalSizeClass == .Regular && traitCollection.verticalSizeClass == .Regular
+        self.isVerticalRegular = traitCollection.verticalSizeClass == .regular
+        self.isHorizontalRegular = traitCollection.horizontalSizeClass == .regular
+        self.isHorizontalVerticalRegular = traitCollection.horizontalSizeClass == .regular && traitCollection.verticalSizeClass == .regular
     }
     
 }
