@@ -17,21 +17,21 @@ import Foundation
  */
 public enum Priority {
     
-    case CustomPriority(Float)
-    case HighPriority
-    case MediumPriority
-    case LowPriority
+    case customPriority(Float)
+    case highPriority
+    case mediumPriority
+    case lowPriority
     
     /**
         `UILayoutPriority` equivalent to the current case
         - returns `UILayoutPriority`
      */
-    internal func layoutPriority() -> Float {
+    func layoutPriority() -> Float {
         switch self {
-        case .CustomPriority(let value): return value
-        case .HighPriority: return 1000.0
-        case .MediumPriority: return 500.0
-        case .LowPriority: return 1.0
+        case .customPriority(let value): return value
+        case .highPriority: return 1000.0
+        case .mediumPriority: return 500.0
+        case .lowPriority: return 1.0
         }
     }
     

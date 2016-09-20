@@ -1,5 +1,9 @@
 # Changelog
 
+## v.1.4
+
+* Swift 3 support.
+
 ## v.1.3.1
 
 * Fixed `podspec`.

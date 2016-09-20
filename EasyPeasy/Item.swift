@@ -14,14 +14,14 @@ import UIKit
 import AppKit
 #endif
 
-internal var easy_attributesReference: Int = 0
+var easy_attributesReference: Int = 0
 
 /**
     Typealias of a tuple grouping an array of `NSLayoutConstraints`
     to activate and another array of `NSLayoutConstraints` to
     deactivate
  */
-internal typealias ActivationGroup = ([NSLayoutConstraint], [NSLayoutConstraint])
+typealias ActivationGroup = ([NSLayoutConstraint], [NSLayoutConstraint])
 
 /**
     Protocol enclosing the objects a constraint will apply to
@@ -49,13 +49,13 @@ public extension Item {
         var deactivateConstraints: [NSLayoutConstraint] = []
         for node in self.nodes.values {
             let activationGroup = node.reload()
-            activateConstraints.appendContentsOf(activationGroup.0)
-            deactivateConstraints.appendContentsOf(activationGroup.1)
+            activateConstraints.append(contentsOf: activationGroup.0)
+            deactivateConstraints.append(contentsOf: activationGroup.1)
         }
         
         // Activate/deactivate the resulting `NSLayoutConstraints`
-        NSLayoutConstraint.deactivateConstraints(deactivateConstraints)
-        NSLayoutConstraint.activateConstraints(activateConstraints)
+        NSLayoutConstraint.deactivate(deactivateConstraints)
+        NSLayoutConstraint.activate(activateConstraints)
     }
     
     /**
@@ -65,12 +65,12 @@ public extension Item {
     public func easy_clear() {
         var deactivateConstraints: [NSLayoutConstraint] = []
         for node in self.nodes.values {
-            deactivateConstraints.appendContentsOf(node.clear())
+            deactivateConstraints.append(contentsOf: node.clear())
         }
         self.nodes = [:]
         
         // Deactivate the resulting `NSLayoutConstraints`
-        NSLayoutConstraint.deactivateConstraints(deactivateConstraints)
+        NSLayoutConstraint.deactivate(deactivateConstraints)
     }
     
 }
@@ -79,10 +79,10 @@ public extension Item {
     Internal extension that handles the storage and application 
     of `Attributes` in an `Item`
  */
-internal extension Item {
+extension Item {
     
     /// Dictionary persisting the `Nodes` related with this `Item`
-    internal var nodes: [String:Node] {
+    var nodes: [String:Node] {
         get {
             if let nodes = objc_getAssociatedObject(self, &easy_attributesReference) as? [String:Node] {
                 return nodes
@@ -105,32 +105,32 @@ internal extension Item {
         - parameter attributes: Array of `Attributes` to apply into the `Item`
         - returns the resulting `NSLayoutConstraints`
      */
-    internal func apply(attributes attributes: [Attribute]) -> [NSLayoutConstraint] {
+    func apply(attributes: [Attribute]) -> [NSLayoutConstraint] {
         var layoutConstraints: [NSLayoutConstraint] = []
         var activateConstraints: [NSLayoutConstraint] = []
         var deactivateConstraints: [NSLayoutConstraint] = []
         
         for attribute in attributes {
             if let compoundAttribute = attribute as? CompoundAttribute {
-                layoutConstraints.appendContentsOf(self.apply(attributes: compoundAttribute.attributes))
+                layoutConstraints.append(contentsOf: self.apply(attributes: compoundAttribute.attributes))
                 continue
             }
             
             if let activationGroup = self.apply(attribute: attribute) {
-                layoutConstraints.appendContentsOf(activationGroup.0)
-                activateConstraints.appendContentsOf(activationGroup.0)
-                deactivateConstraints.appendContentsOf(activationGroup.1)
+                layoutConstraints.append(contentsOf: activationGroup.0)
+                activateConstraints.append(contentsOf: activationGroup.0)
+                deactivateConstraints.append(contentsOf: activationGroup.1)
             }
         }
         
         // Activate/deactivate the `NSLayoutConstraints` returned by the different `Nodes`
-        NSLayoutConstraint.deactivateConstraints(deactivateConstraints)
-        NSLayoutConstraint.activateConstraints(activateConstraints)
+        NSLayoutConstraint.deactivate(deactivateConstraints)
+        NSLayoutConstraint.activate(activateConstraints)
         
         return layoutConstraints
     }
     
-    internal func apply(attribute attribute: Attribute) -> ActivationGroup? {
+    func apply(attribute: Attribute) -> ActivationGroup? {
         // Creates the `NSLayoutConstraint` of the `Attribute` holding
         // a reference to it from the `Attribute` objects
         attribute.createConstraints(for: self)

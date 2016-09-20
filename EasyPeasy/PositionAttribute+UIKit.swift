@@ -16,7 +16,7 @@ import UIKit
      PositionAttribute extension adding some convenience methods to operate with
      UIKit elements as `UIViews` or `UILayoutGuides`
  */
-extension PositionAttribute {
+public extension PositionAttribute {
     
     /**
         Establishes a position relationship between the `UIView` the attribute
@@ -30,7 +30,7 @@ extension PositionAttribute {
         relationship to
         - returns: The current `Attribute` instance
      */
-    public func to(view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func to(_ view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = view
         self.referenceAttribute = attribute
         return self
@@ -48,7 +48,7 @@ extension PositionAttribute {
         relationship to
         - returns: The current `Attribute` instance
      */
-    public func to(layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func to(_ layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutSupport
         self.referenceAttribute = attribute
         return self
@@ -67,7 +67,7 @@ extension PositionAttribute {
         - returns: The current `Attribute` instance
      */
     @available(iOS 9.0, *)
-    public func to(layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult public func to(_ layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutGuide
         self.referenceAttribute = attribute
         return self
@@ -83,7 +83,7 @@ public class LeftMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .LeftMargin
+        return .leftMargin
     }
     
 }
@@ -96,7 +96,7 @@ public class RightMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .RightMargin
+        return .rightMargin
     }
     
 }
@@ -109,7 +109,7 @@ public class TopMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .TopMargin
+        return .topMargin
     }
     
 }
@@ -122,7 +122,7 @@ public class BottomMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .BottomMargin
+        return .bottomMargin
     }
     
 }
@@ -135,7 +135,7 @@ public class LeadingMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .LeadingMargin
+        return .leadingMargin
     }
     
 }
@@ -148,7 +148,7 @@ public class TrailingMargin: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .TrailingMargin
+        return .trailingMargin
     }
     
 }
@@ -161,7 +161,7 @@ public class CenterXWithinMargins: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .CenterXWithinMargins
+        return .centerXWithinMargins
     }
     
 }
@@ -174,7 +174,7 @@ public class CenterYWithinMargins: PositionAttribute {
     
     /// `Attribute` applied to the view
     public override var createAttribute: ReferenceAttribute {
-        return .CenterYWithinMargins
+        return .centerYWithinMargins
     }
     
 }

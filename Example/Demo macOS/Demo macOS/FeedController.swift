@@ -16,15 +16,15 @@ import EasyPeasy
 // but this way is much easier to show the potential of EasyPeasy
 class FeedController: NSViewController {
     
-    private let stubData = TweetModel.stubData()
+    fileprivate let stubData = TweetModel.stubData()
     
-    private lazy var sideBarView: SideBarView = {
-        let view = SideBarView(frame: CGRectZero)
+    fileprivate lazy var sideBarView: SideBarView = {
+        let view = SideBarView(frame: CGRect.zero)
         return view
     }()
     
-    private lazy var feedView: FeedView = {
-        let view = FeedView(frame: CGRectZero)
+    fileprivate lazy var feedView: FeedView = {
+        let view = FeedView(frame: CGRect.zero)
         return view
     }()
     
@@ -51,7 +51,7 @@ class FeedController: NSViewController {
  */
 extension FeedController {
     
-    private func setup() {
+    fileprivate func setup() {
         // Side bar
         self.view.addSubview(self.sideBarView)
         self.sideBarView <- [

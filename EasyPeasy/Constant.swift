@@ -17,7 +17,7 @@ import AppKit
 /**
     Alias of `NSLayoutRelation`
  */
-typealias Relation = NSLayoutRelation
+public typealias Relation = NSLayoutRelation
 
 /**
     Struct that aggregates `NSLayoutRelation`, constant and multiplier of a 
@@ -26,13 +26,13 @@ typealias Relation = NSLayoutRelation
 public struct Constant {
     
     /// Value of the constant
-    let value: CGFloat
+    public let value: CGFloat
     
     /// Relation that applies to the `value` of the `Constant`
-    let relation: Relation
+    public let relation: Relation
     
     /// Multiplier of the `Constant`
-    let multiplier: CGFloat
+    public let multiplier: CGFloat
     
     /**
         This initializer creates a `Constant` with the `value`, `relations`
@@ -42,7 +42,7 @@ public struct Constant {
         - parameter multiplier: Multiplier of the `Constant`
         - returns: the `Constant` struct created
      */
-    init(value: CGFloat, relation: Relation, multiplier: CGFloat) {
+    public init(value: CGFloat, relation: Relation, multiplier: CGFloat) {
         self.value = value
         self.relation = relation
         self.multiplier = multiplier
@@ -50,66 +50,81 @@ public struct Constant {
     
 }
 
-prefix operator == {}
+/// Operator that eases the creation of a `Constant` with a `.Equal` relation
+prefix operator ==
+
+/// Operator that eases the creation of a `Constant` with a 
+/// `.GreaterThanOrEqual` relation
+prefix operator >=
+
+/// Operator that eases the creation of a `Constant` with a `.LessThanOrEqual` 
+/// relation
+prefix operator <=
+
+/// Operator that eases the creation of a `Constant` with `value = 0.0` and 
+/// `multiplier` the value specifier at the right hand side of the operator
+prefix operator *
 
 /**
-    Prefix operator that eases the creation of a `Constant` with a
-    `.Equal` relation
-    - parameter rhs: Value for the `Constant`
-    - returns: The resulting `Constant` struct
+    Definistion of custom `CGFloat` operators that ease the creation of `Constant`
+    structs
  */
-public prefix func == (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .Equal, multiplier: 1.0)
-}
+public extension CGFloat {
 
-prefix operator >= {}
+    /**
+        Prefix operator that eases the creation of a `Constant` with a
+        `.Equal` relation
+        - parameter rhs: Value for the `Constant`
+        - returns: The resulting `Constant` struct
+     */
+    public static prefix func == (rhs: CGFloat) -> Constant {
+        return Constant(value: rhs, relation: .equal, multiplier: 1.0)
+    }
 
-/**
-    Prefix operator that eases the creation of a `Constant` with a
-    `.GreaterThanOrEqual` relation
-    - parameter rhs: Value for the `Constant`
-    - returns: The resulting `Constant` struct
- */
-public prefix func >= (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .GreaterThanOrEqual, multiplier: 1.0)
-}
+    /**
+        Prefix operator that eases the creation of a `Constant` with a
+        `.GreaterThanOrEqual` relation
+        - parameter rhs: Value for the `Constant`
+        - returns: The resulting `Constant` struct
+     */
+    public static prefix func >= (rhs: CGFloat) -> Constant {
+        return Constant(value: rhs, relation: .greaterThanOrEqual, multiplier: 1.0)
+    }
 
-prefix operator <= {}
+    /**
+        Prefix operator that eases the creation of a `Constant` with a
+        `.LessThanOrEqual` relation
+        - parameter rhs: Value for the `Constant`
+        - returns: The resulting `Constant` struct
+     */
+    public static prefix func <= (rhs: CGFloat) -> Constant {
+        return Constant(value: rhs, relation: .lessThanOrEqual, multiplier: 1.0)
+    }
 
-/**
-    Prefix operator that eases the creation of a `Constant` with a
-    `.LessThanOrEqual` relation
-    - parameter rhs: Value for the `Constant`
-    - returns: The resulting `Constant` struct
- */
-public prefix func <= (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .LessThanOrEqual, multiplier: 1.0)
-}
+    /**
+        Prefix operator that eases the creation of a `Constant` with `value = 0.0`
+        and `multiplier` the value specifier at the right hand side of the operator.
+        - parameter rhs: Value for the `multiplier`
+        - returns: The resulting `Constant` struct
+     */
+    public static prefix func * (rhs: CGFloat) -> Constant {
+        return Constant(value: rhs, relation: .equal, multiplier: rhs)
+    }
 
-prefix operator * {}
+    /**
+        Infix operator that applies the `multiplier` at the right hand side to the
+        `Constant` at the left hand side. 
+        i.e. `Width((>=200.0)*0.5)` creates a `Constant` with `multiplier = 0.5`,
+        `relation = .GreaterThanOrEqual` and `value = 200.0`.
+        If the left hand side `Constant` already has a `multiplier` defined the 
+        resulting `multiplier` will be the multiplication of both, previous and new
+        `multipliers`.
+        - parameter lhs: a `Constant`
+        - parameter rhs: a `CGFloat` multiplier
+        - returns: A new `Constant` with the `multiplier` applied
+     */
+    public static func * (lhs: Constant, rhs: CGFloat) -> Constant {
+        return Constant(value: lhs.value, relation: lhs.relation, multiplier: lhs.multiplier * rhs)
+    }
 
-/**
-    Prefix operator that eases the creation of a `Constant` with `value = 0.0`
-    and `multiplier` the value specifier at the right hand side of the operator.
-    - parameter rhs: Value for the `multiplier`
-    - returns: The resulting `Constant` struct
- */
-public prefix func * (rhs: CGFloat) -> Constant {
-    return Constant(value: rhs, relation: .Equal, multiplier: rhs)
-}
-
-/**
-    Infix operator that applies the `multiplier` at the right hand side to the
-    `Constant` at the left hand side. 
-    i.e. `Width((>=200.0)*0.5)` creates a `Constant` with `multiplier = 0.5`,
-    `relation = .GreaterThanOrEqual` and `value = 200.0`.
-    If the left hand side `Constant` already has a `multiplier` defined the 
-    resulting `multiplier` will be the multiplication of both, previous and new
-    `multipliers`.
-    - parameter lhs: a `Constant`
-    - parameter rhs: a `CGFloat` multiplier
-    - returns: A new `Constant` with the `multiplier` applied
- */
-public func * (lhs: Constant, rhs: CGFloat) -> Constant {
-    return Constant(value: lhs.value, relation: lhs.relation, multiplier: lhs.multiplier * rhs)
 }

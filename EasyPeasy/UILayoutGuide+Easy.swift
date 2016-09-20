@@ -13,28 +13,34 @@
 import UIKit
 
 /**
-    Operator which applies the attribute given to the `UILayoutGuide`
-    located in the left hand side of it
-    - parameter lhs: `UILayoutGuide` the attributes will apply to
-    - parameter rhs: Attribute applied to the `UILayoutGuide`
-    - returns: The array of `NSLayoutConstraints` applied
+    Apply operator definitions
  */
 @available (iOS 9.0, *)
-public func <- (lhs: UILayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
-    return lhs <- [rhs]
-}
+public extension UILayoutGuide {
+    
+    /**
+        Operator which applies the attribute given to the `UILayoutGuide`
+        located in the left hand side of it
+        - parameter lhs: `UILayoutGuide` the attributes will apply to
+        - parameter rhs: Attribute applied to the `UILayoutGuide`
+        - returns: The array of `NSLayoutConstraints` applied
+     */
+    @discardableResult public static func <- (lhs: UILayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
+        return lhs <- [rhs]
+    }
 
-/**
-    Opeator which applies the attributes given to the `UILayoutGuide`
-    located in the left hand side of it
-    - parameter lhs: `UILayoutGuide` the attributes will apply to
-    - parameter rhs: Attributes applied to the `UILayoutGuide`
-    - returns: The array of `NSLayoutConstraints` applied
- */
-@available (iOS 9.0, *)
-public func <- (lhs: UILayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
-    // Apply attributes and return the installed `NSLayoutConstraints`
-    return lhs.apply(attributes: rhs)
-}
+    /**
+        Opeator which applies the attributes given to the `UILayoutGuide`
+        located in the left hand side of it
+        - parameter lhs: `UILayoutGuide` the attributes will apply to
+        - parameter rhs: Attributes applied to the `UILayoutGuide`
+        - returns: The array of `NSLayoutConstraints` applied
+     */
+    @discardableResult public static func <- (lhs: UILayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
+        // Apply attributes and return the installed `NSLayoutConstraints`
+        return lhs.apply(attributes: rhs)
+    }
 
+}
+    
 #endif

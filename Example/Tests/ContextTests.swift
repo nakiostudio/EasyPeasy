@@ -24,14 +24,14 @@ class ContextTests: XCTestCase {
     func testThatContextIsInitializedWithTheExpectedValues() {
         // given
         let view = UIView()
-        let isPad = UI_USER_INTERFACE_IDIOM() == .Pad
-        let isPhone = UI_USER_INTERFACE_IDIOM() == .Phone
-        let isCompact = view.traitCollection.verticalSizeClass == .Compact && view.traitCollection.horizontalSizeClass == .Compact
-        let isHorizontalCompact = view.traitCollection.horizontalSizeClass == .Compact
-        let isVerticalCompact = view.traitCollection.verticalSizeClass == .Compact
-        let isRegular = view.traitCollection.verticalSizeClass == .Regular && view.traitCollection.horizontalSizeClass == .Regular
-        let isHorizontalRegular = view.traitCollection.horizontalSizeClass == .Regular
-        let isVerticalRegular = view.traitCollection.verticalSizeClass == .Regular
+        let isPad = UI_USER_INTERFACE_IDIOM() == .pad
+        let isPhone = UI_USER_INTERFACE_IDIOM() == .phone
+        let isCompact = view.traitCollection.verticalSizeClass == .compact && view.traitCollection.horizontalSizeClass == .compact
+        let isHorizontalCompact = view.traitCollection.horizontalSizeClass == .compact
+        let isVerticalCompact = view.traitCollection.verticalSizeClass == .compact
+        let isRegular = view.traitCollection.verticalSizeClass == .regular && view.traitCollection.horizontalSizeClass == .regular
+        let isHorizontalRegular = view.traitCollection.horizontalSizeClass == .regular
+        let isVerticalRegular = view.traitCollection.verticalSizeClass == .regular
         
         // when
         let context = Context(with: view.traitCollection)
@@ -49,15 +49,15 @@ class ContextTests: XCTestCase {
     
     func testThatContextIsInitializedWithTheExpectedValuesUsingCustomRegularHorizontalTraits() {
         // given
-        let traitCollection = UITraitCollection(horizontalSizeClass: .Regular)
-        let isPad = UI_USER_INTERFACE_IDIOM() == .Pad
-        let isPhone = UI_USER_INTERFACE_IDIOM() == .Phone
-        let isCompact = traitCollection.verticalSizeClass == .Compact && traitCollection.horizontalSizeClass == .Compact
-        let isHorizontalCompact = traitCollection.horizontalSizeClass == .Compact
-        let isVerticalCompact = traitCollection.verticalSizeClass == .Compact
-        let isRegular = traitCollection.verticalSizeClass == .Regular && traitCollection.horizontalSizeClass == .Regular
-        let isHorizontalRegular = traitCollection.horizontalSizeClass == .Regular
-        let isVerticalRegular = traitCollection.verticalSizeClass == .Regular
+        let traitCollection = UITraitCollection(horizontalSizeClass: .regular)
+        let isPad = UI_USER_INTERFACE_IDIOM() == .pad
+        let isPhone = UI_USER_INTERFACE_IDIOM() == .phone
+        let isCompact = traitCollection.verticalSizeClass == .compact && traitCollection.horizontalSizeClass == .compact
+        let isHorizontalCompact = traitCollection.horizontalSizeClass == .compact
+        let isVerticalCompact = traitCollection.verticalSizeClass == .compact
+        let isRegular = traitCollection.verticalSizeClass == .regular && traitCollection.horizontalSizeClass == .regular
+        let isHorizontalRegular = traitCollection.horizontalSizeClass == .regular
+        let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
         let context = Context(with: traitCollection)
@@ -75,15 +75,15 @@ class ContextTests: XCTestCase {
     
     func testThatContextIsInitializedWithTheExpectedValuesUsingCustomRegularVerticalTraits() {
         // given
-        let traitCollection = UITraitCollection(verticalSizeClass: .Regular)
-        let isPad = UI_USER_INTERFACE_IDIOM() == .Pad
-        let isPhone = UI_USER_INTERFACE_IDIOM() == .Phone
-        let isCompact = traitCollection.verticalSizeClass == .Compact && traitCollection.horizontalSizeClass == .Compact
-        let isHorizontalCompact = traitCollection.horizontalSizeClass == .Compact
-        let isVerticalCompact = traitCollection.verticalSizeClass == .Compact
-        let isRegular = traitCollection.verticalSizeClass == .Regular && traitCollection.horizontalSizeClass == .Regular
-        let isHorizontalRegular = traitCollection.horizontalSizeClass == .Regular
-        let isVerticalRegular = traitCollection.verticalSizeClass == .Regular
+        let traitCollection = UITraitCollection(verticalSizeClass: .regular)
+        let isPad = UI_USER_INTERFACE_IDIOM() == .pad
+        let isPhone = UI_USER_INTERFACE_IDIOM() == .phone
+        let isCompact = traitCollection.verticalSizeClass == .compact && traitCollection.horizontalSizeClass == .compact
+        let isHorizontalCompact = traitCollection.horizontalSizeClass == .compact
+        let isVerticalCompact = traitCollection.verticalSizeClass == .compact
+        let isRegular = traitCollection.verticalSizeClass == .regular && traitCollection.horizontalSizeClass == .regular
+        let isHorizontalRegular = traitCollection.horizontalSizeClass == .regular
+        let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
         let context = Context(with: traitCollection)
@@ -101,15 +101,15 @@ class ContextTests: XCTestCase {
     
     func testThatContextIsInitializedWithTheExpectedValuesUsingCustomCompactVerticalTraits() {
         // given
-        let traitCollection = UITraitCollection(verticalSizeClass: .Compact)
-        let isPad = UI_USER_INTERFACE_IDIOM() == .Pad
-        let isPhone = UI_USER_INTERFACE_IDIOM() == .Phone
-        let isCompact = traitCollection.verticalSizeClass == .Compact && traitCollection.horizontalSizeClass == .Compact
-        let isHorizontalCompact = traitCollection.horizontalSizeClass == .Compact
-        let isVerticalCompact = traitCollection.verticalSizeClass == .Compact
-        let isRegular = traitCollection.verticalSizeClass == .Regular && traitCollection.horizontalSizeClass == .Regular
-        let isHorizontalRegular = traitCollection.horizontalSizeClass == .Regular
-        let isVerticalRegular = traitCollection.verticalSizeClass == .Regular
+        let traitCollection = UITraitCollection(verticalSizeClass: .compact)
+        let isPad = UI_USER_INTERFACE_IDIOM() == .pad
+        let isPhone = UI_USER_INTERFACE_IDIOM() == .phone
+        let isCompact = traitCollection.verticalSizeClass == .compact && traitCollection.horizontalSizeClass == .compact
+        let isHorizontalCompact = traitCollection.horizontalSizeClass == .compact
+        let isVerticalCompact = traitCollection.verticalSizeClass == .compact
+        let isRegular = traitCollection.verticalSizeClass == .regular && traitCollection.horizontalSizeClass == .regular
+        let isHorizontalRegular = traitCollection.horizontalSizeClass == .regular
+        let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
         let context = Context(with: traitCollection)
@@ -127,15 +127,15 @@ class ContextTests: XCTestCase {
     
     func testThatContextIsInitializedWithTheExpectedValuesUsingCustomCompactHorizontalTraits() {
         // given
-        let traitCollection = UITraitCollection(horizontalSizeClass: .Compact)
-        let isPad = UI_USER_INTERFACE_IDIOM() == .Pad
-        let isPhone = UI_USER_INTERFACE_IDIOM() == .Phone
-        let isCompact = traitCollection.verticalSizeClass == .Compact && traitCollection.horizontalSizeClass == .Compact
-        let isHorizontalCompact = traitCollection.horizontalSizeClass == .Compact
-        let isVerticalCompact = traitCollection.verticalSizeClass == .Compact
-        let isRegular = traitCollection.verticalSizeClass == .Regular && traitCollection.horizontalSizeClass == .Regular
-        let isHorizontalRegular = traitCollection.horizontalSizeClass == .Regular
-        let isVerticalRegular = traitCollection.verticalSizeClass == .Regular
+        let traitCollection = UITraitCollection(horizontalSizeClass: .compact)
+        let isPad = UI_USER_INTERFACE_IDIOM() == .pad
+        let isPhone = UI_USER_INTERFACE_IDIOM() == .phone
+        let isCompact = traitCollection.verticalSizeClass == .compact && traitCollection.horizontalSizeClass == .compact
+        let isHorizontalCompact = traitCollection.horizontalSizeClass == .compact
+        let isVerticalCompact = traitCollection.verticalSizeClass == .compact
+        let isRegular = traitCollection.verticalSizeClass == .regular && traitCollection.horizontalSizeClass == .regular
+        let isHorizontalRegular = traitCollection.horizontalSizeClass == .regular
+        let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
         let context = Context(with: traitCollection)
