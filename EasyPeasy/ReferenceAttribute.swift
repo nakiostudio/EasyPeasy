@@ -75,7 +75,7 @@ public enum ReferenceAttribute {
             default: return .width // This point should never be reached
             }
             #else
-            return .Width // This point should never be reached
+            return .width // This point should never be reached
             #endif
         }
     }
@@ -100,10 +100,10 @@ public enum ReferenceAttribute {
             return .firstBaseline
             #else
             if #available(OSX 10.11, *) {
-                return .FirstBaseline
+                return .firstBaseline
             }
             else {
-                return .LastBaseline
+                return .lastBaseline
             }
             #endif
         default:
@@ -120,7 +120,7 @@ public enum ReferenceAttribute {
             default: return .width // This point should never be reached
             }
             #else
-            return .Width // This point should never be reached
+            return .width // This point should never be reached
             #endif
         }
     }
