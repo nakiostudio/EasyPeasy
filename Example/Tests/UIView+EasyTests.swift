@@ -23,10 +23,10 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatReloadMethodReinstallsTheAttributesApplied() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         var shouldApply = false
         viewA <- Width(120).when { shouldApply }
@@ -43,10 +43,10 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatReloadBehaveAsExpectedAfterASecondPass() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         var shouldApply = false
         viewA <- Width(120).when { shouldApply }
@@ -64,8 +64,8 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatReloadMethodReinstallsTheAttributesAppliedAndThisIsOwnedByTheSuperview() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
         var shouldApply = false
         viewA <- [
@@ -98,8 +98,8 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatCompoundAttributesAreNotReturnedAndOnlyRegularAttributesStoredInView() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
 
         // when
@@ -115,8 +115,8 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatAttributesAreCorrectlyCleared() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
         viewA <- [
             BottomMargin(10),
@@ -141,10 +141,10 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatClearWhenViewDoesntHaveSuperviewDoesnotThrowAssertion() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         viewA <- [
             TopMargin(10),
@@ -174,10 +174,10 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatLayoutConstraintIsCreatedWithTheExpectedAttributes() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
-        let viewB = UIView(frame: CGRectZero)
+        let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         
         // when
@@ -185,7 +185,7 @@ class UIView_EasyTests: XCTestCase {
         let constraints = viewA <- attribute
         
         // then
-        XCTAssertTrue(constraints[0].firstAttribute == .Width)
+        XCTAssertTrue(constraints[0].firstAttribute == .width)
         XCTAssertTrue(constraints[0].firstItem === viewA)
         XCTAssertTrue(constraints[0].secondItem === viewB)
         XCTAssertTrue(constraints[0] === attribute.layoutConstraint!)
@@ -193,7 +193,7 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatNoConstraintIsCreatedWhenViewDoesNotHaveSuperview() {
         // given
-        let viewA = UIView(frame: CGRectZero)
+        let viewA = UIView(frame: CGRect.zero)
         
         // when
         let constraints = viewA <- Top(100)
@@ -204,8 +204,8 @@ class UIView_EasyTests: XCTestCase {
     
     func testThatConstraintsAreTheExpectedUponEasyClear() {
         // given
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
         viewA <- [ Left(), Size(20), Top() ]
         XCTAssertTrue(superview.constraints.count == 2)
@@ -222,8 +222,8 @@ class UIView_EasyTests: XCTestCase {
     func testThatConstraintsAreTheExpectedUponEasyReload() {
         // given
         var condition = true
-        let superview = UIView(frame: CGRectMake(0, 0, 400, 1000))
-        let viewA = UIView(frame: CGRectZero)
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
         viewA <- [
             Left().when { condition },

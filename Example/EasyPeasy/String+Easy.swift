@@ -14,13 +14,13 @@ extension String {
     
     private static let regex = try! NSRegularExpression(
         pattern: "#\\w+",
-        options: .CaseInsensitive
+        options: .caseInsensitive
     )
     
     func easy_hashtagRanges() -> [NSRange] {
-        let matches = String.regex.matchesInString(
-            self,
-            options: .ReportCompletion,
+        let matches = String.regex.matches(
+            in: self,
+            options: .reportCompletion,
             range: NSMakeRange(0, self.characters.count)
         )
         

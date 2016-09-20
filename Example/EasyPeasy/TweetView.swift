@@ -13,29 +13,29 @@ import EasyPeasy
 
 class TweetView: UIView {
 
-    private lazy var userInfoLabel: UILabel = {
-        let label = UILabel(frame: CGRectZero)
+    fileprivate lazy var userInfoLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
         return label
     }()
     
-    private lazy var displayableDateLabel: UILabel = {
-        let label = UILabel(frame: CGRectZero)
+    fileprivate lazy var displayableDateLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
         return label
     }()
     
-    private lazy var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRectZero)
-        imageView.backgroundColor = UIColor.lightGrayColor()
+    fileprivate lazy var thumbnailImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect.zero)
+        imageView.backgroundColor = UIColor.lightGray
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 6.0
         return imageView
     }()
     
-    private lazy var tweetLabel: UILabel = {
-        let label = UILabel(frame: CGRectZero)
+    fileprivate lazy var tweetLabel: UILabel = {
+        let label = UILabel(frame: CGRect.zero)
         label.numberOfLines = 0
-        label.setContentCompressionResistancePriority(100, forAxis: .Horizontal)
-        label.setContentCompressionResistancePriority(1000, forAxis: .Vertical)
+        label.setContentCompressionResistancePriority(100, for: .horizontal)
+        label.setContentCompressionResistancePriority(1000, for: .vertical)
         return label
     }()
     
@@ -53,7 +53,7 @@ class TweetView: UIView {
     
     // MARK: Public methods
     
-    func configureWithModel(tweetModel: TweetModel) {
+    func configureWithModel(_ tweetModel: TweetModel) {
         self.thumbnailImageView.image = tweetModel.thumbnail
         let userInfo = TweetView.attributedStringWithName(tweetModel.name, username: tweetModel.username)
         self.userInfoLabel.attributedText = userInfo
@@ -65,8 +65,8 @@ class TweetView: UIView {
     
     // MARK: Private methods
     
-    private func setup() {
-        self.backgroundColor = UIColor.whiteColor()
+    fileprivate func setup() {
+        self.backgroundColor = UIColor.white
         
         self.addSubview(self.thumbnailImageView)
         self.addSubview(self.displayableDateLabel)
@@ -81,7 +81,7 @@ class TweetView: UIView {
  */
 extension TweetView {
 
-    private func layout() {
+    fileprivate func layout() {
         // Thumbnail imageview
         self.thumbnailImageView <- [
             Size(52),
@@ -92,14 +92,14 @@ extension TweetView {
         // Displayable date label
         self.displayableDateLabel <- [
             Width(<=40),
-            Top().to(self.thumbnailImageView, .Top),
+            Top().to(self.thumbnailImageView, .top),
             Right(12)
         ]
         
         // UserInfo label
         self.userInfoLabel <- [
             Height(20),
-            Top().to(self.thumbnailImageView, .Top),
+            Top().to(self.thumbnailImageView, .top),
             Left(10).to(self.thumbnailImageView),
             Right(10).to(self.displayableDateLabel)
         ]
@@ -109,7 +109,7 @@ extension TweetView {
             Height(>=20),
             Top(0).to(self.userInfoLabel),
             Bottom(12),
-            Left().to(self.userInfoLabel, .Left),
+            Left().to(self.userInfoLabel, .left),
             Right(12)
         ]
     }
@@ -124,26 +124,26 @@ extension TweetView {
     @nonobjc static let darkGreyColor = UIColor(red: 140.0/255.0, green: 157.0/255.0, blue: 170.0/255.0, alpha: 1.0)
     @nonobjc static let lightBlueColor = UIColor(red: 33.0/255.0, green: 151.0/255.0, blue: 225.0/255.0, alpha: 1.0)
     
-    static func attributedStringWithDisplayableDate(string: String) -> NSAttributedString {
+    static func attributedStringWithDisplayableDate(_ string: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Right
+        paragraphStyle.alignment = .right
         let attributes = [
             NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: UIFont.systemFontOfSize(14.0),
+            NSFontAttributeName: UIFont.systemFont(ofSize: 14.0),
             NSForegroundColorAttributeName: TweetView.darkGreyColor
         ]
         
         return NSAttributedString(string: string, attributes: attributes)
     }
     
-    static func attributedStringWithTweet(tweet: String) -> NSAttributedString {
+    static func attributedStringWithTweet(_ tweet: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Left
+        paragraphStyle.alignment = .left
         paragraphStyle.lineHeightMultiple = 1.2
         let attributes = [
             NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: UIFont.systemFontOfSize(15.0),
-            NSForegroundColorAttributeName: UIColor.blackColor()
+            NSFontAttributeName: UIFont.systemFont(ofSize: 15.0),
+            NSForegroundColorAttributeName: UIColor.black
         ]
         
         let string = NSMutableAttributedString(string: tweet, attributes: attributes)
@@ -155,19 +155,19 @@ extension TweetView {
         return string
     }
     
-    static func attributedStringWithName(name: String, username: String) -> NSAttributedString {
+    static func attributedStringWithName(_ name: String, username: String) -> NSAttributedString {
         let string = "\(name) \(username)"
         let boldAttributes = [
-            NSFontAttributeName: UIFont.boldSystemFontOfSize(16.0),
-            NSForegroundColorAttributeName: UIColor.blackColor()
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16.0),
+            NSForegroundColorAttributeName: UIColor.black
         ]
         let lightAttributes = [
-            NSFontAttributeName: UIFont.systemFontOfSize(14.0),
+            NSFontAttributeName: UIFont.systemFont(ofSize: 14.0),
             NSForegroundColorAttributeName: TweetView.darkGreyColor
         ]
         
         let attributedString = NSMutableAttributedString(string: string, attributes: boldAttributes)
-        let range = (string as NSString).rangeOfString(username)
+        let range = (string as NSString).range(of: username)
         attributedString.addAttributes(lightAttributes, range: range)
         
         return attributedString
