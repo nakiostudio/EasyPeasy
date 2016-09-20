@@ -21,7 +21,7 @@ class NodeTests: XCTestCase {
         let leftAttribute = Left()
         
         // when
-        node.add(attribute: leftAttribute)
+        _ = node.add(attribute: leftAttribute)
         
         // then
         XCTAssertNotNil(node.left)
@@ -35,7 +35,7 @@ class NodeTests: XCTestCase {
         let leftAttribute = Left().when { false }
         
         // when
-        node.add(attribute: leftAttribute)
+        _ = node.add(attribute: leftAttribute)
         
         // then
         XCTAssertNil(node.left)
@@ -51,13 +51,13 @@ class NodeTests: XCTestCase {
         let node = Node()
         let leftAttribute = Left()
         let leadingAttribute = Leading()
-        node.add(attribute: leftAttribute)
+        _ = node.add(attribute: leftAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.left === leftAttribute)
         
         // when
-        node.add(attribute: leadingAttribute)
+        _ = node.add(attribute: leadingAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 1)
@@ -73,14 +73,14 @@ class NodeTests: XCTestCase {
         let node = Node()
         let leftAttribute = Left()
         let centerAttribute = CenterX()
-        node.add(attribute: leftAttribute)
+        _ = node.add(attribute: leftAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.left === leftAttribute)
         XCTAssertNil(node.center)
         
         // when
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 1)
@@ -96,7 +96,7 @@ class NodeTests: XCTestCase {
         let node = Node()
         let leftAttribute = Left()
         let dimensionAttribute = Width()
-        node.add(attribute: leftAttribute)
+        _ = node.add(attribute: leftAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.left === leftAttribute)
@@ -104,7 +104,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.dimension)
         
         // when
-        node.add(attribute: dimensionAttribute)
+        _ = node.add(attribute: dimensionAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 2)
@@ -143,7 +143,7 @@ class NodeTests: XCTestCase {
         let rightAttribute = Right()
         
         // when
-        node.add(attribute: rightAttribute)
+        _ = node.add(attribute: rightAttribute)
         
         // then
         XCTAssertNotNil(node.right)
@@ -157,7 +157,7 @@ class NodeTests: XCTestCase {
         let rightAttribute = Right().when { false }
         
         // when
-        node.add(attribute: rightAttribute)
+        _ = node.add(attribute: rightAttribute)
         
         // then
         XCTAssertNil(node.right)
@@ -173,13 +173,13 @@ class NodeTests: XCTestCase {
         let node = Node()
         let rightAttribute = Right()
         let trailingAttribute = Trailing()
-        node.add(attribute: rightAttribute)
+        _ = node.add(attribute: rightAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.right === rightAttribute)
         
         // when
-        node.add(attribute: trailingAttribute)
+        _ = node.add(attribute: trailingAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 1)
@@ -195,14 +195,14 @@ class NodeTests: XCTestCase {
         let node = Node()
         let rightAttribute = Right()
         let centerAttribute = CenterX()
-        node.add(attribute: rightAttribute)
+        _ = node.add(attribute: rightAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.right === rightAttribute)
         XCTAssertNil(node.center)
         
         // when
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 1)
@@ -218,7 +218,7 @@ class NodeTests: XCTestCase {
         let node = Node()
         let rightAttribute = Right()
         let dimensionAttribute = Width()
-        node.add(attribute: rightAttribute)
+        _ = node.add(attribute: rightAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.right === rightAttribute)
@@ -226,7 +226,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.dimension)
         
         // when
-        node.add(attribute: dimensionAttribute)
+        _ = node.add(attribute: dimensionAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 2)
@@ -265,7 +265,7 @@ class NodeTests: XCTestCase {
         let centerAttribute = CenterX()
         
         // when
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         
         // then
         XCTAssertNotNil(node.center)
@@ -279,7 +279,7 @@ class NodeTests: XCTestCase {
         let centerAttribute = CenterX().when { false }
         
         // when
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         
         // then
         XCTAssertNil(node.center)
@@ -295,13 +295,13 @@ class NodeTests: XCTestCase {
         let node = Node()
         let centerAttribute = CenterX()
         let centerXWithinMarginsAttribute = CenterXWithinMargins()
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.center === centerAttribute)
         
         // when
-        node.add(attribute: centerXWithinMarginsAttribute)
+        _ = node.add(attribute: centerXWithinMarginsAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 1)
@@ -317,14 +317,14 @@ class NodeTests: XCTestCase {
         let node = Node()
         let leftAttribute = FirstBaseline()
         let centerAttribute = CenterY()
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.center === centerAttribute)
         XCTAssertNil(node.left)
         
         // when
-        node.add(attribute: leftAttribute)
+        _ = node.add(attribute: leftAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 1)
@@ -340,7 +340,7 @@ class NodeTests: XCTestCase {
         let node = Node()
         let centerAttribute = CenterX()
         let dimensionAttribute = Width()
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.center === centerAttribute)
@@ -349,7 +349,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.dimension)
         
         // when
-        node.add(attribute: dimensionAttribute)
+        _ = node.add(attribute: dimensionAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 2)
@@ -388,7 +388,7 @@ class NodeTests: XCTestCase {
         let dimensionAttribute = Width()
         
         // when
-        node.add(attribute: dimensionAttribute)
+        _ = node.add(attribute: dimensionAttribute)
         
         // then
         XCTAssertNotNil(node.dimension)
@@ -402,7 +402,7 @@ class NodeTests: XCTestCase {
         let dimensionAttribute = Width().when { false }
         
         // when
-        node.add(attribute: dimensionAttribute)
+        _ = node.add(attribute: dimensionAttribute)
         
         // then
         XCTAssertNil(node.dimension)
@@ -418,13 +418,13 @@ class NodeTests: XCTestCase {
         let node = Node()
         let widthAttributeA = Width()
         let widthAttributeB = Width()
-        node.add(attribute: widthAttributeA)
+        _ = node.add(attribute: widthAttributeA)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.dimension === widthAttributeA)
         
         // when
-        node.add(attribute: widthAttributeB)
+        _ = node.add(attribute: widthAttributeB)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 1)
@@ -441,7 +441,7 @@ class NodeTests: XCTestCase {
         let node = Node()
         let centerAttribute = CenterXWithinMargins()
         let dimensionAttribute = Width()
-        node.add(attribute: dimensionAttribute)
+        _ = node.add(attribute: dimensionAttribute)
         XCTAssertTrue(node.activeAttributes.count == 1)
         XCTAssertTrue(node.inactiveAttributes.count == 0)
         XCTAssertTrue(node.dimension === dimensionAttribute)
@@ -450,7 +450,7 @@ class NodeTests: XCTestCase {
         XCTAssertNil(node.right)
         
         // when
-        node.add(attribute: centerAttribute)
+        _ = node.add(attribute: centerAttribute)
         
         // then
         XCTAssertTrue(node.activeAttributes.count == 2)
@@ -559,11 +559,11 @@ class NodeTests: XCTestCase {
         dimension.createConstraints(for: view)
         let center = CenterXWithinMargins().when { false }
         center.createConstraints(for: view)
-        node.add(attribute: leftAttributeA)
-        node.add(attribute: leftAttributeB)
-        node.add(attribute: rightAttribute)
-        node.add(attribute: dimension)
-        node.add(attribute: center)
+        _ = node.add(attribute: leftAttributeA)
+        _ = node.add(attribute: leftAttributeB)
+        _ = node.add(attribute: rightAttribute)
+        _ = node.add(attribute: dimension)
+        _ = node.add(attribute: center)
         
         XCTAssertTrue(node.left === leftAttributeA)
         XCTAssertTrue(node.right === rightAttribute)

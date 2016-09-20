@@ -15,41 +15,41 @@ class TweetView: NSView {
     
     static let minimumHeight: CGFloat = 76.0
     
-    private lazy var userInfoLabel: NSTextField = {
-        let label = NSTextField(frame: CGRectZero)
-        label.bezeled = false
-        label.editable = false
-        label.selectable = false
+    fileprivate lazy var userInfoLabel: NSTextField = {
+        let label = NSTextField(frame: CGRect.zero)
+        label.isBezeled = false
+        label.isEditable = false
+        label.isSelectable = false
         label.drawsBackground = false
         return label
     }()
     
-    private lazy var displayableDateLabel: NSTextField = {
-        let label = NSTextField(frame: CGRectZero)
-        label.bezeled = false
-        label.editable = false
-        label.selectable = false
+    fileprivate lazy var displayableDateLabel: NSTextField = {
+        let label = NSTextField(frame: CGRect.zero)
+        label.isBezeled = false
+        label.isEditable = false
+        label.isSelectable = false
         label.drawsBackground = false
         return label
     }()
     
-    private lazy var thumbnailImageView: NSImageView = {
-        let imageView = NSImageView(frame: CGRectZero)
+    fileprivate lazy var thumbnailImageView: NSImageView = {
+        let imageView = NSImageView(frame: CGRect.zero)
         return imageView
     }()
     
-    private lazy var tweetLabel: NSTextField = {
-        let label = NSTextField(frame: CGRectZero)
-        label.bezeled = false
-        label.editable = false
-        label.selectable = false
-        label.setContentCompressionResistancePriority(100, forOrientation: .Horizontal)
-        label.setContentCompressionResistancePriority(1000, forOrientation: .Vertical)
+    fileprivate lazy var tweetLabel: NSTextField = {
+        let label = NSTextField(frame: CGRect.zero)
+        label.isBezeled = false
+        label.isEditable = false
+        label.isSelectable = false
+        label.setContentCompressionResistancePriority(100, for: .horizontal)
+        label.setContentCompressionResistancePriority(1000, for: .vertical)
         return label
     }()
     
-    private lazy var separatorView: NSView = {
-        let view = NSView(frame: CGRectZero)
+    fileprivate lazy var separatorView: NSView = {
+        let view = NSView(frame: CGRect.zero)
         view.alphaValue = 0.4
         return view
     }()
@@ -69,14 +69,14 @@ class TweetView: NSView {
     override func layout() {
         super.layout()
         
-        self.separatorView.layer?.backgroundColor = NSColor.lightGrayColor().CGColor
+        self.separatorView.layer?.backgroundColor = NSColor.lightGray.cgColor
         self.thumbnailImageView.layer?.cornerRadius = 4.0
     }
     
     override func viewDidMoveToSuperview() {
         super.viewDidMoveToSuperview()
         
-        self <- Bottom(100).to(self.tweetLabel, .Bottom).with(.MediumPriority)
+        self <- Bottom(100).to(self.tweetLabel, .bottom).with(.mediumPriority)
     }
     
     // MARK: Public methods
@@ -93,7 +93,7 @@ class TweetView: NSView {
     
     // MARK: Private methods
     
-    private func setup() {
+    fileprivate func setup() {
         self.addSubview(self.thumbnailImageView)
         self.addSubview(self.displayableDateLabel)
         self.addSubview(self.userInfoLabel)
@@ -108,7 +108,7 @@ class TweetView: NSView {
  */
 extension TweetView {
     
-    private func applyConstraints() {
+    fileprivate func applyConstraints() {
         // Thumbnail imageview
         self.thumbnailImageView <- [
             Size(52.0),
@@ -119,7 +119,7 @@ extension TweetView {
         // UserInfo label
         self.userInfoLabel <- [
             Height(>=0.0),
-            Top(0.0).to(self.thumbnailImageView, .Top),
+            Top(0.0).to(self.thumbnailImageView, .top),
             Left(10.0).to(self.thumbnailImageView),
             Right(10.0).to(self.displayableDateLabel)
         ]
@@ -137,7 +137,7 @@ extension TweetView {
             Height(>=0.0),
             Top(2.0).to(self.userInfoLabel),
             Bottom(6.0),
-            Left(-2.0).to(self.userInfoLabel, .Left),
+            Left(-2.0).to(self.userInfoLabel, .left),
             Right(12.0)
         ]
         
@@ -160,44 +160,44 @@ extension TweetView {
     @nonobjc static let darkGreyColor = NSColor(red: 140.0/255.0, green: 157.0/255.0, blue: 170.0/255.0, alpha: 1.0)
     @nonobjc static let lightBlueColor = NSColor(red: 33.0/255.0, green: 151.0/255.0, blue: 225.0/255.0, alpha: 1.0)
     
-    static func attributedStringWithDisplayableDate(string: String) -> NSAttributedString {
+    static func attributedStringWithDisplayableDate(_ string: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Right
+        paragraphStyle.alignment = .right
         let attributes = [
             NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: NSFont.systemFontOfSize(12.0),
+            NSFontAttributeName: NSFont.systemFont(ofSize: 12.0),
             NSForegroundColorAttributeName: TweetView.darkGreyColor
         ]
         
         return NSAttributedString(string: string, attributes: attributes)
     }
     
-    static func attributedStringWithTweet(tweet: String) -> NSAttributedString {
+    static func attributedStringWithTweet(_ tweet: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Left
+        paragraphStyle.alignment = .left
         paragraphStyle.lineHeightMultiple = 1.2
         let attributes = [
             NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: NSFont.systemFontOfSize(13.0),
-            NSForegroundColorAttributeName: NSColor.blackColor()
+            NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
+            NSForegroundColorAttributeName: NSColor.black
         ]
         
         return NSMutableAttributedString(string: tweet, attributes: attributes)
     }
     
-    static func attributedStringWithName(name: String, username: String) -> NSAttributedString {
+    static func attributedStringWithName(_ name: String, username: String) -> NSAttributedString {
         let string = "\(name) \(username)"
         let boldAttributes = [
-            NSFontAttributeName: NSFont.boldSystemFontOfSize(14.0),
-            NSForegroundColorAttributeName: NSColor.blackColor()
+            NSFontAttributeName: NSFont.boldSystemFont(ofSize: 14.0),
+            NSForegroundColorAttributeName: NSColor.black
         ]
         let lightAttributes = [
-            NSFontAttributeName: NSFont.systemFontOfSize(12.0),
+            NSFontAttributeName: NSFont.systemFont(ofSize: 12.0),
             NSForegroundColorAttributeName: TweetView.darkGreyColor
         ]
         
         let attributedString = NSMutableAttributedString(string: string, attributes: boldAttributes)
-        let range = (string as NSString).rangeOfString(username)
+        let range = (string as NSString).range(of: username)
         attributedString.addAttributes(lightAttributes, range: range)
         
         return attributedString
