@@ -218,4 +218,19 @@ class UILayoutGuide_EasyTests: XCTestCase {
         XCTAssertTrue(layoutGuide.constraints[0].constant == 10)
     }
 
+    func testThatFramePropertyIsTheExpectedWhenItemIsAnUILayoutGuide() {
+        // given
+        class TestGuide: UILayoutGuide {
+            override var layoutFrame: CGRect {
+                return CGRect(x: 0, y: 0, width: 200, height: 200)
+            }
+        }
+        let guide = TestGuide()
+        
+        // when
+        // then
+        let item = guide as Item
+        XCTAssertTrue(item.frame.equalTo(CGRect(x: 0, y: 0, width: 200, height: 200)))
+    }
+    
 }

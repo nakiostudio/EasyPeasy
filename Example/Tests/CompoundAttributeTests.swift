@@ -18,6 +18,7 @@ class CompoundAttributeTests: XCTestCase {
     }
     
     override func tearDown() {
+        self.findDebugView()?.removeFromSuperview()
         super.tearDown()
     }
 
@@ -504,6 +505,33 @@ class CompoundAttributeTests: XCTestCase {
         // then
         XCTAssertTrue(viewA.constraints.count == 2)
         XCTAssertTrue(viewA.test_attributes.count == 2)
+    }
+    
+    func testThatDebugViewIsCreatedWithTheMembersOfACompoundAttribute() {
+        // given
+        let superview = UIView(frame: CGRect.zero)
+        let view = UIView(frame: CGRect.zero)
+        superview.addSubview(view)
+        
+        // when
+        view <- [ Size(10.0).debug() ]
+        
+        // then
+        if let debugView = self.findDebugView() {
+            XCTAssertTrue(debugView.attributes.count == 2)
+            return
+        }
+        XCTFail()
+    }
+    
+    // MARK: Aux methods
+    
+    func findDebugView() -> DebugView? {
+        if let keyWindow = UIApplication.shared.keyWindow, let debugView = (keyWindow.subviews.filter { $0 is DebugView }).first as? DebugView {
+            return debugView
+        }
+        
+        return nil
     }
 
 }

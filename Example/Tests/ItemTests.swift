@@ -18,6 +18,7 @@ class ItemTests: XCTestCase {
     }
     
     override func tearDown() {
+        self.findDebugView()?.removeFromSuperview()
         super.tearDown()
     }
 
@@ -103,6 +104,10 @@ class ItemTests: XCTestCase {
                 }
             }
             
+            var frame: CGRect {
+                return CGRect.zero
+            }
+            
             fileprivate var owningView: View?
             
         }
@@ -113,6 +118,87 @@ class ItemTests: XCTestCase {
         
         // then
         XCTAssertNil(owningView)
+    }
+    
+    func testThatFramePropertyIsTheExpectedWhenItemIsAnUIVIew() {
+        // given
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        
+        // when
+        // then
+        let item = view as Item
+        XCTAssertTrue(item.frame.equalTo(CGRect(x: 0, y: 0, width: 200, height: 200)))
+    }
+    
+    func testThatDebugViewIsCreatedWithTheCreatedViewAttributes() {
+        // given
+        let superview = UIView(frame: CGRect.zero)
+        let view = UIView(frame: CGRect.zero)
+        superview.addSubview(view)
+        view <- [
+            Left(10.0),
+            Right(0.0)
+        ]
+        
+        // when
+        view.easy_debug()
+        
+        // then
+        if let debugView = self.findDebugView() {
+            XCTAssertTrue(debugView.attributes.count == 2)
+            return
+        }
+        XCTFail()
+    }
+    
+    func testThatDebugViewIsCreatedWithTheSpecifiedAttribute() {
+        // given
+        let superview = UIView(frame: CGRect.zero)
+        let view = UIView(frame: CGRect.zero)
+        superview.addSubview(view)
+        
+        // when
+        view <- [
+            Left(10.0).debug(),
+            Right(0.0)
+        ]
+        
+        // then
+        if let debugView = self.findDebugView() {
+            XCTAssertTrue(debugView.attributes.count == 1)
+            return
+        }
+        XCTFail()
+    }
+    
+    func testThatDebugViewIsCreatedWithTheSpecifiedArrayOfAttributes() {
+        // given
+        let superview = UIView(frame: CGRect.zero)
+        let view = UIView(frame: CGRect.zero)
+        superview.addSubview(view)
+        
+        // when
+        view <- [
+            Left(10.0),
+            Right(0.0)
+        ].debug()
+        
+        // then
+        if let debugView = self.findDebugView() {
+            XCTAssertTrue(debugView.attributes.count == 2)
+            return
+        }
+        XCTFail()
+    }
+    
+    // MARK: Aux methods
+    
+    func findDebugView() -> DebugView? {
+        if let keyWindow = UIApplication.shared.keyWindow, let debugView = (keyWindow.subviews.filter { $0 is DebugView }).first as? DebugView {
+            return debugView
+        }
+        
+        return nil
     }
     
 }
