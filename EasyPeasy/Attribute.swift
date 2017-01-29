@@ -177,6 +177,17 @@ open class Attribute {
     }
     #endif
     
+    #if os(iOS) || os(tvOS)
+    /**
+        Draws the current `Attribute` in the screen if this is active
+        - returns: the `Attribute` instance
+     */
+    @discardableResult open func debug() -> Self {
+        DebugView.show(attribute: self)
+        return self
+    }
+    #endif
+    
     // MARK: Internal methods (acting as protected)
     
     /** 
@@ -318,6 +329,19 @@ public extension Array where Element: Attribute {
     @discardableResult public func when(_ closure: ContextualCondition?) -> [Attribute] {
         for attribute in self {
             attribute.when(closure)
+        }
+        return self
+    }
+    #endif
+    
+    #if os(iOS) || os(tvOS)
+    /**
+         Draws the active `Attributes` within the `Array` in the screen
+         - returns: the `Attribute` instance
+     */
+    @discardableResult open func debug() -> [Attribute] {
+        for attribute in self {
+            DebugView.show(attribute: attribute)
         }
         return self
     }
