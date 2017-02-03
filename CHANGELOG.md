@@ -1,5 +1,9 @@
 # Changelog
 
+## v.1.4.1
+
+* Fixed compiler error when `EASY_RELOAD` compiler flag is set.
+
 ## v.1.4
 
 * Swift 3 support.
