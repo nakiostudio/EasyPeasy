@@ -8,7 +8,7 @@ platform :ios do
     workspace = "Example/EasyPeasy.xcworkspace"
 
     # Run tests (iOS)
-    scheme = "EasyPeasy-iOS"
+    scheme = "EasyPeasy-Example-iOS"
     scan(
       scheme: scheme,
       workspace: workspace,

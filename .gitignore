@@ -21,7 +21,6 @@ DerivedData
 
 # Bundler
 .bundle
-Gemfile.lock
 
 # CI
 test_output/

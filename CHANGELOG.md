@@ -2,7 +2,7 @@
 
 ## v.1.4.1
 
-* Fixed compiler error when `EASY_RELOAD` compiler flag is set.
+* Fixed compilation error when `EASY_RELOAD` compiler flag is set.
 
 ## v.1.4
 
