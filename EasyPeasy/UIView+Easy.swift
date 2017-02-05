@@ -50,38 +50,35 @@ public extension UIView {
 #endif
 
 #if os(iOS) && EASY_RELOAD
+
+/**
+     Method that sets up the swizzling of `traitCollectionDidChange` if the
+     compiler flag `EASY_RELOAD` has been defined
+ */
+private let traitCollectionDidChangeSwizzling: (UIView.Type) -> () = { view in
+    let originalSelector = #selector(view.traitCollectionDidChange(_:))
+    let swizzledSelector = #selector(view.easy_traitCollectionDidChange(_:))
+    let originalMethod = class_getInstanceMethod(view, originalSelector)
+    let swizzledMethod = class_getInstanceMethod(view, swizzledSelector)
     
+    method_exchangeImplementations(originalMethod, swizzledMethod)
+}
+
 /**
     `UIView` extension that swizzles `traitCollectionDidChange` if the
      compiler flag `EASY_RELOAD` has been defined
  */
-public extension UIView {
+extension UIView {
     
     /**
         `traitCollectionDidChange` swizzling
      */
-    public override class func initialize() {
-        struct Static {
-            static var token: dispatch_once_t = 0
-        }
-        
-        if self !== UIView.self {
+    open override class func initialize() {
+        guard self === UIView.self else {
             return
         }
         
-        dispatch_once(&Static.token) {
-            let originalSelector = #selector(traitCollectionDidChange(_:))
-            let swizzledSelector = #selector(easy_traitCollectionDidChange(_:))
-            let originalMethod = class_getInstanceMethod(self, originalSelector)
-            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
-            
-            if class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod)) {
-                class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
-                return
-            }
-            
-            method_exchangeImplementations(originalMethod, swizzledMethod)
-        }
+        traitCollectionDidChangeSwizzling(self)
     }
     
     /**
@@ -89,12 +86,12 @@ public extension UIView {
         the current `UIView`, triggering the re-evaluation of the `Attributes`
         applied
      */
-    func easy_traitCollectionDidChange(previousTraitCollection: UITraitCollection?) {
+    func easy_traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         self.easy_traitCollectionDidChange(previousTraitCollection)
         
         // If at least one `Attribute has been applied to the current
         // `UIView` then perform `easy_reload`
-        if self.traitCollection.containsTraitsInCollection(previousTraitCollection) == false && self.nodes.values.count > 0 {
+        if self.traitCollection.containsTraits(in: previousTraitCollection) == false && self.nodes.values.count > 0 {
             self.easy_reload()
         }
     }
