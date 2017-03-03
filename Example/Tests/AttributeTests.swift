@@ -360,7 +360,7 @@ class Attribute_InstallTests: XCTestCase {
         // then
         XCTAssertTrue(a.signature == "h_gt_300.0")
         XCTAssertTrue(b.signature == "v_eq_1000.0")
-        XCTAssertTrue(c.signature == "h_lt_1.0")
+        XCTAssertTrue(c.signature == "h_lt_250.0")
         XCTAssertTrue(d.signature == "h_eq_500.0")
         XCTAssertTrue(e.signature == "v_gt_1000.0")
         XCTAssertTrue(f.signature == "v_eq_1000.0")
