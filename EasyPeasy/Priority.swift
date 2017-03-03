@@ -39,11 +39,14 @@ public enum Priority {
     func layoutPriority() -> Float {
         switch self {
         case .customPriority(let value): return value
+        case .highPriority: return 1000.0
+        case .mediumPriority: return 500.0
+        case .lowPriority: return 1.0
         case .custom(let value): return value
-        case .highPriority, .required: return 1000.0
+        case .required: return 1000.0
         case .high: return 750.0
-        case .mediumPriority, .medium: return 500.0
-        case .lowPriority, .low: return 1.0
+        case .medium: return 500.0
+        case .low: return 250.0
         }
     }
     
