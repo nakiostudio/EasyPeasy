@@ -7,6 +7,7 @@
 [![Carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://travis-ci.org/nakiostudio/EasyPeasy)
 [![Docs](https://img.shields.io/cocoapods/metrics/doc-percent/EasyPeasy.svg)](http://cocoadocs.org/docsets/EasyPeasy)
+[![CocoaPods](https://img.shields.io/cocoapods/dt/EasyPeasy.svg)](http://cocoapods.org/pods/EasyPeasy)
 
 **EasyPeasy** is a Swift framework that lets you create *Auto Layout* constraints
 programmatically without headaches and never ending boilerplate code. Besides the
