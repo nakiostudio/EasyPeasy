@@ -24,7 +24,8 @@ whether **EasyPeasy** is for you or not.
 The example below is quite simple but shows how effortless its implementation
 result using **EasyPeasy**.
 <h3 align="center">
-<img src="/README/first_touch.png" alt="First touch" />
+<br>
+<img width="80%" src="/README/first_touch.png" alt="First touch" />
 </h3>
 
 ### Features
