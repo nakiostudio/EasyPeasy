@@ -5,7 +5,7 @@
 * In previous versions `Priority.highPriority` matched with `UILayoutPriority.required`. This
 version introduces a new `Priority.required` case without breaking backwards compatibility as
 old priorities have been marked as deprecated in favour of `.low`, `.medium`, `.high` and
-`.custom`.
+`.custom`. Also `.low` now has a `Float` value of `250.0` instead of `1.0`.
 
 ## v.1.4.1
 
