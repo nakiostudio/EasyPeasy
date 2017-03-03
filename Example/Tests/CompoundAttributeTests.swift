@@ -24,11 +24,11 @@ class CompoundAttributeTests: XCTestCase {
     func testThatPriorityAffectsEverySubAttributeOfCompoundAttribute() {
         // given
         // when
-        let sizeAttribute = Size(CGSize(width: 100, height: 100)).with(.lowPriority)
+        let sizeAttribute = Size(CGSize(width: 100, height: 100)).with(.low)
         
         // then
         for subAttribute in sizeAttribute.attributes {
-            XCTAssertTrue(subAttribute.priority.layoutPriority() == Priority.lowPriority.layoutPriority())
+            XCTAssertTrue(subAttribute.priority.layoutPriority() == Priority.low.layoutPriority())
         }
     }
     

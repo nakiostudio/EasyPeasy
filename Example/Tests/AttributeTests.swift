@@ -217,7 +217,7 @@ class Attribute_InstallTests: XCTestCase {
         let attributes = [Width(200), Height(500), Center(0)]
         
         // when
-        attributes.with(.customPriority(233.0))
+        attributes.with(.custom(233.0))
         
         // then
         for attribute in attributes {
@@ -347,14 +347,14 @@ class Attribute_InstallTests: XCTestCase {
     
     func testThatAGoodBunchOfAttributesHaveTheExpectedSignature() {
         // given
-        let a: Attribute = Width(>=10).with(.customPriority(300))
+        let a: Attribute = Width(>=10).with(.custom(300))
         let b: Attribute = Height(100)
-        let c: Attribute = Left(<=40).with(.lowPriority)
-        let d: Attribute = CenterXWithinMargins().with(.mediumPriority)
+        let c: Attribute = Left(<=40).with(.low)
+        let d: Attribute = CenterXWithinMargins().with(.medium)
         let e: Attribute = LastBaseline(>=30)
         let f: Attribute = BottomMargin()
         let g: Attribute = CenterYWithinMargins(<=40)
-        let h: Attribute = CenterX(>=0).with(.customPriority(244))
+        let h: Attribute = CenterX(>=0).with(.custom(244))
         
         // when
         // then

@@ -144,8 +144,8 @@ class UILayoutGuide_EasyTests: XCTestCase {
             Top(20),
             Width(<=200),
             Bottom(20),
-            Left(10).with(.lowPriority),
-            Right(10).with(.lowPriority)
+            Left(10).with(.low),
+            Right(10).with(.low)
         ]
         XCTAssertTrue(superview.constraints.count == 5)
         XCTAssertTrue(layoutGuide.test_attributes.count == 5)
@@ -166,8 +166,8 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
         layoutGuide <- [
-            Left(10).with(.lowPriority).when { [weak self] in return (self!.aFlag) },
-            Left(100).with(.lowPriority).when { [weak self] in return !(self!.aFlag) }
+            Left(10).with(.low).when { [weak self] in return (self!.aFlag) },
+            Left(100).with(.low).when { [weak self] in return !(self!.aFlag) }
         ]
         XCTAssertTrue(superview.constraints.count == 1)
         XCTAssertTrue(layoutGuide.test_attributes.count == 2)
