@@ -1,5 +1,12 @@
 # Changelog
 
+## v.1.4.2
+
+* In previous versions `Priority.highPriority` matched with `UILayoutPriority.required`. This
+version introduces a new `Priority.required` case without breaking backwards compatibility as
+old priorities have been marked as deprecated in favour of `.low`, `.medium`, `.high` and
+`.custom`. Also `.low` now has a `Float` value of `250.0` instead of `1.0`.
+
 ## v.1.4.1
 
 * Fixed compilation error when `EASY_RELOAD` compiler flag is set.
@@ -23,7 +30,7 @@ to views not in the view hierarchy, i.e. when `superview == nil`.
 
 ## v.1.2
 
-* Implemented `ContextualConditions`, a variant of the `Condition` closures 
+* Implemented `ContextualConditions`, a variant of the `Condition` closures
 where a `Context` struct is passed as parameter to the closure providing some
 extra information (size class and device) based on the `UITraitCollection`
 of the `UIView` the `Attributes` are going to be applied to. Examples:
@@ -33,7 +40,7 @@ view <- [
 	Size(250),
 	Center(0)
 ].when { $0.isHorizontalRegular }
-``` 
+```
 
 ```swift
 view <- [

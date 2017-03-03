@@ -7,7 +7,6 @@
 [![Carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://travis-ci.org/nakiostudio/EasyPeasy)
 [![Docs](https://img.shields.io/cocoapods/metrics/doc-percent/EasyPeasy.svg)](http://cocoadocs.org/docsets/EasyPeasy)
-[![CocoaPods](https://img.shields.io/cocoapods/dt/EasyPeasy.svg)](http://cocoapods.org/pods/EasyPeasy)
 
 **EasyPeasy** is a Swift framework that lets you create *Auto Layout* constraints
 programmatically without headaches and never ending boilerplate code. Besides the
@@ -271,22 +270,24 @@ view <- CenterWithinMargins(CGPoint(x: 0, y: 50))
 ### Priorities
 
 The `Priority` enum does the same function as `UILayoutPriority` and it's shaped
-by four cases:
-* `LowPriority`: it creates an *Auto Layout* priority with `Float` value `1`.
+by five cases:
+* `low`: it creates an *Auto Layout* priority with `Float` value `1`.
 
-* `MediumPriority`: it creates an *Auto Layout* priority with `Float` value `500`.
+* `medium`: it creates an *Auto Layout* priority with `Float` value `500`.
 
-* `HighPriority`: it creates an *Auto Layout* priority with `Float` value `1000`.
+* `high`: it creates an *Auto Layout* priority with `Float` value `750`.
 
-* `CustomPriority`: it specifies the *Auto Layout* priority defined by the
-developer in the case associated value `value`. Example: `.CustomPriority(value: 750.0)`
+* `required`: it creates an *Auto Layout* priority with `Float` value `1000`.
+
+* `custom`: it specifies the *Auto Layout* priority defined by the
+developer in the case associated value `value`. Example: `.custom(value: 650.0)`.
 
 In order to apply any of these priorities to an `Attribute`, the method
 `.with(priority: Priority)` must be used. The following example gives an
 `UILayoutPriority` of `500` to the `Top` `Attribute` applied to `view`:
 
 ```swift
-view <- Top(>=50).with(.MediumPriority)
+view <- Top(>=50).with(.medium)
 ```
 
 You can also apply a `Priority` to an array of `Attributes` (this operation will
@@ -296,7 +297,7 @@ override the priorities previously applied to an `Attribute`).
 view <- [
 	Width(200),
 	Height(200)
-].with(.MediumPriority)
+].with(.medium)
 ```
 
 ### Conditions
