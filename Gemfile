@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 gem 'cocoapods'
 
 # Coverage reports
+gem 'xcov', '1.0.1'
 gem 'danger-xcov'
 
