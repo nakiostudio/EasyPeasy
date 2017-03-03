@@ -84,8 +84,8 @@ class FeedController: UIViewController {
                 Width(<=420),
                 Height(>=78),
                 CenterX(),
-                Left().with(.mediumPriority),
-                Right().with(.mediumPriority),
+                Left().with(.medium),
+                Right().with(.medium),
                 // Pins to top only when we place the first row
                 Top().when { index == 0 },
                 // Pins to bottom of the preivous item for the other cases

@@ -112,7 +112,7 @@ open class Attribute {
      */
     public init() {
         self.constant = Constant(value: 0.0, relation: .equal, multiplier: 1.0)
-        self.priority = .highPriority
+        self.priority = .required
     }
     
     /**
@@ -124,7 +124,7 @@ open class Attribute {
      */
     public init(_ value: CGFloat) {
         self.constant = Constant(value: value, relation: .equal, multiplier: 1.0)
-        self.priority = .highPriority
+        self.priority = .required
     }
     
     /**
@@ -137,7 +137,7 @@ open class Attribute {
      */
     public init(_ constant: Constant) {
         self.constant = constant
-        self.priority = .highPriority
+        self.priority = .required
     }
     
     // MARK: Public methods
