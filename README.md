@@ -36,6 +36,15 @@ result using **EasyPeasy**.
 * Conditional application of constraints.
 * `UILayoutGuide` and `NSLayoutGuide` support.
 
+### Guides
+
+* [Mastering Auto Layout with EasyPeasy I: Introduction](https://medium.com/@yaid/mastering-auto-layout-with-easypeasy-i-introduction-341f12230074)
+* [Mastering Auto Layout with EasyPeasy II: Basics](https://medium.com/@yaid/mastering-auto-layout-with-easypeasy-ii-basics-3057e1db817)
+* [Mastering Auto Layout with EasyPeasy III: Relationships](https://medium.com/@yaid/mastering-auto-layout-with-easypeasy-iii-relationships-91fc140e4755)
+* Mastering Auto Layout with EasyPeasy IV: Priorities *(coming soon...)*
+* Mastering Auto Layout with EasyPeasy V: Layout Guides *(coming soon...)*
+* Mastering Auto Layout with EasyPeasy VI: Advanced *(coming soon...)*
+
 ## Table of contents
 
 * [Installation](#installation)
