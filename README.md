@@ -7,6 +7,7 @@
 [![Carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://travis-ci.org/nakiostudio/EasyPeasy)
 [![Docs](https://img.shields.io/cocoapods/metrics/doc-percent/EasyPeasy.svg)](http://cocoadocs.org/docsets/EasyPeasy)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 **EasyPeasy** is a Swift framework that lets you create *Auto Layout* constraints
 programmatically without headaches and never ending boilerplate code. Besides the
@@ -560,4 +561,4 @@ Carlos Vidal - [@carlostify](https://twitter.com/carlostify)
 
 ## License
 
-EasyPeasy is available under the MIT license. See the LICENSE file for more info.
+EasyPeasy is available under the MIT license. See the [license](https://github.com/nakiostudio/EasyPeasy/blob/master/LICENSE) file for more info.
