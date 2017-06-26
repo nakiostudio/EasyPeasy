@@ -210,7 +210,11 @@ open class Attribute {
         )
         
         // Set priority
+        #if swift(>=4.0)
+        layoutConstraint.priority = UILayoutPriority(rawValue: self.priority.layoutPriority())
+        #else
         layoutConstraint.priority = self.priority.layoutPriority()
+        #endif
         
         // Reference resulting constraint
         self.layoutConstraint = layoutConstraint
