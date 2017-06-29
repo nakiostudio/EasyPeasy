@@ -76,7 +76,7 @@ class TweetView: NSView {
     override func viewDidMoveToSuperview() {
         super.viewDidMoveToSuperview()
         
-        self <- Bottom(100).to(self.tweetLabel, .bottom).with(.mediumPriority)
+        self <- Bottom(100).to(self.tweetLabel, .bottom).with(.medium)
     }
     
     // MARK: Public methods

@@ -90,7 +90,7 @@ class FeedView: NSView {
             
             // Pins contentView to bottom of the this item
             self.contentView <- [
-                Bottom(>=0.0).to(tweetView, .bottom).with(.customPriority(priority))
+                Bottom(>=0.0).to(tweetView, .bottom).with(.custom(priority))
             ]
             
             // Set properties that apply to next tweetview creation

@@ -48,9 +48,9 @@ class PriorityTests: XCTestCase {
     
     func testThatThatOrderIsCorrect_deprecatedCases() {
         // given
-        let high = Priority.highPriority
-        let medium = Priority.mediumPriority
-        let low = Priority.lowPriority
+        let high = Priority.high
+        let medium = Priority.medium
+        let low = Priority.low
         
         // when
         // then
@@ -63,7 +63,7 @@ class PriorityTests: XCTestCase {
         let myCustomValue: Float = 234.0
         
         // when
-        let priority = Priority.customPriority(myCustomValue)
+        let priority = Priority.custom(myCustomValue)
         
         // then
         XCTAssertTrue(priority.layoutPriority() == myCustomValue)
