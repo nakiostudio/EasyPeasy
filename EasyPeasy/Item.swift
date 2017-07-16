@@ -31,6 +31,9 @@ public protocol Item: NSObjectProtocol {
     /// Array of constraints installed in the current `Item`
     var constraints: [NSLayoutConstraint] { get }
     
+    /// Bounding `CGRect` of the current `Item`
+    var frame: CGRect { get }
+    
     /// Owning `UIView` for the current `Item`. The concept varies
     /// depending on the class conforming the protocol
     var owningView: View? { get }
@@ -74,6 +77,22 @@ public extension Item {
     }
     
 }
+
+#if os(iOS) || os(tvOS)
+    
+public extension Item {
+    
+    /**
+        Draws in the screen the active `Attributes` applied to
+        the current `Item`
+     */
+    public func easy_debug() {
+        self.nodes.values.forEach { $0.activeAttributes.forEach { DebugView.show(attribute: $0) } }
+    }
+    
+}
+
+#endif
 
 /**
     Internal extension that handles the storage and application 

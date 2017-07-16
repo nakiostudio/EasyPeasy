@@ -71,4 +71,17 @@ open class CompoundAttribute: Attribute {
     }
     #endif
     
+    #if os(iOS) || os(tvOS)
+    /**
+        Draws the current `Attribute` if this is active in the screen
+        - returns: the `Attribute` instance
+     */
+    @discardableResult open override func debug() -> Self {
+        for attribute in self.attributes {
+            DebugView.show(attribute: attribute)
+        }
+        return self
+    }
+    #endif
+    
 }

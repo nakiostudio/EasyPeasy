@@ -42,6 +42,11 @@ extension UILayoutGuide: Item {
         return self.owningView?.constraints.filter { $0.firstItem === self } ?? []
     }
     
+    /// Bounding `CGRect` of the current `Item`
+    public var frame: CGRect {
+        return self.layoutFrame
+    }
+    
 }
     
 #endif
