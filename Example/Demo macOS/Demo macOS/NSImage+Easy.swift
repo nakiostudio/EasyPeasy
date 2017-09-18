@@ -17,7 +17,7 @@ extension NSImage {
             let bounds = CGRect(origin: CGPoint.zero, size: self.size)
             image.lockFocus()
             color.set()
-            NSRectFillUsingOperation(bounds, .sourceAtop)
+            bounds.fill(using: .sourceAtop)
             image.unlockFocus()
             return image
         }

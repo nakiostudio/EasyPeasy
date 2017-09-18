@@ -59,7 +59,7 @@ class FeedView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         NSColor.white.setFill()
-        NSRectFill(dirtyRect)
+        dirtyRect.fill()
         super.draw(dirtyRect)
     }
     
@@ -90,7 +90,7 @@ class FeedView: NSView {
             
             // Pins contentView to bottom of the this item
             self.contentView <- [
-                Bottom(>=0.0).to(tweetView, .bottom).with(.customPriority(priority))
+                Bottom(>=0.0).to(tweetView, .bottom).with(.custom(priority))
             ]
             
             // Set properties that apply to next tweetview creation

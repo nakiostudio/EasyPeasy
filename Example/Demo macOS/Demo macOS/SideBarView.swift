@@ -35,7 +35,7 @@ class SideBarView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         NSColor.easy_backgroundBlue().setFill()
-        NSRectFill(dirtyRect)
+        dirtyRect.fill()
         super.draw(dirtyRect)
     }
     
@@ -49,8 +49,8 @@ class SideBarView: NSView {
     
     func configure(with profileImage: String, tabs: String...) {
         self.restore()
-        self.profileImageView.image = NSImage(named: profileImage)
-        self.composeImageView.image = NSImage(named: "icon-compose")?.easy_tint(with: NSColor.easy_highlightedBlue())
+        self.profileImageView.image = NSImage(named: NSImage.Name(rawValue: profileImage))
+        self.composeImageView.image = NSImage(named: NSImage.Name(rawValue: "icon-compose"))?.easy_tint(with: NSColor.easy_highlightedBlue())
         
         var previousItem: NSView = self.profileImageView
         var color: NSColor = NSColor.easy_highlightedBlue()
@@ -60,7 +60,7 @@ class SideBarView: NSView {
         for tabImage in tabs {
             // Create tab
             let tab = NSImageView(frame: CGRect.zero)
-            tab.image = NSImage(named: tabImage)?.easy_tint(with: color)
+            tab.image = NSImage(named: NSImage.Name(rawValue: tabImage))?.easy_tint(with: color)
             
             // Layout UIImageView
             self.addSubview(tab)

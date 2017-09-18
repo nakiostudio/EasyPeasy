@@ -82,7 +82,7 @@ public enum ReferenceAttribute {
     
     /// AutoLayout attribute equivalent of the current reference
     /// attribute
-    var layoutAttribute: NSLayoutAttribute {
+    var layoutAttribute: NSLayoutConstraint.Attribute {
         switch self {
         case .width: return .width
         case .height: return .height

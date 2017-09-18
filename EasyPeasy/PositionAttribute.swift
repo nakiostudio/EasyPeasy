@@ -229,7 +229,7 @@ public class Edges: CompoundAttribute {
         properties of each one of the sub `Attribute` objects
         - returns: the `CompoundAttribute` instance created
      */
-    public init(_ edgeInsets: EdgeInsets) {
+    public init(_ edgeInsets: NSEdgeInsets) {
         super.init()
         self.attributes = [
             Top(CGFloat(edgeInsets.top)),

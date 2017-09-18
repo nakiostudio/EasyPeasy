@@ -17,7 +17,7 @@ import AppKit
 /**
     Alias of `NSLayoutRelation`
  */
-public typealias Relation = NSLayoutRelation
+public typealias Relation = NSLayoutConstraint.Relation
 
 /**
     Struct that aggregates `NSLayoutRelation`, constant and multiplier of a 
