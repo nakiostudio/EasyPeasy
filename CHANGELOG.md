@@ -1,5 +1,9 @@
 # Changelog
 
+## v.1.5.0
+
+* Swift 4 support (by [Bas van Kuijck](https://github.com/basvankuijck)).
+
 ## v.1.4.2
 
 * In previous versions `Priority.highPriority` matched with `UILayoutPriority.required`. This
