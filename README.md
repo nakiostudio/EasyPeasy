@@ -72,7 +72,8 @@ result using **EasyPeasy**.
 ### Swift compatibility
 * To work with Swift 2.2 use EasyPeasy `v.1.2.1` or earlier versions of the library.
 * To work with Swift 2.3 use EasyPeasy `v.1.3.1`.
-* To work with Swift 3 use EasyPeasy `v.1.4` and above
+* To work with Swift 3 use EasyPeasy `v.1.4.2`.
+* To work with Swift 4 use EasyPeasy `v.1.5.0` and above
 (thanks [Bas van Kuijck](https://github.com/basvankuijck)).
 
 ### Cocoapods
