@@ -17,7 +17,7 @@ import AppKit
 /**
     Alias of `NSLayoutRelation`
  */
-#if os(OSX)
+#if os(OSX) && swift(>=4.0)
     public typealias Relation = NSLayoutConstraint.Relation
 #else
     public typealias Relation = NSLayoutRelation
