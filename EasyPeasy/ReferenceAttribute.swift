@@ -9,11 +9,14 @@
 // SOFTWARE.
 
 #if os(iOS) || os(tvOS)
-import UIKit
-    typealias NSLayoutConstraintAttribute = NSLayoutAttribute
-#else
-import AppKit
-    typealias NSLayoutConstraintAttribute = NSLayoutConstraint.Attribute
+    import UIKit
+    typealias LayoutConstraintAttribute = NSLayoutAttribute
+#elseif os(OSX) && swift(>=4.0)
+    import AppKit
+    typealias LayoutConstraintAttribute = NSLayoutConstraint.Attribute
+#elseif os(OSX)
+    import AppKit
+    typealias LayoutConstraintAttribute = NSLayoutAttribute
 #endif
 
 /**
@@ -84,7 +87,7 @@ public enum ReferenceAttribute {
     
     /// AutoLayout attribute equivalent of the current reference
     /// attribute
-    var layoutAttribute: NSLayoutConstraintAttribute {
+    var layoutAttribute: LayoutConstraintAttribute {
         switch self {
         case .width: return .width
         case .height: return .height
