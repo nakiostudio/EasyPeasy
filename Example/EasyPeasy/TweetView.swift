@@ -34,8 +34,8 @@ class TweetView: UIView {
     fileprivate lazy var tweetLabel: UILabel = {
         let label = UILabel(frame: CGRect.zero)
         label.numberOfLines = 0
-        label.setContentCompressionResistancePriority(100, for: .horizontal)
-        label.setContentCompressionResistancePriority(1000, for: .vertical)
+        label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 100), for: .horizontal)
+        label.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         return label
     }()
     
@@ -127,10 +127,10 @@ extension TweetView {
     static func attributedStringWithDisplayableDate(_ string: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
-        let attributes = [
-            NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 14.0),
-            NSForegroundColorAttributeName: TweetView.darkGreyColor
+        let attributes: [NSAttributedStringKey: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: UIFont.systemFont(ofSize: 14.0),
+            .foregroundColor: TweetView.darkGreyColor
         ]
         
         return NSAttributedString(string: string, attributes: attributes)
@@ -140,16 +140,16 @@ extension TweetView {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         paragraphStyle.lineHeightMultiple = 1.2
-        let attributes = [
-            NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 15.0),
-            NSForegroundColorAttributeName: UIColor.black
+        let attributes: [NSAttributedStringKey: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: UIFont.systemFont(ofSize: 15.0),
+            .foregroundColor: UIColor.black
         ]
         
         let string = NSMutableAttributedString(string: tweet, attributes: attributes)
     
         for hashtagRange in tweet.easy_hashtagRanges() {
-            string.addAttribute(NSForegroundColorAttributeName, value: TweetView.lightBlueColor, range: hashtagRange)
+            string.addAttribute(NSAttributedStringKey.foregroundColor, value: TweetView.lightBlueColor, range: hashtagRange)
         }
         
         return string
@@ -157,13 +157,13 @@ extension TweetView {
     
     static func attributedStringWithName(_ name: String, username: String) -> NSAttributedString {
         let string = "\(name) \(username)"
-        let boldAttributes = [
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 16.0),
-            NSForegroundColorAttributeName: UIColor.black
+        let boldAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 16.0),
+            .foregroundColor: UIColor.black
         ]
-        let lightAttributes = [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 14.0),
-            NSForegroundColorAttributeName: TweetView.darkGreyColor
+        let lightAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont.systemFont(ofSize: 14.0),
+            .foregroundColor: TweetView.darkGreyColor
         ]
         
         let attributedString = NSMutableAttributedString(string: string, attributes: boldAttributes)

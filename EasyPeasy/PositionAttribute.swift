@@ -18,6 +18,7 @@ public typealias EdgeInsets = UIEdgeInsets
 #else
 
 import AppKit
+public typealias EdgeInsets = NSEdgeInsets
     
 #endif
 

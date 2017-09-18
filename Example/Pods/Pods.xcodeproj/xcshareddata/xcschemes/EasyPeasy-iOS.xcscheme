@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0900"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "37F718DA0DA2E0EA0BCF0A4125259DBA"
+               BlueprintIdentifier = "9063D15D997D53407D512D46F9448E64"
                BuildableName = "EasyPeasy.framework"
                BlueprintName = "EasyPeasy-iOS"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
@@ -47,7 +48,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "37F718DA0DA2E0EA0BCF0A4125259DBA"
+            BlueprintIdentifier = "9063D15D997D53407D512D46F9448E64"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,6 +61,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -69,7 +71,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "37F718DA0DA2E0EA0BCF0A4125259DBA"
+            BlueprintIdentifier = "9063D15D997D53407D512D46F9448E64"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -87,7 +89,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "37F718DA0DA2E0EA0BCF0A4125259DBA"
+            BlueprintIdentifier = "9063D15D997D53407D512D46F9448E64"
             BuildableName = "EasyPeasy.framework"
             BlueprintName = "EasyPeasy-iOS"
             ReferencedContainer = "container:Pods.xcodeproj">

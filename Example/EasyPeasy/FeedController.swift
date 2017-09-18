@@ -77,8 +77,8 @@ class FeedController: UIViewController {
         // It creates the constraints for each entry
         for (index, tweet) in self.tweets.enumerated() {
             let view = TweetView(frame: CGRect.zero)
-            view.setContentCompressionResistancePriority(1000, for: .vertical)
-            view.setContentHuggingPriority(600, for: .vertical)
+            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+            view.setContentHuggingPriority(UILayoutPriority(rawValue: 600), for: .vertical)
             self.scrollView.addSubview(view)
             view <- [
                 Width(<=420),

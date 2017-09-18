@@ -43,8 +43,8 @@ class TweetView: NSView {
         label.isBezeled = false
         label.isEditable = false
         label.isSelectable = false
-        label.setContentCompressionResistancePriority(100, for: .horizontal)
-        label.setContentCompressionResistancePriority(1000, for: .vertical)
+        label.setContentCompressionResistancePriority(NSLayoutConstraint.Priority(rawValue: 100), for: .horizontal)
+        label.setContentCompressionResistancePriority(NSLayoutConstraint.Priority(rawValue: 1000), for: .vertical)
         return label
     }()
     
@@ -76,7 +76,7 @@ class TweetView: NSView {
     override func viewDidMoveToSuperview() {
         super.viewDidMoveToSuperview()
         
-        self <- Bottom(100).to(self.tweetLabel, .bottom).with(.mediumPriority)
+        self <- Bottom(100).to(self.tweetLabel, .bottom).with(.medium)
     }
     
     // MARK: Public methods
@@ -163,10 +163,10 @@ extension TweetView {
     static func attributedStringWithDisplayableDate(_ string: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
-        let attributes = [
-            NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: NSFont.systemFont(ofSize: 12.0),
-            NSForegroundColorAttributeName: TweetView.darkGreyColor
+        let attributes: [NSAttributedStringKey: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: NSFont.systemFont(ofSize: 12.0),
+            .foregroundColor: TweetView.darkGreyColor
         ]
         
         return NSAttributedString(string: string, attributes: attributes)
@@ -176,10 +176,10 @@ extension TweetView {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         paragraphStyle.lineHeightMultiple = 1.2
-        let attributes = [
-            NSParagraphStyleAttributeName: paragraphStyle,
-            NSFontAttributeName: NSFont.systemFont(ofSize: 13.0),
-            NSForegroundColorAttributeName: NSColor.black
+        let attributes: [NSAttributedStringKey: Any] = [
+            .paragraphStyle: paragraphStyle,
+            .font: NSFont.systemFont(ofSize: 13.0),
+            .foregroundColor: NSColor.black
         ]
         
         return NSMutableAttributedString(string: tweet, attributes: attributes)
@@ -187,13 +187,13 @@ extension TweetView {
     
     static func attributedStringWithName(_ name: String, username: String) -> NSAttributedString {
         let string = "\(name) \(username)"
-        let boldAttributes = [
-            NSFontAttributeName: NSFont.boldSystemFont(ofSize: 14.0),
-            NSForegroundColorAttributeName: NSColor.black
+        let boldAttributes: [NSAttributedStringKey: Any] = [
+            .font: NSFont.boldSystemFont(ofSize: 14.0),
+            .foregroundColor: NSColor.black
         ]
-        let lightAttributes = [
-            NSFontAttributeName: NSFont.systemFont(ofSize: 12.0),
-            NSForegroundColorAttributeName: TweetView.darkGreyColor
+        let lightAttributes: [NSAttributedStringKey: Any] = [
+            .font: NSFont.systemFont(ofSize: 12.0),
+            .foregroundColor: TweetView.darkGreyColor
         ]
         
         let attributedString = NSMutableAttributedString(string: string, attributes: boldAttributes)

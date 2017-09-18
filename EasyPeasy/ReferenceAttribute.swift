@@ -10,8 +10,10 @@
 
 #if os(iOS) || os(tvOS)
 import UIKit
+    typealias NSLayoutConstraintAttribute = NSLayoutAttribute
 #else
 import AppKit
+    typealias NSLayoutConstraintAttribute = NSLayoutConstraint.Attribute
 #endif
 
 /**
@@ -82,7 +84,7 @@ public enum ReferenceAttribute {
     
     /// AutoLayout attribute equivalent of the current reference
     /// attribute
-    var layoutAttribute: NSLayoutAttribute {
+    var layoutAttribute: NSLayoutConstraintAttribute {
         switch self {
         case .width: return .width
         case .height: return .height

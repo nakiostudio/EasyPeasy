@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        self.window.styleMask = [self.window.styleMask, NSFullSizeContentViewWindowMask]
+        self.window.styleMask = [self.window.styleMask, .fullSizeContentView]
         self.window.titleVisibility = .hidden
         self.window.titlebarAppearsTransparent = true
     }
