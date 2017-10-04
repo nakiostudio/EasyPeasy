@@ -28,14 +28,13 @@ public struct EasyPeasy {
     }
     
     /**
-     Applies the attributes given to the current item
-     - parameter attributes: `Attributes` applied to the `Item`
-     - returns: The array of `NSLayoutConstraints` created and applied
+         Applies the attributes given to the current item
+         - parameter attributes: `Attributes` applied to the `Item`
+         - returns: The array of `NSLayoutConstraints` created and applied
      */
     @discardableResult public func layout(_ attributes: [Attribute]) -> [NSLayoutConstraint] {
         return self.item?.apply(attributes: attributes) ?? []
     }
-    
     
     /**
          This method will trigger the recreation of the  created using
