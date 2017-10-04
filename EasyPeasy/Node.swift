@@ -28,7 +28,7 @@ private enum Subnode {
 /**
     This class is in charge of handling those `Attributes` that
     conflict or that may conflict in the feature in a `Condition`
-    change and `easy_reload` is triggered
+    change and `easy.reload` is triggered
  */
 class Node {
     

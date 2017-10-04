@@ -39,12 +39,45 @@ public protocol Item: NSObjectProtocol {
 
 public extension Item {
     
+    ///
+    public var easy: EasyPeasy {
+        return EasyPeasy(item: self)
+    }
+    
+    /**
+         This method will trigger the recreation of the constraints
+         created using *EasyPeasy* for the current view. `Condition`
+         closures will be evaluated again
+     */
+    @available(iOS, deprecated: 1.5.1, message: "Use easy.reload() instead")
+    public func easy_reload() {
+        self.reload()
+    }
+    
+    /**
+         Clears all the constraints applied with EasyPeasy to the
+         current `UIView`
+     */
+    @available(iOS, deprecated: 1.5.1, message: "Use easy.clear() instead")
+    public func easy_clear() {
+        self.clear()
+    }
+    
+}
+
+
+/**
+     Internal extension that handles the storage and application
+     of `Attributes` in an `Item`
+ */
+extension Item {
+    
     /**
         This method will trigger the recreation of the constraints
         created using *EasyPeasy* for the current view. `Condition`
         closures will be evaluated again
      */
-    public func easy_reload() {
+    func reload() {
         var activateConstraints: [NSLayoutConstraint] = []
         var deactivateConstraints: [NSLayoutConstraint] = []
         for node in self.nodes.values {
@@ -62,7 +95,7 @@ public extension Item {
         Clears all the constraints applied with EasyPeasy to the
         current `UIView`
      */
-    public func easy_clear() {
+    func clear() {
         var deactivateConstraints: [NSLayoutConstraint] = []
         for node in self.nodes.values {
             deactivateConstraints.append(contentsOf: node.clear())
@@ -106,6 +139,10 @@ extension Item {
         - returns the resulting `NSLayoutConstraints`
      */
     func apply(attributes: [Attribute]) -> [NSLayoutConstraint] {
+        // Before doing anything ensure that this item has translates autoresizing
+        // mask into constraints disabled
+        self.disableAutoresizingToConstraints()
+        
         var layoutConstraints: [NSLayoutConstraint] = []
         var activateConstraints: [NSLayoutConstraint] = []
         var deactivateConstraints: [NSLayoutConstraint] = []
@@ -145,6 +182,18 @@ extension Item {
         // Add the `Attribute` to the node and return the `NSLayoutConstraints`
         // to be activated/deactivated
         return node.add(attribute: attribute)
+    }
+    
+    /**
+         Sets `translatesAutoresizingMaskIntoConstraints` to `false` if the
+         current `Item` implements it
+     */
+    private func disableAutoresizingToConstraints() {
+        #if os(iOS) || os(tvOS)
+        (self as? UIView)?.translatesAutoresizingMaskIntoConstraints = false
+        #else
+        (self as? NSView)?.translatesAutoresizingMaskIntoConstraints = false
+        #endif
     }
     
 }
