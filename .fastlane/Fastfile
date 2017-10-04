@@ -8,7 +8,7 @@ platform :ios do
     workspace = "Example/EasyPeasy.xcworkspace"
 
     # Run tests (iOS)
-    scheme = "EasyPeasy-Example-iOS-Tests"
+    scheme = "EasyPeasy-iOS-Tests"
     scan(
       scheme: scheme,
       workspace: workspace,
@@ -20,7 +20,7 @@ platform :ios do
     xcov(
       scheme: scheme,
       workspace: workspace,
-      exclude_targets: "Demo.app,Demo macOS.app,EasyPeasy-OSX.framework",
+      exclude_targets: "Demo.app,Demo macOS.app",
       coveralls_service_name: "travis-ci",
       coveralls_service_job_id: ENV["TRAVIS_JOB_ID"]
     )
