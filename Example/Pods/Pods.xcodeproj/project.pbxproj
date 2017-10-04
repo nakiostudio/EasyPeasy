@@ -18,6 +18,8 @@
 		2F010811382C47B2CCB19003E37CCB04 /* PositionAttribute+AppKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E758F8F4E06A4B6C785166CD6638C9DB /* PositionAttribute+AppKit.swift */; };
 		2F4816031F46CAE7C82E9A586C74C6D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8E2D632CADFEBE217900FD1D4F3ABF /* Foundation.framework */; };
 		31255764ADFE4C8D8EC9FE640F4517DD /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E98CEE0A3255792962254C913CCF87 /* Node.swift */; };
+		3378A6B81F8560380075A41E /* EasyPeasy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378A6B71F8560380075A41E /* EasyPeasy.swift */; };
+		3378A6B91F8560380075A41E /* EasyPeasy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3378A6B71F8560380075A41E /* EasyPeasy.swift */; };
 		3847AF8C7E34DEC7222D37FB7845CE7C /* NSView+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6B6A2859B41F5AB2CE4EC367D080E /* NSView+Easy.swift */; };
 		4163801022021A149FAD410D8BABB1FE /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9500BCE1781E4E20EFD0EF526CD9A39A /* Context.swift */; };
 		46800684054B2F5DFC611F8AE7FD4701 /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A09E699D04445763DD883C7945879BD6 /* Pods-Tests-dummy.m */; };
@@ -117,6 +119,7 @@
 		1E023155563209C4613545798EC4FE9F /* EasyPeasy-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "EasyPeasy-macOS.xcconfig"; path = "../EasyPeasy-macOS/EasyPeasy-macOS.xcconfig"; sourceTree = "<group>"; };
 		231E23F937E4DCC3FAD74F3AF09B32D1 /* EasyPeasy-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "EasyPeasy-iOS.xcconfig"; sourceTree = "<group>"; };
 		33742C723A1163C23E61C9E1E14A3403 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		3378A6B71F8560380075A41E /* EasyPeasy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EasyPeasy.swift; path = EasyPeasy/EasyPeasy.swift; sourceTree = "<group>"; };
 		35B6D1F56BA2A253F300BC83760D74CF /* Item+AppKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Item+AppKit.swift"; path = "EasyPeasy/Item+AppKit.swift"; sourceTree = "<group>"; };
 		3735301686A93DF457E61A0B72E8E7EB /* Pods-Tests macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests macOS-umbrella.h"; sourceTree = "<group>"; };
 		3BA3C72F63E0D9A304284AA2385FB55A /* UIView+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Easy.swift"; path = "EasyPeasy/UIView+Easy.swift"; sourceTree = "<group>"; };
@@ -390,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDEB9BE2E3587C160B254B5A9286A1C /* Attribute.swift */,
+				3378A6B71F8560380075A41E /* EasyPeasy.swift */,
 				75409B3344A30FD0505DF1C850754354 /* CompoundAttribute.swift */,
 				122176DC9234E573EC847268C191B059 /* Constant.swift */,
 				9500BCE1781E4E20EFD0EF526CD9A39A /* Context.swift */,
@@ -658,6 +662,7 @@
 				9ACF7F7E5B85E4DA3F1A0A411F41E886 /* DimensionAttribute+AppKit.swift in Sources */,
 				DD298251EDA130CB83B48F23862D678D /* DimensionAttribute+UIKit.swift in Sources */,
 				EEF68F3473B6FE750068C55FFF1E9B81 /* DimensionAttribute.swift in Sources */,
+				3378A6B81F8560380075A41E /* EasyPeasy.swift in Sources */,
 				8884F9A285E478CAF15B113048619EC3 /* EasyPeasy-iOS-dummy.m in Sources */,
 				732D4E2F62DDF7E1AC75D02B2E9CA278 /* Item+AppKit.swift in Sources */,
 				156E1FF68FA006B6E831BEDD4206F008 /* Item+UIKit.swift in Sources */,
@@ -686,6 +691,7 @@
 				1D0308EB316DEBD472DEE401540863EF /* DimensionAttribute+AppKit.swift in Sources */,
 				94E76C175D728EBEF895DE0F8026B3BC /* DimensionAttribute+UIKit.swift in Sources */,
 				4A26B70941AA021D5B3C1B9A66B8EEDC /* DimensionAttribute.swift in Sources */,
+				3378A6B91F8560380075A41E /* EasyPeasy.swift in Sources */,
 				AB56AD5E83252A6DCA7AA2F04A077541 /* EasyPeasy-macOS-dummy.m in Sources */,
 				5115B6054A929DCBEE5862AFC468D30E /* Item+AppKit.swift in Sources */,
 				BA62E6DE8B6BB896D54FA43A42D12567 /* Item+UIKit.swift in Sources */,
