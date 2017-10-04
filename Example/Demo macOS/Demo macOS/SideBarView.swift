@@ -64,11 +64,11 @@ class SideBarView: NSView {
             
             // Layout UIImageView
             self.addSubview(tab)
-            tab <- [
+            tab.easy.layout(
                 Size(33.0),
                 CenterX(0.0),
                 Top(topPadding).to(previousItem)
-            ]
+            )
             
             // Set properties that apply to next UIImageView creation
             color = NSColor.easy_blue()
@@ -96,19 +96,19 @@ extension SideBarView {
     fileprivate func setup() {
         // Profile picture
         self.addSubview(self.profileImageView)
-        self.profileImageView <- [
+        self.profileImageView.easy.layout(
             Size(46.0),
             Top(60.0),
             CenterX(0.0)
-        ]
-        
+        )
+    
         // Compose tweet icon
         self.addSubview(self.composeImageView)
-        self.composeImageView <- [
+        self.composeImageView.easy.layout(
             Size(33.0),
             Bottom(20.0),
             CenterX(0.0)
-        ]
+        )
     }
     
 }
