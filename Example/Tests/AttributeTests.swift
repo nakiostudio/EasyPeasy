@@ -34,7 +34,7 @@ class Attribute_InstallTests: XCTestCase {
         // when
         let attribute = Width(120)
         
-        viewA <- attribute
+        viewA.easy.layout(attribute)
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 1)
@@ -54,7 +54,7 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         let attribute = Top(120)
-        viewA <- attribute
+        viewA.easy.layout(attribute)
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 1)
@@ -73,7 +73,7 @@ class Attribute_InstallTests: XCTestCase {
         let numberOfPreviousConstraints = viewA.constraints.count
         
         // when
-        viewA <- Width(120).when { false }
+        viewA.easy.layout(Width(120).when { false })
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 1)
@@ -91,7 +91,7 @@ class Attribute_InstallTests: XCTestCase {
         let numberOfPreviousConstraints = superview.constraints.count
         
         // when
-        viewA <- Top(120).when { false }
+        viewA.easy.layout(Top(120).when { false })
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 1)
@@ -106,7 +106,7 @@ class Attribute_InstallTests: XCTestCase {
         let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         let attribute = Width(120)
-        viewA <- attribute
+        viewA.easy.layout(attribute)
         
         XCTAssertTrue(viewA.test_attributes.count == 1)
         XCTAssertTrue(viewA.test_attributes.first! === attribute)
@@ -115,7 +115,7 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         let newAttribute = Width(500)
-        viewA <- newAttribute
+        viewA.easy.layout(newAttribute)
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 1)
@@ -132,7 +132,7 @@ class Attribute_InstallTests: XCTestCase {
         let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         let attribute = Top(120)
-        viewA <- attribute
+        viewA.easy.layout(attribute)
         XCTAssertTrue(viewA.test_attributes.count == 1)
         XCTAssertTrue(viewA.test_attributes.first! === attribute)
         
@@ -140,7 +140,7 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         let newAttribute = Top(500)
-        viewA <- newAttribute
+        viewA.easy.layout(newAttribute)
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 1)
@@ -155,21 +155,21 @@ class Attribute_InstallTests: XCTestCase {
         superview.addSubview(viewA)
         let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
-        viewB <- [
+        viewB.easy.layout(
             Top(20).to(superview),
             Left(0).to(superview),
             Width(120),
             Height(120)
-        ]
+        )
         XCTAssertTrue(viewB.test_attributes.count == 4)
         
         // when
-        viewA <- [
+        viewA.easy.layout(
             Top(20).to(superview),
             Left(0).to(superview),
             Width(120),
             Height(120)
-        ]
+        )
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 4)
@@ -177,12 +177,12 @@ class Attribute_InstallTests: XCTestCase {
         // And also test that recreating those attributes doesn't break anything
         
         // when
-        viewA <- [
+        viewA.easy.layout(
             Top(200).to(viewB, .top),
             Left(20).to(superview),
             Width(220),
             Height(220)
-        ]
+        )
         
         // then
         XCTAssertTrue(viewA.test_attributes.count == 4)
@@ -193,7 +193,7 @@ class Attribute_InstallTests: XCTestCase {
         let viewA = UIView(frame: CGRect.zero)
         
         // when
-        viewA <- Width(120)
+        viewA.easy.layout(Width(120))
         
         // then
         XCTAssertTrue(true)
@@ -238,10 +238,10 @@ class Attribute_InstallTests: XCTestCase {
         let layoutGuide = UILayoutGuide()
         superview.addSubview(view)
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- Edges(0)
+        layoutGuide.easy.layout(Edges(0))
         
         // when
-        let constraints = view <- Left(10).to(layoutGuide, .left)
+        let constraints = view.easy.layout(Left(10).to(layoutGuide, .left))
         
         // then
         XCTAssertTrue(constraints.count == 1)
@@ -262,10 +262,10 @@ class Attribute_InstallTests: XCTestCase {
         let layoutGuide = UILayoutGuide()
         superview.addSubview(view)
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- Edges(0)
+        layoutGuide.easy.layout(Edges(0))
         
         // when
-        let constraints = view <- Width(0).like(layoutGuide)
+        let constraints = view.easy.layout(Width(0).like(layoutGuide))
         
         // then
         XCTAssertTrue(constraints.count == 1)
@@ -285,10 +285,10 @@ class Attribute_InstallTests: XCTestCase {
         let layoutGuide = UILayoutGuide()
         superview.addSubview(view)
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- Edges(0)
+        layoutGuide.easy.layout(Edges(0))
         
         // when
-        let constraints = view <- Size(0).like(layoutGuide)
+        let constraints = view.easy.layout(Size(0).like(layoutGuide))
         
         // then
         XCTAssertTrue(constraints.count == 2)
@@ -312,7 +312,7 @@ class Attribute_InstallTests: XCTestCase {
         controller.view.addSubview(view)
         
         // when
-        let constraints = view <- Top(10).to(controller.topLayoutGuide)
+        let constraints = view.easy.layout(Top(10).to(controller.topLayoutGuide))
         
         // then
         XCTAssertTrue(constraints.count == 1)
@@ -332,7 +332,7 @@ class Attribute_InstallTests: XCTestCase {
         controller.view.addSubview(view)
         
         // when
-        let constraints = view <- Bottom(20).to(controller.bottomLayoutGuide)
+        let constraints = view.easy.layout(Bottom(20).to(controller.bottomLayoutGuide))
         
         // then
         XCTAssertTrue(constraints.count == 1)
@@ -376,10 +376,10 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- Width(120).when { $0.isPhone }
+            viewA.easy.layout(Width(120).when { $0.isPhone })
         }
         else {
-            viewA <- Width(120).when { $0.isPad }
+            viewA.easy.layout(Width(120).when { $0.isPad })
         }
         
         // then
@@ -395,10 +395,10 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- Width(120).when { $0.isPad }
+            viewA.easy.layout(Width(120).when { $0.isPad })
         }
         else {
-            viewA <- Width(120).when { $0.isPhone }
+            viewA.easy.layout(Width(120).when { $0.isPhone })
         }
         
         // then
@@ -414,14 +414,14 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- [
+            viewA.easy.layout([
                 Width(120), Height(120)
-            ].when { $0.isPhone }
+            ].when { $0.isPhone })
         }
         else {
-            viewA <- [
+            viewA.easy.layout([
                 Width(120), Height(120)
-            ].when { $0.isPad }
+            ].when { $0.isPad })
         }
         
         // then
@@ -437,14 +437,14 @@ class Attribute_InstallTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- [
+            viewA.easy.layout([
                 Width(120), Height(120)
-            ].when { $0.isPad }
+            ].when { $0.isPad })
         }
         else {
-            viewA <- [
+            viewA.easy.layout([
                 Width(120), Height(120)
-            ].when { $0.isPhone }
+            ].when { $0.isPhone })
         }
         
         // then
