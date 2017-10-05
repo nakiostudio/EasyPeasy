@@ -104,9 +104,12 @@ to report any issues you may find with different versions.
 ## Usage
 
 **EasyPeasy** is a set of position and dimension attributes that you can apply
-to your views. For instance, to set a width of 200px to a view you would create
+to your views. You can manage these from the  `easy` property available within all
+the UI classes that work with Auto Layout (view subclasses, layout guides, etc).
+
+For instance, to set a width of 200px to a view you would create
 an attribute of class `Width` with a constant value of `200`, then the attribute
-is applied to the view by using the custom *apply* operator `<-`.
+is applied to the view by using the `easy.layout(_:)` method.
 
 ```swift
 myView.easy.layout(Width(200))
@@ -410,7 +413,7 @@ integrates `UILayoutGuides` support.
 #### Applying constraints
 Applying a constraint to an `UILayoutGuide` is as easy as we have discussed in the
 previous sections, just apply the **EasyPeasy** attributes you want using the
-apply operator `<-`.
+`easy.layout(_:)` method.
 
 ```swift
 func viewDidLoad() {
@@ -461,8 +464,8 @@ func setupLabel() {
 
 ### Lastly
 Finally but not less important in this section we will explain how to interact
-with `Attributes` once they have been applied to an `UIView` using the `<-`
-operator.
+with `Attributes` once they have been applied to an `UIView` using the
+`easy.layout(_:)` method.
 
 #### Updating constraints
 We briefly mentioned in the introductory section that **EasyPeasy** solves most

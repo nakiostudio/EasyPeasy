@@ -39,7 +39,7 @@ public protocol Item: NSObjectProtocol {
 
 public extension Item {
     
-    ///
+    /// Access to **EasyPeasy** `layout`, `reload` and `clear`operations
     public var easy: EasyPeasy {
         return EasyPeasy(item: self)
     }
@@ -64,7 +64,6 @@ public extension Item {
     }
     
 }
-
 
 /**
      Internal extension that handles the storage and application

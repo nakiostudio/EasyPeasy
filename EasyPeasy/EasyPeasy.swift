@@ -11,7 +11,8 @@
 import Foundation
 
 /**
- 
+     Struct holding the main **EasyPeasy** operations: `layout`, `reload` and
+     `clear`
  */
 public struct EasyPeasy {
     
