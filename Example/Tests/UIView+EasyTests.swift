@@ -244,4 +244,59 @@ class UIView_EasyTests: XCTestCase {
         XCTAssertTrue(viewA.constraints.count == 2)
     }
     
+    // MARK: - Deprecated
+    
+    func testThatConstraintsAreTheExpectedUponEasyReloadDeprecated() {
+        // given
+        var condition = true
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
+        superview.addSubview(viewA)
+        viewA <- [
+            Left().when { condition },
+            Right().when { condition },
+            CenterX().when { !condition },
+            Size(20),
+            Top()
+        ]
+        XCTAssertTrue(superview.constraints.count == 3)
+        XCTAssertTrue(viewA.constraints.count == 2)
+        
+        // when
+        condition = false
+        viewA.easy_reload()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 2)
+        XCTAssertTrue(viewA.constraints.count == 2)
+    }
+    
+    func testThatConstraintsAreTheExpectedUponEasyClearDeprecated() {
+        // given
+        let superview = UIView(frame: CGRect(x: 0, y: 0, width: 400, height: 1000))
+        let viewA = UIView(frame: CGRect.zero)
+        superview.addSubview(viewA)
+        viewA <- [Left(), Size(20), Top() ]
+        XCTAssertTrue(superview.constraints.count == 2)
+        XCTAssertTrue(viewA.constraints.count == 2)
+        
+        // when
+        viewA.easy_clear()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 0)
+        XCTAssertTrue(viewA.constraints.count == 0)
+    }
+    
+    func testThatNoConstraintIsCreatedWhenViewDoesNotHaveSuperviewDeprecated() {
+        // given
+        let viewA = UIView(frame: CGRect.zero)
+        
+        // when
+        let constraints = viewA <- Top(100)
+        
+        // then
+        XCTAssertTrue(constraints.count == 0)
+    }
+    
 }
