@@ -795,6 +795,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1E023155563209C4613545798EC4FE9F /* EasyPeasy-macOS.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -831,6 +832,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 231E23F937E4DCC3FAD74F3AF09B32D1 /* EasyPeasy-iOS.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -866,6 +868,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1E023155563209C4613545798EC4FE9F /* EasyPeasy-macOS.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1096,6 +1099,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 231E23F937E4DCC3FAD74F3AF09B32D1 /* EasyPeasy-iOS.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
