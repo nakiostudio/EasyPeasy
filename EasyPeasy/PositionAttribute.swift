@@ -13,11 +13,17 @@
 import UIKit
 
 /// Alias of UIEdgeInsets
-public typealias EdgeInsets = UIEdgeInsets
+public typealias Insets = UIEdgeInsets
 
 #else
 
 import AppKit
+
+#if swift(>=4.0)
+public typealias Insets = NSEdgeInsets
+#else
+public typealias Insets = EdgeInsets
+#endif
     
 #endif
 
@@ -229,7 +235,7 @@ public class Edges: CompoundAttribute {
         properties of each one of the sub `Attribute` objects
         - returns: the `CompoundAttribute` instance created
      */
-    public init(_ edgeInsets: EdgeInsets) {
+    public init(_ edgeInsets: Insets) {
         super.init()
         self.attributes = [
             Top(CGFloat(edgeInsets.top)),
