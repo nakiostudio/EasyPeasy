@@ -18,6 +18,10 @@ public typealias EdgeInsets = UIEdgeInsets
 #else
 
 import AppKit
+
+#if swift(>=4.0)
+public typealias EdgeInsets = NSEdgeInsets
+#endif
     
 #endif
 
