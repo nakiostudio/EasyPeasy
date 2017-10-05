@@ -1,8 +1,14 @@
 # Changelog
 
+## v.1.6.0
+
+* Deprecated `<-` operator and the methods `easy_clear` and `easy_reload` in favour of
+`easy.layout`, `easy.clear` and `easy.reload`.
+
 ## v.1.5.1
 
 * Disabled `Enabled Code Coverage Support` for framework targets.
+* Fixed macOS `EdgeInsets` type aliasing.
 
 ## v.1.5.0
 
