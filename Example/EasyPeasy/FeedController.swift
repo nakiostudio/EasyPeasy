@@ -60,17 +60,17 @@ class FeedController: UIViewController {
         
         // Scrollview
         self.view.addSubview(self.scrollView)
-        self.scrollView <- [
+        self.scrollView.easy.layout(
             Edges()
-        ]
+        )
         
         // New tweets indicator
         self.view.addSubview(self.newTweetsView)
-        self.newTweetsView <- [
+        self.newTweetsView.easy.layout(
             Size(CGSize(width: 118.0, height: 30.0)),
             Top(-100),
             CenterX()
-        ]
+        )
     }
     
     fileprivate func populateFeed() {
@@ -80,7 +80,7 @@ class FeedController: UIViewController {
             view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
             view.setContentHuggingPriority(UILayoutPriority(rawValue: 600), for: .vertical)
             self.scrollView.addSubview(view)
-            view <- [
+            view.easy.layout(
                 Width(<=420),
                 Height(>=78),
                 CenterX(),
@@ -90,7 +90,7 @@ class FeedController: UIViewController {
                 Top().when { index == 0 },
                 // Pins to bottom of the preivous item for the other cases
                 Top(1).to(self.tweetViews.last ?? self.scrollView).when { index > 0 }
-            ]
+            )
             
             view.configureWithModel(tweet)
             self.tweetViews.append(view)
@@ -98,15 +98,15 @@ class FeedController: UIViewController {
         
         // Establishes constraint with the bottom of the scroll view to adjust
         // the content size
-        self.tweetViews.last! <- [
+        self.tweetViews.last!.easy.layout(
             Bottom().to(self.scrollView, .bottom)
-        ]
+        )
     }
     
     fileprivate func showNewTweetsIndicator(_ show: Bool) {
         UIView.animate(withDuration: 0.3, delay: 2.0, options: UIViewAnimationOptions(), animations: {
-            self.newTweetsView <- Top(10).when { show }
-            self.newTweetsView <- Top(-100).when { !show }
+            self.newTweetsView.easy.layout(Top(10).when { show })
+            self.newTweetsView.easy.layout(Top(-100).when { !show })
             self.view.layoutIfNeeded()
         }, completion: { complete in
             if show {

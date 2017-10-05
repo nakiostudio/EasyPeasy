@@ -57,7 +57,7 @@ class ItemTests: XCTestCase {
         superview.addSubview(viewA)
         
         // when
-        let constraints = viewA <- Size(100)
+        let constraints = viewA.easy.layout(Size(100))
         
         // then
         XCTAssertTrue(constraints.count > 0)
@@ -72,7 +72,7 @@ class ItemTests: XCTestCase {
         view.addLayoutGuide(layoutGuide)
         
         // when
-        let constraints = layoutGuide <- Edges()
+        let constraints = layoutGuide.easy.layout(Edges())
         
         // then
         XCTAssertTrue(constraints.count > 0)
@@ -87,7 +87,7 @@ class ItemTests: XCTestCase {
         view.addLayoutGuide(layoutGuide)
         
         // when
-        let constraints = layoutGuide <- Size(40)
+        let constraints = layoutGuide.easy.layout(Size(40))
         
         // then
         XCTAssertTrue(constraints.count > 0)

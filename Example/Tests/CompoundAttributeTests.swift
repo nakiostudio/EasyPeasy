@@ -430,10 +430,10 @@ class CompoundAttributeTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- Size(120).when { $0.isPhone }
+            viewA.easy.layout(Size(120).when { $0.isPhone })
         }
         else {
-            viewA <- Size(120).when { false }
+            viewA.easy.layout(Size(120).when { false })
         }
         
         // then
@@ -449,10 +449,10 @@ class CompoundAttributeTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- Size(120).when { $0.isPad }
+            viewA.easy.layout(Size(120).when { $0.isPad })
         }
         else {
-            viewA <- Size(120).when { $0.isPhone }
+            viewA.easy.layout(Size(120).when { $0.isPhone })
         }
         
         // then
@@ -468,14 +468,14 @@ class CompoundAttributeTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- [
+            viewA.easy.layout([
                 Size(120)
-            ].when { $0.isPhone }
+            ].when { $0.isPhone })
         }
         else {
-            viewA <- [
+            viewA.easy.layout([
                 Size(120)
-            ].when { false }
+            ].when { false })
         }
         
         // then
@@ -491,14 +491,14 @@ class CompoundAttributeTests: XCTestCase {
         
         // when
         if UI_USER_INTERFACE_IDIOM() == .pad {
-            viewA <- [
+            viewA.easy.layout([
                 Size(120)
-            ].when { $0.isPad }
+            ].when { $0.isPad })
         }
         else {
-            viewA <- [
+            viewA.easy.layout([
                 Size(120)
-            ].when { $0.isPhone }
+            ].when { $0.isPhone })
         }
         
         // then

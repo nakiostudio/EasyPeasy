@@ -83,35 +83,35 @@ extension TweetView {
 
     fileprivate func layout() {
         // Thumbnail imageview
-        self.thumbnailImageView <- [
+        self.thumbnailImageView.easy.layout(
             Size(52),
             Top(12),
             Left(12)
-        ]
+        )
         
         // Displayable date label
-        self.displayableDateLabel <- [
+        self.displayableDateLabel.easy.layout(
             Width(<=40),
             Top().to(self.thumbnailImageView, .top),
             Right(12)
-        ]
+        )
         
         // UserInfo label
-        self.userInfoLabel <- [
+        self.userInfoLabel.easy.layout(
             Height(20),
             Top().to(self.thumbnailImageView, .top),
             Left(10).to(self.thumbnailImageView),
             Right(10).to(self.displayableDateLabel)
-        ]
+        )
         
         // Tweet label
-        self.tweetLabel <- [
+        self.tweetLabel.easy.layout(
             Height(>=20),
             Top(0).to(self.userInfoLabel),
             Bottom(12),
             Left().to(self.userInfoLabel, .left),
             Right(12)
-        ]
+        )
     }
     
 }

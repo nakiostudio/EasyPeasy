@@ -26,6 +26,7 @@ public extension UIView {
         - parameter rhs: Attribute applied to the `UIView`
         - returns: The array of `NSLayoutConstraints` applied
      */
+    @available(iOS, deprecated: 1.5.1, message: "Use easy.layout(_:) instead")
     @discardableResult public static func <- (lhs: UIView, rhs: Attribute) -> [NSLayoutConstraint] {
         return lhs <- [rhs]
     }
@@ -37,6 +38,7 @@ public extension UIView {
          - parameter rhs: Attributes applied to the UIView
          - returns: The array of `NSLayoutConstraints` applied
      */
+    @available(iOS, deprecated: 1.5.1, message: "Use easy.layout(_:) instead")
     @discardableResult public static func <- (lhs: UIView, rhs: [Attribute]) -> [NSLayoutConstraint] {
         // Disable autoresizing to constraints translation
         lhs.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +94,7 @@ extension UIView {
         // If at least one `Attribute has been applied to the current
         // `UIView` then perform `easy_reload`
         if self.traitCollection.containsTraits(in: previousTraitCollection) == false && self.nodes.values.count > 0 {
-            self.easy_reload()
+            self.easy.reload()
         }
     }
     
