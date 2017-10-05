@@ -1,5 +1,9 @@
 # Changelog
 
+## v.1.5.1
+
+* Disabled `Enabled Code Coverage Support` for framework targets.
+
 ## v.1.5.0
 
 * Swift 4 support (by [Bas van Kuijck](https://github.com/basvankuijck)).
