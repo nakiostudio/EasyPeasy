@@ -5,13 +5,13 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :travis do
-    workspace = "Example/EasyPeasy.xcworkspace"
+    project = "EasyPeasy.xcodeproj"
 
     # Run tests (iOS)
-    scheme = "EasyPeasy-Example-iOS"
+    scheme = "EasyPeasyTests"
     scan(
       scheme: scheme,
-      workspace: workspace,
+      project: project,
       device: "iPhone 6s",
       code_coverage: true
     )
@@ -19,8 +19,8 @@ platform :ios do
     # Check code coverage (iOS)
     xcov(
       scheme: scheme,
-      workspace: workspace,
-      exclude_targets: "Demo.app,Demo macOS.app,EasyPeasy-OSX.framework",
+      project: workspace,
+      exclude_targets: "Demo-iOS.app,Demo-macOS.app",
       coveralls_service_name: "travis-ci",
       coveralls_service_job_id: ENV["TRAVIS_JOB_ID"]
     )
