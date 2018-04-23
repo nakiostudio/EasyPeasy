@@ -225,19 +225,19 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- [
+        layoutGuide.easy.layout(
             Top(20),
             Width(<=200),
             Bottom(20),
             Left(10).with(.low),
             Right(10).with(.low)
-        ]
+        )
         XCTAssertTrue(superview.constraints.count == 5)
         XCTAssertTrue(layoutGuide.test_attributes.count == 5)
         XCTAssertTrue(superview.test_attributes.count == 0)
         
         // when
-        layoutGuide.easy_clear()
+        layoutGuide.easy.clear()
         
         // then
         XCTAssertTrue(superview.constraints.count == 0)
@@ -250,7 +250,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        let constraints = layoutGuide <- Left(10)
+        let constraints = layoutGuide.easy.layout(Left(10))
         XCTAssertTrue(constraints.count == 1)
         XCTAssertNotNil(constraints.first)
         XCTAssertTrue(constraints.first!.isActive)
@@ -263,7 +263,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         XCTAssertTrue(superview.constraints.first === constraints.first)
         
         // when
-        let newConstraints = layoutGuide <- CenterX(10)
+        let newConstraints = layoutGuide.easy.layout(CenterX(10))
         
         // then
         XCTAssertTrue(newConstraints.count == 1)
@@ -283,10 +283,10 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- [
+        layoutGuide.easy.layout(
             Width(10).when { [weak self] in return (self!.aFlag) },
             Width(100).when { [weak self] in return !(self!.aFlag) }
-        ]
+        )
         XCTAssertTrue(superview.constraints.count == 1)
         XCTAssertTrue(layoutGuide.constraints.count == 1)
         XCTAssertTrue(layoutGuide.test_attributes.count == 2)
@@ -297,7 +297,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         
         // when
         self.aFlag = true
-        layoutGuide.easy_reload()
+        layoutGuide.easy.reload()
         
         // then
         XCTAssertTrue(superview.constraints.count == 1)

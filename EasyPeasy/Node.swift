@@ -49,7 +49,7 @@ class Node {
    
     /// `Attributes` occupying any `Subnode`
     var activeAttributes: [Attribute] {
-        return [self.left, self.right, self.center, self.dimension].flatMap { $0 }
+        return [self.left, self.right, self.center, self.dimension].easy_flatMap { $0 }
     }
     
     /**
@@ -81,15 +81,15 @@ class Node {
         switch nodeAttribute {
         case .left:
             if self.left === attribute { return nil }
-            deactivate = self.deactivate(attributes: [self.left, self.center].flatMap { $0 })
+            deactivate = self.deactivate(attributes: [self.left, self.center].easy_flatMap { $0 })
             self.left = attribute
         case .right:
             if self.right === attribute { return nil }
-            deactivate = self.deactivate(attributes: [self.right, self.center].flatMap { $0 })
+            deactivate = self.deactivate(attributes: [self.right, self.center].easy_flatMap { $0 })
             self.right = attribute
         case .center:
             if self.center === attribute { return nil }
-            deactivate = self.deactivate(attributes: [self.center, self.left, self.right].flatMap { $0 })
+            deactivate = self.deactivate(attributes: [self.center, self.left, self.right].easy_flatMap { $0 })
             self.center = attribute
         case .dimension:
             if self.dimension === attribute { return nil }

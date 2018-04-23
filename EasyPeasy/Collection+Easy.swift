@@ -10,21 +10,14 @@
 
 import Foundation
 
-extension String {
+extension Collection {
     
-    private static let regex = try! NSRegularExpression(
-        pattern: "#\\w+",
-        options: .caseInsensitive
-    )
-    
-    func easy_hashtagRanges() -> [NSRange] {
-        let matches = String.regex.matches(
-            in: self,
-            options: .reportCompletion,
-            range: NSMakeRange(0, self.count)
-        )
-        
-        return matches.map { $0.range }
+    func easy_flatMap<ElementOfResult>(_ transform: (Element) throws -> ElementOfResult?) rethrows -> [ElementOfResult] {
+        #if swift(>=4.1)
+            return try self.compactMap(transform)
+        #else
+            return try self.flatMap(transform)
+        #endif
     }
     
 }
