@@ -16,7 +16,7 @@ extension Item {
         var attributes: [Attribute] = []
         for node in self.nodes.values {
             attributes.append(contentsOf: node.inactiveAttributes)
-            attributes.append(contentsOf: node.activeAttributes.flatMap { $0 })
+            attributes.append(contentsOf: node.activeAttributes.easy_flatMap { $0 })
         }
         return attributes
     }
@@ -24,7 +24,7 @@ extension Item {
     var test_activeAttributes: [Attribute] {
         var attributes: [Attribute] = []
         for node in self.nodes.values {
-            attributes.append(contentsOf: node.activeAttributes.flatMap { $0 })
+            attributes.append(contentsOf: node.activeAttributes.easy_flatMap { $0 })
         }
         return attributes
     }
