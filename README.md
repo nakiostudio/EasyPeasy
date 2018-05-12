@@ -560,7 +560,7 @@ classes and methods are available in [Cocoadocs](http://cocoadocs.org/docsets/Ea
 
 ## Author
 
-Carlos Vidal - [@carlostify](https://twitter.com/carlostify)
+Carlos Vidal - [@nakiostudio](https://twitter.com/nakiostudio)
 
 ## License
 
