@@ -57,7 +57,7 @@ class ConstantTests: XCTestCase {
         let constant = (*5)
         
         // then
-        XCTAssertTrue(constant.value == 5)
+        XCTAssertTrue(constant.value == 0)
         XCTAssertTrue(constant.relation == .equal)
         XCTAssertTrue(constant.multiplier == 5.0)
     }
@@ -137,7 +137,7 @@ class ConstantTests: XCTestCase {
         // then
         XCTAssertTrue(greaterThanValue == 200.0)
         XCTAssertTrue(lessThanValue == 200.0)
-        XCTAssertTrue(multipliedByValue == 200.0)
+        XCTAssertTrue(multipliedByValue == 0.0)
         XCTAssertTrue(equalToValue == 200.0)
         XCTAssertTrue(equalToPrefValue == 200.0)
     }
