@@ -54,21 +54,21 @@ extension FeedController {
     fileprivate func setup() {
         // Side bar
         self.view.addSubview(self.sideBarView)
-        self.sideBarView <- [
+        self.sideBarView.easy.layout(
             Width(80.0),
             Left(0.0),
             Top(0.0),
             Bottom(0.0)
-        ]
+        )
         
         // Feed view
         self.view.addSubview(self.feedView)
-        self.feedView <- [
+        self.feedView.easy.layout(
             Top(0.0),
             Right(0.0),
             Bottom(0.0),
             Left(0.0).to(self.sideBarView)
-        ]
+        )
     }
     
 }

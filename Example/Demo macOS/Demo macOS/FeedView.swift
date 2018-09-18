@@ -81,17 +81,17 @@ class FeedView: NSView {
             
             // Layout "cells"
             self.contentView.addSubview(tweetView)
-            tweetView <- [
+            tweetView.easy.layout(
                 Top(0.0).to(previousItem),
                 Left(0.0),
                 Right(0.0),
                 Height(>=TweetView.minimumHeight)
-            ]
+            )
             
             // Pins contentView to bottom of the this item
-            self.contentView <- [
+            self.contentView.easy.layout(
                 Bottom(>=0.0).to(tweetView, .bottom).with(.custom(priority))
-            ]
+            )
             
             // Set properties that apply to next tweetview creation
             previousItem = tweetView
@@ -109,39 +109,39 @@ extension FeedView {
     fileprivate func setup() {
         // Title header
         self.addSubview(self.titleLabel)
-        self.titleLabel <- [
+        self.titleLabel.easy.layout(
             Top(FeedView.headerPadding),
             Size(>=0.0),
             CenterX(0.0)
-        ]
+        )
         
         // Separator beneath title
         self.addSubview(self.separatorView)
-        self.separatorView <- [
+        self.separatorView.easy.layout(
             Top(FeedView.headerPadding).to(self.titleLabel),
             Left(0.0),
             Right(0.0),
             Height(1.0)
-        ]
+        )
         
         // Scroll view
         self.addSubview(self.scrollView)
-        self.scrollView <- [
+        self.scrollView.easy.layout(
             Top(0.0).to(self.separatorView),
             Left(0.0),
             Right(0.0),
             Bottom(0.0)
-        ]
+        )
         
         // Content of the scroll
         self.scrollView.documentView = self.contentView
-        self.contentView <- [
+        self.contentView.easy.layout(
             Top(0.0),
             Left(0.0),
             Bottom(>=0.0),
             Width(0.0).like(self.scrollView),
             Height(>=0.0)
-        ]
+        )
     }
     
 }

@@ -244,7 +244,7 @@ public class Margins: CompoundAttribute {
         properties of each one of the sub `Attribute` objects
         - returns: the `CompoundAttribute` instance created
      */
-    public init(_ edgeInsets: EdgeInsets) {
+    public init(_ edgeInsets: Insets) {
         super.init()
         self.attributes = [
             TopMargin(CGFloat(edgeInsets.top)),

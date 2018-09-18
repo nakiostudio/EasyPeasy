@@ -1,5 +1,23 @@
 # Changelog
 
+## v.1.7.0
+
+* Swift 4.1 support.
+
+## v.1.6.0
+
+* Deprecated `<-` operator and the methods `easy_clear` and `easy_reload` in favour of
+`easy.layout`, `easy.clear` and `easy.reload`.
+
+## v.1.5.1
+
+* Disabled `Enabled Code Coverage Support` for framework targets.
+* Fixed macOS `EdgeInsets` type aliasing.
+
+## v.1.5.0
+
+* Swift 4 support (by [Bas van Kuijck](https://github.com/basvankuijck)).
+
 ## v.1.4.2
 
 * In previous versions `Priority.highPriority` matched with `UILayoutPriority.required`. This

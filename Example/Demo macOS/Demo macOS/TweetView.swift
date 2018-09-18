@@ -76,7 +76,7 @@ class TweetView: NSView {
     override func viewDidMoveToSuperview() {
         super.viewDidMoveToSuperview()
         
-        self <- Bottom(100).to(self.tweetLabel, .bottom).with(.medium)
+        self.easy.layout(Bottom(100).to(self.tweetLabel, .bottom).with(.medium))
     }
     
     // MARK: Public methods
@@ -110,44 +110,44 @@ extension TweetView {
     
     fileprivate func applyConstraints() {
         // Thumbnail imageview
-        self.thumbnailImageView <- [
+        self.thumbnailImageView.easy.layout(
             Size(52.0),
             Top(12.0),
             Left(12.0)
-        ]
+        )
         
         // UserInfo label
-        self.userInfoLabel <- [
+        self.userInfoLabel.easy.layout(
             Height(>=0.0),
             Top(0.0).to(self.thumbnailImageView, .top),
             Left(10.0).to(self.thumbnailImageView),
             Right(10.0).to(self.displayableDateLabel)
-        ]
+        )
         
         // Displayable date label
-        self.displayableDateLabel <- [
+        self.displayableDateLabel.easy.layout(
             Width(<=40.0),
             Height(>=0.0),
             CenterY(0.0).to(self.userInfoLabel),
             Right(12.0)
-        ]
+        )
         
         // Tweet label
-        self.tweetLabel <- [
+        self.tweetLabel.easy.layout(
             Height(>=0.0),
             Top(2.0).to(self.userInfoLabel),
             Bottom(6.0),
             Left(-2.0).to(self.userInfoLabel, .left),
             Right(12.0)
-        ]
+        )
         
         // Separator
-        self.separatorView <- [
+        self.separatorView.easy.layout(
             Left(0.0),
             Right(0.0),
             Bottom(0.0),
             Height(1.0)
-        ]
+        )
     }
     
 }

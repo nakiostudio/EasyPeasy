@@ -32,7 +32,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         superview.addLayoutGuide(layoutGuide)
         
         // when
-        let constraints = layoutGuide <- CenterX(10)
+        let constraints = layoutGuide.easy.layout(CenterX(10))
         
         // then
         XCTAssertTrue(constraints.count == 1)
@@ -54,7 +54,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         superview.addLayoutGuide(layoutGuide)
         
         // when
-        let constraints = layoutGuide <- Width(10)
+        let constraints = layoutGuide.easy.layout(Width(10))
         
         // then
         XCTAssertTrue(constraints.count == 1)
@@ -74,7 +74,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        let constraints = layoutGuide <- Left(10)
+        let constraints = layoutGuide.easy.layout(Left(10))
         XCTAssertTrue(constraints.count == 1)
         XCTAssertNotNil(constraints.first)
         XCTAssertTrue(constraints.first!.isActive)
@@ -87,7 +87,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         XCTAssertTrue(superview.constraints.first === constraints.first)
         
         // when
-        let newConstraints = layoutGuide <- CenterX(10)
+        let newConstraints = layoutGuide.easy.layout(CenterX(10))
         
         // then
         XCTAssertTrue(newConstraints.count == 1)
@@ -107,7 +107,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        let constraints = layoutGuide <- Width(10)
+        let constraints = layoutGuide.easy.layout(Width(10))
         XCTAssertTrue(constraints.count == 1)
         XCTAssertNotNil(constraints.first)
         XCTAssertTrue(constraints.first!.isActive)
@@ -120,7 +120,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         XCTAssertTrue(superview.constraints.first === constraints.first)
         
         // when
-        let newConstraints = layoutGuide <- Width(100)
+        let newConstraints = layoutGuide.easy.layout(Width(100))
         
         // then
         XCTAssertTrue(newConstraints.count == 1)
@@ -140,19 +140,19 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- [
+        layoutGuide.easy.layout(
             Top(20),
             Width(<=200),
             Bottom(20),
             Left(10).with(.low),
             Right(10).with(.low)
-        ]
+        )
         XCTAssertTrue(superview.constraints.count == 5)
         XCTAssertTrue(layoutGuide.test_attributes.count == 5)
         XCTAssertTrue(superview.test_attributes.count == 0)
         
         // when
-        layoutGuide.easy_clear()
+        layoutGuide.easy.clear()
 
         // then
         XCTAssertTrue(superview.constraints.count == 0)
@@ -165,10 +165,10 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- [
+        layoutGuide.easy.layout(
             Left(10).with(.low).when { [weak self] in return (self!.aFlag) },
             Left(100).with(.low).when { [weak self] in return !(self!.aFlag) }
-        ]
+        )
         XCTAssertTrue(superview.constraints.count == 1)
         XCTAssertTrue(layoutGuide.test_attributes.count == 2)
         XCTAssertTrue(layoutGuide.test_activeAttributes.count == 1)
@@ -178,7 +178,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         
         // when
         self.aFlag = true
-        layoutGuide.easy_reload()
+        layoutGuide.easy.reload()
         
         // then
         XCTAssertTrue(superview.constraints.count == 1)
@@ -194,10 +194,10 @@ class UILayoutGuide_EasyTests: XCTestCase {
         let superview = UIView(frame: CGRect.zero)
         let layoutGuide = UILayoutGuide()
         superview.addLayoutGuide(layoutGuide)
-        layoutGuide <- [
+        layoutGuide.easy.layout(
             Width(10).when { [weak self] in return (self!.aFlag) },
             Width(100).when { [weak self] in return !(self!.aFlag) }
-        ]
+        )
         XCTAssertTrue(superview.constraints.count == 1)
         XCTAssertTrue(layoutGuide.constraints.count == 1)
         XCTAssertTrue(layoutGuide.test_attributes.count == 2)
@@ -208,7 +208,7 @@ class UILayoutGuide_EasyTests: XCTestCase {
         
         // when
         self.aFlag = true
-        layoutGuide.easy_reload()
+        layoutGuide.easy.reload()
         
         // then
         XCTAssertTrue(superview.constraints.count == 1)
@@ -218,4 +218,93 @@ class UILayoutGuide_EasyTests: XCTestCase {
         XCTAssertTrue(layoutGuide.constraints[0].constant == 10)
     }
 
+    // MARK: - Deprecated
+    
+    func testThatEasyClearClearsTheAttributesAppliedToTheGuideDeprecated() {
+        // given
+        let superview = UIView(frame: CGRect.zero)
+        let layoutGuide = UILayoutGuide()
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide.easy.layout(
+            Top(20),
+            Width(<=200),
+            Bottom(20),
+            Left(10).with(.low),
+            Right(10).with(.low)
+        )
+        XCTAssertTrue(superview.constraints.count == 5)
+        XCTAssertTrue(layoutGuide.test_attributes.count == 5)
+        XCTAssertTrue(superview.test_attributes.count == 0)
+        
+        // when
+        layoutGuide.easy.clear()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 0)
+        XCTAssertTrue(layoutGuide.test_attributes.count == 0)
+        XCTAssertTrue(superview.test_attributes.count == 0)
+    }
+
+    func testThatPositionConflictIsResolvedDeprecated() {
+        // given
+        let superview = UIView(frame: CGRect.zero)
+        let layoutGuide = UILayoutGuide()
+        superview.addLayoutGuide(layoutGuide)
+        let constraints = layoutGuide.easy.layout(Left(10))
+        XCTAssertTrue(constraints.count == 1)
+        XCTAssertNotNil(constraints.first)
+        XCTAssertTrue(constraints.first!.isActive)
+        XCTAssertTrue(constraints.first!.constant == 10)
+        XCTAssertTrue(constraints.first!.firstItem === layoutGuide)
+        XCTAssertTrue(constraints.first!.secondItem === superview)
+        XCTAssertTrue(constraints.first!.relation == .equal)
+        XCTAssertTrue(constraints.first!.firstAttribute == .left)
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(superview.constraints.first === constraints.first)
+        
+        // when
+        let newConstraints = layoutGuide.easy.layout(CenterX(10))
+        
+        // then
+        XCTAssertTrue(newConstraints.count == 1)
+        XCTAssertNotNil(newConstraints.first)
+        XCTAssertTrue(newConstraints.first!.isActive)
+        XCTAssertTrue(newConstraints.first!.constant == 10)
+        XCTAssertTrue(newConstraints.first!.firstItem === layoutGuide)
+        XCTAssertTrue(newConstraints.first!.secondItem === superview)
+        XCTAssertTrue(newConstraints.first!.relation == .equal)
+        XCTAssertTrue(newConstraints.first!.firstAttribute == .centerX)
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(superview.constraints.first === newConstraints.first)
+    }
+    
+    func testThatEasyReloadTogglesDimensionAttributesDependingOnConditionDeprecated() {
+        // given
+        let superview = UIView(frame: CGRect.zero)
+        let layoutGuide = UILayoutGuide()
+        superview.addLayoutGuide(layoutGuide)
+        layoutGuide.easy.layout(
+            Width(10).when { [weak self] in return (self!.aFlag) },
+            Width(100).when { [weak self] in return !(self!.aFlag) }
+        )
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.test_attributes.count == 2)
+        XCTAssertTrue(layoutGuide.test_activeAttributes.count == 1)
+        XCTAssertTrue(layoutGuide.test_inactiveAttributes.count == 1)
+        XCTAssertTrue(superview.test_attributes.count == 0)
+        XCTAssertTrue(layoutGuide.constraints[0].constant == 100)
+        
+        // when
+        self.aFlag = true
+        layoutGuide.easy.reload()
+        
+        // then
+        XCTAssertTrue(superview.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.constraints.count == 1)
+        XCTAssertTrue(layoutGuide.test_attributes.count == 2)
+        XCTAssertTrue(superview.test_attributes.count == 0)
+        XCTAssertTrue(layoutGuide.constraints[0].constant == 10)
+    }
+    
 }
