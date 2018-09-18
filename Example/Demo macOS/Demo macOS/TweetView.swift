@@ -163,7 +163,7 @@ extension TweetView {
     static func attributedStringWithDisplayableDate(_ string: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,
             .font: NSFont.systemFont(ofSize: 12.0),
             .foregroundColor: TweetView.darkGreyColor
@@ -176,7 +176,7 @@ extension TweetView {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         paragraphStyle.lineHeightMultiple = 1.2
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,
             .font: NSFont.systemFont(ofSize: 13.0),
             .foregroundColor: NSColor.black
@@ -187,11 +187,11 @@ extension TweetView {
     
     static func attributedStringWithName(_ name: String, username: String) -> NSAttributedString {
         let string = "\(name) \(username)"
-        let boldAttributes: [NSAttributedStringKey: Any] = [
+        let boldAttributes: [NSAttributedString.Key: Any] = [
             .font: NSFont.boldSystemFont(ofSize: 14.0),
             .foregroundColor: NSColor.black
         ]
-        let lightAttributes: [NSAttributedStringKey: Any] = [
+        let lightAttributes: [NSAttributedString.Key: Any] = [
             .font: NSFont.systemFont(ofSize: 12.0),
             .foregroundColor: TweetView.darkGreyColor
         ]

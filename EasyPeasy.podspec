@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "EasyPeasy"
-  s.version          = "1.7.0"
+  s.version          = "1.8.0"
   s.summary          = "EasyPeasy is a Swift framework that eases the creation of
                         Autolayout constraints programmatically"
   s.description      = <<-DESC
@@ -24,4 +24,3 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.source_files = 'EasyPeasy/**/*'
 end
-

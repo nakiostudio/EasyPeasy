@@ -19,7 +19,7 @@ struct TweetModel {
     
     var thumbnail: NSImage? {
         get {
-            return NSImage(named: NSImage.Name(rawValue: self.username))
+            return NSImage(named: self.username)
         }
     }
     
