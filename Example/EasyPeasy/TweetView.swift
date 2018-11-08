@@ -127,7 +127,7 @@ extension TweetView {
     static func attributedStringWithDisplayableDate(_ string: String) -> NSAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .right
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,
             .font: UIFont.systemFont(ofSize: 14.0),
             .foregroundColor: TweetView.darkGreyColor
@@ -140,7 +140,7 @@ extension TweetView {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .left
         paragraphStyle.lineHeightMultiple = 1.2
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .paragraphStyle: paragraphStyle,
             .font: UIFont.systemFont(ofSize: 15.0),
             .foregroundColor: UIColor.black
@@ -149,7 +149,7 @@ extension TweetView {
         let string = NSMutableAttributedString(string: tweet, attributes: attributes)
     
         for hashtagRange in tweet.easy_hashtagRanges() {
-            string.addAttribute(NSAttributedStringKey.foregroundColor, value: TweetView.lightBlueColor, range: hashtagRange)
+            string.addAttribute(NSAttributedString.Key.foregroundColor, value: TweetView.lightBlueColor, range: hashtagRange)
         }
         
         return string
@@ -157,11 +157,11 @@ extension TweetView {
     
     static func attributedStringWithName(_ name: String, username: String) -> NSAttributedString {
         let string = "\(name) \(username)"
-        let boldAttributes: [NSAttributedStringKey: Any] = [
+        let boldAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.boldSystemFont(ofSize: 16.0),
             .foregroundColor: UIColor.black
         ]
-        let lightAttributes: [NSAttributedStringKey: Any] = [
+        let lightAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 14.0),
             .foregroundColor: TweetView.darkGreyColor
         ]

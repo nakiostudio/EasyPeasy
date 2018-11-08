@@ -20,7 +20,7 @@ import AppKit
 #if os(OSX) && swift(>=4.0)
     public typealias Relation = NSLayoutConstraint.Relation
 #else
-    public typealias Relation = NSLayoutRelation
+    public typealias Relation = NSLayoutConstraint.Relation
 #endif
 
 /**
