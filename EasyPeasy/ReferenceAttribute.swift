@@ -10,7 +10,7 @@
 
 #if os(iOS) || os(tvOS)
     import UIKit
-    typealias LayoutConstraintAttribute = NSLayoutConstraint.Attribute
+    typealias LayoutConstraintAttribute = NSLayoutAttribute
 #elseif os(OSX) && swift(>=4.0)
     import AppKit
     typealias LayoutConstraintAttribute = NSLayoutConstraint.Attribute
