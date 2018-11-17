@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "EasyPeasy"
-  s.version          = "1.7.0"
+  s.version          = "1.8.0"
   s.summary          = "EasyPeasy is a Swift framework that eases the creation of
                         Autolayout constraints programmatically"
   s.description      = <<-DESC
@@ -20,6 +20,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target     = '8.0'
   s.tvos.deployment_target    = '9.0'
   s.osx.deployment_target     = '10.10'
+  s.swift_version = '4.2'
 
   s.requires_arc = true
   s.source_files = 'EasyPeasy/**/*'

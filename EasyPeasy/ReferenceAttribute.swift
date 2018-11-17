@@ -8,7 +8,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#if os(iOS) || os(tvOS)
+#if swift(>=4.2) && (os(iOS) || os(tvOS))
+    import UIKit
+    typealias LayoutConstraintAttribute = NSLayoutConstraint.Attribute
+#elseif os(iOS) || os(tvOS)
     import UIKit
     typealias LayoutConstraintAttribute = NSLayoutAttribute
 #elseif os(OSX) && swift(>=4.0)

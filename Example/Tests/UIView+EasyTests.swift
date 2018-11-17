@@ -119,8 +119,8 @@ class UIView_EasyTests: XCTestCase {
         let viewA = UIView(frame: CGRect.zero)
         superview.addSubview(viewA)
         viewA.easy.layout(
-            BottomMargin(10),
-            TrailingMargin(10),
+            Bottom(10),
+            Trailing(10),
             Width(120),
             Height(300)
         )
@@ -147,8 +147,8 @@ class UIView_EasyTests: XCTestCase {
         let viewB = UIView(frame: CGRect.zero)
         superview.addSubview(viewB)
         viewA.easy.layout(
-            TopMargin(10),
-            LeadingMargin(10),
+            Top(10),
+            Leading(10),
             Width(120),
             Height(300)
         )
