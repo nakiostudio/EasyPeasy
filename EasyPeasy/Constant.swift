@@ -19,6 +19,8 @@ import AppKit
  */
 #if os(OSX) && swift(>=4.0)
     public typealias Relation = NSLayoutConstraint.Relation
+#elseif swift(>=4.2)
+    public typealias Relation = NSLayoutConstraint.Relation
 #else
     public typealias Relation = NSLayoutRelation
 #endif

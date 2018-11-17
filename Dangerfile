@@ -1,5 +1,5 @@
 workspace = "Example/EasyPeasy.xcworkspace"
-scheme = "EasyPeasy-iOS"
+scheme = "EasyPeasy-Example-iOS"
 
 # Coverage report
 xcov.report(

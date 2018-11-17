@@ -104,7 +104,7 @@ class FeedController: UIViewController {
     }
     
     fileprivate func showNewTweetsIndicator(_ show: Bool) {
-        UIView.animate(withDuration: 0.3, delay: 2.0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.3, delay: 2.0, options: UIView.AnimationOptions(), animations: {
             self.newTweetsView.easy.layout(Top(10).when { show })
             self.newTweetsView.easy.layout(Top(-100).when { !show })
             self.view.layoutIfNeeded()
