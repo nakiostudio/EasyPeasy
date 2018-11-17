@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A6AE70C6CC0DC5F2E1418545 /* Pods_Tests_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0BA78F0DE5E2B7E635FDA10 /* Pods_Tests_macOS.framework */; };
 		C1234B111D2C5CB1004AB3A1 /* TweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1234B0F1D2C5CB1004AB3A1 /* TweetModel.swift */; };
 		C1234B121D2C5CB1004AB3A1 /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1234B101D2C5CB1004AB3A1 /* TweetView.swift */; };
 		C1234B141D2C5CBD004AB3A1 /* NSImage+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1234B131D2C5CBD004AB3A1 /* NSImage+Easy.swift */; };
@@ -21,16 +20,6 @@
 		F3E774E62F71E31079E00432 /* Pods_Demo_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0697E51B42CCA806489A2BD2 /* Pods_Demo_macOS.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C1B763311D2983DD0054C2B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C1B763191D2983DD0054C2B0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C1B763201D2983DD0054C2B0;
-			remoteInfo = "Demo macOS";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0697E51B42CCA806489A2BD2 /* Pods_Demo_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDB8442082DB77EB3748F1F /* Pods-Demo macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo macOS.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Demo macOS/Pods-Demo macOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,7 +32,6 @@
 		C1B763261D2983DD0054C2B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1B763291D2983DD0054C2B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C1B7632B1D2983DD0054C2B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1B763301D2983DD0054C2B0 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1B763361D2983DD0054C2B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1B763411D298A0F0054C2B0 /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		C1B763431D298C620054C2B0 /* SideBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
@@ -61,14 +49,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E774E62F71E31079E00432 /* Pods_Demo_macOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C1B7632D1D2983DD0054C2B0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A6AE70C6CC0DC5F2E1418545 /* Pods_Tests_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				C1B763211D2983DD0054C2B0 /* Demo macOS.app */,
-				C1B763301D2983DD0054C2B0 /* Tests macOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,27 +170,6 @@
 			productReference = C1B763211D2983DD0054C2B0 /* Demo macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C1B7632F1D2983DD0054C2B0 /* Tests macOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C1B7633C1D2983DD0054C2B0 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
-			buildPhases = (
-				8FFE6920D6831041933A0117 /* [CP] Check Pods Manifest.lock */,
-				C1B7632C1D2983DD0054C2B0 /* Sources */,
-				C1B7632D1D2983DD0054C2B0 /* Frameworks */,
-				C1B7632E1D2983DD0054C2B0 /* Resources */,
-				610BEF86E57B4E74FDD55DDE /* [CP] Embed Pods Frameworks */,
-				3C08DF92AE3170204D89C00E /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C1B763321D2983DD0054C2B0 /* PBXTargetDependency */,
-			);
-			name = "Tests macOS";
-			productName = "Demo macOSTests";
-			productReference = C1B763301D2983DD0054C2B0 /* Tests macOS.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -225,10 +183,6 @@
 					C1B763201D2983DD0054C2B0 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
-					};
-					C1B7632F1D2983DD0054C2B0 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = C1B763201D2983DD0054C2B0;
 					};
 				};
 			};
@@ -246,7 +200,6 @@
 			projectRoot = "";
 			targets = (
 				C1B763201D2983DD0054C2B0 /* Demo macOS */,
-				C1B7632F1D2983DD0054C2B0 /* Tests macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -258,13 +211,6 @@
 			files = (
 				C1B763271D2983DD0054C2B0 /* Assets.xcassets in Resources */,
 				C1B7632A1D2983DD0054C2B0 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C1B7632E1D2983DD0054C2B0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,39 +233,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3C08DF92AE3170204D89C00E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Tests macOS/Pods-Tests macOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		610BEF86E57B4E74FDD55DDE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-Tests macOS/Pods-Tests macOS-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/EasyPeasy-macOS/EasyPeasy.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyPeasy.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Tests macOS/Pods-Tests macOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6421136947D3C793A2CD29F4 /* [CP] Copy Pods Resources */ = {
@@ -355,24 +268,6 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Demo macOS/Pods-Demo macOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8FFE6920D6831041933A0117 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Tests macOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -391,22 +286,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C1B7632C1D2983DD0054C2B0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C1B763321D2983DD0054C2B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C1B763201D2983DD0054C2B0 /* Demo macOS */;
-			targetProxy = C1B763311D2983DD0054C2B0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C1B763281D2983DD0054C2B0 /* MainMenu.xib */ = {
@@ -551,39 +431,6 @@
 			};
 			name = Release;
 		};
-		C1B7633D1D2983DD0054C2B0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9826534A643C7F0303AB6232 /* Pods-Tests macOS.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Demo macOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nakioStudio.Demo-macOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Demo macOSTests/Tests macOS-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo macOS.app/Contents/MacOS/Demo macOS";
-			};
-			name = Debug;
-		};
-		C1B7633E1D2983DD0054C2B0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5EF169D4A229383D705B53B /* Pods-Tests macOS.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "Demo macOSTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nakioStudio.Demo-macOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Demo macOSTests/Tests macOS-Bridging-Header.h";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Demo macOS.app/Contents/MacOS/Demo macOS";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -601,15 +448,6 @@
 			buildConfigurations = (
 				C1B7633A1D2983DD0054C2B0 /* Debug */,
 				C1B7633B1D2983DD0054C2B0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C1B7633C1D2983DD0054C2B0 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C1B7633D1D2983DD0054C2B0 /* Debug */,
-				C1B7633E1D2983DD0054C2B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
