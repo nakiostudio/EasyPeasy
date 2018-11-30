@@ -114,7 +114,7 @@ public extension CGFloat {
         - returns: The resulting `Constant` struct
      */
     public static prefix func * (rhs: CGFloat) -> Constant {
-        return Constant(value: rhs, relation: .equal, multiplier: rhs)
+        return Constant(value: 0, relation: .equal, multiplier: rhs)
     }
 
     /**

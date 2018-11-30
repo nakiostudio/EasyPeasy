@@ -91,7 +91,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         for attribute in sizeAttribute.attributes {
-            XCTAssertTrue(attribute.constant.value == 2.0)
+            XCTAssertTrue(attribute.constant.value == 0.0)
             XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
@@ -173,7 +173,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         for attribute in edgesAttribute.attributes {
-            XCTAssertTrue(attribute.constant.value == 2.0)
+            XCTAssertTrue(attribute.constant.value == 0.0)
             XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
@@ -248,7 +248,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         for attribute in centerAttribute.attributes {
-            XCTAssertTrue(attribute.constant.value == 2.0)
+            XCTAssertTrue(attribute.constant.value == 0.0)
             XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
@@ -315,7 +315,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         for attribute in centerWithinMarginsAttribute.attributes {
-            XCTAssertTrue(attribute.constant.value == 2.0)
+            XCTAssertTrue(attribute.constant.value == 0.0)
             XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
@@ -382,7 +382,7 @@ class CompoundAttributeTests: XCTestCase {
         
         // then
         for attribute in marginsAttribute.attributes {
-            XCTAssertTrue(attribute.constant.value == 2.0)
+            XCTAssertTrue(attribute.constant.value == 0.0)
             XCTAssertTrue(attribute.constant.relation == .equal)
             XCTAssertTrue(attribute.constant.multiplier == 2.0)
         }
