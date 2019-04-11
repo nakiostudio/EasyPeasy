@@ -40,7 +40,7 @@ public protocol Item: NSObjectProtocol {
 public extension Item {
     
     /// Access to **EasyPeasy** `layout`, `reload` and `clear`operations
-    public var easy: EasyPeasy {
+    var easy: EasyPeasy {
         return EasyPeasy(item: self)
     }
     
@@ -50,7 +50,7 @@ public extension Item {
          closures will be evaluated again
      */
     @available(iOS, deprecated: 1.5.1, message: "Use easy.reload() instead")
-    public func easy_reload() {
+    func easy_reload() {
         self.reload()
     }
     
@@ -59,7 +59,7 @@ public extension Item {
          current `UIView`
      */
     @available(iOS, deprecated: 1.5.1, message: "Use easy.clear() instead")
-    public func easy_clear() {
+    func easy_clear() {
         self.clear()
     }
     

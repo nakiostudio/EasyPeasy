@@ -26,7 +26,7 @@ public extension UILayoutGuide {
         - returns: The array of `NSLayoutConstraints` applied
      */
     @available(iOS, deprecated: 1.5.1, message: "Use easy.layout(_:) instead")
-    @discardableResult public static func <- (lhs: UILayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
+    @discardableResult static func <- (lhs: UILayoutGuide, rhs: Attribute) -> [NSLayoutConstraint] {
         return lhs <- [rhs]
     }
 
@@ -38,7 +38,7 @@ public extension UILayoutGuide {
         - returns: The array of `NSLayoutConstraints` applied
      */
     @available(iOS, deprecated: 1.5.1, message: "Use easy.layout(_:) instead")
-    @discardableResult public static func <- (lhs: UILayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
+    @discardableResult static func <- (lhs: UILayoutGuide, rhs: [Attribute]) -> [NSLayoutConstraint] {
         // Apply attributes and return the installed `NSLayoutConstraints`
         return lhs.apply(attributes: rhs)
     }

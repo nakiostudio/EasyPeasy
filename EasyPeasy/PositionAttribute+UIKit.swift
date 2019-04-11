@@ -30,7 +30,7 @@ public extension PositionAttribute {
         relationship to
         - returns: The current `Attribute` instance
      */
-    @discardableResult public func to(_ view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult func to(_ view: UIView, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = view
         self.referenceAttribute = attribute
         return self
@@ -48,7 +48,7 @@ public extension PositionAttribute {
         relationship to
         - returns: The current `Attribute` instance
      */
-    @discardableResult public func to(_ layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult func to(_ layoutSupport: UILayoutSupport, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutSupport
         self.referenceAttribute = attribute
         return self
@@ -67,7 +67,7 @@ public extension PositionAttribute {
         - returns: The current `Attribute` instance
      */
     @available(iOS 9.0, *)
-    @discardableResult public func to(_ layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
+    @discardableResult func to(_ layoutGuide: UILayoutGuide, _ attribute: ReferenceAttribute? = nil) -> Self {
         self.referenceItem = layoutGuide
         self.referenceAttribute = attribute
         return self
