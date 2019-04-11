@@ -95,6 +95,8 @@ open class Attribute {
             signature += "gt_"
         case .lessThanOrEqual:
             signature += "lt_"
+        @unknown default:
+            signature += "eq_"
         }
         
         // Signature of the `Priority` of the passed
@@ -293,7 +295,7 @@ public extension Array where Element: Attribute {
         the constraint
         - returns: the `Array` of `Attributes`
      */
-    @discardableResult public func with(_ priority: Priority) -> [Attribute] {
+    @discardableResult func with(_ priority: Priority) -> [Attribute] {
         for attribute in self {
             attribute.with(priority)
         }
@@ -308,7 +310,7 @@ public extension Array where Element: Attribute {
         each constraint
         - returns: the `Array` of `Attributes`
      */
-    @discardableResult public func when(_ closure: Condition?) -> [Attribute] {
+    @discardableResult func when(_ closure: Condition?) -> [Attribute] {
         for attribute in self {
             attribute.when(closure)
         }
@@ -323,7 +325,7 @@ public extension Array where Element: Attribute {
         constraint
         - returns: the `Array` of `Attributes`
      */
-    @discardableResult public func when(_ closure: ContextualCondition?) -> [Attribute] {
+    @discardableResult func when(_ closure: ContextualCondition?) -> [Attribute] {
         for attribute in self {
             attribute.when(closure)
         }

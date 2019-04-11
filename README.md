@@ -7,12 +7,6 @@
 [![Carthage compatible](https://img.shields.io/badge/carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://travis-ci.org/nakiostudio/EasyPeasy)
 
-<h3 align="center">
-  <a href="https://grnh.se/5f21b9701">
-    <img src="/README/monzo.png" alt="Join me and the amazing Mobile Team at monzo"/>
-  </a>
-</h3>
-
 **EasyPeasy** is a Swift framework that lets you create *Auto Layout* constraints
 programmatically without headaches and never ending boilerplate code. Besides the
 basics, **EasyPeasy** resolves most of the constraint conflicts for you and also
@@ -78,7 +72,8 @@ result using **EasyPeasy**.
 * To work with Swift 2.2 use EasyPeasy `v.1.2.1` or earlier versions of the library.
 * To work with Swift 2.3 use EasyPeasy `v.1.3.1`.
 * To work with Swift 3 use EasyPeasy `v.1.4.2`.
-* To work with Swift 4 use EasyPeasy `v.1.5.0` and above
+* To work with Swift 4 use EasyPeasy `v.1.8.0`.
+* To work with Swift 5 use EasyPeasy `v.1.9.0` and above.
 (thanks [Bas van Kuijck](https://github.com/basvankuijck)).
 
 ### Cocoapods

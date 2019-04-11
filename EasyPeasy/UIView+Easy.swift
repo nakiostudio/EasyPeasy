@@ -27,7 +27,7 @@ public extension UIView {
         - returns: The array of `NSLayoutConstraints` applied
      */
     @available(iOS, deprecated: 1.5.1, message: "Use easy.layout(_:) instead")
-    @discardableResult public static func <- (lhs: UIView, rhs: Attribute) -> [NSLayoutConstraint] {
+    @discardableResult static func <- (lhs: UIView, rhs: Attribute) -> [NSLayoutConstraint] {
         return lhs <- [rhs]
     }
 
@@ -39,7 +39,7 @@ public extension UIView {
          - returns: The array of `NSLayoutConstraints` applied
      */
     @available(iOS, deprecated: 1.5.1, message: "Use easy.layout(_:) instead")
-    @discardableResult public static func <- (lhs: UIView, rhs: [Attribute]) -> [NSLayoutConstraint] {
+    @discardableResult static func <- (lhs: UIView, rhs: [Attribute]) -> [NSLayoutConstraint] {
         // Disable autoresizing to constraints translation
         lhs.translatesAutoresizingMaskIntoConstraints = false
         

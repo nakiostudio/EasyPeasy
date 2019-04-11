@@ -1,5 +1,8 @@
 # Changelog
 
+## v.1.9.0
+* Swift 5.0 support.
+
 ## v.1.8.0
 * Swift 4.2 support.
 
