@@ -28,6 +28,8 @@
 		48A87620B2F2985295E9F4F97BD07B50 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E98CEE0A3255792962254C913CCF87 /* Node.swift */; };
 		48B8F78ACC0CD73EFD01DC58B9483A4D /* NSLayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA1E9442444C6D8169B9507D39CB6A9 /* NSLayoutGuide+Easy.swift */; };
 		4A26B70941AA021D5B3C1B9A66B8EEDC /* DimensionAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B74ED1B62C923D06A1A9A142A4B347 /* DimensionAttribute.swift */; };
+		4B1F218122B0E79C0019F12F /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F218022B0E79C0019F12F /* DSL.swift */; };
+		4B1F218222B0ED840019F12F /* DSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1F218022B0E79C0019F12F /* DSL.swift */; };
 		4DEF994CB8EA3FADD1DAF0722E1B79B3 /* UILayoutGuide+Easy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6641CFB1449ADDD2004DA8D4AA87FA /* UILayoutGuide+Easy.swift */; };
 		4DF555D9669E5C3186398EA4C46D39D1 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDEB9BE2E3587C160B254B5A9286A1C /* Attribute.swift */; };
 		4F54F25DD10410FD0041227E7E9684EF /* Pods-Demo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 162681A64439823480E5AB5E64D338B3 /* Pods-Demo-dummy.m */; };
@@ -128,6 +130,7 @@
 		3BA3C72F63E0D9A304284AA2385FB55A /* UIView+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Easy.swift"; path = "EasyPeasy/UIView+Easy.swift"; sourceTree = "<group>"; };
 		3FBF8C4B90A392F0D840149FDB3387B0 /* EasyPeasy-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "EasyPeasy-iOS.modulemap"; sourceTree = "<group>"; };
 		4381A7D68120BAB2720DB92BEB3DA213 /* Pods-Tests macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Tests macOS.modulemap"; sourceTree = "<group>"; };
+		4B1F218022B0E79C0019F12F /* DSL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSL.swift; sourceTree = "<group>"; };
 		4BAC8653A4FE2E238C88D70C5F1E3E05 /* PositionAttribute.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PositionAttribute.swift; path = EasyPeasy/PositionAttribute.swift; sourceTree = "<group>"; };
 		4D6641CFB1449ADDD2004DA8D4AA87FA /* UILayoutGuide+Easy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILayoutGuide+Easy.swift"; path = "EasyPeasy/UILayoutGuide+Easy.swift"; sourceTree = "<group>"; };
 		524130042CDC7A563C5874CCAE052198 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 		D5CEB0DAADEF6877C5EA03734ECDE5D4 /* EasyPeasy */ = {
 			isa = PBXGroup;
 			children = (
+				4B1F218022B0E79C0019F12F /* DSL.swift */,
 				EEDEB9BE2E3587C160B254B5A9286A1C /* Attribute.swift */,
 				3378A6B71F8560380075A41E /* EasyPeasy.swift */,
 				75409B3344A30FD0505DF1C850754354 /* CompoundAttribute.swift */,
@@ -680,6 +684,7 @@
 				48A87620B2F2985295E9F4F97BD07B50 /* Node.swift in Sources */,
 				964F4A8337EE04D24F80568388B19AAB /* NSLayoutGuide+Easy.swift in Sources */,
 				E67F35B1A9D3A9ACAE011C7B9FD51221 /* NSView+Easy.swift in Sources */,
+				4B1F218122B0E79C0019F12F /* DSL.swift in Sources */,
 				C189F94D87DB0518E32AC0E940CC2984 /* PositionAttribute+AppKit.swift in Sources */,
 				A0732D9493F4D392280FDB51EB4370A1 /* PositionAttribute+UIKit.swift in Sources */,
 				331B77DF208DD7E500B808AD /* Collection+Easy.swift in Sources */,
@@ -710,6 +715,7 @@
 				31255764ADFE4C8D8EC9FE640F4517DD /* Node.swift in Sources */,
 				48B8F78ACC0CD73EFD01DC58B9483A4D /* NSLayoutGuide+Easy.swift in Sources */,
 				3847AF8C7E34DEC7222D37FB7845CE7C /* NSView+Easy.swift in Sources */,
+				4B1F218222B0ED840019F12F /* DSL.swift in Sources */,
 				2F010811382C47B2CCB19003E37CCB04 /* PositionAttribute+AppKit.swift in Sources */,
 				883FCDC7F3C6B650E1788EFDC5FE34E0 /* PositionAttribute+UIKit.swift in Sources */,
 				331B77E0208DDE1900B808AD /* Collection+Easy.swift in Sources */,
