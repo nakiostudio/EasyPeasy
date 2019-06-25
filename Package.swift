@@ -18,6 +18,6 @@ let package = Package(
         .library(name: "EasyPeasy", targets: ["EasyPeasy"])
     ],
     targets: [
-        .target(name: "EasyPeasy", path: "EasyPeasy/EasyPeasy")
+        .target(name: "EasyPeasy", path: "EasyPeasy")
     ]
 )
