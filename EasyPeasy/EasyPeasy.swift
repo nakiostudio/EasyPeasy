@@ -10,6 +10,12 @@
 
 import Foundation
 
+#if os(iOS) || os(tvOS)
+import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
+
 /**
      Struct holding the main **EasyPeasy** operations: `layout`, `reload` and
      `clear`
