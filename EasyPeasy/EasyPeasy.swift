@@ -19,7 +19,7 @@ public struct EasyPeasy {
     /// Weak reference to the `Item` that owns this wrapper
     weak var item: Item?
   
-    @discardableResult public func layout(@EasyBuilder attributes: () -> AttributeContainerType) -> [NSLayoutConstraint] {
+    @discardableResult public func layout(@EasyBuilder attributes: () -> _AttributeContainerType) -> [NSLayoutConstraint] {
         return self.item?.apply(attributes: attributes().make()) ?? []
     }
 

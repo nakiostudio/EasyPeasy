@@ -82,6 +82,7 @@ class TweetView: UIView {
 extension TweetView {
 
     fileprivate func layout() {
+      
         // Thumbnail imageview
         self.thumbnailImageView.easy.layout(
             Size(52),

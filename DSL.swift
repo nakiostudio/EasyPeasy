@@ -7,28 +7,22 @@
 
 import Foundation
 
-public protocol AttributeContainerType {
+public protocol _AttributeContainerType {
   
   func make() -> [Attribute]
 }
 
-extension Attribute : AttributeContainerType {
+extension Attribute : _AttributeContainerType {
   public func make() -> [Attribute] {
     [self]
   }
 }
 
-struct EmptyAttributeContainer: AttributeContainerType {
-  func make() -> [Attribute] {
-    []
-  }
-}
-
-struct MultipleAttributeContainer: AttributeContainerType {
+public struct AttributeContainer: _AttributeContainerType {
   
-  let attributes: [AttributeContainerType]
+  let attributes: [_AttributeContainerType]
   
-  init(_ attributes: [AttributeContainerType]) {
+  init(_ attributes: [_AttributeContainerType]) {
     self.attributes = attributes
   }
   
@@ -39,15 +33,30 @@ struct MultipleAttributeContainer: AttributeContainerType {
 
 @_functionBuilder public struct EasyBuilder {
   
-  public static func buildBlock() -> AttributeContainerType { EmptyAttributeContainer() }
+  public static func buildBlock() -> AttributeContainer {
+    AttributeContainer([])
+  }
   
-  public static func buildBlock<T : AttributeContainerType>(_ attribute: T) -> T {
+  public static func buildBlock<T : _AttributeContainerType>(_ attribute: T) -> T {
     attribute
   }
   
-  public static func buildBlock(_ attributes: AttributeContainerType...) -> some AttributeContainerType {
-    MultipleAttributeContainer(attributes)
+  public static func buildBlock(_ attributes: _AttributeContainerType...) -> AttributeContainer {
+    AttributeContainer(attributes)
   }
+  
+  public static func buildIf<T : _AttributeContainerType>(_ attribute: T?) -> AttributeContainer {
+    AttributeContainer([attribute].compactMap { $0 })
+  }
+  
+  public static func buildEither<T : _AttributeContainerType>(first: T) -> AttributeContainer {
+    AttributeContainer([first])
+  }
+  
+  public static func buildEither<T : _AttributeContainerType>(second: T) -> AttributeContainer {
+    AttributeContainer([second])
+  }
+
   
 }
 

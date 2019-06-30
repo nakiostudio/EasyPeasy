@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B8006B222C91BB700E63CD4 /* DSLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8006B122C91BB700E63CD4 /* DSLTests.swift */; };
 		4EF043868CC39B83D24C47CE /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7D20974212E8FEA67C1842 /* Pods_Demo.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		16FD5798B8AEA4F55127B5F4 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4B8006B122C91BB700E63CD4 /* DSLTests.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = DSLTests.swift; sourceTree = "<group>"; tabWidth = 4; };
 		607FACD01AFB9204008FA782 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				C1CA52671D62456300FBEDB1 /* ContextTests.swift */,
 				C1A3D5741CA6E23200DCC1D0 /* ConstantTests.swift */,
 				C1A3D5701CA6DF2100DCC1D0 /* PriorityTests.swift */,
+				4B8006B122C91BB700E63CD4 /* DSLTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -452,6 +455,7 @@
 				C1A3D5771CA6E57100DCC1D0 /* ReferenceAttributeTests.swift in Sources */,
 				C1A3D57D1CA7100F00DCC1D0 /* UIView+EasyTests.swift in Sources */,
 				C16C7D7E1CCD0AE6005AE021 /* ItemTests.swift in Sources */,
+				4B8006B222C91BB700E63CD4 /* DSLTests.swift in Sources */,
 				C1A3D5811CA7F97D00DCC1D0 /* CompoundAttributeTests.swift in Sources */,
 				C1A3D57B1CA6F79500DCC1D0 /* AttributeTests.swift in Sources */,
 				C1CA52681D62456300FBEDB1 /* ContextTests.swift in Sources */,
