@@ -86,8 +86,8 @@ extension Item {
         }
         
         // Activate/deactivate the resulting `NSLayoutConstraints`
-        NSLayoutConstraint.deactivate(deactivateConstraints)
         NSLayoutConstraint.activate(activateConstraints)
+        NSLayoutConstraint.deactivate(deactivateConstraints)
     }
     
     /**
