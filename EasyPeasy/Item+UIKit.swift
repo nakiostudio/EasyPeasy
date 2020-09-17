@@ -13,7 +13,7 @@
 import UIKit
     
 /// Alias of UIView
-public typealias View = UIView
+public typealias EasyView = UIView
     
 /**
      Extension making `UIView` conform the `Item` protocol and
@@ -23,7 +23,7 @@ extension UIView: Item {
 
     /// Owning `UIView` for the current `Item`. The concept varies
     /// depending on the class conforming the protocol
-    public var owningView: View? {
+    public var owningView: EasyView? {
         return self.superview
     }
     

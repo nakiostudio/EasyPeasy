@@ -361,11 +361,11 @@ view.easy.layout([
 
 #### ContextualConditions
 This iOS only feature is a variant of the `Condition` closures that receive no
-parameters and return a boolean value. Instead, a `Context` struct is passed
+parameters and return a boolean value. Instead, an `EasyContext` struct is passed
 as parameter providing some extra information based on the `UITraitCollection`
 of the `UIView` the `Attributes` are going to be applied to.
 
-The properties available on this `Context` struct are:
+The properties available on this `EasyContext` struct are:
 
 * `isPad`: true if the current device is iPad.
 * `isPhone`: true if the current device is iPhone.

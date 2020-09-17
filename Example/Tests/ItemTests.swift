@@ -103,7 +103,7 @@ class ItemTests: XCTestCase {
                 }
             }
             
-            fileprivate var owningView: View?
+            fileprivate var owningView: EasyView?
             
         }
         let testClassInstance = TestClass()
