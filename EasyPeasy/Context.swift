@@ -16,7 +16,7 @@ import UIKit
      Struct that from an `UITraitCollection` object populates some helper 
      properties easing access to device and size class information
  */
-public struct Context {
+public struct EasyContext {
     
     /// `true` if the current device is an iPad
     public let isPad: Bool

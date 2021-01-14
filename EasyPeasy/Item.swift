@@ -33,7 +33,7 @@ public protocol Item: NSObjectProtocol {
     
     /// Owning `UIView` for the current `Item`. The concept varies
     /// depending on the class conforming the protocol
-    var owningView: View? { get }
+    var owningView: EasyView? { get }
     
 }
 

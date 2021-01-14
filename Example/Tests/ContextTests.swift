@@ -34,7 +34,7 @@ class ContextTests: XCTestCase {
         let isVerticalRegular = view.traitCollection.verticalSizeClass == .regular
         
         // when
-        let context = Context(with: view.traitCollection)
+        let context = EasyContext(with: view.traitCollection)
         
         // then
         XCTAssertTrue(context.isPad == isPad)
@@ -60,7 +60,7 @@ class ContextTests: XCTestCase {
         let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
-        let context = Context(with: traitCollection)
+        let context = EasyContext(with: traitCollection)
         
         // then
         XCTAssertTrue(context.isPad == isPad)
@@ -86,7 +86,7 @@ class ContextTests: XCTestCase {
         let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
-        let context = Context(with: traitCollection)
+        let context = EasyContext(with: traitCollection)
         
         // then
         XCTAssertTrue(context.isPad == isPad)
@@ -112,7 +112,7 @@ class ContextTests: XCTestCase {
         let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
-        let context = Context(with: traitCollection)
+        let context = EasyContext(with: traitCollection)
         
         // then
         XCTAssertTrue(context.isPad == isPad)
@@ -138,7 +138,7 @@ class ContextTests: XCTestCase {
         let isVerticalRegular = traitCollection.verticalSizeClass == .regular
         
         // when
-        let context = Context(with: traitCollection)
+        let context = EasyContext(with: traitCollection)
         
         // then
         XCTAssertTrue(context.isPad == isPad)

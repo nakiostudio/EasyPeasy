@@ -25,13 +25,13 @@ public typealias Condition = () -> Bool
 
 #if os(iOS)
 /**
-    Typealias of a closure with a `Context` struct as parameter and `Bool`
+    Typealias of a closure with an `EasyContext` struct as parameter and `Bool`
     as returning type.
 
     This type of closure is used to evaluate whether an `Attribute` should
     be applied or not.
  */
-public typealias ContextualCondition = (Context) -> Bool
+public typealias ContextualCondition = (EasyContext) -> Bool
 #endif
 
 /**
@@ -240,8 +240,8 @@ open class Attribute {
         // struct and call the closure
         #if os(iOS)
         let item = self.createItem?.owningView ?? self.createItem
-        if let contextualCondition = self.condition as? ContextualCondition, let view = item as? View {
-            return contextualCondition(Context(with: view.traitCollection))
+        if let contextualCondition = self.condition as? ContextualCondition, let view = item as? EasyView {
+            return contextualCondition(EasyContext(with: view.traitCollection))
         }
         #endif
         
