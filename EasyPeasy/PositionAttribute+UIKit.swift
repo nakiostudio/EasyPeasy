@@ -324,5 +324,29 @@ public class CenterWithinMargins: CompoundAttribute {
     }
     
 }
+
+extension Edges {
+  
+  @available(iOS 9.0, *)
+  public func to(_ layoutGuide: UILayoutGuide) -> Edges {
+    self.attributes = [
+      Top().to(layoutGuide, .top),
+      Left().to(layoutGuide, .left),
+      Right().to(layoutGuide, .right),
+      Bottom().to(layoutGuide, .bottom),
+    ]
+    return self
+  }
+  
+  public func to(_ view: UIView) -> Edges {
+    self.attributes = [
+      Top().to(view, .top),
+      Left().to(view, .left),
+      Right().to(view, .right),
+      Bottom().to(view, .bottom),
+    ]
+    return self
+  }
+}
     
 #endif
