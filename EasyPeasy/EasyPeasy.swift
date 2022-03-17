@@ -62,3 +62,15 @@ public struct EasyPeasy {
     
 }
 
+#if swift(>=5.4)
+extension EasyPeasy {
+    /**
+         Applies the attributes given to the current item
+         - parameter attributes: `Attributes` applied to the `Item`
+         - returns: The array of `NSLayoutConstraints` created and applied
+     */
+    @discardableResult public func layout(@EasyPeasyArrayBuilder<Attribute> _ builder: () -> [Attribute]) -> [NSLayoutConstraint] {
+        return self.item?.apply(attributes: builder()) ?? []
+    }
+}
+#endif
